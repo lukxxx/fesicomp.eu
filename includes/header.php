@@ -1,3 +1,4 @@
+<?php include "head.php" ?>
 <header>
         <div class="container-fluid back">
             <div class="container">
@@ -5,10 +6,10 @@
                     <div class="col-sm-12 col-md-7 col-lg-7">
                         <div class="brand">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="search.php" "><img src="logo.png" width="100" height="90"></a>
+                                <a href="../index.php" "><img src="assets/images/brand/logo.png" width="100" height="90"></a>
                             </div>
                             <div class="award">
-                                <a href="search.php" style="padding-left: 20px;height: 90px;"><img src="skusenosti.gif" width="95" height="90"></a>
+                                <a href="../index.php" style="padding-left: 20px;height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                             </div>
                             <div class="headings">
                                 <h2>VÝPOČTOVÁ TECHNIKA</h2>
