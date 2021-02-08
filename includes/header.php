@@ -35,7 +35,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <form method="post" action="search-results.php">
                                     <div class="form-group has-search search-box" style="position: relative;z-index: 2;">
-                                        <button class="btn" type="submit" style="position: fixed; margin-left: 18.5vw;"><i class="fa fa-search"></i></button>
+                                        <button class="btn" type="submit" style="position: absolute; margin-left: 18.5vw;"><i class="fa fa-search"></i></button>
                                         <input style="border-radius:30px; padding-left: 10px; outline: 0 !important; width: 90%;" 
                                         type="text" class="form-control search" autocomplete="off" placeholder="  Zadajte hľadaný výraz..." >
                                         <div class="result" style="display: none; margin-top: -1vw; width: 90%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
@@ -48,8 +48,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </div>     
         </div>
         <div class="news-bar">
             <p>Od 19.12.2020 do konca LOCKDOWN bude predajňa zatvorená.</p>        
