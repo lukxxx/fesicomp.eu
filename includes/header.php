@@ -11,7 +11,7 @@
                                 <a href="search.php" style="padding-left: 20px;height: 90px;"><img src="skusenosti.gif" width="95" height="90"></a>
                             </div>
                             <div class="headings">
-                                <h2>VÝPOČTOVÁ TECHNIKA asdas</h2>
+                                <h2>VÝPOČTOVÁ TECHNIKA</h2>
                                 <h4>predaj a servis</h4>
                                 <div class="quick-links">
                                     <i class="fas fa-phone"></i><a href="tel:+421534411526">+421534411526</a>
