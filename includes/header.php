@@ -17,7 +17,7 @@
                                     <i class="fas fa-phone"></i><a href="tel:+421534411526">+421534411526</a>
                                     <i class="fas fa-envelope"></i><a href="mailto:eshop@compsnv.sk">eshop@compsnv.sk</a>    
                                 </div>
-                                
+                                <p></p>
                             </div>
                         </div>
                        
