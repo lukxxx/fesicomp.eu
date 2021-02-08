@@ -144,3 +144,13 @@ span {
     background-color: #2B2B2B;
     height: 15px;
 }
+
+/* CATEGORY LISTING */
+.category-h {
+    background-color: #C21800;
+    color: white;
+}
+.categories {
+    background-color: #2B2B2B;
+    color: white;
+}
