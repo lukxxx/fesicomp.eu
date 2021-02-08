@@ -1,0 +1,146 @@
+body {
+    font-family: 'Product Sans';
+}
+input:focus {
+    outline: none !important;
+
+}
+span {
+    padding: 0px;
+}
+.searchButton {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; 
+    cursor: pointer;
+}
+.search-input {
+    padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 100%;
+  background: #f1f1f1;
+}
+.search-box > a {
+    color: black;
+}
+.search-box > a:hover {
+    color: rgb(68, 0, 0);
+}
+.back {
+    background-color: #2B2B2B;
+    height: 130px;
+}
+.top-links {
+    color: white;
+    padding: 1.2vw;
+}
+.top-links > a {
+    padding-right: 3.052083333333333vw;
+    text-align: center;
+    justify-content: center;
+}
+.top-links > a:hover {
+    color: white;
+}
+.top-links > span {
+    padding-left: 5px;
+}
+
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: rgb(0, 0, 0);
+    padding-left: 26.041666666666668vw;
+}
+.btn-search:hover {
+    cursor: pointer;
+}
+.brand {
+    display: flex;
+    padding: 15px;
+}
+.headings {
+    padding-left: 15px;
+}
+.headings > h2 {
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    padding: 0;
+}
+.headings > h4 {
+    font-size: 25px;
+    color: white;
+    line-height: 20px;
+}
+.headings > .quick-links > a {
+    font-size: 16px;
+    color: white;
+    line-height: 15px;
+    padding-right: 30px;
+}
+.headings > .quick-links > i {
+    font-size: 16px;
+    color: white;
+    line-height: 15px;
+    padding-right: 5px;
+}
+.news-bar {
+    background-color: #C21800;
+    height: 22px;
+    color: white;
+    
+}
+.news-bar > p {
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(80%);
+ -webkit-transform:translateX(80%);  
+ transform:translateX(50%);
+ /* Apply animation to this element */  
+ -moz-animation: example1 15s linear infinite;
+ -webkit-animation: example1 15s linear infinite;
+ animation: example1 40s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+    0%   { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+   }
+   @-webkit-keyframes example1 {
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+   }
+   @keyframes example1 {
+    0%   { 
+    -moz-transform: translateX(100%); /* Firefox bug fix */
+    -webkit-transform: translateX(100%); /* Firefox bug fix */
+    transform: translateX(100%);     
+    }
+    100% { 
+    -moz-transform: translateX(-100%); /* Firefox bug fix */
+    -webkit-transform: translateX(-100%); /* Firefox bug fix */
+    transform: translateX(-100%); 
+    }
+   }
+
+.end-bar{
+    background-color: #2B2B2B;
+    height: 15px;
+}
