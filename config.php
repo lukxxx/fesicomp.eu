@@ -1,7 +1,7 @@
 <?php 
-$hostname = "87.197.174.134";
-$user = "root";
-$pass = "";
+$hostname = "db003.nameserver.sk";
+$user = "compsnv_sk2";
+$pass = "iQ8sh2lz";
 $db_name = "compsnv_sk2";
 $link = mysqli_connect($hostname, $user, $pass, $db_name);
 if($link === false){
