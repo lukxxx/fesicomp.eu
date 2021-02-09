@@ -19,9 +19,8 @@
                                 if(mysqli_num_rows($result) > 0){
                                     echo "<ol style='list-style: none;padding: 10px 0px 0px 10px;'>";
                                     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){                                      
-                                        echo "<div class='d-flex'>";
-                                        echo "<i class='fas fa-chevron-right'></i><a href='".$row['k_id']."' style='color: white; padding: 5px 5px 5px 10px;'><li style='padding: 0; 
-                                        line-height: 15px;'>".$row['k_nazov']."</li></a></div>";                                       
+                                        echo "<div class='d-flex' style='color: white; padding: 5px 5px 5px 10px; line-height: 20px'>";
+                                        echo "<i class='fas fa-chevron-right'></i><a href='".$row['k_id']."'><li style='padding-left: 8px; color: white;'>".$row['k_nazov']."</li></a></div>";                                       
                                     } 
                                     echo "</ol>";
                                 } else{
