@@ -8,7 +8,7 @@ $(document).ready(function(){
         if(inputVal.length){
             $.get("template/search-engine.php", {term: inputVal}).done(function(data){
                 // Display the returned data in browser
-                resultDropdown.html(data);
+                window.setTimeout(resultDropdown.html(data), 1000);
             });
         } else{
             resultDropdown.empty();
