@@ -31,7 +31,7 @@
                                         
                                         </div>
                                         <div class="product-img justify-content-md-center">
-                                            <img src="catalog/<?php $row['p_id']?>/<?php $row['p_img']?>" width="159" class="img-prod" height="120">
+                                            <img src="catalog/<?php echo $row['p_id']?>/<?php echo $row['p_img']?>" width="159" class="img-prod" height="120">
                                         </div>
                                         <div class="product-name justify-content-md-center">
                                             <div class="heading">
