@@ -21,7 +21,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                   echo "<hr>";
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                   echo "<div style'display: flex; text-overflow: ellipsis; width: 80%'>";
-                     echo "<a href='' style='color: black'><p style='font-size: 15px'><img src='obrazok.jpg' width='30' height='20'><span style='padding-left: 10px'>" . $row["p_nazov"] . "</span>";
+                     echo "<a href='".$row['p_id']."' style='color: black'><p style='font-size: 15px'><img src='catalog/".$row['p_id']."/".$row['p_img']."' width='30' height='20'><span style='padding-left: 10px'>" . $row["p_nazov"] . "</span>";
                      echo "<span style='float: right; font-weight: bold; color: red;'>".$row['p_cena']."€</span></p></a>";
                    echo "</div>";
               }
@@ -45,7 +45,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                 echo "<span style='font-weight: bold; font-size: 15px'><i class='fas fa-arrow-right'></i> Kategórie</span>";
                 echo "<hr>";
               while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                   echo "<a href='' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
+                   echo "<a href='".$row['k_id']."' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
 
             }
           } else {
