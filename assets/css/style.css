@@ -72,27 +72,27 @@ span {
     display: flex;
     padding: 15px;
 }
-.headings {
+.header-headings {
     padding-left: 15px;
 }
-.headings > h2 {
+.header-headings > h2 {
     font-weight: bold;
     font-size: 30px;
     color: white;
     padding: 0;
 }
-.headings > h4 {
+.header-headings > h4 {
     font-size: 25px;
     color: white;
     line-height: 20px;
 }
-.headings > .quick-links > a {
+.header-headings > .quick-links > a {
     font-size: 16px;
     color: white;
     line-height: 15px;
     padding-right: 30px;
 }
-.headings > .quick-links > i {
+.header-headings > .quick-links > i {
     font-size: 16px;
     color: white;
     line-height: 15px;
@@ -124,4 +124,51 @@ span {
 .categories {
     background-color: #2B2B2B;
     color: white;
+}
+/* PRODUCT CARD */
+.headings {
+    text-align: center;
+    padding: 5px;
+    background-color: #B81600;
+    color: white;
+    font-weight: bold;
+}
+.name-prod {
+    font-size: 16px;
+    font-weight: 600;
+}
+.product-bottom {
+    display: flex;
+    padding: 5px;
+}
+.img-prod {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.product-img {
+    padding: 10px;
+}
+.product-price-dph {
+    font-weight: 700;
+    font-size: 20px;
+}
+.add-to-cart {
+    padding-right: 2vw;
+}
+.product-name {
+    background-color: #B81600;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+.product-price-wdph {
+    font-size: 8px;
+    color: grey;
+    text-align: right;
+    line-height: 5px;
+}
+.product-card{
+    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
+box-shadow: 5px 6px 16px -2px #616161;
 }
