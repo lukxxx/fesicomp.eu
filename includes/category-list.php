@@ -4,7 +4,6 @@
                     </div>
                     <div class="categories">
                     <?php 
-                        include "config.php";
                         $aktualni = "";
                         $kid = "0";
                         if ($aktualni==0) $str=" AND (k_aktualni='1' OR k_aktualni='3') "; else $str="";
