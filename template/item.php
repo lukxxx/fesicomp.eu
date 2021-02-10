@@ -89,7 +89,7 @@ if(isset($_GET['ID'])){
     <div class="container" style="padding-top: 20px">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3">
-                <?php include (ROOT."includes/category-list.php")?>
+                <?php include (ROOT."includes/category-list-temp.php")?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
                 <h3><?php echo $kategoria; ?></h3>
