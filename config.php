@@ -1,4 +1,8 @@
 <?php 
+
+
+define("ROOT", __DIR__ ."/");
+
 $hostname = "db003.nameserver.sk";
 $user = "compsnv_sk2";
 $pass = "iQ8sh2lz";
