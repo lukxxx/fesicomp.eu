@@ -4,7 +4,8 @@ include_once "../includes/head-template.php";
 if(isset($_GET['KID'])){
     $kid = $_GET['KID'];
     $sql = "SELECT * FROM produkty WHERE p_kid='$kid'";
-    $kat = "SELECT * FROM kategorie WHERE k_id='$kid'";
+    $kategoria = "SELECT * FROM kategorie WHERE k_id='$kid'";
+    $kat = "SELECT * FROM kategorie WHERE k_kategoria='$kategoria'";
     
     if($stmt = mysqli_prepare($link, $sql)){
         if(mysqli_stmt_execute($stmt)){
@@ -26,7 +27,7 @@ if(isset($_GET['KID'])){
           
           if(mysqli_num_rows($result) > 0){
               while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                $kategoria = $row['k_nazov'];
+                $kategor = $row['k_nazov'];
             }
           } else {
             echo "<p>Nič sme nenašli tu</p>";
@@ -68,7 +69,7 @@ if(isset($_GET['KID'])){
                 <?php include (ROOT."includes/category-list-temp.php")?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
-                <h3><?php echo $kategoria; ?></h3>
+                <h3><?php echo $kategor; ?></h3>
                 <h4><?php echo $produkt; ?></h4>
                 <br>
             </div>
