@@ -51,6 +51,6 @@
             </div>     
         </div>
         <div class="news-bar">
-            <p>Od 19.12.2020 do konca LOCKDOWN bude predajňa zatvorená.</p>        
+            <marquee>Od 19.12.2020 do konca LOCKDOWN bude predajňa zatvorená.</marquee>        
         </div>
     </header>
