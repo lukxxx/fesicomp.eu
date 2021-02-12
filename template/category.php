@@ -4,8 +4,7 @@ include_once "../includes/head-template.php";
 if(isset($_GET['KID'])){
     $kid = $_GET['KID'];
     $sql = "SELECT * FROM produkty WHERE p_kid='$kid'";
-    $kategoria = "SELECT * FROM kategorie WHERE k_id='$kid'";
-    $kat = "SELECT * FROM kategorie WHERE k_kategoria='$kategoria'";
+    $kat = "SELECT * FROM kategorie WHERE k_kategoria = (SELECT k_kategoria FROM kategorie WHERE k_id='$kid')";
     
     if($stmt = mysqli_prepare($link, $sql)){
         if(mysqli_stmt_execute($stmt)){
@@ -16,7 +15,7 @@ if(isset($_GET['KID'])){
                   $produkt = $row['p_nazov'];
               }
             } else{
-               echo "<p>Nič sme nenašli</p>";
+               echo "<p>Nič sme nenašli</p>" ;
             }
         } else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
@@ -25,7 +24,7 @@ if(isset($_GET['KID'])){
       if(mysqli_stmt_execute($stmt)){
           $result = mysqli_stmt_get_result($stmt);
           
-          if(mysqli_num_rows($result) > 0){
+          if(mysqli_num_rows($result) >= 0){
               while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                 $kategor = $row['k_nazov'];
             }
@@ -69,7 +68,23 @@ if(isset($_GET['KID'])){
                 <?php include (ROOT."includes/category-list-temp.php")?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
-                <h3><?php echo $kategor; ?></h3>
+                <h3><?php
+                    $kid = $_GET['KID'];
+                        if($stmt = mysqli_prepare($link,"SELECT * FROM kategorie WHERE k_kategoria = (SELECT k_kategoria FROM kategorie WHERE k_id='$kid')")){
+                            if(mysqli_stmt_execute($stmt)){
+                                $result = mysqli_stmt_get_result($stmt);
+                                if(mysqli_num_rows($result) > 0){
+                                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                                        echo "<p>".$kategor = $row['k_nazov']." ".$row['k_kid']."</p>";
+                                    }
+                                } else {
+                                echo "<p>Nič sme nenašli tu</p>";
+                                }
+                            } else{
+                                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                            }
+                        }
+                 ?></h3>
                 <h4><?php echo $produkt; ?></h4>
                 <br>
             </div>
