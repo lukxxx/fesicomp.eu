@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Product Sans';
 }
@@ -192,8 +193,9 @@ border-radius: 10px;
 }
 .footer-h {
     font-size: 25px;
-    font-weight: bold;
+    
 }
+
 .map {
     padding: 10px;
 }
