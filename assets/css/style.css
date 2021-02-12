@@ -225,3 +225,15 @@ border-radius: 10px;
 background-color: white !important;
 z-index: 2;
 }
+
+
+/* FORMS */
+
+.form-inputik {
+margin-top: 10px;
+border-radius: 10px;
+}
+.form-inputik:focus {
+    outline-color: blue;
+    transition: 2s;
+}
