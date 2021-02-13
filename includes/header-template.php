@@ -26,8 +26,8 @@
                         <div class="row">
                             <div class="top-links d-flex justify-content-around">
                                 <a href="" style="color: white"><i class="fas fa-user"></i><span style="padding-left: 5px;">Účet</span></a>
-                                <a href="" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
-                                <a href="" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
+                                <a href="../template/contact.php" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
+                                <a href="../template/about.php" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
                             </div>
                         </div>
                         <div class="row">
