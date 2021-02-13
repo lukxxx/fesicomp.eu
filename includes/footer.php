@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
                         <span class="footer-h">Sledujte nás</span><br>
-                        <a>Facebook <i class="fab fa-facebook"></i></a><br>
+                        <a href = "https://www.facebook.com/fesicomp.sk" style = "color:white;">Facebook <i class="fab fa-facebook"></i></a><br>
                         <span class="footer-h">U nás zaplatíte</span><br>
                         <i class="fab fa-cc-visa"></i><span> Visa</span>
                         <i class="fab fa-cc-mastercard"></i><span> Mastercard</span><br>
