@@ -1,5 +1,5 @@
-<?php include "../includes/head-template.php";
-
+<?php 
+include "../includes/head-template.php";
 $options = [
     'cost' => 12,
 ];
@@ -70,14 +70,9 @@ if(isset($_POST['submit'])){
                 "ERROR: Could not able to execute $sql. " . mysqli_error($link);
             }
         }
-        
-    
+
 }
 ?>
-<!DOCTYPE html>
-<html lang="sk">
-
-<body>
     <?php include "../includes/header-template.php" ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
@@ -87,31 +82,27 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="login-form">
                     <div class="container" style="padding: 5% 25% 0% 25%">
-                        <?php if($email_err != ""){ echo $email_err;}?>
-                        <?php if($pass_err != ""){ echo $pass_err;}?>
-                        <?php if($pass2_err != ""){ echo $pass2_err;}?>
-                        <?php if($tel_err != ""){ echo $tel_err;}?>
                         <form method="post" action="">
                             <div class="form-group">
                                 <?php if($email_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" name="email" type="email" placeholder="e-mail...(povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" name="email" type="email" placeholder="e-mail (povinné)">';
                                 } else {
-                                    echo '<input class="form-control form-inputik" name="email" type="email" placeholder="e-mail...(povinné)">';
+                                    echo '<input class="form-control form-inputik" name="email" type="email" placeholder="e-mail (povinné)">';
                                 }
                                 if($pass_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" name="password" type="password" placeholder="heslo...(povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" name="password" type="password" placeholder="heslo... (povinné)">';
                                 } else {
-                                    echo '<input class="form-control form-inputik" name="password" type="password" placeholder="heslo...(povinné)">';
+                                    echo '<input class="form-control form-inputik" name="password" type="password" placeholder="heslo (povinné)">';
                                 }
                                 if($pass2_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" name="password-again" type="password" placeholder="opakovať heslo...(povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" name="password-again" type="password" placeholder="opakovať heslo (povinné)">';
                                 } else {
-                                    echo '<input class="form-control form-inputik" name="password-again" type="password" placeholder="opakovať heslo...(povinné)">';
+                                    echo '<input class="form-control form-inputik" name="password-again" type="password" placeholder="opakovať heslo (povinné)">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" id="phonik" name="tel" type="text" placeholder="telefón...(povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control form-inputik" id="phonik" name="tel" type="text" placeholder="telefón (povinné)">';
                                 } else {
-                                    echo '<input class="form-control form-inputik" id="phonik" name="tel" type="text" placeholder="telefón...(povinné)">';
+                                    echo '<input class="form-control form-inputik" id="phonik" name="tel" type="text" placeholder="telefón (povinné)">';
                                 }
                                 ?>
                                 
