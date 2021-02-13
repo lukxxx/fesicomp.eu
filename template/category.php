@@ -24,9 +24,6 @@ if(isset($_GET['KID'])){
    }
     
 ?>
-<!DOCTYPE html>
-<html lang="sk">
-<body>
     <?php include (ROOT ."includes/header-template.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
