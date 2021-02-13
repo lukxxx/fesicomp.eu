@@ -29,9 +29,6 @@ if(isset($_GET['ID'])){
         $cesta = "<img src='../assets/images/no-image.png'  style='width: 100%;'>";
     }
 ?>
-<!DOCTYPE html>
-<html lang="sk">
-<body>
     <style>
         
 
