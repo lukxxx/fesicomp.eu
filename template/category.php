@@ -20,43 +20,9 @@ if(isset($_GET['KID'])){
         } else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
-    }if($stmt = mysqli_prepare($link, $kat)){
-      if(mysqli_stmt_execute($stmt)){
-          $result = mysqli_stmt_get_result($stmt);
-          
-          if(mysqli_num_rows($result) >= 0){
-              while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                $kategor = $row['k_nazov'];
-            }
-          } else {
-            echo "<p>Nič sme nenašli tu</p>";
-          }
-      } else{
-          echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-      }
     }
    }
-    /*$sqlko = "SELECT * FROM kategorie WHERE k_id='$kid' AND k_podkategoria=''";
-    $resultik = mysqli_query($link, $sqlko) or die("Bad query");
-    $rowko = mysqli_fetch_array($resultik);
-    $kategoria = $rowko['k_nazov'];   
-    $pod_kat = $rowko['k_podkategoria']; 
     
-    
-    $sql = "SELECT * FROM produkty WHERE p_kid='$kid'";
-    $result = mysqli_query($link, $sql) or die("Bad query");
-    while($row = mysqli_fetch_array($result)){
-        $produkty = $row['p_nazov'];    
-    }
-    
-}
-        
-    /*
-    if(file_exists("../catalog/$id_produktu/$obrazok")){
-        $cesta = "<img src='../catalog/$id_produktu/$obrazok' style='width: 100%;'>";
-    } else {
-        $cesta = "<img src='../assets/images/no-image.png'  style='width: 100%;'>";
-    }*/
 ?>
     <?php include (ROOT ."includes/header-template.php")?>
     <div class="container" style="padding-top: 20px">
