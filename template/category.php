@@ -58,9 +58,6 @@ if(isset($_GET['KID'])){
         $cesta = "<img src='../assets/images/no-image.png'  style='width: 100%;'>";
     }*/
 ?>
-<!DOCTYPE html>
-<html lang="sk">
-<body>
     <?php include (ROOT ."includes/header-template.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
