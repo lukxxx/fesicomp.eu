@@ -1,6 +1,7 @@
 
 body {
     font-family: 'Product Sans';
+    overflow: overlay;
 }
 input:focus {
     outline: none !important;
@@ -227,3 +228,30 @@ border-radius: 10px;
 background-color: white !important;
 z-index: 2;
 }
+
+/*********************************************************/
+/* Toto je scrollbar, ktorý urobil Maťko dňa 13.02.2021.
+    Maťko ľúbi robiť takého komentáre <3 */
+::-webkit-scrollbar {
+    width: 12px;
+    
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+    
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:#c21800; 
+    border-radius: 10px;
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #BF1600; 
+  }
+/*********************************************************/
+  
