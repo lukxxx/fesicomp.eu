@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="sk">
-<?php include "includes/head.php";?>
-<body>
+<?php include "includes/head.php";
+
+?>
     <?php include "includes/header.php" ?>
     <?php include "includes/index-carousel.php"; ?>
     <div class="container" style="padding-top: 20px">
