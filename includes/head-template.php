@@ -22,5 +22,4 @@
     
 </head>
 <body>
-<?php echo  $_COOKIE['user']; ?>
 
