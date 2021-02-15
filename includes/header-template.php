@@ -25,14 +25,28 @@
                     <div class="col-sm-12 col-md-5 col-lg-5">
                         <div class="row">
                             <div class="top-links d-flex justify-content-around">
-                                <a href="<?php if(isset($_COOKIE['user'])){echo "myaccount.php";} else { echo "login.php";} ?>" style="color: white"><i class="fas fa-user"></i><span style="padding-left: 5px;">Účet</span></a>
-                                <a href="../template/contact.php" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
-                                <a href="../template/about.php" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
+                                <?php 
+                                    if(isset($_COOKIE['user'])){
+                                        echo '<a href="myaccount.php" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">'.$_COOKIE['user'].'</span></a>';
+                                    } else if(isset($_COOKIE['user-login'])){
+                                        echo '<a href="myaccount.php" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">'.
+                                        $user = substr($_COOKIE['user-login'], 0, strrpos($_COOKIE['user-login'], '@'));
+                                        $user.'</span></a>';
+                                    } else if(isset($_COOKIE['user-login-name'])){
+                                        echo '<a href="myaccount.php" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">'.$_COOKIE['user-login-name'].'</span></a>';
+                                    }
+                                    
+                                    else {
+                                        echo '<a href="login.php" style="color: white;"><i class="fas fa-user"></i><span style="padding-left: 5px;">Účet</span></a>';
+                                    }
+                                ?>
+                                <a href="contact.php" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
+                                <a href="about.php" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <form method="post" action="search-results.php">
+                                <form method="post" action="../template/search-results.php">
                                     <div class="form-group has-search search-box" style="position: relative;z-index: 2;">
                                         <button class="btn" type="submit" style="position: absolute; margin-left: 18.5vw;"><i class="fa fa-search"></i></button>
                                         <input style="border-radius:30px; padding-left: 10px; outline: 0 !important; width: 90%;" 
