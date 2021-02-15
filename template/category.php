@@ -38,7 +38,7 @@ if(isset($_GET['KID'])){
                                 $result = mysqli_stmt_get_result($stmt);
                                 if(mysqli_num_rows($result) > 0){
                                     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                                        echo "<p>".$kategor = $row['k_nazov']." ".$row['k_kid']."</p>";
+                                        echo "<p><a href='product_list.php?KID=".$row['k_id']."'>".$kategor = $row['k_nazov']." ".$row['k_kid']."<a></p>";
                                     }
                                 } else {
                                 echo "<p>Nič sme nenašli tu</p>";
