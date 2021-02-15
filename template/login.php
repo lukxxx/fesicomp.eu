@@ -22,9 +22,6 @@ $error_pass2 = "";
 $menicko = "";
 $password = "";
 $hesielko = "";
-
-
-echo $password;
 if(isset($_POST['bimbambum'])){
    
     $email = $_POST['email'];
@@ -35,6 +32,7 @@ if(isset($_POST['bimbambum'])){
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         $password = $row['heslo'];
         $emailik = $row['email'];
+        $meno_login = $row['meno'];
     }
     if(empty($_POST['password'])){
         $error_pass = "<div class='alert alert-danger' role='alert'>Nezadal si heslo!</div>";    
@@ -57,7 +55,8 @@ if(isset($_POST['bimbambum'])){
         </div>";
     } 
     if($error == "" && $error_pass == ""){
-        setcookie('user', $email, time() + 3600, "/");
+        setcookie('user-login', $email, time() + 3600, "/");
+        setcookie('user-login-name', $meno_login, time() + 3600, "/");
         header("location: myaccount.php");
     }
 }
@@ -118,12 +117,15 @@ if(isset($_POST['bimbambum'])){
         console.log("Email: " + profile.getEmail());
 
         // The ID token you need to pass to your backend:
-        var name = profile.getName();
+        var fullname = profile.getName();
+        var name = profile.getGivenName();
+        var photo = profile.getImageUrl();
+        var email = profile.getEmail();
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
         googleUser.disconnect();
             
-        window.location.replace('http://localhost/fesicomp.eu/template/redirect.php?idtoken=' + id_token + "&name=" + name);
+        window.location.replace('http://localhost/fesicomp.eu/template/redirect.php?idtoken=' + id_token + "&name=" + name + "&photo=" + photo + "&email=" + email + "&fullname=" + fullname);
       }
     </script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
