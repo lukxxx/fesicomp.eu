@@ -2,10 +2,6 @@
 
 include "../includes/head-template.php";
 include "../includes/header-template.php";
-
-if(isset($_POST['search'])){
-    $term = $_POST['search'];
-}
 $db_host = "localhost";
 $db_name = "compsnv";
 $db_user = "root";
@@ -22,6 +18,31 @@ $pdo = new pdo(
         PDO::ATTR_EMULATE_PREPARES => FALSE
     ]
 );
+if(isset($_POST['search'])){
+    $term = $_POST['search'];
+    $sql = "SELECT DISTINCT * FROM produkty WHERE p_nazov LIKE ?";
+        $query = $pdo->prepare($sql);
+        $query->execute([$term]);
+        $post_count = $query->rowCount();
+    
+        $result = '';
+        if ($post_count > 0) {
+            while($row = $query->fetch(PDO::FETCH_ASSOC)){
+                $num = "(".$post_count.")";
+                $div = "<div style='border: 1px solid black; border-radius: 5px; margin-bottom:2%' class='row'>";
+                $col1 = "<div style='border: 1px 0px 0px 0px solid black; padding: 1%; width: 100% ' class'col-sm-12 col-md-12 col-lg-12'>";
+                $vysledok = "<h2 style='text-decoration: underline; padding-left: 2%;'>".$row['meno']."  ".$row['priezvisko']."</h2>";
+                $mail = "<p style='padding-left : 2%; font-size: 11px;'><strong>Rok narodenia:</strong> ".$row['rok_narodenia']." <br><strong>E-mail: </strong> ".$row['email']."</p>";
+                $mesto = "<p style='padding-left: 2%'><strong>Mesto:</strong> ".$row['mesto']." <strong>Kraj:</strong> ".$row['kraj']."</p>";            
+                $div_end = "</div>";
+                $result .= $div. $col1. $vysledok. $mail.$mesto. $div_end. $col1. $div_end. $div_end ;
+            }
+        }else{
+            $error = "Vašemu vyhľadávaniu nezodpovedá žiaden vodič";
+        }
+    }
+
+
 
 $subidubi = "dell";
 ?>
@@ -35,16 +56,10 @@ $subidubi = "dell";
                 <div class="row">
                     
                 <?php
-$sth = $pdo->prepare("SELECT * FROM produkty WHERE p_nazov LIKE ?");
-$sth->execute(array($subidubi));
-if($sth->rowCount() >= 1){
-    $row = $sth->fetch(PDO::FETCH_ASSOC);
-    $nazov = $row['p_nazov'];
+                
+                echo $nazov;
 
-} else {
-    echo "zle";
-}
-echo $nazov
+
 ?>
                     </div>
                 </div>
