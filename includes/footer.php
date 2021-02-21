@@ -29,7 +29,7 @@
                         <div class="map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.335510327889!2d20.55549281590515!3d48.947097002410366!2m3!1f0!2f0!
                                 3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473e48d579e67313%3A0x88322d6a5d537bd3!2sFESI%20comp%2C%20s.r.o.!5e0!3m2!1ssk!2ssk!4v1612459364910!5m2!1ssk!2ssk" 
-                                width="300" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                                width="100%" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
                             </iframe>
                         </div>
 
