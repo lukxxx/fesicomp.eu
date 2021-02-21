@@ -7,7 +7,7 @@
                         <a>Fotogaléria</a><br>
                         <a>Certifikáty</a><br>
                         <a>Obchodné podmienky</a><br>
-                        <a>Kontakt</a><br>
+                        <a href="contact.php" style="color: white; text-decoration: none;">Kontakt</a><br>
                     </div>
                     <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
                         <span class="footer-h">Sledujte nás</span><br>
