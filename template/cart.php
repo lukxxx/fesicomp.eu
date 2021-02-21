@@ -28,12 +28,12 @@ include "../includes/header-template.php";
         echo '<table class="table  table-bordered">';
         echo '<thead class="thead-dark">';
         echo '<tr>';
-        echo '<th scope="col">Kód tovaru</th>';
+        echo '<th scope="col">Produkt</th>';
         echo '<th scope="col">Názov produktu</th>';
         echo '<th scope="col" style="width: 10vw;">Množstvo</th>';
         echo '<th scope="col">Dostupnosť</th>';
         echo '<th scope="col">Cena</th>';
-        echo '<th scope="col" style="text-align: center;"><i class="fas fa-trash-alt"></i></th>';
+        echo '<th scope="col"><i class="fas fa-trash-alt"></i></th>';
         echo '</tr>';
         echo '</thead>';
         echo '<tbody>';
@@ -42,8 +42,8 @@ include "../includes/header-template.php";
             $total += $c->product->p_cena * $c->quantity;
             ?>  
                     <tr >
-                        <th style="padding: 20px;"><?php echo $c->product->p_kod_sklad; ?></th>
-                        <th style="padding: 20px;"><?php echo $c->product->p_nazov; ?></th>
+                        <th style="padding: 20px;"><?php echo "<img src='../catalog/".$c->product->p_id."/".$c->product->p_img."' width='50'>" ?></th>
+                        <th style="padding: 20px;"><?php echo "<a style='color: black;' href='item.php?ID=".$c->product->p_id."'>".$c->product->p_nazov."</a>" ?></th>
                         <th style="padding: 20px;">
                             <form method="POST" action="../update-cart.php" style="float: right;">
                             <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
@@ -54,12 +54,10 @@ include "../includes/header-template.php";
                         </th>
                         <th style="padding: 20px;"><?php if($c->product->p_sklad == 1){ echo "<span style='color: #149106'>Skladom</span>"; }  ?></th>
                         <th style="padding: 20px;"><?php echo $c->product->p_cena * $c->quantity; ?>€</th>
-                        <th style="padding: 20px 20px 20px 0px;  text-align: center;">
-                            <form method="POST" action="../delete-cart.php" style="float: right; margin-left: 10px; text-align:center;">
+                        <th style="padding: 20px 0px 20px 0px;">
+                            <form method="POST" action="../delete-cart.php">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                <button type="submit" name="delete" class="btn btn-danger">
-                                    x
-                                </button>
+                                <button type="submit" name="delete" style="all: unset; cursor: pointer;"><i style="color: #C21800;" class="fas fa-times fa-1x"></i></button>
                             </form>
                         </th>
                     </tr>
@@ -120,11 +118,10 @@ include "../includes/header-template.php";
     </div>
     <div class="row" style="padding-top: 50px;">
     <?php
-        // connect with database
-        $conn = mysqli_connect("localhost", "root", "", "compsnv");
+        require_once "../config.php";
         
         // get all products
-        $result = mysqli_query($conn, "SELECT * FROM produkty WHERE p_nazov LIKE '%xiaomi%' LIMIT 4");
+        $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%xiaomi%' LIMIT 4");
 
         // get cookie cart
         $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
