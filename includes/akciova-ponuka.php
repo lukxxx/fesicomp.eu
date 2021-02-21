@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+require_once "config.php";
         $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%dell%' LIMIT 3");
 
         // get cookie cart
