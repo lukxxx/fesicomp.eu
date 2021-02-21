@@ -1,5 +1,12 @@
 <?php
 include_once "../includes/head-template.php";
+
+if(isset($_COOKIE["cart"])){
+    $cart = $_COOKIE['cart'];
+    $cart = json_decode($cart);   
+}
+
+
 if(isset($_GET['ID'])){
     
     $id = $_GET['ID'];
@@ -116,8 +123,38 @@ if(isset($_GET['ID'])){
                                 }?>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6 text-right">
-                                    <span class="price-product"><?php echo $cena ?>€</span>
-                                    <button type="submit" class="btn btn-danger ">Do košíka <i class="fas fa-cart-plus"></i></button>
+                                <?php                // check if product already exists in cart
+                                $flag = false;
+                                echo $_COOKIE['cart'];
+                                foreach ($cart as $c)
+                                {
+                                    if (($c->productCode == $kod))
+                                    {
+                                        $flag = true;
+                                        break;
+                                    }
+                                }
+                            
+                                if ($flag) { ?>
+
+                                <!-- show delete button if already exists -->
+
+                                <form method="POST" action="../update-cart.php" style="float: right;">
+                                <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
+                                <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
+                                <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                </form>
+                                <?php } else { ?>
+
+                                <!-- add to cart -->
+
+                                <form method="POST" action="../add-cart.php">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="productCode" value="<?php echo $kod; ?>">
+                                    <button class="btn btn-dark" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                </form>
+
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
