@@ -1,6 +1,8 @@
 <?php
-
-$sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%dell%' LIMIT 3";
+if(isset($_GET['ID'])){
+    $id = $_GET['ID'];
+    $sql = "SELECT * FROM produkty WHERE p_kod_sklad IN (SELECT s_kod_suvisiaci FROM suvisiaci where s_kod = (SELECT p_kod_sklad FROM produkty WHERE p_id='$id')) LIMIT 3";
+}
 if ($stmt = mysqli_prepare($link, $sql)) {
 
     if (mysqli_stmt_execute($stmt)) {

@@ -1,4 +1,6 @@
-
+html{
+    scroll-behavior: smooth;
+}
 body {
     font-family: 'Product Sans';
     overflow: overlay;

@@ -1,7 +1,7 @@
 <?php
 include_once "../includes/head-template.php";
    
-if(isset($_GET['KID'])){
+if(isset($_GET['KID'])){ 
     $kid = $_GET['KID'];
     $sql = "SELECT * FROM produkty WHERE p_kid='$kid'";
     $kat = "SELECT * FROM kategorie WHERE k_kategoria = (SELECT k_kategoria FROM kategorie WHERE k_id='$kid')";
@@ -32,21 +32,23 @@ if(isset($_GET['KID'])){
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
                 <h3><?php
+                    
                     $kid = $_GET['KID'];
-                        if($stmt = mysqli_prepare($link,"SELECT * FROM kategorie WHERE k_kategoria = (SELECT k_kategoria FROM kategorie WHERE k_id='$kid')")){
-                            if(mysqli_stmt_execute($stmt)){
-                                $result = mysqli_stmt_get_result($stmt);
-                                if(mysqli_num_rows($result) > 0){
-                                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                                        echo "<p><a href='product_list.php?KID=".$row['k_id']."'>".$kategor = $row['k_nazov']." ".$row['k_kid']."<a></p>";
-                                    }
-                                } else {
-                                echo "<p>Nič sme nenašli tu</p>";
+                    $name = "SELECT * FROM kategorie WHERE k_kid = '$kid'  ORDER BY k_poradie";
+                    if($stmt = mysqli_prepare($link,$name)){
+                        if(mysqli_stmt_execute($stmt)){
+                            $result = mysqli_stmt_get_result($stmt);
+                            if(mysqli_num_rows($result) > 0){
+                                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){            
+                                    echo "<p><a href='product_list.php?KID=".$row['k_id']."'>".$row['k_nazov']."<a></p>";
                                 }
-                            } else{
-                                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                            } else {
+                                echo "<p>Nič sme nenašli tu</p>";
                             }
-                        }
+                    } else{
+                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                    }
+                    }
                  ?></h3>
                 <h4><?php echo $produkt; ?></h4>
                 <br>

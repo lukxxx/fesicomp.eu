@@ -8,8 +8,8 @@
                         $kid = "0";
                         if ($aktualni==0) $str=" AND (k_aktualni='1' OR k_aktualni='3') "; else $str="";
                         $sql="SELECT k_id,k_kid,k_main,k_nazov,k_aktualni,k_poradie,k_medzera FROM kategorie WHERE k_kid='0' ".$str." AND k_medzera='0' ORDER BY k_poradie";
-                        $kat = "SELECT * FROM kategorie WHERE k_main LIKE '0'";
-                        $podkat = "SELECT k_podkategoria FROM kategorie";
+                        
+                        
                         if($stmt = mysqli_prepare($link, $sql)){
                     
                             if(mysqli_stmt_execute($stmt)){
@@ -19,7 +19,7 @@
                                     echo "<ol style='list-style: none;padding: 10px 0px 0px 10px;'>";
                                     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){                                      
                                         echo "<div class='d-flex' style='color: white; padding: 5px 5px 5px 10px; line-height: 20px'>";
-                                        echo "<i class='fas fa-chevron-right'></i><a href='template/category.php?KID=".$row['k_id']."'><li style='padding-left: 8px; color: white;'>".$row['k_nazov']."</li></a></div>";                                       
+                                        echo "<i class='fas fa-chevron-right'></i><a href='template/category.php?KID=".$row['k_id']."'><li style='padding-left: 8px; color: white;'>".$row['k_nazov']." ".$row['k_main']."</li></a></div>";                                       
                                     } 
                                     echo "</ol>";
                                 } else{
