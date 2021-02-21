@@ -2,6 +2,8 @@
 body {
     font-family: 'Product Sans';
     overflow: overlay;
+    height: 100%;
+    position: relative;
 }
 input:focus {
     outline: none !important;
@@ -188,9 +190,12 @@ border-radius: 10px;
 /* FOOTER */ 
 .footer-back {
     background-color: #2B2B2B;
+    
+
 }
 #footer {
     color: white;
+
 }
 .footer-h {
     font-size: 25px;
@@ -254,4 +259,3 @@ z-index: 2;
     background: #BF1600; 
   }
 /*********************************************************/
-  
