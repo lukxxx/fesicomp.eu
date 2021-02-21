@@ -1,9 +1,6 @@
 <?php
-        // connect with database
-        $conn = mysqli_connect("localhost", "root", "", "compsnv");
-        
-        // get all products
-        $result = mysqli_query($conn, "SELECT * FROM produkty WHERE p_nazov LIKE '%dell%' LIMIT 3");
+require_once "config.php";
+        $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%dell%' LIMIT 3");
 
         // get cookie cart
         $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";

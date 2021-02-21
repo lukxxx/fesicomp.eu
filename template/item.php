@@ -123,9 +123,9 @@ if(isset($_GET['ID'])){
                                 }?>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6 text-right">
+                                <span style="color: #B81600; font-size: 30px; font-weight: bold; padding-bottom: 10px;"><?php echo $cena ?>€</span><br>
                                 <?php                // check if product already exists in cart
                                 $flag = false;
-                                echo $_COOKIE['cart'];
                                 foreach ($cart as $c)
                                 {
                                     if (($c->productCode == $kod))
