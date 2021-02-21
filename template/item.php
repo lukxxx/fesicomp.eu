@@ -125,7 +125,6 @@ if(isset($_GET['ID'])){
                             <div class="col-sm-12 col-md-6 col-lg-6 text-right">
                                 <?php                // check if product already exists in cart
                                 $flag = false;
-                                echo $_COOKIE['cart'];
                                 foreach ($cart as $c)
                                 {
                                     if (($c->productCode == $kod))
