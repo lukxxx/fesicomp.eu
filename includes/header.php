@@ -54,7 +54,7 @@
                                         type="text" name="search" class="form-control search" autocomplete="off" placeholder="  Zadajte hľadaný výraz..." >
                                         <div class="result" style="display: none; margin-top: -1vw; width: 90%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
-                                        <a href="cart.php"><button class="btn" type="button" style="position: absolute; margin-left: 21.5vw; top: 0"><i style="color: white" 
+                                        <a href="template/cart.php"><button class="btn" type="button" style="position: absolute; margin-left: 21.5vw; top: 0"><i style="color: white" 
                                         class="fas fa-shopping-cart"></i></button></a>
                                     </div>
                                 </form>
