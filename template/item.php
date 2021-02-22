@@ -21,7 +21,8 @@ if(isset($_GET['ID'])){
     $popis = $row['p_popis'];
     $cena = $row['p_cena'];
     $produkt_cislo = $row['p_pn'];
-    $dostupnost = $row['p_dostup'];
+    $dostupnost = $row['p_sklad'];
+    $pocet_ks = $row['p_dostup'];
     $obrazok = $row['p_img'];
     }
     if(isset($id_kat)){
@@ -116,8 +117,8 @@ if(isset($_GET['ID'])){
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <span style="font-size: 10px; color: grey;">Produktové číslo: <?php echo $produkt_cislo ?></span>
                                 <br><br><br>
-                                <?php if($dostupnost == 1)
-                                {echo "<span style='color: #149106; font-weight: 600;'>Na sklade</span>";
+                                <?php if($dostupnost == 1 && $pocet_ks >= 1 )
+                                {echo "<span style='color: #149106; font-weight: 600;'>Na sklade ($pocet_ks ks)</span>";
                                 } else {
                                     echo "<span style='color: #C21801; font-weight: 600;'>Nie je na sklade</span>"; 
                                 }?>
