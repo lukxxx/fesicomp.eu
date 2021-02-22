@@ -19,7 +19,7 @@
                                 </div>
                                 <p></p>
                             </div>
-                            <div class="responsive-collapsed-bar" style="color: white;">
+                            <div class="responsive-collapsed-bar" style="color: white; display: none;">
                                 <i class="fas fa-phone"></i>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <form method="post" action="../template/search-results.php">
-                                    <div class="form-group has-search search-box" style="position: relative;z-index: 2;">
+                                    <div class="form-group has-search search-box" style="position: relative;z-index: 1;">
                                         <button class="btn" type="submit" style="position: absolute; margin-left: 18.5vw;"><i class="fa fa-search"></i></button>
                                         <input style="border-radius:30px; padding-left: 10px; outline: 0 !important; width: 90%;" 
                                         type="text" class="form-control search" autocomplete="off" placeholder="  Zadajte hľadaný výraz..." >
