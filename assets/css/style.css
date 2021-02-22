@@ -187,6 +187,15 @@ border-radius: 10px;
     padding: 30px;
     
 }
+.category-card{
+    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
+box-shadow: 5px 6px 16px -2px #616161;
+max-height: 200px;
+min-height: 200px;
+margin-bottom: 2vw;
+border-radius: 10px;
+text-align: center;
+}
 /* FOOTER */ 
 .footer-back {
     background-color: #2B2B2B;
