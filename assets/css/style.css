@@ -40,7 +40,7 @@ span {
 }
 .back {
     background-color: #2B2B2B;
-    height: 130px;
+    height: auto;
 }
 .top-links {
     color: white;
@@ -261,3 +261,31 @@ z-index: 2;
     background: #BF1600; 
   }
 /*********************************************************/
+
+
+
+/*Aleksove resposive veci :)*/
+@media only screen and (max-width: 576px) {
+    .header-headings {
+        display: none;
+    }
+
+    .toplinks_and_search {
+        display: none;
+    }
+
+    .brand {
+        display: flex;
+        padding: 15px;
+    }
+
+
+  }
+
+
+  @media only screen and (max-width: 1400px) {
+    .responsive-collapsed-bar{
+        display: none;
+    }
+
+  }
