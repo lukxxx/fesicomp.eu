@@ -27,7 +27,6 @@ include "../includes/header-template.php";
     if(isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]"){
         $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
         $cart = json_decode($cart);
-
         $total = 0;
         echo '<table class="table  table-bordered">';
         echo '<thead class="thead-dark">';
@@ -49,28 +48,12 @@ include "../includes/header-template.php";
                         <th style="padding: 20px;"><?php echo "<img src='../catalog/".$c->product->p_id."/".$c->product->p_img."' width='50'>" ?></th>
                         <th style="padding: 20px;"><?php echo "<a style='color: black;' href='item.php?ID=".$c->product->p_id."'>".$c->product->p_nazov."</a>" ?></th>
                         <th style="padding: 20px;">
+                        <form method="post" action="../update-cart.php">
                             <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
                             <input style="all: unset; width: 20%; margin-left: 15px;" type="number" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
                             <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                            <button type="submit" id="update"  style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
-                            <script>
-                                $(document).ready(function(){
-                                    $("#update").click(function(){
-                                        var quantity=$("#quantity").val();
-                                        $.ajax({
-                                            url:'../update-cart.php',
-                                            method:'POST',
-                                            data:{
-                                                quantity:quantity
-                                            },
-                                            success:function(response){
-                                                alert(response);
-                                            }
-                                        });
-                                    });
-                                });
-                            </script>
-
+                            <button type="submit" name="quantity-plus" style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                        </form>
                         </th>
                         <th style="padding: 20px;"><?php if($c->product->p_sklad == 1){ echo "<span style='color: #149106'>Skladom</span>"; }  ?></th>
                         <th style="padding: 20px;"><?php echo $c->product->p_cena * $c->quantity; ?>€</th>
