@@ -19,7 +19,7 @@
                                     echo "<ol style='list-style: none;padding: 10px 0px 0px 10px;'>";
                                     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){                                      
                                         echo "<div class='d-flex' style='color: white; padding: 5px 5px 5px 10px; line-height: 20px'>";
-                                        echo "<i class='fas fa-chevron-right'></i><a href='template/category.php?KID=".$row['k_id']."'><li style='padding-left: 8px; color: white;'>".$row['k_nazov']." ".$row['k_main']."</li></a></div>";                                       
+                                        echo "<i class='fas fa-chevron-right'></i><a href='template/category.php?KID=".$row['k_id']."'><li style='padding-left: 8px; color: white;'>".$row['k_nazov']."</li></a></div>";                                       
                                     } 
                                     echo "</ol>";
                                 } else{
