@@ -1,6 +1,6 @@
 <?php
 require_once "config.php";
-        $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%msi%' LIMIT 3");
+        $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%msi%' LIMIT 4");
 
         // get cookie cart
         $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
@@ -20,14 +20,14 @@ require_once "config.php";
                 }
             }
             ?>
-            <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="col-sm-12 col-md-3 col-lg-3">
                     <div class="product-card justify-content-md-center">
                         <div class="discount">
 
                         </div>
                         <div class="product-img justify-content-md-center">
                             <a style="color: white;" href="template/item.php?ID=<?php echo $row->p_id ?>"><img src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>"
-                             width="159" class="img-prod" height="120"></a>
+                             width="" class="img-prod" height="120"></a>
                         </div>
                         <div class="product-name justify-content-md-center">
                             <div class="heading">
@@ -48,7 +48,7 @@ require_once "config.php";
                                 <form method="POST" action="update-cart.php" style="float: right;">
                                 <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
                                 <?php } else { ?>
 
@@ -57,7 +57,7 @@ require_once "config.php";
                                 <form method="POST" action="add-cart.php">
                                     <input type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="productCode" value="<?php echo $row->p_kod_sklad; ?>">
-                                    <button class="btn btn-dark" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                    <button class="btn btn-dark" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
 
                                 <?php } ?>
