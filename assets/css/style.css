@@ -155,7 +155,7 @@ span {
 }
 .product-price-dph {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
 }
 .add-to-cart {
     padding-right: 2vw;
@@ -169,7 +169,7 @@ span {
     max-height: 55px    ;
 }
 .product-price-wdph {
-    font-size: 8px;
+    font-size: 9px;
     color: grey;
     text-align: right;
     line-height: 5px;
@@ -180,7 +180,6 @@ box-shadow: 5px 6px 16px -2px #616161;
 max-height: 266px;
 min-height: 266px;
 margin-bottom: 2vw;
-border-radius: 10px;
 }
 .product-nam{
     text-align: center;
@@ -189,12 +188,22 @@ border-radius: 10px;
 }
 .category-card{
     -webkit-box-shadow: 5px 6px 16px -2px #616161; 
-box-shadow: 5px 6px 16px -2px #616161;
-max-height: 200px;
-min-height: 200px;
-margin-bottom: 2vw;
-border-radius: 10px;
-text-align: center;
+    box-shadow: 5px 2px 16px 5px #e7e7e7;
+    max-height: 200px;
+    min-height: 100px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: solid 1px #e7e7e7;
+}
+.category-card {
+    transition: 0.5s;
+} 
+.category-card:hover{
+    transform: scale(1.05);
+}
+.category-link:hover{
+    text-decoration: none;
+    
 }
 /* FOOTER */ 
 .footer-back {
