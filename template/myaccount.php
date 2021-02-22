@@ -11,12 +11,15 @@ if(isset($_GET['idtoken'])){
 }
 if(isset($_GET['fullname'])){
     $full_name = $_GET['fullname'];
+    $parts = explode(" ", $full_name);
+    $one = $parts[0];
+    $two = $parts[1];
+    $full_n = $one." ".$two;
 }
 $db_host = "localhost";
 $db_name = "compsnv";
 $db_user = "root";
 $db_pass = "";
-
 
 $pdo = new pdo(
     "mysql:host={$db_host};dbname={$db_name}",
@@ -36,8 +39,10 @@ if(isset($_COOKIE['user'])){
 if(isset($_COOKIE['user-mail'])){
     $em = $_COOKIE['user-mail'];
 }
+if(isset($_COOKIE['user-login'])){
+    $email_from_login = $_COOKIE['user-login'];  
+}
 
-$email_from_login = $_COOKIE['user-login'];
 $empty = "Nie je definované";
 
 if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
@@ -46,21 +51,22 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
     if($sto->rowCount() == 1){
         $row = $sto->fetch(PDO::FETCH_ASSOC);
         $emailik = $row['email'];
-        $meno = $row['given_name'];
-        $fullname = $row['full_name'];
+        $first_name = $row['first_name'];
+        $second_name = $row['second_name'];
         $image = $row['img_url'];
         $telefon = $row['telefon'];
         $ulica = $row['ulica'];
         $mesto = $row['mesto'];
         $psc = $row['psc'];
+        $full_n = $first_name." ".$second_name;
     } else {
         $telefon = "";
         $ulica = "";
         $mesto = "";
         $psc = "";
-        $stmt = $pdo->prepare("INSERT INTO g_users (id_token,email,full_name,given_name,img_url,telefon,ulica,mesto,psc) 
+        $stmt = $pdo->prepare("INSERT INTO g_users (id_token,email,first_name, second_name, img_url,telefon,ulica,mesto,psc) 
         VALUES (?,?,?,?,?,?,?,?,?)"); 
-        $stmt->execute(array($idtoken,$email,$full_name,$given_name,$photo,$telefon,$ulica,$mesto,$psc));
+        $stmt->execute(array($idtoken,$email,$given_name,$two,$photo,$telefon,$ulica,$mesto,$psc));
     }
 } else if(isset($_COOKIE['user-login'])){
     $sto = $pdo->prepare("SELECT * FROM users WHERE email = ?");
@@ -157,9 +163,8 @@ function onLoad(){
         <div class="col-sm-12 col-md-5 col-lg-5">
             <h4 style="color: grey;">Základné informácie: </h4>
                 <?php 
-                
                 ?>
-                <span style="padding-top: 20px">Meno: <strong><?php if(!empty($meno_l)){ echo $meno_l; } else if(!empty($fullname)) { echo $fullname;} else { echo $empty; }?></strong> <button onclick="unhideName()" 
+                <span style="padding-top: 20px">Meno: <strong><?php if(!empty($meno_l)){ echo $meno_l; } else if(!empty($full_n)) { echo $full_n;} else { echo $empty; }?></strong> <button onclick="unhideName()" 
                 style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
                 <div style="display: none;" id="edit-formular" class="edit-form">
                     <?php 
