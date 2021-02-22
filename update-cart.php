@@ -6,7 +6,8 @@ $quantity = $_POST["quantity"];
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
 
-if(isset($_POST['quantity-plus'])){
+if(isset($_POST['update'])){
+    $quantity=$_POST["quantity"];
     foreach ($cart as $c)
 {
     if ($c->productCode == $productCode)
