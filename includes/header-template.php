@@ -52,18 +52,22 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-sm-10 col-md-10 col-lg-10">
                                 <form method="post" action="../template/search-results.php">
-                                    <div class="form-group has-search search-box" style="position: relative;z-index: 1;">
-                                        <button class="btn" type="submit" style="position: absolute; margin-left: 18.5vw;"><i class="fa fa-search"></i></button>
-                                        <input style="border-radius:30px; padding-left: 10px; outline: 0 !important; width: 90%;" 
-                                        type="text" class="form-control search" autocomplete="off" placeholder="  Zadajte hľadaný výraz..." >
+                                    <div class="form-group has-search search-box" style="position: relative;z-index: 2;">
+                                        
+                                        <input style="border-radius:30px; padding-left: 10px; outline: 0 !important;" 
+                                        type="text" name="search" class="form-control search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" autocomplete="off" placeholder="  Zadajte hľadaný výraz..." >
                                         <div class="result" style="display: none; margin-top: -1vw; width: 90%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
-                                        <a href="cart.php"><button class="btn" type="button" style="position: absolute; margin-left: 21.5vw; top: 0"><i style="color: white" 
-                                        class="fas fa-shopping-cart"></i></button></a>
+                                        
                                     </div>
                                 </form>
+                            </div>
+                            <div class="col-sm-2 col-md-2 col-lg-2">
+                            <a style="color: white;" href="template/cart.php"><i style="color: white; padding-top: 10px; " class="fas fa-shopping-cart"></i>
+                                <?php if(count($cart) != 0){ echo "<sup style='margin-left: -5px;'><span class='dot' style='background-color: 
+                                    #B81600; border-radius: 50%; padding-left: 3px; padding-right: 3px;'> ".count($cart)."</span></sup>";} ?></a>
                             </div>
                         </div>
                     </div>
