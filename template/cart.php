@@ -11,7 +11,11 @@ include "../includes/header-template.php";
             <h2 style="font-weight: bold;">KOŠÍK</h2>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
-            <a style="color: black; text-align: right;" href="">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
+            <?php if(isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]"){ ?>
+            <a style="color: black; text-align: right;" href="data.php">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
+            <?php
+            }
+            ?>
         </div>
     </div>
     <hr>
