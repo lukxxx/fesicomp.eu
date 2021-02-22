@@ -5,19 +5,19 @@ include "../includes/header-template.php";
 <div class="container" style="margin-top: 50px;">
     <div class="row d-flex">
         <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black;" href="../index.php"><i class="fas fa-arrow-left"></i> Pokračovať v nákupe</a>
+            <a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><i class="fas fa-arrow-left"></i> Pokračovať v nákupe</a>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 text-center">
             <h2 style="font-weight: bold;">KOŠÍK</h2>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
-            <a style="color: black; text-align: right;" href="../index.php">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
+            <a style="color: black; text-align: right;" href="">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
     <hr>
     <br>
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 text-center" sty>
+        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
             <div class="<table class="table">       
     <?php
     if(isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]"){
@@ -45,12 +45,28 @@ include "../includes/header-template.php";
                         <th style="padding: 20px;"><?php echo "<img src='../catalog/".$c->product->p_id."/".$c->product->p_img."' width='50'>" ?></th>
                         <th style="padding: 20px;"><?php echo "<a style='color: black;' href='item.php?ID=".$c->product->p_id."'>".$c->product->p_nazov."</a>" ?></th>
                         <th style="padding: 20px;">
-                            <form method="POST" action="../update-cart.php" style="float: right;">
                             <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
-                                <input style="all: unset; width: 20%; margin-left: 15px;" type="number" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
-                                <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                <button type="submit" name="quantity-plus" style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
-                            </form>
+                            <input style="all: unset; width: 20%; margin-left: 15px;" type="number" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
+                            <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
+                            <button type="submit" id="update"  style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                            <script>
+                                $(document).ready(function(){
+                                    $("#update").click(function(){
+                                        var quantity=$("#quantity").val();
+                                        $.ajax({
+                                            url:'../update-cart.php',
+                                            method:'POST',
+                                            data:{
+                                                quantity:quantity
+                                            },
+                                            success:function(response){
+                                                alert(response);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+
                         </th>
                         <th style="padding: 20px;"><?php if($c->product->p_sklad == 1){ echo "<span style='color: #149106'>Skladom</span>"; }  ?></th>
                         <th style="padding: 20px;"><?php echo $c->product->p_cena * $c->quantity; ?>€</th>
