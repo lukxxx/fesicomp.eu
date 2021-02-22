@@ -48,13 +48,13 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <form method="post" action="template/search-results.php">
-                                    <div class="form-group has-search search-box" style="position: relative;z-index: 1;">
+                                    <div class="form-group has-search search-box" style="position: relative;z-index: 2;">
                                         <button class="btn" type="submit" style="position: absolute; margin-left: 18.5vw;"><i class="fa fa-search"></i></button>
                                         <input style="border-radius:30px; padding-left: 10px; outline: 0 !important; width: 90%;" 
                                         type="text" name="search" class="form-control search" autocomplete="off" placeholder="  Zadajte hľadaný výraz..." >
                                         <div class="result" style="display: none; margin-top: -1vw; width: 90%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
-                                        <a href="template/cart.php"><button class="btn" type="button" style="position: absolute; margin-left: 21.5vw; top: 0"><i style="color: white" 
+                                        <a href="cart.php"><button class="btn" type="button" style="position: absolute; margin-left: 21.5vw; top: 0"><i style="color: white" 
                                         class="fas fa-shopping-cart"></i></button></a>
                                     </div>
                                 </form>
