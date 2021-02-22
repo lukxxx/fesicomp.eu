@@ -19,10 +19,17 @@
                                 </div>
                                 <p></p>
                             </div>
+                            <div class="responsive-collapsed-bar" style="color: white;">
+                                <i class="fas fa-phone"></i>
+                            </div>
                         </div>
+
                        
                     </div>
-                    <div class="col-sm-12 col-md-5 col-lg-5">
+
+
+
+                    <div class="col-sm-12 col-md-5 col-lg-5 toplinks_and_search">
                         <div class="row">
                             <div class="top-links d-flex justify-content-around">
                                 <?php 
