@@ -44,10 +44,8 @@ if(isset($_POST['submit'])){
     $teldop = $_POST['tel-dop'];
     if($_POST['type'] == "1"){
         $osoba = "Fyzická osoba";
-        echo $osoba;
     } else {
         $osoba = "Firma";
-        echo $osoba;
     }
     $company_name = $_POST['company-name'];
         $company_street = $_POST['company-street'];
@@ -58,7 +56,7 @@ if(isset($_POST['submit'])){
         $company_ic_dph = $_POST['company-ic-dph'];
 
 
-    
+    //if($email_err == "" || $pass_err == "" || $pass2_err == "" || $tel_err == ""){
         $sql = "INSERT INTO users (email, heslo, telefon, meno, priezvisko, ulica, mesto, psc, tel_dop, osoba, nazov_firmy, ulica_firmy, mesto_firmy, psc_firmy, 
         ico_firmy, dic_firmy, ic_dph_firmy) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         if($stmt = mysqli_prepare($link, $sql)){
@@ -67,9 +65,10 @@ if(isset($_POST['submit'])){
             if(mysqli_stmt_execute($stmt)){
                 header("location:login.php");
             } else{
-                "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
             }
         }
+    //}
 
 }
 ?>

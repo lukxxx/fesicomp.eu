@@ -176,6 +176,7 @@ span {
 }
 .has-value-input {
     background-color: lightyellow;
+    pointer-events: none;
 }
 .product-card{
     -webkit-box-shadow: 5px 6px 16px -2px #616161; 
