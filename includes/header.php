@@ -62,7 +62,7 @@
                             <div class="col-sm-2 col-md-2 col-lg-2">
                             <a style="color: white;" href="template/cart.php"><i style="color: white; padding-top: 10px; " class="fas fa-shopping-cart"></i>
                                 <?php if(count($cart) != 0){ echo "<sup style='margin-left: -5px;'><span class='dot' style='background-color: 
-                                    #B81600; border-radius: 50%; padding-left: 3px; padding-right: 3px;'> ".count($cart)."</span></sup>";} ?></a>
+                                    #B81600; border-radius: 50%; padding-left: 4px; padding-right: 4px;'> ".count($cart)."</span></sup>";} ?></a>
                             </div>
                         </div>
                     </div>
