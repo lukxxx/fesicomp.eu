@@ -1,0 +1,10 @@
+.login-bg{
+    background-image: url("../images/bg_image.jpg");
+}
+.container-login{
+    background-color: #2B2B2B;
+    padding: 20px;
+    width: 500px;
+    
+    
+}
