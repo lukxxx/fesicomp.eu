@@ -38,7 +38,19 @@ include_once "../includes/head-template.php"
                  <hr>
                     <div class="d-flex flex-wrap row">
                     <?php
-                            $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0'";
+                        if (isset($_GET['page'])) {
+                            $page = $_GET['page'];
+                        } else {
+                            $page = 1;
+                        }
+                        $no_of_records_per_page = 24;
+                        $offset = ($page-1) * $no_of_records_per_page; 
+                        $total_pages_sql = "SELECT COUNT(*) FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0'";
+                        $result = mysqli_query($link,$total_pages_sql);
+                        $total_rows = mysqli_fetch_array($result)[0];
+                        $total_pages = ceil($total_rows/$no_of_records_per_page);
+
+                            $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' LIMIT $offset, $no_of_records_per_page";
                             if($stmt = mysqli_prepare($link,$sql)){
                                 if(mysqli_stmt_execute($stmt)){
                                     $result = mysqli_stmt_get_result($stmt);
@@ -84,14 +96,45 @@ include_once "../includes/head-template.php"
                                             </div>
                                         <?php
                                         }
-                                    } else {
-                                    echo "<p>Nič sme nenašli tu</p>";
-                                    }
+                                        ?>
+                                        
+                                        <?php
+                                    } 
                                 } else{
                                     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                                 }
                             }
+                        
                     ?>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <ul class="pagination ">
+                            <?php if ($page > 1): ?>
+                            <li class="prev"><a href="?KID=<?php echo $kid?>&page=<?php echo $page-1 ?>">Predchádzajúca</a></li>
+                            <?php endif; ?>
+
+                            <?php if ($page > 3): ?>
+                            <li class="start"><a href="?KID=<?php echo $kid?>&page=1">1</a></li>
+                            <li class="dots">...</li>
+                            <?php endif; ?>
+
+                            <?php if ($page-2 > 0): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page-2 ?>"><?php echo $page-2 ?></a></li><?php endif; ?>
+                            <?php if ($page-1 > 0): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page-1 ?>"><?php echo $page-1 ?></a></li><?php endif; ?>
+
+                            <li class="currentpage"><a href="?KID=<?php echo $kid?>&page=<?php echo $page ?>"><?php echo $page ?></a></li>
+
+                            <?php if ($page+1 < ceil($total_pages)+1): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page+1 ?>"><?php echo $page+1 ?></a></li><?php endif; ?>
+                            <?php if ($page+2 < ceil($total_pages)+1): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page+2 ?>"><?php echo $page+2 ?></a></li><?php endif; ?>
+
+                            <?php if ($page < ceil($total_pages)-2): ?>
+                            <li class="dots">...</li>
+                            <li class="end"><a href="?KID=<?php echo $kid?>&page=<?php echo ceil($total_pages) ?>"><?php echo ceil($total_pages) ?></a></li>
+                            <?php endif; ?>
+
+                            <?php if ($page < ceil($total_pages)): ?>
+                            <li class="next"><a href="?KID=<?php echo $kid?>&page=<?php echo ($page+1) ?>">Ďalšia</a></li>
+                            <?php endif; ?>
+                        </ul>
                     </div>
                 <br>
             </div>
