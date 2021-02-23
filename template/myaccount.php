@@ -96,13 +96,14 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
     if($sth->rowCount() == 1){
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         $emailik = $row['email'];
-        $meno = $row['given_name'];
-        $fullname = $row['full_name'];
+        $first = $row['first_name'];
+        $second = $row['second_name'];
         $image = $row['img_url'];
         $telefon = $row['telefon'];
         $ulica = $row['ulica'];
         $mesto = $row['mesto'];
         $psc = $row['psc'];
+        $full_n = $first." ".$second;
     } 
 }
     

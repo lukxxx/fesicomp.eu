@@ -1,8 +1,13 @@
+<?php 
+ $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
+ $cart = json_decode($cart);
+
+?>
 <!DOCTYPE html>
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<title>fesicomp.eu</title>
+<title>FESI comp, s.r.o</title>
 <link rel="stylesheet" href="assets/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">

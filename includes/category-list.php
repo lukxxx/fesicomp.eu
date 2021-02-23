@@ -1,4 +1,4 @@
-<div class="category-list">
+<div class="category-list" style="margin-left: 20px; margin-right: 20px; ">
                     <div class="category-h d-flex">
                         <i style="padding:5px" class="far fa-folder"></i><span style="padding:2px">Kategórie</span>
                     </div>
