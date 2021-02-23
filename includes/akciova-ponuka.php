@@ -48,7 +48,7 @@ require_once "config.php";
                                 <form method="POST" action="update-cart.php" style="float: right;">
                                 <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
                                 <?php } else { ?>
 
