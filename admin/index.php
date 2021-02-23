@@ -15,7 +15,7 @@
                     <input class="form-control input-lg" type="heslo" name="heslo" placeholder="heslo" />
                 </div>
                 <div class="form-group text-center ">
-                    <input type="submit" name="submit" class="btn btn-light btn-lg" value="Sign Up" />
+                    <input type="submit" name="submit" class="login-button" value="Prihásiť sa" />
                 </div>
             </form>
         </div>
