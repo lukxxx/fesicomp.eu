@@ -44,7 +44,7 @@ include "../includes/header-template.php";
         {
             $total += $c->product->p_cena * $c->quantity;
             ?>  
-                    <tr >
+                    <tr>
                         <th style="padding: 20px;"><?php echo "<img src='../catalog/".$c->product->p_id."/".$c->product->p_img."' width='50'>" ?></th>
                         <th style="padding: 20px;"><?php echo "<a style='color: black;' href='item.php?ID=".$c->product->p_id."'>".$c->product->p_nazov."</a>" ?></th>
                         <th style="padding: 20px;">
