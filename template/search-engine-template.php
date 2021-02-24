@@ -20,7 +20,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                   echo "<hr>";
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                   if(file_exists("../catalog/".$row['p_id']."/".$row['p_img']."")){
-                    $cesta = "<img src='../catalog/".$row['p_id']."/".$row['p_img']." width='30' height='20'>";
+                    $cesta = "<img src='../catalog/".$row['p_id']."/".$row['p_img']."' width='30' height='20'>";
                     } else {
                         $cesta = "<img src='../assets/images/no-image.png' width='20' height='20'>";
                     }
