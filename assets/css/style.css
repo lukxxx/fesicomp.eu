@@ -38,7 +38,7 @@ span {
 }
 .back {
     background-color: #2B2B2B;
-    height: 130px;
+    height: auto;
 }
 .top-links {
     color: white;
@@ -317,3 +317,26 @@ z-index: 2;
 input{
     margin-bottom: 10px;
 }
+
+
+
+/*Aleksove responsivne veci <3*/
+@media only screen and (max-width: 576px) {
+    .header_desktop {
+      display: none;
+    }
+
+    .header_mobile {
+        display: block;
+    }
+  }
+
+  @media only screen and (min-width: 577px) {
+    .header_desktop {
+      display: block;
+    }
+
+    .header_mobile {
+        display: none;
+    }
+  }
