@@ -83,6 +83,23 @@ include_once "../includes/head-template.php"
                     }
                  ?></div>
                  <hr>
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!---------------------------------------------Neviem ako to chcete :D a skúšal som celý čas hľadať slider na nete ale nič schopné som za tých pol hodiny nenašiel bohužiaľ, Lukáš mi isto povie teraz, že nech sa naučím vyhľadávať veci na googli :D a dobrú chuť keď papate pizzu Alexovu------------------------------------------------------------------>
+                <div class = "row" >
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                        <div class="button-box ">                       
+                            <a href="#" class="btn btn-dark" role="button">Najpredávanejšie</a>
+                            <a href="#" class="btn btn-dark" role="button">Najlacnejšie</a>
+                            <a href="#" class="btn btn-dark" role="button">Najdrahšie</a>        
+                            <a href="#" class="btn btn-dark" role="button">Doporučujeme</a>             
+                        </div>                                                                      
+                    </div>
+                </div>
+                <br>
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    
+                    
+
                     <div class="d-flex flex-wrap row">
                     <?php
                         if (isset($_GET['page'])) {
