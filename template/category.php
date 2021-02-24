@@ -85,6 +85,7 @@ include_once "../includes/head-template.php"
                  <hr>
                 <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
                 <!---------------------------------------------Neviem ako to chcete :D a skúšal som celý čas hľadať slider na nete ale nič schopné som za tých pol hodiny nenašiel bohužiaľ, Lukáš mi isto povie teraz, že nech sa naučím vyhľadávať veci na googli :D a dobrú chuť keď papate pizzu Alexovu------------------------------------------------------------------>
+                
                 <div class = "row" >
                     <div class="col-sm-12 col-md-12 col-lg-12 ">
                         <div class="button-box ">                       
@@ -96,6 +97,12 @@ include_once "../includes/head-template.php"
                     </div>
                 </div>
                 <br>
+                <div class = "row" >
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                       <p>Počet nájdených položiek: xyz</p>                                                                     
+                    </div>
+                </div>
+                
                 <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
                     
                     
