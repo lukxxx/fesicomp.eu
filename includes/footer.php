@@ -39,7 +39,7 @@
                 
                 <div class = "row">    
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style = "margin-bottom: 5px;">
-                        <span style = "text-align: center">© 2005 - <?php echo date("Y"); ?> FESI comp, s.r.o.</span>
+                        <span style = "text-align: center">© 2005 – <?php echo date("Y"); ?> FESI comp, s.r.o.</span>
                     </div>      
                 </div>
 
