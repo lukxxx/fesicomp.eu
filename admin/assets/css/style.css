@@ -1,0 +1,18 @@
+.login-bg{
+    background-image: url("../images/bg_image.jpg");
+    background-size: cover;
+    
+    
+}
+.container-login{
+    background-color: #2B2B2B;
+    padding: 20px;
+    width: 500px;   
+    margin-top: 10%;
+}
+.login-button{
+    border-radius: 20px;
+    font-size: 20px;
+    border: black solid;
+    padding: 0px 15px;
+}
