@@ -22,18 +22,16 @@ if($link === false){
                 <h2 class="text-center">Kontaktujte nás</h2>
                 <br>
                 <div class="contact-form">
-                    <div class="container" style="padding: 3% 0 0 0">
-                            <form method="post" action="">
-                                <div class="form-group">
-                                    <input style="margin: 1%; border-radius: 8px;" class="form-control" name="name" type="text" placeholder="Meno...">
-                                    <input style="margin: 1%; border-radius: 8px;" class="form-control" name="email" type="password" placeholder="E-mail...">
-                                    <textarea style="resize: none; margin: 1%; height: 25vh; border-radius: 8px;" name="message" class="form-control" rows="4" cols="50" placeholder="Vaša správa..."></textarea>
-                                    <div class="d-flex justify-content-center" style="padding: 5%">
-                                        <button type="submit" name="send_message" class="btn btn-dark">Odoslať <i class="fa fa-paper-plane-o"></i></button>
-                                    </div>
+                        <form method="post" action="">
+                            <div class="form-group">
+                                <input style="margin: 1%; border-radius: 8px;" class="form-control" name="name" type="text" placeholder="Meno...">
+                                <input style="margin: 1%; border-radius: 8px;" class="form-control" name="email" type="password" placeholder="E-mail...">
+                                <textarea style="resize: none; margin: 1%; height: 25vh; border-radius: 8px;" name="message" class="form-control" rows="4" cols="50" placeholder="Vaša správa..."></textarea>
+                                <div class="d-flex justify-content-center" style="padding: 5%">
+                                    <button type="submit" name="send_message" class="btn btn-dark">Odoslať <i class="fa fa-paper-plane-o"></i></button>
                                 </div>
-                            </form>   
-                    </div>
+                            </div>
+                        </form>   
                 </div>
             </div>
             <div class="col-2 col-sm-9 col-md-3 col-lg-3"></div>
