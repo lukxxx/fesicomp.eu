@@ -78,12 +78,14 @@ span {
 }
 .header-headings {
     padding-left: 15px;
+    padding-right: 15px;
 }
 .header-headings > h2 {
     font-weight: bold;
     font-size: 30px;
     color: white;
     padding: 0;
+    margin-top: 1px;
 }
 .header-headings > h4 {
     font-size: 25px;
@@ -329,6 +331,18 @@ input{
     .header_mobile {
         display: block;
     }
+
+    .brand {
+        display: flex;
+        justify-content: center;
+        padding: 15px 15px 0 15px;
+    }
+
+    .mobile_buttons{
+        margin-left: 20%;
+    }
+
+
   }
 
   @media only screen and (min-width: 577px) {
@@ -340,3 +354,42 @@ input{
         display: none;
     }
   }
+
+
+
+  /*collapse pre mobilný header*/
+  .collapse {
+    display: none;
+  }
+  .collapse.in {
+    display: block;
+  }
+  tr.collapse.in {
+    display: table-row;
+  }
+  tbody.collapse.in {
+    display: table-row-group;
+  }
+  .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition-timing-function: ease;
+         -o-transition-timing-function: ease;
+            transition-timing-function: ease;
+    -webkit-transition-duration: .35s;
+         -o-transition-duration: .35s;
+            transition-duration: .35s;
+    -webkit-transition-property: height, visibility;
+         -o-transition-property: height, visibility;
+            transition-property: height, visibility;
+  }
+
+
+
+
+
+
+
+
+  
