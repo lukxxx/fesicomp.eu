@@ -53,7 +53,7 @@
                                         
                                         <input style="border-radius:30px; padding-left: 10px; outline: 0 !important;" 
                                         type="text" name="search" class="form-control search" autocomplete="off"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz..." >
-                                        <div class="result" style="display: none; margin-top: -1vw; width: 90%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
+                                        <div class="result" style="display: none; margin-top: -1vw; width: 100%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
                                         
                                     </div>

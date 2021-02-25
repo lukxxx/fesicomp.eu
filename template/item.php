@@ -174,7 +174,9 @@ if(isset($_GET['ID'])){
                         <?php echo $popis ?>
                     </div>
                     <div id="tab-2" class="tab-content">
-                        
+                        <div class="related"  style="display: flex;">
+                            <?php include (ROOT."includes/parameters.php");?>
+                        </div>
                     </div>
                     <div id="tab-3" class="tab-content">
                         <div class="related"  style="display: flex;">

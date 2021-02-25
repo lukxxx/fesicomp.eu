@@ -7,9 +7,14 @@ $options = [
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
 
+$total = 0;
+
 foreach ($cart as $c)
 {
-    echo $c->product->p_cena;
+    $total += $c->product->p_cena * $c->quantity;
+    $product_name = $c->product->p_nazov;
+    $quantity = $c->quantity;
+    $product_code = $c->product->p_kod_sklad;
 }
 
 $name_err = "";
@@ -198,13 +203,15 @@ if(isset($_POST['bimbambum'])){
 
 
             array_push($details, array(
-                "productCode" => $productCode,
+                "productCode" => $product_code,
                 "quantity" => $quantity,
-                "product" => $product,
-                "price" => $p_price * $quantity,
+                "product" => $product_name,
+                "price" => $total,
                 "name" => $name,
                 "surname" => $surname,
                 "email" => $email,
+                "platby" => "",
+                    "dopravy" => ""
             ));
 
             setcookie("details", json_encode($details));
@@ -233,7 +240,7 @@ if(isset($_POST['bimbambum'])){
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
             <form method="post" action="">
-            <?php echo $submit_btn ?>
+            <?php echo $submit_btn; echo $total; ?>
         </div>
     </div>
     <hr>

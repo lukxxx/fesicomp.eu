@@ -7,6 +7,33 @@ $link = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
+
+
+$sent_message = false;
+if(isset($_POST['email']) && $_POST['email'] !=''){
+    if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+
+        $username = $_POST['name'];
+        $userEmail = $_POST['email'];
+        $messageSubject = "Nova sprava od zakaznika";
+        $message = $_POST['message'];
+
+        $to = "matej.roch4@gmail.com";
+        $body = "";
+
+        $body .= "From: ".$username. "\r\n";
+        $body .= "Email: ".$userEmail. "\r\n";
+        $body .= "Message: ".$message. "\r\n";
+        mail($to,$messageSubject,$body);
+        $sent_message = true;
+    }
+}
+
+
+
+
+
+
 ?>
 
 
@@ -17,24 +44,33 @@ if($link === false){
 <?php include (ROOT ."includes/header-template.php")?>
     <div class="container" style="padding-top: 4%;">
         <div class="row d-flex justify-content-center">
-            <div class="col-2 col-sm-9 col-md-3 col-lg-3"></div>
             <div class="col-8 col-sm-9 col-md-6 col-lg-6">
+            <?php
+            if($sent_message): ?>
+
+                <h1 class="text-center" style="padding-bottom: 200px">Ďakujeme za Vašu správu</h1>
+            <?php 
+            else: ?>
                 <h2 class="text-center">Kontaktujte nás</h2>
                 <br>
                 <div class="contact-form">
-                        <form method="post" action="">
-                            <div class="form-group">
-                                <input style="margin: 1%; border-radius: 8px;" class="form-control" name="name" type="text" placeholder="Meno...">
-                                <input style="margin: 1%; border-radius: 8px;" class="form-control" name="email" type="password" placeholder="E-mail...">
-                                <textarea style="resize: none; margin: 1%; height: 25vh; border-radius: 8px;" name="message" class="form-control" rows="4" cols="50" placeholder="Vaša správa..."></textarea>
-                                <div class="d-flex justify-content-center" style="padding: 5%">
-                                    <button type="submit" name="send_message" class="btn btn-dark">Odoslať <i class="fa fa-paper-plane-o"></i></button>
+                    <div class="container" style="padding: 3% 0 0 0">
+                            <form method="post" action="">
+                                <div class="form-group">
+                                    <input style="margin: 1%; border-radius: 8px;" class="form-control" name="name" type="text" placeholder="Meno..." required>
+                                    <input style="margin: 1%; border-radius: 8px;" class="form-control" name="email" type="email" placeholder="E-mail..." required>
+                                    <textarea style="resize: none; margin: 1%; height: 25vh; border-radius: 8px;" name="message" class="form-control" rows="4" cols="50" placeholder="Vaša správa..." required></textarea>
+                                    <div class="d-flex justify-content-center" style="padding: 5%">
+                                        <button type="submit" name="send_message" class="btn btn-dark">Odoslať <i class="fa fa-paper-plane-o"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </form>   
                 </div>
+                <?php 
+                endif;
+                ?>
             </div>
-            <div class="col-2 col-sm-9 col-md-3 col-lg-3"></div>
         </div>
 
 

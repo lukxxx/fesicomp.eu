@@ -5,7 +5,7 @@
                     <div class="col-sm-12 col-md-7 col-lg-7">
                         <div class="brand">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="../index.php" "><img src="../assets/images/brand/logo.png" width="100" height="90"></a>
+                                <a href="../index.php"><img src="../assets/images/brand/logo.png" width="100" height="90"></a>
                             </div>
                             <div class="award">
                                 <a href="../index.php" style="padding-left: 20px;height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="95" height="90"></a>
@@ -54,7 +54,7 @@
                                         
                                         <input style="border-radius:30px; padding-left: 10px; outline: 0 !important;" 
                                         type="text" name="search" class="form-control search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" autocomplete="off" placeholder="  Zadajte hľadaný výraz..." >
-                                        <div class="result" style="display: none; margin-top: -1vw; width: 90%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
+                                        <div class="result" style="display: none; margin-top: -1vw; width: 100%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
                                         
                                     </div>
@@ -85,7 +85,7 @@
                     <div class="col-sm-12 col-md-7 col-lg-7">
                         <div class="brand">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="../index.php" "><img src="../assets/images/brand/logo.png" width="60" height="50"></a>
+                                <a href="../index.php"><img src="../assets/images/brand/logo.png" width="100" height="90"></a>
                             </div>
                             <div class="award">
                                 <a href="../index.php" style="padding-left: 20px;height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="65" height="60"></a>
