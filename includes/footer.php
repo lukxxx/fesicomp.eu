@@ -1,3 +1,12 @@
+<?php
+    $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+    if (strpos($url,'/template') !== false) {
+        $odkaz = 'subpage.php?ID=';
+    } else {
+        $odkaz = 'template/subpage.php?ID=';
+    }
+?>
+
 <div class="container-fluid" style="background-color: #2B2B2B;">
         <div class="container">
             <footer id ="footer">
@@ -6,8 +15,11 @@
                         <span class="footer-h">O nás</span><br>
                         <a>Fotogaléria</a><br>
                         <a>Certifikáty</a><br>
-                        <a>Obchodné podmienky</a><br>
                         <a href="contact.php" style="color: white; text-decoration: none;">Kontakt</a><br>
+                        <a href="<?php echo $odkaz?>3" style="color: white; text-decoration: none;">Obchodné podmienky</a><br>
+                        <a href="<?php echo $odkaz?>4" style="color: white; text-decoration: none;">Reklamácia a vrátenie</a><br>
+                        <a href="<?php echo $odkaz?>5" style="color: white; text-decoration: none;">Ochrana osobných údajov</a><br>
+                        
                     </div>
                     <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
                         <span class="footer-h">Sledujte nás</span><br>
@@ -39,7 +51,7 @@
                 
                 <div class = "row">    
                     <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style = "margin-bottom: 5px;">
-                        <span style = "text-align: center">© 2005 - <?php echo date("Y"); ?> FESI comp, s.r.o.</span>
+                        <span style = "text-align: center">© 2005 – <?php echo date("Y"); ?> FESI comp, s.r.o.</span>
                     </div>      
                 </div>
 

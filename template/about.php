@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="sk">
-<?php include_once "../includes/head-template.php";?>
-<body >
-<?php include (ROOT ."includes/header-template.php")?>
+<?php 
+    include_once "../includes/head-template.php";
+    include (ROOT ."includes/header-template.php");?>
     <div class="container" style="padding: 20px 13px 0 10px">
         <div class="row d-flex justify-content-center">
-            
             <div class="col-sm-12 col-md-8 col-lg-8">
                 <h2>O nás</h2>
                 <br>
