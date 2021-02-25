@@ -12,7 +12,7 @@
                                 <a href="index.php" style="padding-left: 20px;height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                             </div>
                             <div class="header-headings">
-                                <h2>Výpočtová technika</h2>
+                                <h2 style="margin-top: 0;">Výpočtová technika</h2>
                                 <h4>predaj a servis</h4>
                                 <div class="quick-links">
                                     <i class="fas fa-phone"></i><a href="tel:+421534411526">+421534411526</a>
@@ -72,7 +72,7 @@
         <div class="news-bar">
             <marquee>Od 19.12.2020 do konca LOCKDOWN bude predajňa zatvorená.</marquee>        
         </div>
-    </header>
+</header>
 
 
 
@@ -83,27 +83,58 @@
                     <div class="col-sm-12 col-md-7 col-lg-7">
                         <div class="brand">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="index.php"><img src="assets/images/brand/logo.png" width="100" height="90"></a>
+                                <a href="index.php"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
                             </div>
                             <div class="award">
-                                <a href="index.php" style="padding-left: 20px;height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                                <a href="index.php" style="padding-left: 20px;height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                             </div>
-                            <div class="header-headings">
-                                <h2>Výpočtová technika mobilné ahahahaa</h2>
-                                <h4>predaj a servis</h4>
-                                <div class="quick-links">
-                                    <i class="fas fa-phone"></i><a href="tel:+421534411526">+421534411526</a>
-                                    <i class="fas fa-envelope"></i><a href="mailto:eshop@compsnv.sk">eshop@compsnv.sk</a>    
-                                </div>
-                                <p></p>
+                            <div class="mobile_buttons" style="margin-top: 5%;">
+                                <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
+                                <a data-toggle="collapse" href="#links" role="button" aria-expanded="false" aria-controls="links" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
                             </div>
                         </div>
-                       
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-5 col-lg-5 collapse" id="links" style="margin-bottom: 10%;">
+                                <div class="header-headings">
+                                    <h2 class="text-center">Výpočtová technika</h2>
+                                    <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <div class="d-flex flex-column">
+                                            <a style="color: white; font-size: 23px; padding: 1px;" href="">Katalóg produktov </a>
+                                            <a style="color: white; font-size: 23px; padding: 1px;" href="template/cart.php">Košík </a>
+                                            <?php 
+                                                if(isset($_COOKIE['user'])){
+                                                    echo '<a href="template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.$_COOKIE['user'].'</span></a>';
+                                                } else if(isset($_COOKIE['user-login'])){
+                                                    echo '<a href="template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.
+                                                    $user = substr($_COOKIE['user-login'], 0, strrpos($_COOKIE['user-login'], '@'));
+                                                    $user.'</span></a>';
+                                                } else if(isset($_COOKIE['user-login-name'])){
+                                                    echo '<a href="template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.$_COOKIE['user-login-name'].'</span></a>';
+                                                }
+                                                else {
+                                                    echo '<a href="template/login.php" style="color: white; font-size: 23px; padding: 1px;"><span>Účet</span></a>';
+                                                }
+                                            ?>
+                                            <a style="color: white; font-size: 23px; padding: 1px;" href="template/contact.php">Kontakt </a>
+                                            <a style="color: white; font-size: 23px; padding: 1px;" href="template/about.php">O spoločnosti </a>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-around" style="margin-left: 20%;">
+                                            <i style="font-size: 30px; color: white; text-decoration: none; padding: 1px;" class="fas fa-arrow-right text-right"></i>
+                                            <i style="font-size: 30px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i>
+                                            <i style="font-size: 30px; color: white; text-decoration: none; padding: 1px;" class="fas fa-user text-right"></i>
+                                            <i style="font-size: 30px; color: white; text-decoration: none; transform: rotate(-45deg); padding: 5px;" class="fas fa-phone-volume text-right"></i>
+                                            <i style="font-size: 30px; color: white; text-decoration: none; padding: 1px;" class="fas fa-building text-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-12 col-md-5 col-lg-5">
+                    <div class="col-sm-12 col-md-5 col-lg-5 collapse" id="searchbar">
                         <div class="row">
                             <div class="top-links d-flex justify-content-around">
-                            <?php 
+                                <?php 
                                     if(isset($_COOKIE['user'])){
                                         echo '<a href="template/myaccount.php" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">'.$_COOKIE['user'].'</span></a>';
                                     } else if(isset($_COOKIE['user-login'])){
@@ -126,7 +157,7 @@
                         <div class="row">
                             <div class="col-sm-10 col-md-10 col-lg-10">
                                 <form method="post" action="template/search-results.php">
-                                    <div class="form-group has-search search-box" style="position: relative;z-index: 2;">
+                                    <div class="form-group has-search search-box" style="position: relative; z-index: 2;">
                                         
                                         <input style="border-radius:30px; padding-left: 10px; outline: 0 !important;" 
                                         type="text" name="search" class="form-control search" autocomplete="off"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz..." >
