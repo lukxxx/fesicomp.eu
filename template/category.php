@@ -89,19 +89,13 @@ include_once "../includes/head-template.php"
                 <div class = "row" >
                     <div class="col-sm-12 col-md-12 col-lg-12 ">
                         <div class="button-box ">                       
-                            <a href="#" class="btn btn-dark" role="button">Najpredávanejšie</a>
-                            <a href="#" class="btn btn-dark" role="button">Najlacnejšie</a>
-                            <a href="#" class="btn btn-dark" role="button">Najdrahšie</a>        
-                            <a href="#" class="btn btn-dark" role="button">Doporučujeme</a>             
+                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','ASC' )"class="btn btn-dark" role="button">Najlacnejšie</a>
+                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','DESC' )"class="btn btn-dark" role="button">Najdrahšie</a>                    
                         </div>                                                                      
                     </div>
                 </div>
                 <br>
-                <div class = "row" >
-                    <div class="col-sm-12 col-md-12 col-lg-12 ">
-                       <p>Počet nájdených položiek: xyz</p>                                                                     
-                    </div>
-                </div>
+                
                  <!--       _
                         .__(.)< (kač kač)
                         \___)   
@@ -110,7 +104,7 @@ include_once "../includes/head-template.php"
                     
                     
 
-                    <div class="d-flex flex-wrap row">
+                    
                     <?php
                         if (isset($_GET['page'])) {
                             $page = $_GET['page'];
@@ -123,8 +117,22 @@ include_once "../includes/head-template.php"
                         $result = mysqli_query($link,$total_pages_sql);
                         $total_rows = mysqli_fetch_array($result)[0];
                         $total_pages = ceil($total_rows/$no_of_records_per_page);
-
-                            $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' LIMIT $offset, $no_of_records_per_page";
+                        ?>
+                        <div class = "row" >
+                            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                                <p>Počet nájdených položiek: <?php echo $total_rows ?></p>                                                                     
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap row">
+                        <?php
+                            if (isset($_GET['cena'])) {
+                                $cena = $_GET['cena'];
+                                //echo $cena;
+                                $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' ORDER BY p_cena $cena LIMIT $offset, $no_of_records_per_page  ";
+                            } else {
+                                $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' LIMIT $offset, $no_of_records_per_page";
+                            }
+                            
                             if($stmt = mysqli_prepare($link,$sql)){
                                 if(mysqli_stmt_execute($stmt)){
                                     $result = mysqli_stmt_get_result($stmt);
