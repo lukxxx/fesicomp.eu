@@ -17,7 +17,15 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
     <script src="../assets/js/search-template.js" type="text/javascript"></script>
+
+
+
     
+
+
+
+
+    <script src="../assets/js/bootstrap.js" type="text/javascript"></script>
     <meta name="google-signin-client_id" content="238466960669-o9vmi5uorbemeudllt4f5chf5auq0kia.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" ></script>
     <script>
