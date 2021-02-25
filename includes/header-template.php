@@ -11,16 +11,12 @@
                                 <a href="../index.php" style="padding-left: 20px;height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                             </div>
                             <div class="header-headings">
-                                <h2>Výpočtová technika</h2>
+                                <h2 style="margin-top: 0;">Výpočtová technika</h2>
                                 <h4>predaj a servis</h4>
                                 <div class="quick-links">
                                     <i class="fas fa-phone"></i><a href="tel:+421534411526">+421534411526</a>
                                     <i class="fas fa-envelope"></i><a href="mailto:eshop@compsnv.sk">eshop@compsnv.sk</a>    
                                 </div>
-                                <p></p>
-                            </div>
-                            <div class="responsive-collapsed-bar" style="color: white; display: none;">
-                                <i class="fas fa-phone"></i>
                             </div>
                         </div>
 
@@ -89,31 +85,44 @@
                     <div class="col-sm-12 col-md-7 col-lg-7">
                         <div class="brand">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="../index.php" "><img src="../assets/images/brand/logo.png" width="100" height="90"></a>
+                                <a href="../index.php" "><img src="../assets/images/brand/logo.png" width="60" height="50"></a>
                             </div>
                             <div class="award">
-                                <a href="../index.php" style="padding-left: 20px;height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                                <a href="../index.php" style="padding-left: 20px;height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                             </div>
+                            <div class="mobile_buttons d-flex flex-row align-items-center" style="margin-left: 20%;">
+                                <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
+                                <a data-toggle="collapse" href="#links" role="button" aria-expanded="false" aria-controls="links"><i style="margin-left: 90%; font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
+                            </div>
+                        </div>  
+                    </div>                
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5 col-lg-5 collapse" id="links" style="margin-bottom: 18%;">
                             <div class="header-headings">
-                                <h2>Výpočtová technika mobilné hahahahaaa</h2>
-                                <h4>predaj a servis</h4>
-                                <div class="quick-links">
-                                    <i class="fas fa-phone"></i><a href="tel:+421534411526">+421534411526</a>
-                                    <i class="fas fa-envelope"></i><a href="mailto:eshop@compsnv.sk">eshop@compsnv.sk</a>    
+                                <h2>Výpočtová technika</h2>
+                                <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5);">
+                                <div class="d-flex flex-row">
+                                    <div class="d-flex flex-column">
+                                        <a style="color: white; font-size: 23px;" href="">Katalóg produktov </a><br>
+                                        <a style="color: white; font-size: 23px;" href="cart.php">Košík </a><br>
+                                        <a style="color: white; font-size: 23px;" href="login.php">Účet </a><br>
+                                        <a style="color: white; font-size: 23px;" href="contact.php">Kontakt </a><br>
+                                        <a style="color: white; font-size: 23px;" href="about.php">O spoločnosti </a><br>
+                                    </div>
+                                    <div class="d-flex flex-column" style="margin-left: 10%;">
+                                        <i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-arrow-right text-right"></i><br>
+                                        <i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-shopping-cart text-right"></i><br>
+                                        <i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-user text-right"></i><br>
+                                        <i style="font-size: 30px; color: white; text-decoration: none; transform: rotate(-45deg);" class="fas fa-phone-volume text-right"></i><br>
+                                        <i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-building text-right"></i><br>
+                                    </div>
                                 </div>
-                                <p></p>
-                            </div>
-                            <div class="responsive-collapsed-bar" style="color: white; display: none;">
-                                <i class="fas fa-phone"></i>
                             </div>
                         </div>
-
-                       
                     </div>
 
-
-
-                    <div class="col-sm-12 col-md-5 col-lg-5 toplinks_and_search">
+                    <div class="col-sm-12 col-md-5 col-lg-5 collapse" id="searchbar">
                         <div class="row">
                             <div class="top-links d-flex justify-content-around">
                                 <?php 
