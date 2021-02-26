@@ -1,6 +1,53 @@
 <?php
 include_once "../includes/head-template.php"
 ?>
+<script type='text/javascript'>
+    function updateURLParameter(url, param, paramVal)
+{
+    var TheAnchor = null;
+    var newAdditionalURL = "";
+    var tempArray = url.split("?");
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var temp = "";
+
+    if (additionalURL) 
+    {
+        var tmpAnchor = additionalURL.split("#");
+        var TheParams = tmpAnchor[0];
+            TheAnchor = tmpAnchor[1];
+        if(TheAnchor)
+            additionalURL = TheParams;
+
+        tempArray = additionalURL.split("&");
+
+        for (var i=0; i<tempArray.length; i++)
+        {
+            if(tempArray[i].split('=')[0] != param)
+            {
+                newAdditionalURL += temp + tempArray[i];
+                temp = "&";
+            }
+        }        
+    }
+    else
+    {
+        var tmpAnchor = baseURL.split("#");
+        var TheParams = tmpAnchor[0];
+            TheAnchor  = tmpAnchor[1];
+
+        if(TheParams)
+            baseURL = TheParams;
+    }
+
+    if(TheAnchor)
+        paramVal += "#" + TheAnchor;
+
+    var rows_txt = temp + "" + param + "=" + paramVal;
+    window.location = baseURL + "?" + newAdditionalURL + rows_txt;
+}
+
+</script>
     <?php include (ROOT ."includes/header-template.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
@@ -36,7 +83,28 @@ include_once "../includes/head-template.php"
                     }
                  ?></div>
                  <hr>
-                    <div class="d-flex flex-wrap row">
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!---------------------------------------------Neviem ako to chcete :D a skúšal som celý čas hľadať slider na nete ale nič schopné som za tých pol hodiny nenašiel bohužiaľ, Lukáš mi isto povie teraz, že nech sa naučím vyhľadávať veci na googli :D a dobrú chuť keď papate pizzu Alexovu------------------------------------------------------------------>
+                
+                <div class = "row" >
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                        <div class="button-box ">                       
+                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','ASC' )"class="btn btn-dark" role="button">Najlacnejšie</a>
+                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','DESC' )"class="btn btn-dark" role="button">Najdrahšie</a>                    
+                        </div>                                                                      
+                    </div>
+                </div>
+                <br>
+                
+                 <!--       _
+                        .__(.)< (kač kač)
+                        \___)   
+                ~~~~~~~~~~~~~~~~~~-->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    
+                    
+
+                    
                     <?php
                         if (isset($_GET['page'])) {
                             $page = $_GET['page'];
@@ -49,8 +117,22 @@ include_once "../includes/head-template.php"
                         $result = mysqli_query($link,$total_pages_sql);
                         $total_rows = mysqli_fetch_array($result)[0];
                         $total_pages = ceil($total_rows/$no_of_records_per_page);
-
-                            $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' LIMIT $offset, $no_of_records_per_page";
+                        ?>
+                        <div class = "row" >
+                            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                                <p>Počet nájdených položiek: <?php echo $total_rows ?></p>                                                                     
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap row">
+                        <?php
+                            if (isset($_GET['cena'])) {
+                                $cena = $_GET['cena'];
+                                //echo $cena;
+                                $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' ORDER BY p_cena $cena LIMIT $offset, $no_of_records_per_page  ";
+                            } else {
+                                $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' LIMIT $offset, $no_of_records_per_page";
+                            }
+                            
                             if($stmt = mysqli_prepare($link,$sql)){
                                 if(mysqli_stmt_execute($stmt)){
                                     $result = mysqli_stmt_get_result($stmt);
@@ -110,29 +192,29 @@ include_once "../includes/head-template.php"
                     <div class="row d-flex justify-content-center">
                         <ul class="pagination ">
                             <?php if ($page > 1): ?>
-                            <li class="prev"><a href="?KID=<?php echo $kid?>&page=<?php echo $page-1 ?>">Predchádzajúca</a></li>
+                            <li class="prev"><a href="#" onclick="updateURLParameter(window.location.href, 'page', '<?php Print( $page-1)?>' )">Predchádzajúca</a></li>
                             <?php endif; ?>
 
                             <?php if ($page > 3): ?>
-                            <li class="start"><a href="?KID=<?php echo $kid?>&page=1">1</a></li>
+                            <li class="start"><a href="#" onclick="updateURLParameter(window.location.href, 'page', '1');return false;">1</a></li>
                             <li class="dots">...</li>
                             <?php endif; ?>
 
-                            <?php if ($page-2 > 0): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page-2 ?>"><?php echo $page-2 ?></a></li><?php endif; ?>
-                            <?php if ($page-1 > 0): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page-1 ?>"><?php echo $page-1 ?></a></li><?php endif; ?>
+                            <?php if ($page-2 > 0): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page-2)?> )"><?php echo $page-2 ?></a></li><?php endif; ?>
+                            <?php if ($page-1 > 0): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page-1)?> )"><?php echo $page-1 ?></a></li><?php endif; ?>
 
                             <li class="currentpage"><a href="?KID=<?php echo $kid?>&page=<?php echo $page ?>"><?php echo $page ?></a></li>
 
-                            <?php if ($page+1 < ceil($total_pages)+1): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page+1 ?>"><?php echo $page+1 ?></a></li><?php endif; ?>
-                            <?php if ($page+2 < ceil($total_pages)+1): ?><li class="page"><a href="?KID=<?php echo $kid?>&page=<?php echo $page+2 ?>"><?php echo $page+2 ?></a></li><?php endif; ?>
+                            <?php if ($page+1 < ceil($total_pages)+1): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page+1)?> )"><?php echo $page+1 ?></a></li><?php endif; ?>
+                            <?php if ($page+2 < ceil($total_pages)+1): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page+2)?> )"><?php echo $page+2 ?></a></li><?php endif; ?>
 
                             <?php if ($page < ceil($total_pages)-2): ?>
                             <li class="dots">...</li>
-                            <li class="end"><a href="?KID=<?php echo $kid?>&page=<?php echo ceil($total_pages) ?>"><?php echo ceil($total_pages) ?></a></li>
+                            <li class="end"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $total_pages)?> )" ><?php echo ceil($total_pages) ?></a></li>
                             <?php endif; ?>
 
                             <?php if ($page < ceil($total_pages)): ?>
-                            <li class="next"><a href="?KID=<?php echo $kid?>&page=<?php echo ($page+1) ?>">Ďalšia</a></li>
+                            <li class="next"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page+1)?> )">Ďalšia</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>

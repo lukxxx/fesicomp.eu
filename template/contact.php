@@ -29,25 +29,17 @@ if(isset($_POST['email']) && $_POST['email'] !=''){
     }
 }
 
-
-
-
-
-
 ?>
 
-
-<!DOCTYPE html>
-<html lang="sk">
-<?php include_once "../includes/head-template.php";?>
-<body>
-<?php include (ROOT ."includes/header-template.php")?>
+<?php 
+    include_once "../includes/head-template.php";
+    include (ROOT ."includes/header-template.php");
+?>    
     <div class="container" style="padding-top: 4%;">
         <div class="row d-flex justify-content-center">
             <div class="col-8 col-sm-9 col-md-6 col-lg-6">
             <?php
             if($sent_message): ?>
-
                 <h1 class="text-center" style="padding-bottom: 200px">Ďakujeme za Vašu správu</h1>
             <?php 
             else: ?>
@@ -64,15 +56,14 @@ if(isset($_POST['email']) && $_POST['email'] !=''){
                                         <button type="submit" name="send_message" class="btn btn-dark">Odoslať <i class="fa fa-paper-plane-o"></i></button>
                                     </div>
                                 </div>
-                            </form>   
-                    </div>
+                            </div>
+                        </form>   
                 </div>
                 <?php 
                 endif;
                 ?>
             </div>
         </div>
-
 
         <div style="margin-top: 3%;" class="row d-flex justify-content-center">
             <h2 class="text-center">Otváracie hodiny</h2>

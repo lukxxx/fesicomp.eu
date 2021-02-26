@@ -3163,8 +3163,20 @@
     opacity: 0;
   }
   
-  .collapse:not(.show) {
+  .collapse {
     display: none;
+  }
+  
+  .collapse.show {
+    display: block;
+  }
+  
+  tr.collapse.show {
+    display: table-row;
+  }
+  
+  tbody.collapse.show {
+    display: table-row-group;
   }
   
   .collapsing {
@@ -3172,12 +3184,6 @@
     height: 0;
     overflow: hidden;
     transition: height 0.35s ease;
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .collapsing {
-      transition: none;
-    }
   }
   
   .dropup,
