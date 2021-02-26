@@ -1,9 +1,9 @@
 <?php
     $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     if (strpos($url,'/template') !== false) {
-        $odkaz = 'subpage.php?ID=';
+        $odkaz = '';
     } else {
-        $odkaz = 'template/subpage.php?ID=';
+        $odkaz = 'template/';
     }
 ?>
 
@@ -13,12 +13,11 @@
                 <div class = "row">
                     <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
                         <span class="footer-h">O nás</span><br>
-                        <a>Fotogaléria</a><br>
-                        <a>Certifikáty</a><br>
+                        <a href="<?php echo $odkaz?>about.php" style="color: white; text-decoration: none;">O spoločnosti</a><br>
                         <a href="contact.php" style="color: white; text-decoration: none;">Kontakt</a><br>
-                        <a href="<?php echo $odkaz?>3" style="color: white; text-decoration: none;">Obchodné podmienky</a><br>
-                        <a href="<?php echo $odkaz?>4" style="color: white; text-decoration: none;">Reklamácia a vrátenie</a><br>
-                        <a href="<?php echo $odkaz?>5" style="color: white; text-decoration: none;">Ochrana osobných údajov</a><br>
+                        <a href="<?php echo $odkaz?>subpage.php?ID=3" style="color: white; text-decoration: none;">Obchodné podmienky</a><br>
+                        <a href="<?php echo $odkaz?>subpage.php?ID=4" style="color: white; text-decoration: none;">Reklamácia a vrátenie</a><br>
+                        <a href="<?php echo $odkaz?>subpage.php?ID=5" style="color: white; text-decoration: none;">Ochrana osobných údajov</a><br>
                         
                     </div>
                     <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
