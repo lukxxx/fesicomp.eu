@@ -24,10 +24,51 @@
                         <img src="../assets/images/10rokov1.gif" alt="10rokov" width="400px" height="auto">
                     </div>
                 </div>
-                
+                <div class="row">
+                    <div>
+                        <h2>Certifikáty</h2>
+                        <?php
+                            $lin = mysqli_connect('127.0.0.1', 'root', '', 'compsnv');
+                            if($lin === false){
+                                die("ERROR: Could not connect. " . mysqli_connect_error());
+                            }
 
+                            $sql = "SELECT * FROM foto WHERE f_kat=3 AND f_velkost=1";
+                            $result = mysqli_query($lin, $sql);
 
+                            if (mysqli_num_rows($result) > 0) {
+                                // output data of each row
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    echo '<img src="../assets/images/galeria/'.$row['nazov'].'" alt="">';
+                                }
+                            } else {
+                                echo "0 results";
+                            }
+                        ?>
+                    </div>
                 
+                </div>
+                <div>
+                    <h2>Fotogaléria</h2>
+                    <?php
+                        $lin = mysqli_connect('127.0.0.1', 'root', '', 'compsnv');
+                        if($lin === false){
+                            die("ERROR: Could not connect. " . mysqli_connect_error());
+                        }
+
+                        $sql = "SELECT * FROM foto WHERE f_kat=1 AND f_velkost=1 OR f_velkost=3";
+                        $result = mysqli_query($lin, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            // output data of each row
+                            while($row = mysqli_fetch_assoc($result)) {
+                                echo '<img src="../assets/images/galeria/'.$row['nazov'].'" alt="" width=120 height=auto>';
+                            }
+                        } else {
+                            echo "0 results";
+                        }
+                    ?>
+                </div>                
             </div>
         </div>
     </div>
