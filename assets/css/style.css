@@ -5,6 +5,8 @@ body {
     height: 100%;
     position: relative;
 }
+
+
 input:focus {
     outline: none !important;
 
@@ -322,6 +324,25 @@ input{
 
 
 
+.fa-arrow-right{
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.fa-arrow-right.down{
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    transform:rotate(90deg);
+}
+
+
+
+
+
+
+
+
 /*Aleksove responsivne veci <3*/
 @media only screen and (max-width: 576px) {
     .header_desktop {
@@ -396,12 +417,4 @@ input{
          -o-transition-property: height, visibility;
             transition-property: height, visibility;
   }
-
-
-
-
-
-
-
-
   
