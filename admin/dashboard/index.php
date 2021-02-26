@@ -106,7 +106,7 @@ if(isset($_COOKIE['admin'])){ ?>
                     $sth->execute();
                     $rowcount_z = $sth->rowCount();
                     ?>
-                    <div class="stats" style="height: 350px;border: 1px solid #E7E7E7; padding-left: 5%; background-color: white; box-shadow: 5px 6px 16px -2px #616161; border-radius: 20px;">
+                    <div class="stats" style="height: 100%;border: 1px solid #E7E7E7; padding-left: 5%; background-color: white; box-shadow: 5px 6px 16px -2px #616161; border-radius: 20px;">
                         <div class="row">
                             <h4 style="font-size: 30px; font-weight: bold; padding-top: 1%">Registrovaní zákazníci (<?php echo $rowcount_z; ?>)</h4>
                         </div>
