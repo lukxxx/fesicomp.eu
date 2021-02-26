@@ -88,7 +88,7 @@
                                 <a href="index.php" style="padding-left: 20px; height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                             </div>
                             <div class="mobile_buttons" style="margin-top: 5%;">
-                                <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
+                                <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 28px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
                                 <a data-toggle="collapse" href="#links" role="button" aria-expanded="false" aria-controls="links" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
                             </div>
                         </div>
@@ -190,3 +190,13 @@
             <marquee>Od 19.12.2020 do konca LOCKDOWN bude predajňa zatvorená.</marquee>        
         </div>
     </header>
+
+    <script>
+        $(".fa-arrow-right").click(function(){
+        $(this).toggleClass("down");
+        });
+        
+        $('.fa-bars').click(function() {
+        $(this).toggleClass("fa-times");
+        });
+    </script>

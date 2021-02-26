@@ -1,8 +1,8 @@
-<div class="category-list" style="margin-left: 20px; margin-right: 20px; ">
-    <div class="category-h d-flex align-items-center">
-        <i style="padding: 8px 8px 8px 15px; font-size: 25px;" class="far fa-folder"></i><span style="padding:2px; font-size: 22px;">Kategórie</span>
+<div class="category-list" style="margin-left: 20px; margin-right: 20px;">
+    <div class="category-h d-flex align-items-center" style = "border-radius: 15px 15px 0px 0px; ">
+        <i style="padding: 8px 8px 8px 15px; font-size: 25px;" class="far fa-folder"></i><span style="padding:2px; font-size: 22px; ">Kategórie</span>
     </div>
-    <div class="categories">
+    <div class="categories" style = "border-radius: 0px 0px 15px 15px;">
         <?php 
             $aktualni = "";
             $kid = "0";
