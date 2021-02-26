@@ -86,7 +86,7 @@
                             <a href="../index.php" style="padding-left: 20px; height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                         </div>
                         <div class="mobile_buttons" style="margin-top: 5%;">
-                            <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
+                            <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 28px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
                             <a data-toggle="collapse" href="#links" role="button" aria-expanded="false" aria-controls="links" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                                 <h2 class="text-center">Výpočtová technika</h2>
                                 <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <a data-toggle="collapse" href="#categories_mobile" style="color: white; font-size: 23px; padding: 1px;">Katalóg produktov </a>
+                                        <a data-toggle="collapse" href="#categories_mobile" style="color: white; font-size: 23px; padding: 1px; text-decoration: none;">Katalóg produktov </a>
                                         <a data-toggle="collapse" href="#categories_mobile" role="button" aria-expanded="false" aria-controls="categories_mobile">
                                             <i style="font-size: 24px; color: white; text-decoration: none; padding: 1px;" class="fas fa-arrow-right text-right"></i>
                                         </a>
@@ -188,3 +188,14 @@
         <marquee>Od 19.12.2020 do konca LOCKDOWN bude predajňa zatvorená.</marquee>        
     </div>
 </header>
+
+
+<script>
+    $(".fa-arrow-right").click(function(){
+    $(this).toggleClass("down");
+    });
+        
+    $('.fa-bars').click(function() {
+    $(this).toggleClass("fa-times");
+    });
+</script>
