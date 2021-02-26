@@ -1,69 +1,202 @@
-<?php 
+<?php
+include_once "../includes/head-template.php"
+?>
+<script type='text/javascript'>
+    function updateURLParameter(url, param, paramVal)
+{
+    var TheAnchor = null;
+    var newAdditionalURL = "";
+    var tempArray = url.split("?");
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var temp = "";
 
-include "../includes/head-template.php";
-include "../includes/header-template.php";
-$db_host = "localhost";
-$db_name = "compsnv";
-$db_user = "root";
-$db_pass = "";
+    if (additionalURL) 
+    {
+        var tmpAnchor = additionalURL.split("#");
+        var TheParams = tmpAnchor[0];
+            TheAnchor = tmpAnchor[1];
+        if(TheAnchor)
+            additionalURL = TheParams;
 
+        tempArray = additionalURL.split("&");
 
-// Create a connection to the MySQL database using PDO
-$pdo = new pdo(
-    "mysql:host={$db_host};dbname={$db_name}",
-    $db_user,
-    $db_pass,
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_EMULATE_PREPARES => FALSE
-    ]
-);
-if(isset($_POST['search'])){
-    $term = $_POST['search'];
-    $sql = "SELECT DISTINCT * FROM produkty WHERE p_nazov LIKE ?";
-        $query = $pdo->prepare($sql);
-        $query->execute([$term]);
-        $post_count = $query->rowCount();
-    
-        $result = '';
-        if ($post_count > 0) {
-            while($row = $query->fetch(PDO::FETCH_ASSOC)){
-                $num = "(".$post_count.")";
-                $div = "<div style='border: 1px solid black; border-radius: 5px; margin-bottom:2%' class='row'>";
-                $col1 = "<div style='border: 1px 0px 0px 0px solid black; padding: 1%; width: 100% ' class'col-sm-12 col-md-12 col-lg-12'>";
-                $vysledok = "<h2 style='text-decoration: underline; padding-left: 2%;'>".$row['meno']."  ".$row['priezvisko']."</h2>";
-                $mail = "<p style='padding-left : 2%; font-size: 11px;'><strong>Rok narodenia:</strong> ".$row['rok_narodenia']." <br><strong>E-mail: </strong> ".$row['email']."</p>";
-                $mesto = "<p style='padding-left: 2%'><strong>Mesto:</strong> ".$row['mesto']." <strong>Kraj:</strong> ".$row['kraj']."</p>";            
-                $div_end = "</div>";
-                $result .= $div. $col1. $vysledok. $mail.$mesto. $div_end. $col1. $div_end. $div_end ;
+        for (var i=0; i<tempArray.length; i++)
+        {
+            if(tempArray[i].split('=')[0] != param)
+            {
+                newAdditionalURL += temp + tempArray[i];
+                temp = "&";
             }
-        }else{
-            $error = "Vašemu vyhľadávaniu nezodpovedá žiaden vodič";
-        }
+        }        
+    }
+    else
+    {
+        var tmpAnchor = baseURL.split("#");
+        var TheParams = tmpAnchor[0];
+            TheAnchor  = tmpAnchor[1];
+
+        if(TheParams)
+            baseURL = TheParams;
     }
 
+    if(TheAnchor)
+        paramVal += "#" + TheAnchor;
 
+    var rows_txt = temp + "" + param + "=" + paramVal;
+    window.location = baseURL + "?" + newAdditionalURL + rows_txt;
+}
 
-$subidubi = "dell";
-?>
+</script>
+    <?php include (ROOT ."includes/header-template.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3">
-                <?php include "../includes/category-list-temp.php" ?>
+                <?php include (ROOT."includes/category-list-temp.php")?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
-                <h3>Hľadaný výraz: <span style="font-size: 20px;"><?php echo $subidubi; ?></span></h3>
-                <div class="row">
-                    
-                <?php
+                <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!---------------------------------------------Neviem ako to chcete :D a skúšal som celý čas hľadať slider na nete ale nič schopné som za tých pol hodiny nenašiel bohužiaľ, Lukáš mi isto povie teraz, že nech sa naučím vyhľadávať veci na googli :D a dobrú chuť keď papate pizzu Alexovu------------------------------------------------------------------>
                 
-                echo $nazov;
-
-
-?>
+                <div class = "row" >
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                        <div class="button-box ">                       
+                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','ASC' )"class="btn btn-dark" role="button">Najlacnejšie</a>
+                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','DESC' )"class="btn btn-dark" role="button">Najdrahšie</a>                    
+                        </div>                                                                      
                     </div>
                 </div>
+                <br>
+                
+                 <!--       _
+                        .__(.)< (kač kač)
+                        \___)   
+                ~~~~~~~~~~~~~~~~~~-->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    
+                    
+
+                    
+                    <?php
+                        if (isset($_GET['page'])) {
+                            $page = $_GET['page'];
+                        } else {
+                            $page = 1;
+                        }
+                        $search = $_GET['search'];
+                        $no_of_records_per_page = 24;
+                        $offset = ($page-1) * $no_of_records_per_page; 
+                        $total_pages_sql = "SELECT COUNT(*) FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0'";
+                        $result = mysqli_query($link,$total_pages_sql);
+                        $total_rows = mysqli_fetch_array($result)[0];
+                        $total_pages = ceil($total_rows/$no_of_records_per_page);
+                        ?>
+                        <div class = "row" >
+                            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                                <p>Počet nájdených položiek: <?php echo $total_rows ?></p>                                                                     
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap row">
+                        <?php
+                            if (isset($_GET['cena'])) {
+                                $cena = $_GET['cena'];
+                                //echo $cena;
+                                $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY p_cena $cena LIMIT $offset, $no_of_records_per_page  ";
+                            } else {
+                                $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' LIMIT $offset, $no_of_records_per_page";
+                            }
+                            
+                            if($stmt = mysqli_prepare($link,$sql)){
+                                if(mysqli_stmt_execute($stmt)){
+                                    $result = mysqli_stmt_get_result($stmt);
+                                    if(mysqli_num_rows($result) > 0){
+                                        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                                        ?>                                
+                                            <div class="col-sm-12 col-md-4 col-lg-3">
+                                                <div class="product-card justify-content-md-center">
+                                                    <div class="discount">
+                            
+                                                    </div>
+                                                    <div class="product-img justify-content-md-center">
+                                                        <a href="item.php?ID=<?php echo $row['p_id']?>"><img src="../catalog/<?php echo $row['p_id'] ?>/<?php echo $row['p_img']  ?>" 
+                                                         class="img-prod" height="120"></a>
+                                                    </div>
+                                                    <div class="product-name justify-content-md-center">
+                                                        <div class="heading">
+                                                            <a style="color: white;" href="item.php?ID=<?php echo $row['p_id']?>"><h6 class="name-prod"><?php echo $row['p_nazov'] ?></h6></a>
+                                                        </div>
+                            
+                                                    </div>
+                            
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="product-bottom justify-content-md-center">
+                                                            <div class="add-to-cart justify-content-md-center">
+                                                                <button class="btn btn-dark" style="border-radius: 10px;" type="button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                                            </div>
+                                                            <div class="price-tag align-self-center">
+                                                                <div class="pricing" style="display: block;">
+                                                                    <span class="product-price-dph"><?php echo $row['p_cena'] ?>€</span><br style="height: 1px;">
+                                                                    <?php 
+                                                                        $no_dph = ($row['p_cena'] / 100) * 80; 
+                                                                        $nodph = number_format($no_dph, 2, ',', ' ');
+                                                                    ?>
+                                                                    <span class="product-price-wdph">Bez DPH:<?php echo $nodph; ?>€</span>
+                                                                </div>
+                            
+                                                            </div>
+                                                        </div>
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                        
+                                        <?php
+                                    } 
+                                } else{
+                                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                }
+                            }
+                        
+                    ?>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <ul class="pagination ">
+                            <?php if ($page > 1): ?>
+                            <li class="prev"><a href="#" onclick="updateURLParameter(window.location.href, 'page', '<?php Print( $page-1)?>' )">Predchádzajúca</a></li>
+                            <?php endif; ?>
+
+                            <?php if ($page > 3): ?>
+                            <li class="start"><a href="#" onclick="updateURLParameter(window.location.href, 'page', '1');return false;">1</a></li>
+                            <li class="dots">...</li>
+                            <?php endif; ?>
+
+                            <?php if ($page-2 > 0): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page-2)?> )"><?php echo $page-2 ?></a></li><?php endif; ?>
+                            <?php if ($page-1 > 0): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page-1)?> )"><?php echo $page-1 ?></a></li><?php endif; ?>
+
+                            <li class="currentpage"><a href="?KID=<?php echo $kid?>&page=<?php echo $page ?>"><?php echo $page ?></a></li>
+
+                            <?php if ($page+1 < ceil($total_pages)+1): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page+1)?> )"><?php echo $page+1 ?></a></li><?php endif; ?>
+                            <?php if ($page+2 < ceil($total_pages)+1): ?><li class="page"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page+2)?> )"><?php echo $page+2 ?></a></li><?php endif; ?>
+
+                            <?php if ($page < ceil($total_pages)-2): ?>
+                            <li class="dots">...</li>
+                            <li class="end"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $total_pages)?> )" ><?php echo ceil($total_pages) ?></a></li>
+                            <?php endif; ?>
+
+                            <?php if ($page < ceil($total_pages)): ?>
+                            <li class="next"><a href="#" onclick="updateURLParameter(window.location.href, 'page',<?php Print( $page+1)?> )">Ďalšia</a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                <br>
             </div>
-        </div>
+        </div>   
     </div>
-  <?php include "../includes/footer.php"; ?>
+    <?php include (ROOT. "includes/footer.php") ?>
+    
+</body>
+</html>

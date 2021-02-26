@@ -5,6 +5,8 @@ body {
     height: 100%;
     position: relative;
 }
+
+
 input:focus {
     outline: none !important;
 
@@ -319,6 +321,25 @@ z-index: 2;
 input{
     margin-bottom: 10px;
 }
+
+
+
+.fa-arrow-right{
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.fa-arrow-right.down{
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    transform:rotate(90deg);
+}
+
+
+
+
+
 
 
 
