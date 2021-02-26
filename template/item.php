@@ -171,7 +171,7 @@ if(isset($_GET['ID'])){
                     </ul>
 
                     <div id="tab-1" class="tab-content current">
-                        <?php echo $popis ?>
+                        <p><?=nl2br($popis)?></p>
                     </div>
                     <div id="tab-2" class="col-12 tab-content">
                         <div class="row" >
