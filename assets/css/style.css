@@ -397,7 +397,25 @@ input{
             transition-property: height, visibility;
   }
 
-
+  .parent {
+    height: 100px;
+    width: 100px;
+    background: red;
+  }
+  
+  .child {
+    height: 50%;
+   
+    background: blue;
+  }
+  .alu-card{
+    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
+    box-shadow: 5px 6px 16px -2px #616161;
+    max-height: 266px;
+   
+    margin-bottom: 2vw;
+    height: 100%;
+  }
 
 
 
