@@ -10,8 +10,8 @@
                         <div style="border-left: 2px solid black; height: 50px; margin: 0px 0px 0px 100px"></div>
                     </div>
                     <div class="col-md-4 col-lg-4">
-                        <div class="logout d-flex justify-content-end">
-                            <a style="color: back;" href="./profile"><span style="color: black"><?php echo $_COOKIE['admin'] ?> </span></a>
+                        <div class="logout d-flex justify-content-end">      
+                            <a style="color: back;" href="../profile"><span style="color: black"><?php echo $_COOKIE['admin'] ?> </span></a>                    
                             <form method="post" action="#">
                                 <button style="all: unset; cursor: pointer; padding-right: 30px" type="submit" name="logout"><i style="padding-left: 20px" class="fas fa-sign-out-alt"></i></button>
                             </form>
