@@ -76,9 +76,9 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                                 echo '<a class="nav-link non-active" href="../"><i class="fas fa-recycle"></i><span> Reklamácie</span></a>';
                             }
                             if (strpos($url,'/customers') !== false) {
-                                echo '<a class="nav-link active" href="#"><i class="fas fa-users-cog"></i><span> Zákazníci</span></a>';
+                                echo '<a class="nav-link active" href="../customers"><i class="fas fa-users-cog"></i><span> Zákazníci</span></a>';
                             } else {
-                                echo '<a class="nav-link non-active" href="../"> <i class="fas fa-users-cog"></i><span> Zákazníci</span></a>';
+                                echo '<a class="nav-link non-active" href="../customers"> <i class="fas fa-users-cog"></i><span> Zákazníci</span></a>';
                             }
                         ?>
                         </div>
@@ -103,7 +103,7 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                             } else {
                                 echo '<a class="nav-link non-active" href="../"><i class="fas fa-recycle"></i><span> Bannery</span></a>';
                             }
-                            if (strpos($url,'/customers') !== false) {
+                            if (strpos($url,'/customssers') !== false) {
                                 echo '<a class="nav-link active" href="#"><i class="fas fa-users-cog"></i><span> Správy</span></a>';
                             } else {
                                 echo '<a class="nav-link non-active" href="../"> <i class="fas fa-users-cog"></i><span> Správy</span></a>';
