@@ -6,7 +6,7 @@ $(document).ready(function(){
         var inputVal = $(this).val();
         var resultDropdown = $(this).siblings(".result");
         if(inputVal.length){
-            $.get("../template/search-engine-template.php", {term: inputVal}).done(function(data){
+            $.get("search-man.php", {term: inputVal}).done(function(data){
                 // Display the returned data in browser
                 window.setTimeout(resultDropdown.html(data), 1000);
             });

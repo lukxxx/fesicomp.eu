@@ -13,6 +13,110 @@
 .login-button{
     border-radius: 20px;
     font-size: 20px;
-    border: black solid;
+    border: white 1px solid;
     padding: 0px 15px;
+}
+h4 {
+    font-weight: bold;
+}
+h3 {
+    font-weight: bold;
+}
+body { 
+    /* disabling body scrolling */ 
+    overflow: hidden; 
+    margin: auto; 
+    text-align: center; 
+} 
+
+.scroll { 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    height: 100%; 
+    margin-bottom: 50%;
+} 
+.panel-header {
+    padding: 20px 0px 0px 20px;
+}
+.active {
+    background-color: white;
+    color: black;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 3px;
+    border-radius: 30px;
+    width: 65%;
+}
+.active-home {
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 3px;
+    border-radius: 30px;
+    width: 65%;
+    color: white;
+    text-align: left;
+}
+.active-home:hover {
+    background-color: white;
+    color: black;
+   
+    border-radius: 30px;
+    width: 65%;
+}
+.active:hover {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(197, 197, 197);
+}
+.home-link {
+    padding-left: 7%;
+}
+.link-category {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+.non-active {
+    color: white;
+    margin-bottom: 3px; 
+    margin-top: 3px;
+    padding: 5px 10px 5px 10px;
+}
+.non-active:hover {
+    background-color: white;
+    color: black;
+   
+    border-radius: 30px;
+    width: 65%;
+
+}
+.non-active-home:hover {
+    background-color: white;
+    color: black;
+
+    border-radius: 30px;
+    
+
+}
+.non-active-home {
+    color: white;
+    margin-left: -5px;
+}
+#span {
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+.main {
+    padding: 20px;
+}
+.stat-number {
+    font-size: 25px;
+    font-weight: bold;
+}
+.download-btn {
+    transition: 0.4s;
+}
+.download-btn:hover{
+    transform: scale(1.05);
+    cursor: pointer;
 }

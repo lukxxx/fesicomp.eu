@@ -11,21 +11,15 @@ if ($stmt = mysqli_prepare($link, $sql)) {
 
         if (mysqli_num_rows($result) > 0) {
             ?><div class="row">
-                <table class="col-12">
-                    <thead>
-                        <tr>
-                        <th scope="col">Parameter</th>
-                        <th scope="col">Hodnota</th>
-                        </tr>
-                    </thead>
+                <table class="col-12">  
             <?php
             
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                
                 ?>    
-                    <tr>
-                        <td><?php echo $row['pc_nazov']?></td>
-                        <td><?php echo $row['p_hodnota']?></td>
+                    <tr style="border-bottom: 2px solid #bfbfbf; height:35px">
+                        <td style="padding-left:10px"><?php echo $row['pc_nazov']?></td>
+                        <td style="padding-right:200px"><?php echo $row['p_hodnota']?></td>
                     </tr>
                 <?php
             }

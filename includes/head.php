@@ -1,7 +1,41 @@
 <?php 
  $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
  $cart = json_decode($cart);
+require_once "config.php";
 
+// DATA GATHERING 
+if(strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE)
+ $browser = 'Internet explorer';
+elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'Trident') !== FALSE) //For Supporting IE 11
+ echo 'Internet explorer';
+elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== FALSE)
+ $browser = 'Mozilla Firefox';
+elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'Edg') !== FALSE)
+ $browser = 'Microsoft Edge';
+elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== FALSE)
+ $browser = 'Google Chrome';
+elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== FALSE)
+ $browser = "Opera Mini";
+elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'Opera') !== FALSE)
+ $browser = "Opera";
+elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'Safari') !== FALSE)
+ $browser = "Safari";
+else
+ $browser = 'Else';
+
+    $date = date('d.m.y');
+    $datum = date_format (new DateTime($date), 'd.m.Y');
+    $ip =  $_SERVER['REMOTE_ADDR'];
+    
+    $sth = $pdo->prepare("SELECT * FROM visitors WHERE ip_add = ?");
+    $sth->execute(array($ip));
+    if($sth->rowCount() == 1){
+        
+    } else {
+        $sth = $pdo->prepare("INSERT INTO visitors (ip_add, browser, visit_date) VALUES (?, ?, ?)");
+        $sth->execute(array($ip, $browser, $datum));
+    }
+ 
 ?>
 <!DOCTYPE html>
 <html lang="sk">

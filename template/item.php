@@ -173,9 +173,12 @@ if(isset($_GET['ID'])){
                     <div id="tab-1" class="tab-content current">
                         <?php echo $popis ?>
                     </div>
-                    <div id="tab-2" class="tab-content">
-                        <div class="related"  style="display: flex;">
-                            <?php include (ROOT."includes/parameters.php");?>
+                    <div id="tab-2" class="col-12 tab-content">
+                        <div class="row" >
+                            <div class="col-12">
+                                <?php include (ROOT."includes/parameters.php");?>
+                            </div>
+                            
                         </div>
                     </div>
                     <div id="tab-3" class="tab-content">
