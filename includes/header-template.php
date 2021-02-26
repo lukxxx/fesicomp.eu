@@ -44,7 +44,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10 col-md-10 col-lg-10">
-                                <form method="post" action="../template/search-results.php">
+                                <form method="post" action="../template/handler.php">
                                     <div class="form-group has-search search-box" style="position: relative;">
                                         
                                         <input style="position: relative; z-index: 5 !important; border-radius:30px; padding-left: 10px; outline: 0 !important;" 
