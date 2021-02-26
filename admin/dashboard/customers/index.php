@@ -22,7 +22,7 @@ if(isset($_COOKIE['admin'])){ ?>
         </div>
         
         <div  style="background-color: #F3F3F3; width: 100%; height: 1080px; padding: 0 !important" class="col-sm-10 col-md-10 col-lg-10 scroll">
-            <?php include "../../includes/header-main.php"; ?>               
+            <?php include "../../includes/header-temp.php"; ?>               
             <hr style="border: 1px solid black; margin-top: -5px; width: 95%;">
             <h6>Pre zobrazenie detailov o zákazníkovi kliknite na ozubené koliesko</h6>
             <div class="row" style="padding: 40px" >
