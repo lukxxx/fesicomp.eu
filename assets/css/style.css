@@ -440,7 +440,8 @@ input{
   }
 
 .zostavy {
-    background-image: url("../images/sluzby/zostavy.jpg");
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.267)), url("../images/sluzby/zostavy.jpg");  
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -448,15 +449,17 @@ input{
 }
 
 .opravy {
-    background-image: url("../images/sluzby/opravy.jpg");
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.267)), url("../images/sluzby/opravy.jpg");   
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     
+    
 }
 
 .skylink {
-    background-image: url("../images/sluzby/skylink.jpg");
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.014), rgba(0, 0, 0, 0.027)), url("../images/sluzby/skylink.jpg"); 
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -464,7 +467,7 @@ input{
 }
 
 .ekasa {
-    background-image: url("../images/sluzby/ekasy.jpg");
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.014), rgba(0, 0, 0, 0.027)), url("../images/sluzby/ekasy.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
