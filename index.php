@@ -18,7 +18,7 @@
                 </div>
                 <h2>Naše služby</h2>
                     <br>
-                <div class="row">
+                <div class="row" style="padding-bottom: 20px">
                     <?php include "includes/sluzby.php" ?>
                 </div>
                 <h2>Nové produkty</h2>
