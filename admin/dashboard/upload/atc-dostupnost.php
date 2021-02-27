@@ -1,10 +1,13 @@
-<?php include "./main.php"; $dbl=DB_connect();
+<?php 
+	include "../../config.php";
 
-	$atc_dostupnost="../xml/atc-dostupnost.xml";
-     
+	$dbl=$link;
+	
+	$atc_dostupnost="xml/atc-dostupnost.xml";
       
   function stiahni_dostupnost($meno,$heslo,$subor)
   {
+	  	echo "idem";
 		global $log;
 		$sock = fsockopen("www.atcomp.cz", 80, $errno, $errstr, 30);
 		if (!$sock) { $log.="ERR! $errstr ($errno)<br>\n"; echo"ERR! $errstr ($errno)<br>\n"; } else 

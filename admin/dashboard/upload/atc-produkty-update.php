@@ -1,6 +1,9 @@
-<?php include "./main.php";	$link=DB_connect();
+<?php 
+	include "../../config.php";
 
-	$atc_produkty="../xml/atc-produkty-update.xml";
+	$dbl=$link;
+
+	$atc_produkty="xml/atc-produkty-update.xml";
 	$atc_datum=date("d.m.Y",-20*86400+mktime(00,00,00,date("m"),date("d"),date("Y")));	
 				
   function array_kategorie_gen()

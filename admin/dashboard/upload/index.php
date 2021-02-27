@@ -1,10 +1,11 @@
 <?php 
 require_once "../../includes/head-sub.php";
-require_once "../../config.php";
-include "main.php";
+include "../../config.php";
+//include "main.php";
 $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 $date = date('d.m.y');
 $nadpis = "Nahrávanie";
+
 if(isset($_COOKIE['admin'])){
     if(isset($_POST['logout'])){
         header("Location: gdbay.php");
@@ -36,7 +37,7 @@ if(isset($_COOKIE['admin'])){ ?>
                     </div>
                 </div> 
 				<div class="col-sm-3 col-md-4 col-lg-3" >
-                    <div class="download-btn" style="border: 1px solid #E7E7E7; padding: 5% 0% 5% 10%; background-color: white; box-shadow: 5px 6px 16px -2px #616161; border-radius: 20px;">
+                    <div class="download-btn" style="border: 1px solid #E7E7E7; padding: 5% 0% 5% 10%; background-color: white; box-shadow: 5px 6px 16px -2px #616161; border-radius: 20px;" >
 						<div class="row">
 							<button class="download-btn-produkty btn bnt-dark">download</button>
 							<i  class="fas fa-download fa-2x"></i>
@@ -115,14 +116,18 @@ if(isset($_COOKIE['admin'])){ ?>
                     </div>
                 </div>                
             </div> 
-			<form action="atc-produkty.php" method="get">
 
-     <input type="submit" value="Submit">
-</form>
+            
+			<form onclick="sendget('atc-dostupnost.php')">
+                <input onclick="sendget('atc-dostupnost.php')" type="submit" value="Submit">
+            </form>
+
 			<hr style="border: 1px solid black; margin-top: -5px; width: 95%;">
 			<h3>Záznamy nahrávania:</h3>	
 			<div class="row" style="padding: 40px; margin-bottom: 100px" >
 			<table class="table">
+            <div id="report"></div>
+
   <thead class="thead-dark">
     <tr>
       <th scope="col">Dátum</th>

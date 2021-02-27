@@ -1,6 +1,9 @@
-<?php  include "./main.php"; $dbl=DB_connect();
+<?php  
+	include "../../config.php";
 
-	$atc_suvisiaci="../xml/atc-suvisiaci.xml";
+	$dbl=$link;
+
+	$atc_suvisiaci="xml/atc-suvisiaci.xml";
  
   function stiahni_suvisiaci($meno,$heslo,$subor)
   {
