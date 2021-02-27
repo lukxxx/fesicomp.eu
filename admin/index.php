@@ -30,12 +30,12 @@ if(!isset($_COOKIE['admin'])) {
          $pass = $_POST['heslo'];
          $login = $_POST['login'];
 
-        $sth = $pdo->prepare("SELECT * FROM administracia WHERE admin_meno = ?");
+        $sth = $pdo->prepare("SELECT * FROM administracia WHERE admin_login = ?");
         $sth->execute(array($login));
         if($sth->rowCount() == 1){
             $row = $sth->fetch(PDO::FETCH_ASSOC);
             $password = $row['heslo'];
-            $admin_login = $row['admin_meno'];
+            $admin_login = $row['admin_login'];
         } else {
             $admin_login = "";
             $password = "";
