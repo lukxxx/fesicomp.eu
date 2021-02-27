@@ -1,6 +1,9 @@
-<?php include "./main.php";	$dbl=DB_connect();
+<?php 
+	include "../../config.php";
 
-	$url_katalog = "../katalog/";
+	$dbl=$link;
+
+	$url_katalog = "../../../catalog/";
 	
 	function img_save($inPath,$outPath)
 	{ 
