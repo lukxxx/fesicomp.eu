@@ -1,3 +1,4 @@
+<?php require_once "../config.php"; ?>
 <header class="header_desktop">
         <div class="container-fluid back">
             <div class="container">
