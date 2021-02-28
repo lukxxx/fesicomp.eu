@@ -91,6 +91,7 @@ include_once "../includes/head-template.php"
                         $result = mysqli_query($link,$total_pages_sql);
                         $total_rows = mysqli_fetch_array($result)[0];
                         $total_pages = ceil($total_rows/$no_of_records_per_page);
+                        
                         ?>
                         <div class = "row" >
                             <div class="col-sm-12 col-md-12 col-lg-12 ">
@@ -112,6 +113,13 @@ include_once "../includes/head-template.php"
                                     $result = mysqli_stmt_get_result($stmt);
                                     if(mysqli_num_rows($result) > 0){
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                                            $obrazok = $row['p_img'];
+                                            $id_produktu = $row['p_id'];
+                                            if(file_exists("../catalog/$id_produktu/$obrazok")){
+                                                $cesta = "<img src='../catalog/$id_produktu/$obrazok' height='120'>";
+                                            } else {
+                                                $cesta = "<img src='../assets/images/no-image.png' height='120'>";
+                                            }
                                         ?>                                
                                             <div class="col-sm-12 col-md-4 col-lg-3">
                                                 <div class="product-card justify-content-md-center">
@@ -119,8 +127,7 @@ include_once "../includes/head-template.php"
                             
                                                     </div>
                                                     <div class="product-img justify-content-md-center">
-                                                        <a href="item.php?ID=<?php echo $row['p_id']?>"><img src="../catalog/<?php echo $row['p_id'] ?>/<?php echo $row['p_img']  ?>" 
-                                                         class="img-prod" height="120"></a>
+                                                        <a href="item.php?ID=<?php echo $row['p_id']?>"><?php echo $cesta; ?></a>
                                                     </div>
                                                     <div class="product-name justify-content-md-center">
                                                         <div class="heading">
@@ -151,7 +158,7 @@ include_once "../includes/head-template.php"
                                                 </div>
                                             </div>
                                         <?php
-                                        }
+                                        } mysqli_close($link);
                                         ?>
                                         
                                         <?php
