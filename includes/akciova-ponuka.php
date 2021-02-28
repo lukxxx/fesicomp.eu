@@ -65,7 +65,11 @@ require_once "config.php";
                                 <div class="price-tag align-self-center">
                                     <div class="pricing" style="display: block;">
                                         <span class="product-price-dph"><?php echo $row->p_cena ?>€</span><br style="height: 1px;">
-                                        <span class="product-price-wdph">Bez DPH: 135.60€</span>
+                                        <?php
+                                            $no_dph = ($row->p_cena / 100) * 80; 
+                                            $bezdph = number_format($no_dph, 2, ',', ' ');
+                                        ?>
+                                        <span class="product-price-wdph">Bez DPH: <?php echo $bezdph; ?></span>
                                     </div>
 
                                 </div>
