@@ -11,17 +11,17 @@
                 <?php include "includes/category-list.php" ?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
-                <h2>Akciová ponuka</h2>
+                <h2 class="akciova_ponuka">Akciová ponuka</h2>
                 <br>
                 <div class="row">
                     <?php include "includes/akciova-ponuka.php"?>
                 </div>
-                <h2>Naše služby</h2>
+                <h2 class="nase_sluzby">Naše služby</h2>
                     <br>
-                <div class="row" style="padding-bottom: 20px">
+                <div class="row services" style="padding-bottom: 20px">
                     <?php include "includes/sluzby.php" ?>
                 </div>
-                <h2>Nové produkty</h2>
+                <h2 class="nove_produkty">Nové produkty</h2>
                     <br>
                 <div class="row">
                     <?php include "includes/nove-produkty.php" ?>
