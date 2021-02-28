@@ -1,5 +1,20 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FESI comp, s.r.o</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>   
+    <script type="text/javascript" src="https://mapi.trustpay.eu/mapi5/Scripts/TrustPay/popup.js"></script>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
+    <script src="../assets/js/search-template.js" type="text/javascript"></script>
+    <script src="../assets/js/bootstrap.js" type="text/javascript"></script>
+    
+</head>
 <?php 
-include "../includes/head-template.php";
+require_once "../config.php";
 $options = [
     'cost' => 12,
 ];
@@ -15,7 +30,10 @@ $total = 0;
 foreach ($cart as $c)
 {
     $total += $c->product->p_cena * $c->quantity;
+    $id_produktu = $c->productCode;
 }
+
+echo $id_produktu;
 
 $platba = "";
 $doprava = "";
@@ -24,10 +42,6 @@ $term_err = "";
 $platba_err = "";
 $doprava_err = "";
 
-$show = "display: block;";
-$hide = "display: none;";
-
-$submit_btn = "<button style='all: unset; cursor: pointer; color: black; text-align: right;' name='bimbambum' type='submit'>Pokračovať k doprave <i class='fas fa-arrow-right'></i></button>";
 if(isset($_POST['pay'])){
         if(!isset($_POST['doprava'])){
             $doprava_err = "Zadajte spôsob dopravy!";
@@ -51,40 +65,85 @@ if(isset($_POST['pay'])){
         }
         
         if(!isset($_POST['podmienky'])){
-            $term_err = "Pre pokračovanie musíte súhlasiť s obchodnými podmienkami";
             header("location: ./final.php");
         } else {
             $term = true;
         }
-        array_push($details, array(
-                    "platby" => $platba,
-                    "dopravy" => $doprava
-                ));    
-    } ?>
+        if(isset($_COOKIE['user']) || isset($_COOKIE['user-login'])){
+            $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto FROM users UNION SELECT email, meno, priezvisko, mesto FROM g_users");
+            $sth->execute();
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+            $id_zakaznika = $row['id'];
+            $meno = $row['meno'];
+            $email = $row['email'];
+            $mesto = $row['mesto'];
+            $priezvisko = $row['priezvisko'];    
+            $zlava = 0;
+            $sth = $pdo->prepare("INSERT INTO faktury (id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava) VALUES (?,?,?,?,?,?,?,?,?)");
+            $sth->execute(array($id_zakaznika,$meno,$priezvisko,$email,$telefon,0,0,$zlava));
+        } else {
+            foreach ($details as $d)
+            {
+                $telefon_non_login = $d->number;
+                $name = $d->name;
+                $priezvisko_non = $d->surname;
+                $email_non_login = $d->email;
+                $quantity = $d->quantity;
+                
+            }
+            $id_zakaznika = 0;
+            $zlava = 0;
+            $sth = $pdo->prepare("INSERT INTO faktury (id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava) VALUES (?,?,?,?,?,?,?,?,?)");
+            $sth->execute(array($id_zakaznika,$name,$priezvisko_non,$email_non_login,$telefon_non_login,0,0,$zlava));
+        }
+        
+        
+        
+        
+        
+              
+                
+    } 
+
+include "../includes/header-template.php" ?>
+<?php if(isset($_COOKIE['details'])){ ?>
+    <div class="container" style="margin-top: 50px;">
+    <div class="row d-flex">
+        <div class="col-sm-12 col-md-3 col-lg-3">
+            
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+            <h2 style="font-weight: bold; text-transform: uppercase;">Ďakujeme za objednávku!</h2>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
+            
+            
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="container" style="padding: 0% 25% 0% 25%">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h5>Vašu objednávku číslo <?php echo $order_number ?> sme zaznamenali a začíname na nej pracovať!</h5>
+
+                <span style="text-decoration: underline; font-size: 19px;">Zvolený spôsob dopravy:</span><br>
+                    <span><?php echo $doprava; ?></span>
+                <span style="text-decoration: underline; font-size: 19px;">Zvolený spôsob platby:</span><br>
+                    <span><?php echo $platba; ?></span>
+                <span>Zakúpený tovar: </span>
+                
+                    <?php  echo $total;?>  
+                  
+            </div>
+        </div>
+    </div>
+    
      
-        <iframe id="TrustPayFrame" src="https://playground.trustpay.eu/mapi5/Card/PayPopup?accountId=2107962460"></iframe>
-            <a href="#" class="show-popup">Pay via TrustPay</a>
-   <?php
-    function getSetUpPaymentUrl($total)
-    {
-        $baseUrl = "https://playground.trustpay.eu/mapi5/wire/paypopup";
-        $accountId = 2107962460;
-        $amount = $total;
-        $currency = "EUR";
-        $reference = "123456789";
-        $notificationUrl = "https://compsnv.sk/template/notification.php";
-        $paymentType = 0;
-    
-        $secretKey = "Y97Nt6wq4TaTKQduXbq6iMOKfaVINmcr";
-        $sigData = sprintf("%d/%s/%s/%s/%d", $accountId, number_format($amount, 2, '.', ''), $currency, $reference, $paymentType);
-        $signature = GetSignature($secretKey, $sigData);
-    
-        $url = sprintf(
-            "%s?AccountId=%d&Amount=%s&Currency=%s&Reference=%s&NotificationUrl=%s&PaymentType=%d&Signature=%s",
-            $baseUrl, $accountId, number_format($amount, 2, '.', ''), $currency,
-            urlencode($reference), urlencode($notificationUrl), $paymentType, $signature);
-        return $url;
-    }
-?>
-    <?php include "../includes/header-template.php" ?>
+    </div>
+<?php } ?>
+    <?php include "../includes/footer.php"?>
+    <?php include "../includes/scripts.php"?>
+</body>
+</html>
     
