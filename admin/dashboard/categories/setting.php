@@ -68,9 +68,9 @@ if(isset($_GET['set'])){
         if(empty($_POST['kat_akt'])){
             $kat_akt = $k_akt;
         } else if($_POST['kat_akt'] == "1") {
-            $kat_akt = $_POST['kat_akt'];
+            $kat_akt = 1;
         } else {
-            $kat_akt = $_POST['kat_akt'];
+            $kat_akt = 0;
         }
         if(empty($_POST['kat_move'])){
             $kat_move = false;

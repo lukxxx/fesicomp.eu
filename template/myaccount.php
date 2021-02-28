@@ -16,20 +16,7 @@ if(isset($_GET['fullname'])){
     $two = $parts[1];
     $full_n = $one." ".$two;
 }
-$db_host = "localhost";
-$db_name = "compsnv";
-$db_user = "root";
-$db_pass = "";
-
-$pdo = new pdo(
-    "mysql:host={$db_host};dbname={$db_name}",
-    $db_user,
-    $db_pass,
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_EMULATE_PREPARES => FALSE
-    ]
-);
+require_once "../config.php";
 
 $given_name = "";
 $em = "";
