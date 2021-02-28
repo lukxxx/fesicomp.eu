@@ -46,6 +46,8 @@ else
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/lightbox.js"></script>
+    <link href="../assets/css/lightbox.css" rel="stylesheet">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
     <script src="../assets/js/search-template.js" type="text/javascript"></script>
