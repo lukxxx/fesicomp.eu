@@ -48,7 +48,8 @@ if(isset($_POST['bimbambum'])){
         if(empty(trim($_POST["surname_new"]))){
             $surname_new_err = "Zadajte priezvisko";
         } else {
-            $surname_new = trim($_POST["surname_new"]);
+            $sur = trim($_POST["surname_new"]);
+            $surname_new = preg_replace("/(?![.=$'€%-])\p{P}/u", "", $sur);
         }
         if(empty(trim($_POST["email_new"]))){
             $email_new_err = "Zadajte priezvisko";
@@ -128,7 +129,8 @@ if(isset($_POST['bimbambum'])){
         if(empty(trim($_POST["surname"]))){
             $surname_err = "Zadajte priezvisko";
         } else {
-            $surname = trim($_POST["surname"]);
+            $sur = trim($_POST["surname"]);
+            $surname = preg_replace("/(?![.=$'€%-])\p{P}/u", "", $sur);
         }
         if(empty(trim($_POST["email"]))){
             $email_err = "Zadajte priezvisko";
@@ -206,12 +208,11 @@ if(isset($_POST['bimbambum'])){
                 "productCode" => $product_code,
                 "quantity" => $quantity,
                 "product" => $product_name,
+                "number" => $tel,
                 "price" => $total,
                 "name" => $name,
                 "surname" => $surname,
-                "email" => $email,
-                "platby" => "",
-                    "dopravy" => ""
+                "email" => $email
             ));
 
             setcookie("details", json_encode($details));
@@ -354,20 +355,9 @@ if(isset($_POST['bimbambum'])){
     </div>
 <?php } 
 if(isset($_COOKIE['user'])){ 
-    $db_host = "localhost";
-    $db_name = "compsnv";
-    $db_user = "root";
-    $db_pass = "";
+    
     $email = $_COOKIE['user-mail'];
-    $pdo = new pdo(
-        "mysql:host={$db_host};dbname={$db_name}",
-        $db_user,
-        $db_pass,
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_EMULATE_PREPARES => FALSE
-        ]
-    );
+    $pdo = new PDO("mysql:host=mariadb103.websupport.sk;port=3313;dbname=compsnv_sk2", "compsnv", "Kajauhroba#2021");
     $sto = $pdo->prepare("SELECT * FROM g_users WHERE email = ?");
     $sto->execute(array($email));
     if($sto->rowCount() == 1){
@@ -577,20 +567,8 @@ if(isset($_COOKIE['user'])){
     </div>
 <?php }  
 if(isset($_COOKIE['user-login'])){ 
-    $db_host = "localhost";
-    $db_name = "compsnv";
-    $db_user = "root";
-    $db_pass = "";
     $email = $_COOKIE['user-login'];
-    $pdo = new pdo(
-        "mysql:host={$db_host};dbname={$db_name}",
-        $db_user,
-        $db_pass,
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_EMULATE_PREPARES => FALSE
-        ]
-    );
+    $pdo = new PDO("mysql:host=mariadb103.websupport.sk;port=3313;dbname=compsnv_sk2", "compsnv", "Kajauhroba#2021");
     $sto = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $sto->execute(array($email));
     if($sto->rowCount() == 1){
