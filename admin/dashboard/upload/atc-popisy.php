@@ -1,7 +1,10 @@
-<?php  include "./main.php"; $dbl=DB_connect();
+<?php  
+	include "../../config.php";
 
-	$atc_popisy="../xml/atc-popisy.xml";
-	$atc_popisy_tmp="../xml/atc-popisy-tmp.xml";
+	$dbl=$link;
+
+	$atc_popisy="xml/atc-popisy.xml";
+	$atc_popisy_tmp="xml/atc-popisy-tmp.xml";
 
      
   function stiahni_popisy($meno,$heslo,$subor)

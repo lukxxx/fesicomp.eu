@@ -49,7 +49,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                 echo "<span style='font-weight: bold; font-size: 15px'><i class='fas fa-arrow-right'></i> Kategórie</span>";
                 echo "<hr>";
               while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                   echo "<a href='".$row['k_id']."' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
+                echo "<a href='category.php?KID=".$row['k_id']."' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
 
             }
           } else {

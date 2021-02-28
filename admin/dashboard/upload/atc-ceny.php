@@ -1,7 +1,11 @@
-<?php include "./main.php"; $dbl=DB_connect();
+<?php 
 
-	$atc_ceny="../xml/atc-ceny.xml";
-	$atc_ceny_doporucene="../xml/atc-ceny-doporucene.xml";
+	include "../../config.php";
+
+	$dbl=$link;
+
+	$atc_ceny="xml/atc-ceny.xml";
+	$atc_ceny_doporucene="xml/atc-ceny-doporucene.xml";
 	   
 	function stiahni_ceny($meno,$heslo,$subor,$typ)
   {

@@ -1,8 +1,11 @@
-<?php  include "./main.php"; $dbl=DB_connect();
+<?php  
+	include "../../config.php";
+
+	$dbl=$link;
 
 	$typ=1; // 1 technické, 2 logistické
-	$atc_parametre_cis="../xml/atc-parametre_cis.xml";
-	$atc_parametre="../xml/atc-parametre.xml";
+	$atc_parametre_cis="xml/atc-parametre_cis.xml";
+	$atc_parametre="xml/atc-parametre.xml";
 	
      
   function stiahni_parametre_cis($meno,$heslo,$subor)

@@ -1,6 +1,10 @@
-<?php  include "./main.php"; $dbl=DB_connect();
+<?php  
 
-	$atc_odkazy="../xml/atc-odkazy.xml";
+	include "../../config.php";
+
+	$dbl=$link;
+	
+	$atc_odkazy="xml/atc-odkazy.xml";
     
   function stiahni_odkazy($meno,$heslo,$subor)
   {

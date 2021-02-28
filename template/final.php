@@ -28,44 +28,8 @@ $show = "display: block;";
 $hide = "display: none;";
 
 $submit_btn = "<button style='all: unset; cursor: pointer; color: black; text-align: right;' name='bimbambum' type='submit'>Pokračovať k doprave <i class='fas fa-arrow-right'></i></button>";
-if(isset($_POST['pay'])){
-        if(!isset($_POST['doprava'])){
-            $doprava_err = "Zadajte spôsob dopravy!";
-        } else if($_POST['doprava'] == "posta"){
-            $doprava = "Doprava poštou";
-        } else {
-            $doprava = "Osobný odber na predajni";
-        }
-        if(!isset($_POST['platba'])){
-            $platba_err = "Zadajte spôsob platby!";
-        } else if($_POST['platba'] == "paypal"){
-            $platba = "PayPal";
-        } else if($_POST['platba'] == "kurier-dobierka"){
-            $platba = "Na dobierku pri prevzatí od kuriéra";
-        } else if($_POST['platba'] == "dobierka"){
-            $platba = "Na dobierku pri prezvatí tovaru na predajni";
-        } else {
-            $platba = "Hotovosťou";
-        }
-        
-        if(!isset($_POST['podmienky'])){
-            $term_err = "Pre pokračovanie musíte súhlasiť s obchodnými podmienkami";
-        } else {
-            $term = true;
-        }
-        array_push($details, array(
-                    "platby" => $platba,
-                    "dopravy" => $doprava
-                ));    
 
-        if($term && $term_err == ""){
-            
-            
-            header("location: success.php");
-        }
-    }
-?>
-    <?php include "../includes/header-template.php" ?>
+include "../includes/header-template.php" ?>
 
 <?php if(isset($_COOKIE['details'])){ ?>
     <div class="container" style="margin-top: 50px;">
@@ -87,7 +51,7 @@ if(isset($_POST['pay'])){
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <span style="text-decoration: underline; font-size: 19px;">Spôsob dopravy:</span><br>
-                <form method="post" action="#">
+                <form method="post" action="checkout.php">
                     <?php if($doprava_err != ""){ ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $doprava_err ?>
@@ -106,7 +70,7 @@ if(isset($_POST['pay'])){
                     <?php } ?>
                     <span style="text-decoration: underline; font-size: 19px;">Spôsob platby:</span><br>
                     <div class="form-group d-flex" >
-                        <i style="color: #709CF5; padding: 1% 0% 0% 3%;" class="fab fa-paypal fa-2x"></i><label style="padding: 2% 0% 2% 3.5%"><input  type="radio" name="platba" value="paypal"> PayPal </label>
+                        <img src="../assets/images/trustpay.jpg" width="100" height="50"><label style="padding: 2% 0% 2% 3.5%"><input type="radio" name="platba" value="paypal"> Platba kartou online (TrustPay)</label>
                     </div>
                     <div class="form-group d-flex">
                         <i style="padding-left: 2%;" class="fas fa-truck fa-2x"></i><label style="padding: 1px 0px 5px 18px"><input  type="radio" name="platba" value="kurier-dobierka"> Platba dobierkou - platba pri prevzatí tovaru od kuriéra</label>
@@ -127,7 +91,7 @@ if(isset($_POST['pay'])){
                        <label style="padding: 1px 0px 5px 25px"><input  type="checkbox" name="podmienky"> Suhlasím s podmienkami s <a href="obchodne-podmienky.php" >obchodnými podmienkami</a></label>
                     </div>
                     <div class="submit text-center">
-                        <button class="btn btn-dark" style="margin: 10px 10px 80px 10px;" type="submit" name="pay">Objednať s povinnosťou platby</button>
+                        <button class="btn btn-dark" style="margin: 10px 10px 80px 10px;" type="submit" name="pay">Súhrn objednávky</button>
                     </div>
                     
                 </form>

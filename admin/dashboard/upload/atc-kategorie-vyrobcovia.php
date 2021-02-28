@@ -1,8 +1,12 @@
-<?php include "./main.php"; $dbl=DB_connect();
+<?php 
 
-	$atc_kategorie="../xml/atc-kategorie.xml";
-	$atc_podkategorie="../xml/atc-podkategorie.xml";
-	$atc_vyrobcovia="../xml/atc-vyrobcovia.xml";   
+	include "../../config.php";
+
+	$dbl=$link;
+
+	$atc_kategorie="xml/atc-kategorie.xml";
+	$atc_podkategorie="xml/atc-podkategorie.xml";
+	$atc_vyrobcovia="xml/atc-vyrobcovia.xml";   
       
   function stiahni_kategorie($meno,$heslo,$subor)
   {

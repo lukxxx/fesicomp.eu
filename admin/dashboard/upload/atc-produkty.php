@@ -1,7 +1,10 @@
-<?php include "./main.php";	$link=DB_connect();
+<?php 
 
+	include "../../config.php";
 
-	$atc_produkty="../xml/atc-produkty.xml";
+	$dbl=$link;
+
+	$atc_produkty="xml/atc-produkty.xml";
 	$atc_datum="01.01.2015";	
 	
 	function array_kategorie_gen()
