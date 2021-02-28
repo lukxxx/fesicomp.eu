@@ -38,8 +38,8 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
     if($sto->rowCount() == 1){
         $row = $sto->fetch(PDO::FETCH_ASSOC);
         $emailik = $row['email'];
-        $first_name = $row['first_name'];
-        $second_name = $row['second_name'];
+        $first_name = $row['meno'];
+        $second_name = $row['priezvisko'];
         $image = $row['img_url'];
         $telefon = $row['telefon'];
         $ulica = $row['ulica'];
@@ -51,9 +51,9 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
         $ulica = "";
         $mesto = "";
         $psc = "";
-        $stmt = $pdo->prepare("INSERT INTO g_users (id_token,email,first_name, second_name, img_url,telefon,ulica,mesto,psc) 
+        $stmt = $pdo->prepare("INSERT INTO g_users (id_token,email,meno,priezvisko,img_url,telefon,ulica,mesto,psc) 
         VALUES (?,?,?,?,?,?,?,?,?)"); 
-        $stmt->execute(array($idtoken,$email,$given_name,$two,$photo,$telefon,$ulica,$mesto,$psc));
+        $stmt->execute(array($idtoken,$email,$one,$two,$photo,$telefon,$ulica,$mesto,$psc));
     }
 } else if(isset($_COOKIE['user-login'])){
     $sto = $pdo->prepare("SELECT * FROM users WHERE email = ?");
@@ -83,8 +83,8 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
     if($sth->rowCount() == 1){
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         $emailik = $row['email'];
-        $first = $row['first_name'];
-        $second = $row['second_name'];
+        $first = $row['meno'];
+        $second = $row['priezvisko'];
         $image = $row['img_url'];
         $telefon = $row['telefon'];
         $ulica = $row['ulica'];
@@ -159,7 +159,7 @@ function onLoad(){
                     if(isset($_POST['name-edit'])){
                         if(isset($_COOKIE['user'])){
                             $edit_name = $_POST['name-edit'];
-                            $stmt = $pdo->prepare("UPDATE g_users SET full_name=?"); 
+                            $stmt = $pdo->prepare("UPDATE g_users SET meno=?"); 
                             $stmt->execute(array($edit_name));
                         } else if(isset($_COOKIE['user-login'])){
                             $edit_name = $_POST['name-edit'];

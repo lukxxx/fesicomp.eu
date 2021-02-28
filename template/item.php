@@ -163,14 +163,16 @@ if(isset($_GET['ID'])){
                 </div>
                 <br>
                 <hr>
+                
                 <div class="row">
-                    <ul class="tabs">
+                     <ul class="tabs">
                         <li class="tab-link current" data-tab="tab-1">Popis</li>
                         <li class="tab-link" data-tab="tab-2">Technické parametre</li>
                         <li class="tab-link" data-tab="tab-3">Súvisiace produkty</li>
-                    </ul>
+                    </ul>           
+                    
 
-                    <div id="tab-1" class="tab-content current">
+                    <div id="tab-1" class="col-12 tab-content current">
                         <p><?=nl2br($popis)?></p>
                     </div>
                     <div id="tab-2" class="col-12 tab-content">
@@ -181,7 +183,7 @@ if(isset($_GET['ID'])){
                             
                         </div>
                     </div>
-                    <div id="tab-3" class="tab-content">
+                    <div id="tab-3" class="col-12 tab-content">
                         <div class="related"  style="display: flex;">
                             <?php include (ROOT."includes/suvisiaci-tovar.php");?>
                         </div>

@@ -23,30 +23,13 @@ $error = "";
 
 if(isset($_GET['set'])){
     $kat_id = $_GET['set'];
-    $db_host = "db003.nameserver.sk";
-                        $db_user = "compsnv_sk2";
-                        $db_pass = "iQ8sh2lz";
-                        $db_name = "compsnv_sk2";
-                            
-                        
-                        
-                        // Create a connection to the MySQL database using PDO
-                            $pdo = new pdo(
-                            "mysql:host={$db_host};dbname={$db_name}",
-                            $db_user,
-                            $db_pass,
-                            [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::ATTR_EMULATE_PREPARES => FALSE
-                            ]
-                        );
-                         $sth = $pdo->prepare("SELECT * FROM kategorie WHERE k_id LIKE ?");
-                         $sth->execute(array($kat_id));
-                         $row = $sth->fetch(PDO::FETCH_ASSOC);
-                         $k_nazov = $row['k_nazov'];
-                         $k_vytvorena = $row['k_vytvorena'];
-                         $k_update = $row['k_update'];
-                         $k_akt = $row['k_aktualni'];
+    $sth = $pdo->prepare("SELECT * FROM kategorie WHERE k_id LIKE ?");
+    $sth->execute(array($kat_id));
+    $row = $sth->fetch(PDO::FETCH_ASSOC);
+    $k_nazov = $row['k_nazov'];
+    $k_vytvorena = $row['k_vytvorena'];
+    $k_update = $row['k_update'];
+    $k_akt = $row['k_aktualni'];
 
 
     if(isset($_POST['save'])){

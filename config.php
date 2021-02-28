@@ -3,28 +3,21 @@
 
 define("ROOT", __DIR__ ."/");
 
-$db_host = "db003.nameserver.sk";
+$db_host = "mariadb103.websupport.sk";
 $db_name = "compsnv_sk2";
 $db_user = "compsnv_sk2";
 $db_pass = "iQ8sh2lz";
 
 
 // Create a connection to the MySQL database using PDO
-$pdo = new pdo(
-    "mysql:host={$db_host};dbname={$db_name}",
-    $db_user,
-    $db_pass,
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_EMULATE_PREPARES => FALSE
-    ]
-);
+$pdo = $pdo = new PDO("mysql:host=mariadb103.websupport.sk;port=3313;dbname=compsnv_sk2", "compsnv", "Kajauhroba#2021");
 
-$hostname = "db003.nameserver.sk";
+
+$hostname = "mariadb103.websupport.sk";
 $user = "compsnv_sk2";
 $pass = "iQ8sh2lz";
 $db_name = "compsnv_sk2";
-$link = mysqli_connect($hostname, $user, $pass, $db_name);
+$link = mysqli_connect("mariadb103.websupport.sk", "compsnv", "Kajauhroba#2021", "compsnv_sk2", 3313);
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }

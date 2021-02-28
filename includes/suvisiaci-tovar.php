@@ -51,7 +51,7 @@ if ($stmt = mysqli_prepare($link, $sql)) {
 <?php
             }
         } else {
-            echo "<span>POHUBENE</span>";
+            echo "<span>Pre tento produkt neexistujú žiadne súvisiace produkty</span>";
         }
     } else {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

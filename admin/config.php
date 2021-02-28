@@ -4,11 +4,22 @@ define("ATC_HESLO","fesi7812");
 
 define("ROOT", __DIR__ ."/");
 
-$hostname = "db003.nameserver.sk";
-$user = "compsnv_sk2";
-$pass = "iQ8sh2lz";
+
+$db_host = "localhost";
 $db_name = "compsnv_sk2";
-$link = mysqli_connect($hostname, $user, $pass, $db_name);
+$db_user = "compsnv";
+$db_pass = "Kajauhroba#2021";
+
+
+// Create a connection to the MySQL database using PDO
+$pdo = new PDO("mysql:host=mariadb103.websupport.sk;port=3313;dbname=compsnv_sk2", "compsnv", "Kajauhroba#2021");
+
+$hostname = "localhost";
+$user = "compsnv";
+$pass = "Kajauhroba#2021";
+$db_name = "compsnv_sk2";
+$link = mysqli_connect("mariadb103.websupport.sk", "compsnv", "Kajauhroba#2021", "compsnv_sk2", 3313);
+
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }

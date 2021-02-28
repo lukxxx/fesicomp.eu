@@ -34,23 +34,6 @@ $error = "";
 
 if(isset($_GET['set'])){
     $meno = $_GET['set'];
-    $db_host = "db003.nameserver.sk";
-                        $db_user = "compsnv_sk2";
-                        $db_pass = "iQ8sh2lz";
-                        $db_name = "compsnv_sk2";
-                            
-                        
-                        
-                        // Create a connection to the MySQL database using PDO
-                            $pdo = new pdo(
-                            "mysql:host={$db_host};dbname={$db_name}",
-                            $db_user,
-                            $db_pass,
-                            [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::ATTR_EMULATE_PREPARES => FALSE
-                            ]
-                        );
                          $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto, psc, ulica FROM users WHERE meno LIKE '%$meno%' UNION SELECT email, meno, priezvisko, mesto, psc, ulica FROM g_users WHERE meno LIKE '%$meno%'");
                          $sth->execute();
                          if($row = $sth->fetch(PDO::FETCH_ASSOC)){

@@ -70,7 +70,7 @@ include "../includes/header-template.php" ?>
                     <?php } ?>
                     <span style="text-decoration: underline; font-size: 19px;">Spôsob platby:</span><br>
                     <div class="form-group d-flex" >
-                        <img src="../assets/images/trustpay.jpg" width="100" height="50"><label style="padding: 2% 0% 2% 3.5%"><input type="radio" name="platba" value="paypal"> Platba kartou online (TrustPay)</label>
+                        <img src="../assets/images/trustpay.jpg" width="100" height="50"><label style="padding: 2% 0% 2% 3.5%"><input disabled type="radio" name="platba" value="paypal"> Platba kartou online (Pripravujeme pre Vás)</label>
                     </div>
                     <div class="form-group d-flex">
                         <i style="padding-left: 2%;" class="fas fa-truck fa-2x"></i><label style="padding: 1px 0px 5px 18px"><input  type="radio" name="platba" value="kurier-dobierka"> Platba dobierkou - platba pri prevzatí tovaru od kuriéra</label>
