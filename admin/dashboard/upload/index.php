@@ -27,7 +27,7 @@ if(isset($_COOKIE['admin'])){ ?>
             <?php include "../../includes/header-main.php"; ?>               
             <hr style="border: 1px solid black; margin-top: -5px; width: 95%;">
             <div class="row" style="padding: 40px" >
-                
+            
 				<div class="col-sm-3 col-md-4 col-lg-3">
                     <div class="download-btn" style="border: 1px solid #E7E7E7; padding: 5% 0% 5% 10%; background-color: white; box-shadow: 5px 6px 16px -2px #616161; border-radius: 20px;">
 						<div class="row">

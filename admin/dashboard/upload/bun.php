@@ -7,7 +7,7 @@ require_once "./main.php";
 	<div class="atitle bgcolor3 txtcolor1" onclick="window.location.href='?a'"><span class="glyphicon glyphicon-home"></span> Administrácia - Nahrávanie z veľkoskladu</div>
 
 	<h4><span class="glyphicon glyphicon-asterisk"></span> Spúšťanie nahrávania z veľkoskladu</h4>
-
+	
 	<div class="row">
 		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 agen1">
 			<div class="agen2 divcentrow" onclick="sendget('atc-kategorie-vyrobcovia.php')" >

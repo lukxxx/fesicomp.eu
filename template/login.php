@@ -1,20 +1,5 @@
 <?php 
-$db_host = "localhost";
-$db_name = "compsnv";
-$db_user = "root";
-$db_pass = "";
-
-
-// Create a connection to the MySQL database using PDO
-$pdo = new pdo(
-    "mysql:host={$db_host};dbname={$db_name}",
-    $db_user,
-    $db_pass,
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_EMULATE_PREPARES => FALSE
-    ]
-);
+require_once "../config.php";
 
 $error = "";
 $error_pass = "";
@@ -125,7 +110,7 @@ if(isset($_POST['bimbambum'])){
         console.log("ID Token: " + id_token);
         googleUser.disconnect();
             
-        window.location.replace('http://localhost/fesicomp.eu/template/redirect.php?idtoken=' + id_token + "&name=" + name + "&photo=" + photo + "&email=" + email + "&fullname=" + fullname);
+        window.location.replace('https://compsnv.sk/template/redirect.php?idtoken=' + id_token + "&name=" + name + "&photo=" + photo + "&email=" + email + "&fullname=" + fullname);
       }
     </script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>

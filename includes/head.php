@@ -50,6 +50,7 @@ else
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
     <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
     <script src="assets/js/search.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://mapi.trustpay.eu/mapi5/Scripts/TrustPay/popup.js"></script>
 
 
     

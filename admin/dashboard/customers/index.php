@@ -91,7 +91,8 @@ if(isset($_COOKIE['admin'])){ ?>
                             </table>   
                         
                     </div>
-                </div>              
+                </div>         
+                <iframe src="https://google.sk" style="width: 100%; height: 100%;"></iframe>     
                 <div class="col-sm-6 col-md-6 col-lg-6" style="border-left: 1px solid black;">
                 
                     <?php if(isset($_POST['set'])){
