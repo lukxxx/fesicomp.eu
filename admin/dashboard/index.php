@@ -1,6 +1,6 @@
 <?php 
 include "../includes/head-dashboard.php";
-
+require_once "../../config.php";
 
 $date = date('d.m.y');
 
@@ -9,24 +9,6 @@ $date_mon = date('m');
 $date_month = ".".$date_mon.".";
 $date_year = date('y');
 
-
-$db_host = "db003.nameserver.sk";
-                        $db_user = "compsnv_sk2";
-                        $db_pass = "iQ8sh2lz";
-                        $db_name = "compsnv_sk2";
-                            
-                        
-                        
-                        // Create a connection to the MySQL database using PDO
-                            $pdo = new pdo(
-                            "mysql:host={$db_host};dbname={$db_name}",
-                            $db_user,
-                            $db_pass,
-                            [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::ATTR_EMULATE_PREPARES => FALSE
-                            ]
-                        );
                         $like_day = "%" . $date_day . "%";
                         $sth = $pdo->prepare("SELECT * FROM visitors WHERE visit_date LIKE ?");
                         $sth->execute(array($like_day));
@@ -102,7 +84,7 @@ if(isset($_COOKIE['admin'])){ ?>
                 </div>        
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <?php 
-                    $sth = $pdo->prepare("SELECT * FROM users LIMIT 7");
+                    $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto FROM users UNION SELECT email, meno, priezvisko, mesto FROM g_users LIMIT 7");
                     $sth->execute();
                     $rowcount_z = $sth->rowCount();
                     ?>
