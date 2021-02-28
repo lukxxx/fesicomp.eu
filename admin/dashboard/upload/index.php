@@ -118,7 +118,7 @@ if(isset($_COOKIE['admin'])){ ?>
             </div> 
 
             
-			<form onclick="sendget('atc-dostupnost.php')">
+			<form action="atc-ceny.php">
                 <input onclick="sendget('atc-dostupnost.php')" type="submit" value="Submit">
             </form>
 
