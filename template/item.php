@@ -17,7 +17,7 @@ if(isset($_GET['ID'])){
     $id_produktu = $row['p_id'];
     $id_kat = $row['p_kid'];
     $nazov = $row['p_nazov'];
-    $kod = $row['p_kod_sklad'];
+    $kod = $row['p_id'];
     $popis = $row['p_popis'];
     $cena = $row['p_cena'];
     $produkt_cislo = $row['p_pn'];

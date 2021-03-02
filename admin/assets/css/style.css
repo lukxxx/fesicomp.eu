@@ -30,7 +30,7 @@ body {
 } 
 
 .scroll { 
-    overflow-y: auto; 
+    overflow-y: 110%; 
     overflow-x: hidden; 
     height: 100%; 
     margin-bottom: 50%;
