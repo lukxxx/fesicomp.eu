@@ -32,7 +32,7 @@ if(isset($_GET['ID'])){
         $kategoria = $rowko['k_nazov'];    
     }
     if(file_exists("../catalog/$id_produktu/$obrazok")){
-        $cesta = "<img src='../catalog/$id_produktu/$obrazok' style='width: 100%;'>";
+        $cesta = "<a href='../catalog/$id_produktu/".$row['velke']." data-lightbox='set' ><img src='../catalog/$id_produktu/$obrazok' style='width: 100%;'></a>";
     } else {
         $cesta = "<img src='../assets/images/no-image.png'  style='width: 100%;'>";
     }
