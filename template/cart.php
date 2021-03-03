@@ -175,9 +175,7 @@ include "../includes/header-template.php";
         $total = 0;
         echo "<span style='text-align: center; font-weight: bold;'>Nákupný košík je prázdny!</span>";
     }
-    
     ?>
-
         </div>
     </div>
     <div class="row" style="margin: 20px 10px;">
