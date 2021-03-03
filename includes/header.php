@@ -99,9 +99,9 @@
                                     <h2 class="text-center">Výpočtová technika</h2>
                                     <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <a data-toggle="collapse" href="#categories_mobile" style="color: white; font-size: 23px; padding: 1px; text-decoration: none;">Katalóg produktov </a>
+                                            <a data-toggle="collapse" href="#categories_mobile" class="katalog" style="color: white; font-size: 23px; padding: 1px; text-decoration: none;">Katalóg produktov </a>
                                             <a data-toggle="collapse" href="#categories_mobile" role="button" aria-expanded="false" aria-controls="categories_mobile">
-                                                <i style="font-size: 24px; color: white; text-decoration: none; padding: 1px;" class="fas fa-arrow-right text-right"></i>
+                                                <i style="font-size: 24px; color: white; text-decoration: none; padding: 1px;" class="katalog fas fa-arrow-right text-right"></i>
                                             </a>
                                         </div> 
                                         <div class="categories-list collapse" id="categories_mobile" style="margin-left: 10px; margin-right: 20px;">
@@ -137,7 +137,9 @@
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <a style="color: white; font-size: 23px; padding: 1px;" href="template/cart.php">Košík </a>
-                                            <i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i>
+                                            <a href="template/cart.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i><?php if(count($cart) != 0){ echo "<sup style='margin-left: -15px;'><span class='dot' style='background-color: 
+                                                #B81600; border-radius: 50%; padding-left: 4px; padding-right: 4px; color: white;'> ".count($cart)."</span></sup>";} ?>
+                                            </a>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <?php 
@@ -154,15 +156,27 @@
                                                     echo '<a href="template/login.php" style="color: white; font-size: 23px; padding: 1px;"><span>Účet</span></a>';
                                                 }
                                             ?>
-                                            <i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-user text-right"></i>
+
+                                            <?php
+                                                if(isset($_COOKIE['user'])){
+                                                    echo '<a href="template/myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                                } else if(isset($_COOKIE['user-login'])){
+                                                    echo '<a href="template/myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                                } else if(isset($_COOKIE['user-login-name'])){
+                                                    echo '<a href="template/myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                                }
+                                                else {
+                                                    echo '<a href="template/login.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-user text-right"></i></a>';
+                                                }
+                                            ?>
                                         </div> 
                                         <div class="d-flex justify-content-between align-items-center">
                                             <a style="color: white; font-size: 23px; padding: 1px;" href="template/contact.php">Kontakt </a>
-                                            <i style="font-size: 20px; color: white; text-decoration: none; transform: rotate(-45deg); padding: 1px;" class="fas fa-phone-volume text-right"></i>
+                                            <a href="template/contact.php"><i style="font-size: 20px; color: white; text-decoration: none; transform: rotate(-45deg); padding: 1px;" class="fas fa-phone-volume text-right"></i></a>
                                         </div> 
                                         <div class="d-flex justify-content-between align-items-center">
                                             <a style="color: white; font-size: 23px; padding: 1px;" href="template/about.php">O spoločnosti </a>
-                                            <i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-building text-right"></i>
+                                            <a href="template/about.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-building text-right"></i></a>
                                         </div>    
                                 </div>
                             </div>
@@ -193,8 +207,8 @@
     </header>
 
 <script>
-    $(".fa-arrow-right").click(function(){
-    $(this).toggleClass("down");
+    $(".katalog").click(function(){
+    $(".fa-arrow-right").toggleClass("down");
     });
 
     $('.fa-bars').click(function() {

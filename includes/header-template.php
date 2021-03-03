@@ -96,76 +96,92 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-5 col-lg-5 collapse" id="links" style="margin-bottom: 8%;">
-                            <div class="header-headings">
-                                <h2 class="text-center">Výpočtová technika</h2>
-                                <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <a data-toggle="collapse" href="#categories_mobile" style="color: white; font-size: 23px; padding: 1px; text-decoration: none;">Katalóg produktov </a>
-                                        <a data-toggle="collapse" href="#categories_mobile" role="button" aria-expanded="false" aria-controls="categories_mobile">
-                                            <i style="font-size: 24px; color: white; text-decoration: none; padding: 1px;" class="fas fa-arrow-right text-right"></i>
-                                        </a>
-                                    </div> 
-                                    <div class="categories-list collapse" id="categories_mobile" style="margin-left: 10px; margin-right: 20px;">
-                                        <div class="categories d-flex flex-row">
-                                            <?php 
-                                                $aktualni = "";
-                                                $kid = "0";
-                                                if ($aktualni==0) $str=" AND (k_aktualni='1' OR k_aktualni='3') "; else $str="";
-                                                $sql="SELECT k_id,k_kid,k_main,k_nazov,k_aktualni,k_poradie,k_medzera FROM kategorie WHERE k_kid='0' ".$str." AND k_medzera='0' ORDER BY k_poradie";
+                        <div class="header-headings">
+                                    <h2 class="text-center">Výpočtová technika</h2>
+                                    <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a data-toggle="collapse" href="#categories_mobile" class="katalog" style="color: white; font-size: 23px; padding: 1px; text-decoration: none;">Katalóg produktov </a>
+                                            <a data-toggle="collapse" href="#categories_mobile" role="button" aria-expanded="false" aria-controls="categories_mobile">
+                                                <i style="font-size: 24px; color: white; text-decoration: none; padding: 1px;" class="katalog fas fa-arrow-right text-right"></i>
+                                            </a>
+                                        </div> 
+                                        <div class="categories-list collapse" id="categories_mobile" style="margin-left: 10px; margin-right: 20px;">
+                                            <div class="categories d-flex flex-row">
+                                                <?php 
+                                                    $aktualni = "";
+                                                    $kid = "0";
+                                                    if ($aktualni==0) $str=" AND (k_aktualni='1' OR k_aktualni='3') "; else $str="";
+                                                    $sql="SELECT k_id,k_kid,k_main,k_nazov,k_aktualni,k_poradie,k_medzera FROM kategorie WHERE k_kid='0' ".$str." AND k_medzera='0' ORDER BY k_poradie";
+                                                                                            
+                                                    if($stmt = mysqli_prepare($link, $sql)){
+                                                                            
+                                                        if(mysqli_stmt_execute($stmt)){
+                                                            $result = mysqli_stmt_get_result($stmt);
                                                                                         
-                                                if($stmt = mysqli_prepare($link, $sql)){
-                                                                        
-                                                    if(mysqli_stmt_execute($stmt)){
-                                                        $result = mysqli_stmt_get_result($stmt);
-                                                                                    
-                                                        if(mysqli_num_rows($result) > 0){
-                                                            echo "<ol style='list-style: none;padding: 10px 0px 0px 10px;'>";
-                                                            while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){                                      
-                                                                echo "<div class='d-flex' style='color: white; padding: 5px 5px 5px 10px; line-height: 20px'>";
-                                                                echo "<i class='fas fa-chevron-right'></i><a href='../template/category.php?KID=".$row['k_id']."'><li style='padding-left: 8px; color: white;'>".$row['k_nazov']."</li></a></div>";                                       
-                                                            } 
-                                                            echo "</ol>";
-                                                        } else{
-                                                        echo "<span>POHUBENE</span>";
+                                                            if(mysqli_num_rows($result) > 0){
+                                                                echo "<ol style='list-style: none;padding: 10px 0px 0px 10px;'>";
+                                                                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){                                      
+                                                                    echo "<div class='d-flex' style='color: white; padding: 5px 5px 5px 10px; line-height: 20px'>";
+                                                                    echo "<i class='fas fa-chevron-right'></i><a href='category.php?KID=".$row['k_id']."'><li style='padding-left: 8px; color: white;'>".$row['k_nazov']."</li></a></div>";                                       
+                                                                } 
+                                                                echo "</ol>";
+                                                            } else{
+                                                            echo "<span>POHUBENE</span>";
 
+                                                            }
+                                                        } else{
+                                                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                                                         }
-                                                    } else{
-                                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                                                     }
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a style="color: white; font-size: 23px; padding: 1px;" href="cart.php">Košík </a>
+                                            <a href="cart.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i>
+                                                <?php 
+                                                    if(count($cart) != 0){ echo "<sup style='margin-left: -15px;'><span class='dot' style='background-color: #B81600; border-radius: 50%; padding-left: 4px; padding-right: 4px; color: white;'> ".count($cart)."</span></sup>";} 
+                                                ?>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <?php 
+                                                if(isset($_COOKIE['user'])){
+                                                    echo '<a href="myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.$_COOKIE['user'].'</span></a>';
+                                                } else if(isset($_COOKIE['user-login'])){
+                                                    echo '<a href="myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.
+                                                    $user = substr($_COOKIE['user-login'], 0, strrpos($_COOKIE['user-login'], '@'));
+                                                    $user.'</span></a>';
+                                                } else if(isset($_COOKIE['user-login-name'])){
+                                                    echo '<a href="myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.$_COOKIE['user-login-name'].'</span></a>';
+                                                }
+                                                else {
+                                                    echo '<a href="login.php" style="color: white; font-size: 23px; padding: 1px;"><span>Účet</span></a>';
                                                 }
                                             ?>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <a style="color: white; font-size: 23px; padding: 1px;" href="../template/cart.php">Košík </a>
-                                        <i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <?php 
-                                            if(isset($_COOKIE['user'])){
-                                                echo '<a href="../template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.$_COOKIE['user'].'</span></a>';
-                                            } else if(isset($_COOKIE['user-login'])){
-                                                echo '<a href="../template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.
-                                                $user = substr($_COOKIE['user-login'], 0, strrpos($_COOKIE['user-login'], '@'));
-                                                $user.'</span></a>';
-                                            } else if(isset($_COOKIE['user-login-name'])){
-                                                echo '<a href="../template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>'.$_COOKIE['user-login-name'].'</span></a>';
-                                            }
-                                            else {
-                                                echo '<a href="../template/login.php" style="color: white; font-size: 23px; padding: 1px;"><span>Účet</span></a>';
-                                            }
-                                        ?>
-                                        <i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-user text-right"></i>
-                                    </div> 
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <a style="color: white; font-size: 23px; padding: 1px;" href="../template/contact.php">Kontakt </a>
-                                        <i style="font-size: 20px; color: white; text-decoration: none; transform: rotate(-45deg); padding: 1px;" class="fas fa-phone-volume text-right"></i>
-                                    </div> 
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <a style="color: white; font-size: 23px; padding: 1px;" href="../template/about.php">O spoločnosti </a>
-                                        <i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-building text-right"></i>
-                                    </div>    
-                            </div>
+
+                                            <?php
+                                                if(isset($_COOKIE['user'])){
+                                                    echo '<a href="myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                                } else if(isset($_COOKIE['user-login'])){
+                                                    echo '<a href="myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                                } else if(isset($_COOKIE['user-login-name'])){
+                                                    echo '<a href="myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                                }
+                                                else {
+                                                    echo '<a href="login.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-user text-right"></i></a>';
+                                                }
+                                            ?>
+                                        </div> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a style="color: white; font-size: 23px; padding: 1px;" href="template/contact.php">Kontakt </a>
+                                            <a href="contact.php"><i style="font-size: 20px; color: white; text-decoration: none; transform: rotate(-45deg); padding: 1px;" class="fas fa-phone-volume text-right"></i></a>
+                                        </div> 
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a style="color: white; font-size: 23px; padding: 1px;" href="template/about.php">O spoločnosti </a>
+                                            <a href="about.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-building text-right"></i></a>
+                                        </div>    
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -195,8 +211,8 @@
 
 
 <script>
-    $(".fa-arrow-right").click(function(){
-    $(this).toggleClass("down");
+    $(".katalog").click(function(){
+        $(".fa-arrow-right").toggleClass("down");
     });
         
     $('.fa-bars').click(function() {
