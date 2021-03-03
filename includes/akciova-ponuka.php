@@ -28,7 +28,7 @@ require_once "config.php";
 
                         </div>
                         <div class="product-img justify-content-md-center">
-                            <a style="color: white;" href="template/item.php?ID=<?php echo $row->p_id ?>"><img src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>"
+                            <a style="color: white;" href="template/item.php?ID=<?php echo $row->p_id ?>"><img class="img-prod" loading="lazy" src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>"
                              width="" class="img-prod" height="120"></a>
                         </div>
                         <div class="product-name justify-content-md-center">
@@ -42,7 +42,7 @@ require_once "config.php";
                             <div class="product-bottom justify-content-md-center">
                                 <div class="add-to-cart justify-content-md-center">
                                 <?php
-                            
+
                                 if ($flag) { ?>
 
                                 <!-- show delete button if already exists -->
