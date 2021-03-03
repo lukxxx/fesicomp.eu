@@ -50,7 +50,7 @@ include "../includes/header-template.php";
                         <th style="padding: 20px;">
                         <form method="post" action="../update-cart.php">
                             <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
-                            <input style="all: unset; width: 20%; margin-left: 15px;" type="number" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
+                            <input style="all: unset; width: 20%; margin-left: 15px;" type="text" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
                             <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
                             <button type="submit" name="quantity-plus" style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
                         </form>
