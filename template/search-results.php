@@ -59,17 +59,9 @@ include_once "../includes/head-template.php"
             <div class="col-sm-12 col-md-9 col-lg-9">
                 <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
                 <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
-                <!---------------------------------------------Neviem ako to chcete :D a skúšal som celý čas hľadať slider na nete ale nič schopné som za tých pol hodiny nenašiel bohužiaľ, Lukáš mi isto povie teraz, že nech sa naučím vyhľadávať veci na googli :D a dobrú chuť keď papate pizzu Alexovu------------------------------------------------------------------>
+
                 
-                <div class = "row" >
-                    <div class="col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="button-box ">                       
-                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','ASC' )"class="btn btn-dark" role="button">Najlacnejšie</a>
-                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','DESC' )"class="btn btn-dark" role="button">Najdrahšie</a>                    
-                        </div>                                                                      
-                    </div>
-                </div>
-                <br>
+                
                 
                  <!--       _
                         .__(.)< (kač kač)
@@ -97,7 +89,20 @@ include_once "../includes/head-template.php"
                         ?>
                         <div class = "row" >
                             <div class="col-sm-12 col-md-12 col-lg-12 ">
-                                <p>Počet nájdených položiek: <?php echo $total_rows ?></p>                                                                     
+                                <h3><b>Hľadaný výraz: </b><?php echo $search; ?></h3>
+                                <p>Počet nájdených položiek: <?php echo $total_rows ?></p>  
+                                <hr>
+                                <div class="button-box ">    
+                                    <span>Zoradiť podľa: </span><br>                
+                                    <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','ASC' )"class="btn btn-dark" role="button">Najlacnejšie</a>
+                                    <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','DESC' )"class="btn btn-dark" role="button">Najdrahšie</a>                    
+                                </div>                                                                      
+                            </div>
+                        </div>
+                        <br>
+                        <div class = "row" >
+                            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                                                                                                   
                             </div>
                         </div>
                         <div class="d-flex flex-wrap row">
@@ -126,9 +131,9 @@ include_once "../includes/head-template.php"
                                             $obrazok = $row['p_img'];
                                             $id_produktu = $row['p_id'];
                                             if(file_exists("../catalog/$id_produktu/$obrazok")){
-                                                $cesta = "<img src='../catalog/$id_produktu/$obrazok' height='120'>";
+                                                $cesta = "<img src='../catalog/$id_produktu/$obrazok' class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                             } else {
-                                                $cesta = "<img src='../assets/images/no-image.png' height='120'>";
+                                                $cesta = "<img class='img-prod' src='../assets/images/no-image.png' style='max-width: 120px;max-height: 120px;'>";
                                             }
                                         ?>                                
                                             <div class="col-sm-12 col-md-3 col-lg-3">
@@ -142,7 +147,11 @@ include_once "../includes/head-template.php"
                                                     </div>
                                                     <div class="product-name justify-content-md-center">
                                                         <div class="heading">
+<<<<<<< HEAD
                                                         <a style="color: white;" href="item.php?ID=<?php echo $row['p_id'] ?>"><h6 class="name-prod"><?php echo $row['p_nazov'] ?></h6></a>
+=======
+                                                            <a style="color: white;" href="item.php?ID=<?php echo $row['p_id']?>"><h6 class="name-prod"><?php echo mb_strimwidth($row['p_nazov'], 0, 30, "");?></h6></a>
+>>>>>>> b0d537301bd46ea8e688ae6e420cd81d5455ad4f
                                                         </div>
 
                                                     </div>
