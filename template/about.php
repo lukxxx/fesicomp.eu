@@ -1,10 +1,7 @@
 <?php 
     include_once "../includes/head-template.php";
     include (ROOT ."includes/header-template.php");
-    $lin = mysqli_connect('127.0.0.1', 'root', '', 'compsnv');
-    if($lin === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
+    require_once "../config.php";
 ?>
     <div class="container" style="padding: 20px 13px 0 10px">
         <div class="row d-flex justify-content-center">
@@ -24,7 +21,7 @@
                     <div class="row d-flex flex-wrap" style="padding-bottom: 40px;">           
                         <?php
                             $sql = "SELECT * FROM foto WHERE f_kat=3";
-                            $result = mysqli_query($lin, $sql);
+                            $result = mysqli_query($link, $sql);
 
                             if (mysqli_num_rows($result) > 0) {
                                 // output data of each row
@@ -44,7 +41,7 @@
                     <div class="row d-flex flex-wrap">
                             <?php
                                 $sql = "SELECT * FROM foto WHERE f_kat=1";
-                                $result = mysqli_query($lin, $sql);
+                                $result = mysqli_query($link, $sql);
 
                                 if (mysqli_num_rows($result) > 0) {
                                     // output data of each row
@@ -65,7 +62,7 @@
                     <div class="row d-flex flex-wrap">
                             <?php
                                 $sql = "SELECT * FROM foto WHERE f_kat=2";
-                                $result = mysqli_query($lin, $sql);
+                                $result = mysqli_query($link, $sql);
 
                                 if (mysqli_num_rows($result) > 0) {
                                     // output data of each row
@@ -84,7 +81,7 @@
                     <div class="row d-flex flex-wrap">
                             <?php
                                 $sql = "SELECT * FROM foto WHERE f_kat=4";
-                                $result = mysqli_query($lin, $sql);
+                                $result = mysqli_query($link, $sql);
 
                                 if (mysqli_num_rows($result) > 0) {
                                     // output data of each row
