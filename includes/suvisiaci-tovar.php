@@ -20,9 +20,9 @@ if ($stmt = mysqli_prepare($link, $sql)) {
                             }
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 if(file_exists("../catalog/".$row['p_id']."/".$row['p_img']."")){
-                    $cesta = "<img src='../catalog/".$row['p_id']."/".$row['p_img']." width='159' class='img-prod' height='120'>";
+                    $cesta = "<img loading='lazy' src='../catalog/".$row['p_id']."/".$row['p_img']." width='159' class='img-prod' height='120'>";
                 } else {
-                    $cesta = "<img src='../assets/images/no-image.png' width='140' class='img-prod' height='120'>";
+                    $cesta = "<img loading='lazy' src='../assets/images/no-image.png' width='140' class='img-prod' height='120'>";
                 }
 ?>
                  <div class="col-sm-12 col-md-3 col-lg-3">
