@@ -1,32 +1,22 @@
 <?php
-$db_host = "localhost";
-$db_name = "compsnv";
-$db_user = "root";
-$db_pass = "";
-$link = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+    $sent_message = false;
+    if(isset($_POST['email']) && $_POST['email'] !=''){
+        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 
+            $username = $_POST['name'];
+            $userEmail = $_POST['email'];
+            $messageSubject = "Nova sprava od zakaznika";
+            $message = $_POST['message'];
 
-$sent_message = false;
-if(isset($_POST['email']) && $_POST['email'] !=''){
-    if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            $to = "matej.roch4@gmail.com";
+            $body = "";
 
-        $username = $_POST['name'];
-        $userEmail = $_POST['email'];
-        $messageSubject = "Nova sprava od zakaznika";
-        $message = $_POST['message'];
-
-        $to = "matej.roch4@gmail.com";
-        $body = "";
-
-        $body .= "From: ".$username. "\r\n";
-        $body .= "Email: ".$userEmail. "\r\n";
-        $body .= "Message: ".$message. "\r\n";
-        mail($to,$messageSubject,$body);
-        $sent_message = true;
-    }
+            $body .= "From: ".$username. "\r\n";
+            $body .= "Email: ".$userEmail. "\r\n";
+            $body .= "Message: ".$message. "\r\n";
+            mail($to,$messageSubject,$body);
+            $sent_message = true;
+        }
 }
 
 ?>
