@@ -37,7 +37,7 @@ if(isset($_POST['pay'])){
             }
         }
 
-        setcookie("cart", "", time() -3600);
+        setcookie("cart", "[]", time() -3600);
         foreach ($details as $d)
             {
                 $telefon_non_login = $d->number;
