@@ -28,7 +28,7 @@
                         <i class="fab fa-cc-mastercard"></i><span> Mastercard</span><br>
                         <i class="fas fa-exchange-alt fa-1x"></i>&nbsp;<span style="font-size:16px;">Bankovým prevodom</span>
                     </div>
-                    <div class="col-sm-12 col-md-3 col-lg-3" style="display: flex; padding-top: 1vw">
+                    <div class="col-sm-12 col-md-2 col-lg-2" style="display: flex; padding-top: 1vw">
                         <div class="location" style="display: block; padding-right: 3vw">
                             <span class="footer-h">Adresa</span><br>
                             <span>FESI comp, s.r.o.<br>
@@ -38,12 +38,12 @@
                                     fesicomp@fesicomp.sk</span><br>
                         </div>    
                     </div>
-                    <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
-                        <div class="map">
-                            <a href="https://goo.gl/maps/69n38NnoHfmMWA8E8">
-                                <img src="..\assets\images\mapa.png" alt="mapa">
-                            </a>
-                        </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4" style="padding-top: 1vw">
+                        <a target="_blank" href="https://goo.gl/maps/69n38NnoHfmMWA8E8" style="">
+                            
+                                <img src="..\assets\images\mapa.png" target="_blank" alt="mapa" style="width: 70%; margin-left: auto; margin-right: auto; display: block;">
+                            
+                        </a>
                     </div>
                 </div>
                <hr style="background-color:white;">
