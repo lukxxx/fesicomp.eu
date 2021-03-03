@@ -152,6 +152,8 @@ span {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .product-img {
     padding: 10px;
