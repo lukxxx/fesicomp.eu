@@ -142,16 +142,11 @@ include_once "../includes/head-template.php"
 
                                                     </div>
                                                     <div class="product-img justify-content-md-center">
-                                                        <a style="color: white;" href="item.php?ID=<?php echo $row['p_id'] ?>"><img src="catalog/<?php echo $row['p_id'] ?>/<?php echo $row['p_img'] ?>"
-                                                        width="" class="img-prod" height="120"></a>
+                                                        <a style="color: white;" href="item.php?ID=<?php echo $row['p_id'] ?>"><?php echo $cesta ?></a>
                                                     </div>
                                                     <div class="product-name justify-content-md-center">
                                                         <div class="heading">
-<<<<<<< HEAD
-                                                        <a style="color: white;" href="item.php?ID=<?php echo $row['p_id'] ?>"><h6 class="name-prod"><?php echo $row['p_nazov'] ?></h6></a>
-=======
                                                             <a style="color: white;" href="item.php?ID=<?php echo $row['p_id']?>"><h6 class="name-prod"><?php echo mb_strimwidth($row['p_nazov'], 0, 30, "");?></h6></a>
->>>>>>> b0d537301bd46ea8e688ae6e420cd81d5455ad4f
                                                         </div>
 
                                                     </div>
