@@ -148,6 +148,13 @@ include_once "../includes/head-template.php"
                                     $result = mysqli_stmt_get_result($stmt);
                                     if(mysqli_num_rows($result) > 0){
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                                            $obrazok = $row['p_img'];
+                                            $id_produktu = $row['p_id'];
+                                            if(file_exists("../catalog/$id_produktu/$obrazok")){
+                                                $cesta = "<img loading='lazy' src='../catalog/$id_produktu/$obrazok'   class='img-prod' style='max-width: 120px;max-height: 120px;'>";
+                                            } else {
+                                                $cesta = "<img loading='lazy' src='../assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
+                                            }
                                         ?>                                
                                             <div class="col-sm-12 col-md-3 col-lg-3">
                                                 <div class="product-card justify-content-md-center">
@@ -155,12 +162,11 @@ include_once "../includes/head-template.php"
 
                                                     </div>
                                                     <div class="product-img justify-content-md-center">
-                                                        <a style="color: white;" href="item.php?ID=<?php echo $row['p_id'] ?>"><img src="catalog/<?php echo $row['p_id'] ?>/<?php echo $row['p_img'] ?>"
-                                                        width="" class="img-prod" height="120"></a>
+                                                        <a href="item.php?ID=<?php echo $row['p_id']?>"><?php echo $cesta; ?></a>
                                                     </div>
                                                     <div class="product-name justify-content-md-center">
                                                         <div class="heading">
-                                                        <a style="color: white;" href="item.php?ID=<?php echo $row['p_id'] ?>"><h6 class="name-prod"><?php echo $row['p_nazov'] ?></h6></a>
+                                                            <a style="color: white;" href="item.php?ID=<?php echo $row['p_id']?>"><h6 class="name-prod"><?php echo mb_strimwidth($row['p_nazov'], 0, 30, "");?></h6></a>
                                                         </div>
 
                                                     </div>
