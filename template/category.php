@@ -137,7 +137,7 @@ include_once "../includes/head-template.php"
                             $flag = false;
                             foreach ($cart as $c)
                             {
-                                if (($c->productCode == $row['p_kod_sklad']))
+                                if (($c->productCode == $row['p_id']))
                                 {
                                     $flag = true;
                                     break;
