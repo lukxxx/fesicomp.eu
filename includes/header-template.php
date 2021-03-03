@@ -79,16 +79,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-7 col-lg-7">
-                    <div class="brand">
-                        <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="../index.php"><img src="../assets/images/brand/logo.png" width="65" height="60"></a>
-                        </div>
-                        <div class="award">
-                            <a href="../index.php" style="padding-left: 20px; height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="65" height="60"></a>
+                    <div class="brand d-flex justify-content-between">
+                        <div class="brand_award d-flex flex-row">
+                            <div style="height: 90px;" class="nav-brand logo-brand">
+                                <a href="../index.php"><img src="../assets/images/brand/logo.png" width="65" height="60"></a>
+                            </div>
+                            <div class="award">
+                                <a href="../index.php" style="padding-left: 20px; height: 90px;"><img src="../assets/images/brand/skusenosti.gif" width="65" height="60"></a>
+                            </div>
                         </div>
                         <div class="mobile_buttons" style="margin-top: 5%;">
-                            <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 28px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
-                            <a data-toggle="collapse" href="#links" role="button" aria-expanded="false" aria-controls="links" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
+                            <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" aria-controls="searchbar" style="padding: 0 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
+                            <a data-toggle="collapse" href="#links" role="button" aria-expanded="false" aria-controls="links" style="padding: 0 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
                         </div>
                     </div>
                     <div class="row">
@@ -197,6 +199,10 @@
     });
         
     $('.fa-bars').click(function() {
-    $(this).toggleClass("fa-times");
+        $(this).toggleClass("fa-times");
+    });
+
+    $('.fa-search').click(function() {
+        $(this).toggleClass("fa-times");
     });
 </script>
