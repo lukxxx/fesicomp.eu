@@ -7,6 +7,8 @@ body {
 }
 
 
+
+
 input:focus {
     outline: none !important;
 
@@ -355,6 +357,14 @@ input{
         display: block;
     }
 
+    .cart_desktop {
+        display: none;
+    }
+
+    .cart_mobile {
+        display: block;
+    }
+
     .brand {
         display: flex;
         justify-content: center;
@@ -377,6 +387,27 @@ input{
         display: none;
     }
 
+    *{
+        overflow-x: hidden;  
+    }
+
+    .product-card{
+        margin: 15px 25px;
+    }
+
+    .akciova_ponuka, .nase_sluzby, .nove_produkty{
+        margin: 0 25px;
+    }
+
+    #footer_onas, #footer_follow, #footer_address{
+        margin: 10px 0 10px 25px;
+    }
+
+    .services{
+        margin-left: 5px;
+    }
+
+
 
   }
 
@@ -388,11 +419,21 @@ input{
     .header_mobile {
         display: none;
     }
+
+
+    .cart_desktop {
+        display: block;
+    }
+
+    .cart_mobile {
+        display: none;
+    }
+
   }
 
 
 
-  /*collapse pre mobilný header*/
+/*collapse pre mobilný header*/
   .collapse {
     display: none;
   }
@@ -419,6 +460,8 @@ input{
          -o-transition-property: height, visibility;
             transition-property: height, visibility;
   }
+/*collapse*/
+
 
   .parent {
     height: 100%;
@@ -442,8 +485,7 @@ input{
   }
 
 .zostavy {
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.267)), url("../images/sluzby/zostavy.jpg");  
-    
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.267)), url("../images/sluzby/zostavy.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -451,7 +493,7 @@ input{
 }
 
 .opravy {
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.267)), url("../images/sluzby/opravy.jpg");   
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.267)), url("../images/sluzby/opravy.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -460,8 +502,7 @@ input{
 }
 
 .skylink {
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.014), rgba(0, 0, 0, 0.027)), url("../images/sluzby/skylink.jpg"); 
-    
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.014), rgba(0, 0, 0, 0.027)), url("../images/sluzby/skylink.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

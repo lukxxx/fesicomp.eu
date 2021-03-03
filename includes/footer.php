@@ -11,16 +11,16 @@
         <div class="container">
             <footer id ="footer">
                 <div class = "row">
-                    <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
+                    <div class="col-sm-12 col-md-3 col-lg-3" id="footer_onas" style="padding-top: 1vw">
                         <span class="footer-h">O nás</span><br>
                         <a href="<?php echo $odkaz?>about.php" style="color: white; text-decoration: none;">O spoločnosti</a><br>
                         <a href="contact.php" style="color: white; text-decoration: none;">Kontakt</a><br>
                         <a href="<?php echo $odkaz?>subpage.php?ID=3" style="color: white; text-decoration: none;">Obchodné podmienky</a><br>
                         <a href="<?php echo $odkaz?>subpage.php?ID=4" style="color: white; text-decoration: none;">Reklamácia a vrátenie</a><br>
                         <a href="<?php echo $odkaz?>subpage.php?ID=5" style="color: white; text-decoration: none;">Ochrana osobných údajov</a><br>
-                        
+
                     </div>
-                    <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
+                    <div class="col-sm-12 col-md-3 col-lg-3" id="footer_follow" style="padding-top: 1vw">
                         <span class="footer-h">Sledujte nás</span><br>
                         <a href = "https://www.facebook.com/fesicomp.sk" style = "color:white;">Facebook <i class="fab fa-facebook"></i></a><br>
                         <span class="footer-h">U nás zaplatíte</span><br>
@@ -28,7 +28,7 @@
                         <i class="fab fa-cc-mastercard"></i><span> Mastercard</span><br>
                         <i class="fas fa-exchange-alt fa-1x"></i>&nbsp;<span style="font-size:16px;">Bankovým prevodom</span>
                     </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2" style="display: flex; padding-top: 1vw">
+                    <div class="col-sm-12 col-md-3 col-lg-3" id="footer_address" style="display: flex; padding-top: 1vw;">
                         <div class="location" style="display: block; padding-right: 3vw">
                             <span class="footer-h">Adresa</span><br>
                             <span>FESI comp, s.r.o.<br>
