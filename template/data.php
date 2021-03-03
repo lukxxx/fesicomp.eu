@@ -216,7 +216,7 @@ if(isset($_POST['bimbambum'])){
             ));
 
             setcookie("details", json_encode($details));
-            header("location:final.php");
+            header("location:checkout.php");
         }
     }
     
