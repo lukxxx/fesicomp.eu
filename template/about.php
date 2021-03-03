@@ -1,7 +1,10 @@
 <?php 
     include_once "../includes/head-template.php";
     include (ROOT ."includes/header-template.php");
+<<<<<<< HEAD
     require_once "../config.php";
+=======
+>>>>>>> b0d537301bd46ea8e688ae6e420cd81d5455ad4f
 ?>
     <div class="container" style="padding: 20px 13px 0 10px">
         <div class="row d-flex justify-content-center">
@@ -28,7 +31,7 @@
                                 while($row = mysqli_fetch_assoc($result)) {
                                     ?>
                                     <div class="col-sm-6 col-md-3 col-lg-2" style="margin:10px;">
-                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-1" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" style="padding:5px;"/></a>
+                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-1" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" style="padding:5px;"/></a>
                                     </div>
                                 <?php }
                             } else {
@@ -48,7 +51,7 @@
                                     
                                     while($row = mysqli_fetch_assoc($result)) {?> 
                                         <div class="col-sm-6 col-md-3 col-lg-2" style="margin:10px;">
-                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-2" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" width=180 height=138 style="padding:5px;"/></a>
+                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-2" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" width=180 height=138 style="padding:5px;"/></a>
                                         </div>
                                     <?php }
                                 
@@ -68,7 +71,7 @@
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {?> 
                                         <div class="col-sm-6 col-md-3 col-lg-2" style="margin:15px;">
-                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-3" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="praca" width=180 height=138 style="padding:5px;"/></a>
+                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-3" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="praca" width=180 height=138 style="padding:5px;"/></a>
                                         </div>
                                     <?php }
                                 } else {
@@ -87,7 +90,7 @@
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {?> 
                                         <div class="col-sm-6 col-md-3 col-lg-2" style="margin:15px;">
-                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-4"><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="team" width=180 height=138 style="padding:5px;"/></a>
+                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-4"><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="team" width=180 height=138 style="padding:5px;"/></a>
                                         </div>
                                     <?php }
                                 } else {
