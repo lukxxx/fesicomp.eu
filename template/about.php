@@ -27,7 +27,7 @@
                                 while($row = mysqli_fetch_assoc($result)) {
                                     ?>
                                     <div class="col-sm-6 col-md-3 col-lg-2" style="margin:10px;">
-                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-1" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" style="padding:5px;"/></a>
+                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-1" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" style="padding:5px;"/></a>
                                     </div>
                                 <?php }
                             } else {
@@ -47,7 +47,7 @@
                                     
                                     while($row = mysqli_fetch_assoc($result)) {?> 
                                         <div class="col-sm-6 col-md-3 col-lg-2" style="margin:10px;">
-                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-2" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" width=180 height=138 style="padding:5px;"/></a>
+                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-2" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="" width=180 height=138 style="padding:5px;"/></a>
                                         </div>
                                     <?php }
                                 
@@ -67,7 +67,7 @@
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {?> 
                                         <div class="col-sm-6 col-md-3 col-lg-2" style="margin:15px;">
-                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-3" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="praca" width=180 height=138 style="padding:5px;"/></a>
+                                            <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-3" ><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="praca" width=180 height=138 style="padding:5px;"/></a>
                                         </div>
                                     <?php }
                                 } else {
@@ -86,7 +86,7 @@
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {?> 
                                         <div class="col-sm-6 col-md-3 col-lg-2" style="margin:15px;">
-                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="example-set-4"><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="team" width=180 height=138 style="padding:5px;"/></a>
+                                        <a  href="../assets/images/galeria/<?php echo $row['velke']?>" data-lightbox="set-4"><img src="../assets/images/galeria/<?php echo $row['male']?>" alt="team" width=180 height=138 style="padding:5px;"/></a>
                                         </div>
                                     <?php }
                                 } else {
