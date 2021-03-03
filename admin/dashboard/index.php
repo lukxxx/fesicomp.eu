@@ -70,15 +70,35 @@ if(isset($_COOKIE['admin'])){ ?>
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="stats" style=" height: 350px;border: 1px solid #E7E7E7; padding-left: 5%; background-color: white; box-shadow: 5px 6px 16px -2px #616161; border-radius: 20px;">
                         <div class="row">
-                            <h4 style="font-size: 30px; font-weight: bold; padding-top: 1%">Nové objednávky</h4>
+                        <?php 
+                        $sth = $pdo->prepare("SELECT * FROM faktury LIMIT 7");
+                        $sth->execute();
+                        $rowcount_z = $sth->rowCount();
+                        ?>
+                            <h4 style="font-size: 30px; font-weight: bold; padding-top: 1%">Nové objednávky (<?php echo $rowcount_z; ?>)</h4>
                         </div>
-                        <div class="row d-flex" style="padding: 30px">
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
+                        <div class="row d-flex" style="padding-right: 30px">
+                            <table class="table table-striped table-sm" >
+                            <thead align="left">
+                                <tr align="left">
+                                <th scope="col">Email</th>
+                                <th scope="col">Meno</th>
+                                <th scope="col">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php 
+                             
+                             while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+                            ?>
+                                <tr align="left">
+                                <td scope="row"><?php echo $row['id']; ?></td>
+                                <td><?php echo $row['meno']." ".$row['priezvisko']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>        
