@@ -17,7 +17,7 @@ if(isset($_GET['ID'])){
     $id_produktu = $row['p_id'];
     $id_kat = $row['p_kid'];
     $nazov = $row['p_nazov'];
-    $kod = $row['p_kod_sklad'];
+    $kod = $row['p_id'];
     $popis = $row['p_popis'];
     $cena = $row['p_cena'];
     $produkt_cislo = $row['p_pn'];
@@ -32,9 +32,9 @@ if(isset($_GET['ID'])){
         $kategoria = $rowko['k_nazov'];    
     }
     if(file_exists("../catalog/$id_produktu/$obrazok")){
-        $cesta = "<img src='../catalog/$id_produktu/$obrazok' style='width: 100%;'>";
+        $cesta = "<a href='../catalog/$id_produktu/$obrazok' data-lightbox='set' ><img loading='lazy' src='../catalog/$id_produktu/$obrazok' style='width: 100%;'></a>";
     } else {
-        $cesta = "<img src='../assets/images/no-image.png'  style='width: 100%;'>";
+        $cesta = "<img loading='lazy' src='../assets/images/no-image.png'  style='width: 100%;'>";
     }
 ?>
     <style>
