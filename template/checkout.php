@@ -19,15 +19,18 @@ foreach ($details as $d) {
         $datum = date('d.m.y');
         $id_zakazky = $_POST['id_zakazky'];
         if (isset($_COOKIE['user'])) {
-            $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto, telefon, id FROM g_users");
-            $sth->execute();
-            $row = $sth->fetch(PDO::FETCH_ASSOC);
-            $id_zakaznika = $row['id'];
-            $meno = $row['meno'];
-            $email = $row['email'];
-            $mesto = $row['mesto'];
-            $priezvisko = $row['priezvisko'];
-            $telefon = $row['telefon'];
+            $zakaznik = $_COOKIE['user-mail'];
+            $sth = $pdo->prepare("SELECT * FROM g_users WHERE email LIKE ?");
+            $sth->execute(array($zakaznik));
+            while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+                $id_zakaznika = $row['id'];
+                $meno = $row['meno'];
+                $email = $row['email'];
+                $mesto = $row['mesto'];
+                $priezvisko = $row['priezvisko'];
+                $telefon = $row['telefon'];    
+            }
+            
             $zlava = 0;
             $sth = $pdo->prepare("INSERT INTO faktury (id,id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava,datum) VALUES (?,?,?,?,?,?,?,?,?,?)");
             if ($sth->execute(array($id_zakazky,$id_zakaznika, $meno, $priezvisko, $email, $telefon, 0, 0, $zlava,$datum))) {
@@ -36,8 +39,9 @@ foreach ($details as $d) {
                     
             }
         } else if (isset($_COOKIE['user-login'])) {
-            $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto, telefon, id FROM users");
-            $sth->execute();
+            $zakaznik = $_COOKIE['user-login'];
+            $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto, telefon, id FROM users WHERE email LIKE ?");
+            $sth->execute(array($zakaznik));
             $row = $sth->fetch(PDO::FETCH_ASSOC);
             $id_zakaznika = $row['id'];
             $meno = $row['meno'];
