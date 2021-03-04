@@ -269,9 +269,9 @@ if(isset($_POST['bimbambum'])){
                                     echo '<input class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" onkeyup="OpravaTel(this);" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon" id="phonik" type="tel" onkeyup="OpravaTel(this);" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input class="form-control" name="telefon" id="phonik" type="tel" onkeyup="OpravaTel(this)" maxlength="12" placeholder="Telefónne číslo (povinné)">';
                                 }
                                 if($city_err != ""){
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
@@ -284,27 +284,13 @@ if(isset($_POST['bimbambum'])){
                                     echo '<input class="form-control" name="street" type="text" placeholder="Ulica (povinné)">';
                                 }
                                 if($psc_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" onkeyup="OpravaPsc(this);"  name="psc" type="tel" placeholder="PSČ (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" onkeyup="OpravaPsc(this)"  name="psc" maxlength="6" type="tel" placeholder="PSČ (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="psc" type="tel" onkeyup="OpravaPsc(this);" placeholder="PSČ (povinné)">';
+                                    echo '<input class="form-control" name="psc" type="tel" onkeyup="OpravaPsc(this)" maxlength="6" placeholder="PSČ (povinné)">';
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
                             </form>               
-                            <script>
-                                $(document).ready(function()
-                                {
-                                    $("#phonik").attr('maxlength','12');
-                                });
-
-                            </script>   
-                        <script>
-                                $(document).ready(function()
-                                {
-                                    $("#psc").attr('maxlength','6');
-                                });
-
-                            </script>
                             <br>
                         <div class="form-group d-flex">
                             <label><input type="checkbox" name="type" id="com" onclick="unHide();" value="1"> Chcem doplniť firemné údaje</label>
@@ -403,9 +389,9 @@ if(isset($_COOKIE['user'])){
                                     echo '<input class="form-control" name="email" type="email" value="'.$email.'" placeholder="E-mail (povinné)">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" maxlength="12" onkeyup="OpravaTel(this)" type="tel" placeholder="Telefónne číslo (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon" id="phonik" value="'.$telefon.'" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input class="form-control" name="telefon" id="phonik" value="'.$telefon.'" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 }
                                 if($city_err != ""){
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
@@ -418,9 +404,9 @@ if(isset($_COOKIE['user'])){
                                     echo '<input class="form-control" name="street" type="text" value="'.$ulica.'" placeholder="Ulica (povinné)">';
                                 }
                                 if($psc_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="psc" type="number" value="'.$psc.'" placeholder="PSČ (povinné)">';
+                                    echo '<input class="form-control" name="psc" type="number" value="'.$psc.'" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
@@ -458,9 +444,9 @@ if(isset($_COOKIE['user'])){
                                     echo '<input class="form-control" name="email_new" type="email" placeholder="E-mail (povinné)">';
                                 }
                                 if($tel_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 }
                                 if($city_new_err != ""){
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
@@ -473,9 +459,9 @@ if(isset($_COOKIE['user'])){
                                     echo '<input class="form-control" name="street_new" type="text" placeholder="Ulica (povinné)">';
                                 }
                                 if($psc_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" maxlength="6" onkeyup="OpravaPsc(this)" type="number" placeholder="PSČ (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="psc_new" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input class="form-control" name="psc_new" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note_new" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
@@ -486,20 +472,6 @@ if(isset($_COOKIE['user'])){
                                     <label style="padding: 2%"><input type="radio" value="0" name="save-new"> Nie</label>
                                 </div>
                             </div>               
-                            <script>
-                                $(document).ready(function()
-                                {
-                                    $("#phonik").attr('maxlength','10');
-                                });
-
-                            </script>   
-                        <script>
-                                $(document).ready(function()
-                                {
-                                    $("#psc").attr('maxlength','5');
-                                });
-
-                            </script>
                             <br>
                         <div class="form-group d-flex">
                             <label><input type="checkbox" name="type" id="com" onclick="unHide();" value="1"> Chcem doplniť firemné údaje</label>
@@ -608,9 +580,9 @@ if(isset($_COOKIE['user-login'])){
                                     echo '<input class="form-control" class="input-form" name="email" type="email" value="'.$email.'" placeholder="E-mail (povinné)">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon" class="input-form" id="phonik" value="'.$telefon.'" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input class="form-control" name="telefon" class="input-form" id="phonik" value="'.$telefon.'" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 }
                                 if($city_err != ""){
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
@@ -623,9 +595,9 @@ if(isset($_COOKIE['user-login'])){
                                     echo '<input class="form-control" class="input-form" name="street" type="text" value="'.$ulica.'" placeholder="Ulica (povinné)">';
                                 }
                                 if($psc_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" class="input-form" name="psc" type="number" value="'.$psc.'" placeholder="PSČ (povinné)">';
+                                    echo '<input class="form-control" class="input-form" name="psc" type="number" value="'.$psc.'" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
@@ -668,9 +640,9 @@ if(isset($_COOKIE['user-login'])){
                                     echo '<input class="form-control" name="email_new" type="email" placeholder="E-mail (povinné)">';
                                 }
                                 if($tel_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
                                 }
                                 if($city_new_err != ""){
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
@@ -683,9 +655,9 @@ if(isset($_COOKIE['user-login'])){
                                     echo '<input class="form-control" name="street_new" type="text" placeholder="Ulica (povinné)">';
                                 }
                                 if($psc_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="psc_new" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input class="form-control" name="psc_new" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note_new" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
@@ -696,20 +668,6 @@ if(isset($_COOKIE['user-login'])){
                                     <label style="padding: 2%"><input type="radio" value="0" name="save-new"> Nie</label>
                                 </div>
                             </div>               
-                            <script>
-                                $(document).ready(function()
-                                {
-                                    $("#phonik").attr('maxlength','10');
-                                });
-
-                            </script>   
-                        <script>
-                                $(document).ready(function()
-                                {
-                                    $("#psc").attr('maxlength','5');
-                                });
-
-                            </script>
                             <br>
                         <div class="form-group d-flex">
                             <label><input type="checkbox" <?php if($osoba == "Firma"){ echo "checked='checked' disabled";}?> name="type" id="com" onclick="unHide();" value="1"> Chcem doplniť firemné údaje</label>
