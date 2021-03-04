@@ -33,7 +33,7 @@ require_once "config.php";
                         </div>
                         <div class="product-name justify-content-md-center">
                             <div class="heading">
-                            <a style="color: white;" href="template/item.php?ID=<?php echo $row->p_id ?>"><h6 class="name-prod"><?php echo $row->p_nazov ?></h6></a>
+                            <a style="color: white;" href="template/item.php?ID=<?php echo $row->p_id ?>"><h6 class="name-prod"><?php echo mb_strimwidth($row->p_nazov, 0, 45, "");?></h6></a>
                             </div>
                         </div>
                         

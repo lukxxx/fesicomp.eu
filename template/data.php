@@ -1,8 +1,9 @@
 <?php 
 include "../includes/head-template.php";
-$options = [
-    'cost' => 12,
-];
+
+if(!isset($_COOKIE['cart']) || $_COOKIE['cart'] == "[]"){
+    header("location: ../");
+}
 
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
@@ -215,7 +216,7 @@ if(isset($_POST['bimbambum'])){
                 "email" => $email
             ));
 
-            setcookie("details", json_encode($details));
+            setcookie("details", json_encode($details), time() + 12800, "/");
             header("location:final.php");
         }
     }

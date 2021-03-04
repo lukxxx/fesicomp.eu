@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="sk">
 <?php include "includes/head.php";
+if(isset($_COOKIE['details'])){
+    unset($details);
+    unset($_COOKIE['details']);
+    setcookie('details', null, time() - 3600, "/");
+}
 
 ?>
     <?php include "includes/header.php" ?>

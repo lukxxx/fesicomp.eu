@@ -1,9 +1,9 @@
 <?php 
 include "../includes/head-template.php";
-$options = [
-    'cost' => 12,
-];
 
+if(!isset($_COOKIE['details'])){
+    header("Location: ../");
+}
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
 

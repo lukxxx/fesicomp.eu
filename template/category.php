@@ -178,7 +178,7 @@ include_once "../includes/head-template.php"
                                                         
                                                             if ($flag) { ?>
 
-                                                            <!-- show delete button if already exists -->
+                                                            <!-- add to cart -->
 
                                                             <form method="POST" action="../update-cart.php" style="float: right;">
                                                             <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
@@ -191,7 +191,7 @@ include_once "../includes/head-template.php"
 
                                                             <form method="POST" action="../add-cart.php">
                                                                 <input type="hidden" name="quantity" value="1">
-                                                                <input type="hidden" name="productCode" value="<?php echo $row['p_kod_sklad']; ?>">
+                                                                <input type="hidden" name="productCode" value="<?php echo $row['p_id']; ?>">
                                                                 <button class="btn btn-dark" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                                             </form>
 
@@ -206,10 +206,8 @@ include_once "../includes/head-template.php"
                                                                                                 ?>
                                                                                                 <span class="product-price-wdph">Bez DPH:<?php echo $nodph; ?>€</span>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
