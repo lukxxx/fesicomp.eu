@@ -1,5 +1,10 @@
 <?php 
 include "../includes/head-template.php";
+if(isset($_COOKIE['details'])){
+    unset($details);
+    unset($_COOKIE['details']);
+    setcookie('details', null, time() - 3600, "/");
+}
 if(isset($_GET['photo'])){
     $photo = $_GET['photo'];
 }
@@ -195,7 +200,12 @@ function onLoad(){
         </div>
         
     </div>
-         <hr>   
+    <hr>   
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3>Vaše objednávky:</h3>
+        </div>
+    </div>
         </div>
     </div>
 </div>
