@@ -41,19 +41,7 @@
                         </div>    
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4" style="padding-top: 1vw">
-                        <a target="_blank" href="https://goo.gl/maps/69n38NnoHfmMWA8E8">
-                            <?php 
-                            $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-                            if (strpos($url,'/template') !== false) {
-                                echo '<img src="../assets/images/mapa.png" target="_blank" alt="mapa" style="width: 70%; margin-left: auto; margin-right: auto; display: block;">';
-                            } else {
-                                echo '<img src="./assets/images/mapa.png" target="_blank" alt="mapa" style="width: 70%; margin-left: auto; margin-right: auto; display: block;">';
-                            }
-                            ?>
-                            
-                                
-                            
-                        </a>
+                        <a target="_blank" href="https://goo.gl/maps/69n38NnoHfmMWA8E8"><img src="<?php echo $srcMap; ?>assets/images/mapa.png" target="_blank" alt="mapa" style="width: 70%; margin-left: auto; margin-right: auto; display: block;"></a>
                     </div>
                 </div>
                <hr style="background-color:white;">
@@ -63,8 +51,6 @@
                         <span style = "text-align: center">© 2005 – <?php echo date("Y"); ?> FESI comp, s.r.o.</span>
                     </div>      
                 </div>
-
-
         </div>
         </footer>              
     </div>
