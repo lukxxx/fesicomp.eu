@@ -32,7 +32,7 @@ if(isset($_POST['bimbambum'])){
     
     if(empty($_POST['email'])){
         $error = "<div class='alert alert-danger' role='alert'>Nezadal si meno!</div>";  
-    } else if($email == $emailik){
+    } else if(isset($emailik) && $email == $emailik){
         $error = "";
     } else {
         $error = "<div class='alert alert-danger' role='alert'>
