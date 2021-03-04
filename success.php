@@ -10,8 +10,9 @@ foreach ($cart as $c) {
         $total += $c->product->p_cena * $c->quantity;
         $id_produktu = $c->productCode;
         $quantity = $c->quantity;
+        $id = json_encode($id_produktu);       
 }
-
+echo $id;
 $sth = $pdo->prepare("SELECT * FROM faktury ORDER BY id DESC LIMIT 1");
         if($sth->execute()){
                 $row = $sth->fetch(PDO::FETCH_ASSOC);
@@ -51,7 +52,7 @@ if (isset($_POST['pay'])) {
         }
         
         $sth = $pdo->prepare("INSERT INTO predane_produkty (id_produktu,id_faktury,cena_ks,pocet_ks) VALUES (?,?,?,?)");
-        if($sth->execute(array($id_produktu, $id_zakazky, $total, $quantity))){
+        if($sth->execute(array($id, $id_zakazky, $total, $quantity))){
         
         }
                 
@@ -66,8 +67,9 @@ if (isset($_POST['pay'])) {
         <input type="submit">
 </form>
 <script>
-       window.onload = function(){
+      /*window.onload = function(){
         document.forms['pass-data'].submit();
+<<<<<<< HEAD
 }
 </script>
 
@@ -93,3 +95,7 @@ if (isset($_POST['pay'])) {
 }
 
 ?>
+=======
+}*/
+</script>
+>>>>>>> 43ac436f2fc35f31b3ea5917abefb67c096b5d66
