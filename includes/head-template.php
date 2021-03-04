@@ -54,6 +54,7 @@ if ($sth->rowCount() == 1) {
     <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
     <meta name="google-signin-client_id" content="238466960669-o9vmi5uorbemeudllt4f5chf5auq0kia.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="../assets/js/formFix.js"></script>
     <script>
         gapi.load('auth2', function() {
             gapi.auth2.init();

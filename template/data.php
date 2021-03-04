@@ -37,7 +37,7 @@ $note_new = "";
 $show = "display: block;";
 $hide = "display: none;";
 
-$submit_btn = "<button style='all: unset; cursor: pointer; color: black; text-align: right;' name='bimbambum' type='submit'>Pokračovať k doprave <i class='fas fa-arrow-right'></i></button>";
+$submit_btn = "<button style='all: unset; cursor: pointer; color: black; text-align: right; font-size: 18px;' name='bimbambum' type='submit'>Pokračovať k doprave <i class='fas fa-arrow-right'></i></button>";
 if(isset($_POST['bimbambum'])){
     if(isset($_POST['new_data'])){
         if(empty(trim($_POST["name_new"]))){
@@ -230,26 +230,28 @@ if(isset($_POST['bimbambum'])){
 ?>
     <?php include "../includes/header-template.php" ?>
 
-<?php if(!isset($_COOKIE['user']) && !isset($_COOKIE['user-login'])){ ?>
     <div class="container" style="margin-top: 50px;">
-    <div class="row d-flex">
-        <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black;" href="cart.php"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
+        <div class="row d-flex">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <a style="color: black; font-size: 18px;" href="cart.php"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+                <h2 style="font-weight: bold;">Dodacie údaje</h2>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
+                <form method="post" action="">
+                <?php echo $submit_btn; ?>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 text-center">
-            <h2 style="font-weight: bold;">Dodacie údaje</h2>
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
-            <form method="post" action="">
-            <?php echo $submit_btn; ?>
-        </div>
-    </div>
     <hr>
+
+<?php if(!isset($_COOKIE['user']) && !isset($_COOKIE['user-login'])){ ?>
+    
     <br>
                 <div class="login-form">
                     <div class="container" style="padding: 5% 25% 0% 25%">
                         
-                            <div class="form-group">
+                            <form method="post" class="form-group">
                                 <?php if($name_err != ""){
                                     echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="name" type="text" placeholder="Meno (povinné)">';
                                 } else {
@@ -268,7 +270,7 @@ if(isset($_POST['bimbambum'])){
                                 if($tel_err != ""){
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" placeholder="Telefónne číslo (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon" id="phonik" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input class="form-control" name="telefon" id="phonik" type="tel" onkeyup="OpravaTel(this);" placeholder="Telefónne číslo (povinné)">';
                                 }
                                 if($city_err != ""){
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
@@ -287,11 +289,11 @@ if(isset($_POST['bimbambum'])){
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
-                            </div>               
+                            </form>               
                             <script>
                                 $(document).ready(function()
                                 {
-                                    $("#phonik").attr('maxlength','10');
+                                    $("#phonik").attr('maxlength','12');
                                 });
 
                             </script>   
@@ -345,7 +347,6 @@ if(isset($_POST['bimbambum'])){
                                 Na váš email Vám zašleme prihlasovacie údaje do Vášho nového účtu!
                             </div>
                         </div>
-                            <?php echo $submit_btn; ?>
                         </div>
                         </form>
                     </div>
@@ -373,20 +374,7 @@ if(isset($_COOKIE['user'])){
         $full_n = $first_name." ".$second_name;
     } 
     ?>
-    <div class="container" style="margin-top: 50px;">
-    <div class="row d-flex">
-        <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black;" href="cart.php"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 text-center">
-            <h2 style="font-weight: bold;">Dodacie údaje</h2>
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
-            <form method="post" action="">
-            <?php echo $submit_btn ?>
-        </div>
-    </div>
-    <hr>
+    
     <br>
     <div class="row text-center">
         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
@@ -591,20 +579,7 @@ if(isset($_COOKIE['user-login'])){
         $full_n = $first_name." ".$second_name;
     } 
     ?>
-    <div class="container" style="margin-top: 50px;">
-    <div class="row d-flex">
-        <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black;" href="cart.php"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 text-center">
-            <h2 style="font-weight: bold;">Dodacie údaje</h2>
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
-            <form method="post" action="">
-            <?php echo $submit_btn ?>
-        </div>
-    </div>
-    <hr>
+   
     <br>
     <div class="row text-center">
         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
