@@ -269,7 +269,7 @@ if(isset($_POST['bimbambum'])){
                                     echo '<input class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" onkeyup="OpravaTel(this);" placeholder="Telefónne číslo (povinné)">';
                                 } else {
                                     echo '<input class="form-control" name="telefon" id="phonik" type="tel" onkeyup="OpravaTel(this);" placeholder="Telefónne číslo (povinné)">';
                                 }
@@ -284,9 +284,9 @@ if(isset($_POST['bimbambum'])){
                                     echo '<input class="form-control" name="street" type="text" placeholder="Ulica (povinné)">';
                                 }
                                 if($psc_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" onkeyup="OpravaPsc(this);"  name="psc" type="tel" placeholder="PSČ (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="psc" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<input class="form-control" name="psc" type="tel" onkeyup="OpravaPsc(this);" placeholder="PSČ (povinné)">';
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
@@ -301,7 +301,7 @@ if(isset($_POST['bimbambum'])){
                         <script>
                                 $(document).ready(function()
                                 {
-                                    $("#psc").attr('maxlength','5');
+                                    $("#psc").attr('maxlength','6');
                                 });
 
                             </script>
