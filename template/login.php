@@ -64,7 +64,7 @@ if(isset($_POST['bimbambum'])){
                                 <input class="form-control" name="email" type="text" placeholder="e-mail..."><br>
                                 <input class="form-control" name="password" type="password" placeholder="heslo...">
                                 <div class="d-flex justify-content-center" style="padding: 5%">
-                                    <button type="submit" name="bimbambum" class="btn btn-dark">Prihlásiť sa<i class="fas fa-sign-in-alt"></i></button>
+                                    <button type="submit" name="bimbambum" class="btn btn-dark">Prihlásiť sa <i class="fas fa-sign-in-alt"></i></button>
                                 </div>
                             </div>
                         </form>   
