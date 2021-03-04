@@ -42,6 +42,7 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
     $sto->execute(array($email));
     if($sto->rowCount() == 1){
         $row = $sto->fetch(PDO::FETCH_ASSOC);
+        $id_zakaznika = $row['id'];
         $emailik = $row['email'];
         $first_name = $row['meno'];
         $second_name = $row['priezvisko'];
@@ -50,7 +51,6 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
         $ulica = $row['ulica'];
         $mesto = $row['mesto'];
         $psc = $row['psc'];
-        $full_n = $first_name." ".$second_name;
     } else {
         $telefon = "";
         $ulica = "";
@@ -65,9 +65,10 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
     $sto->execute(array($email_from_login));
     if($sto->rowCount() == 1){
         $row = $sto->fetch(PDO::FETCH_ASSOC);
+        $id_zakaznika = $row['id'];
         $emailik = $row['email'];
         $telefon_login = $row['telefon'];
-        $meno = $row['meno'];
+        $meno_l = $row['meno'];
         $surname_l = $row['priezvisko'];
         $street_l = $row['ulica'];
         $mesto = $row['mesto'];
@@ -80,13 +81,13 @@ if(isset($photo) && isset($email) && isset($idtoken) && isset($full_name)){
         $ico_firmy = $row['ico_firmy'];
         $dic_firmy = $row['dic_firmy'];
         $ic_dph_firmy = $row['ic_dph_firmy'];
-        $meno_l = $meno." ".$surname_l;
     }
 } else {
     $sth = $pdo->prepare("SELECT * FROM g_users WHERE email = ?");
     $sth->execute(array($em));
     if($sth->rowCount() == 1){
         $row = $sth->fetch(PDO::FETCH_ASSOC);
+        $id_zakaznika = $row['id'];
         $emailik = $row['email'];
         $first = $row['meno'];
         $second = $row['priezvisko'];
@@ -157,7 +158,7 @@ function onLoad(){
             <h4 style="color: grey;">Základné informácie: </h4>
                 <?php 
                 ?>
-                <span style="padding-top: 20px">Meno: <strong><?php if(!empty($meno_l)){ echo $meno_l; } else if(!empty($full_n)) { echo $full_n;} else { echo $empty; }?></strong> <button onclick="unhideName()" 
+                <span style="padding-top: 20px">Meno: <strong><?php if(!empty($meno_l)){ echo $meno_l; } else if(!empty($first_name)) { echo $first_name;} else { echo $empty; }?></strong> <button onclick="unhideName()" 
                 style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
                 <div style="display: none;" id="edit-formular" class="edit-form">
                     <?php 
@@ -180,6 +181,8 @@ function onLoad(){
                         </div>
                     </form>
                 </div>
+                <span style="padding-top: 20px">Priezvisko: <strong><?php if(!empty($surname_l)){ echo $surname_l; } else if(!empty($second_n)) { echo $second_n;} else { echo $empty; }?></strong> <button onclick="unhideName()" 
+                style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
                 <span style="padding-top: 20px">Email: <strong><?php if(!empty($email)){ echo $email;} else if(!empty($emailik)) { echo $emailik;} else { echo $email_from_login; } ?></strong></span><br><br>
                 <span style="padding-top: 20px">Telefón: <strong><?php if(!empty($telefon)){ echo $telefon; } else if(!empty($telefon_login)) { echo $telefon_login; } else { echo $empty; } ?></strong></span>    
         </div>
@@ -203,7 +206,57 @@ function onLoad(){
     <hr>   
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-                                <h3>Vaše objednávky:</h3>
+            <h3>Vaše objednávky:</h3>
+            <hr>
+            <?php 
+            $sth = $pdo->prepare("SELECT * FROM faktury WHERE id_zakaznika LIKE ?");
+            $sth->execute(array($id_zakaznika));
+            $number_of_rows = $sth->rowCount(); 
+            if($number_of_rows > 0){
+            ?>
+            <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">Č. objednávky</th>
+                <th scope="col">Dátum objednávky</th>
+                <th scope="col">Cena (€)</th>
+                <th scope="col">Faktúra</th>
+                <th scope="col">Stav</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+                $id_objednavky = $row['id'];
+                $meno = $row['meno'];
+                $priezvisko = $row['priezvisko'];
+                $email = $row['email'];
+                $telefon = $row['telefon'];
+                $zaplatene = $row['zaplatene'];
+                $vybavene = $row['vybavene'];
+                $zlava = $row['zlava'];
+                $datum = $row['datum'];
+                $sto = $pdo->prepare("SELECT * FROM predane_produkty WHERE id_faktury LIKE ?");
+                $sto->execute(array($id_objednavky));
+                   while($bow = $sto->fetch(PDO::FETCH_ASSOC)){
+                    $faktura = "invoice.php?fid=$id_objednavky";
+                    $cena = $bow['cena_ks'];
+                    $produkt = $bow['cena_ks'];                
+                ?>     
+                <tr>
+                <th scope="row"><?php echo $id_objednavky ?></th>
+                <td><?php echo $datum ?></td>
+                <td><?php echo $cena ?>€</td>
+                <td><?php echo "<a href='$faktura'>Faktúra IN-$id_objednavky</a>"; ?></td>
+                <td><?php echo "Čakajúca" ?></td>
+                </tr>
+            <?php } } } else {
+                echo "<div style='text-align: center; padding-top: 40px; padding-bottom: 40px;'>";
+                echo "<span>Bohužiaľ u nás ešte nemáte žiadne objednávky :(</span>";
+                echo "</div>";
+            } ?>
+            </tbody>
+            </table>
         </div>
     </div>
         </div>
