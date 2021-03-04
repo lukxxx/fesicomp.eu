@@ -69,33 +69,5 @@ if (isset($_POST['pay'])) {
 <script>
       /*window.onload = function(){
         document.forms['pass-data'].submit();
-<<<<<<< HEAD
-}
-</script>
-
-
-
-<?php
-/*picpic */
-    $sent_message = false;
-    if(isset($_POST['pay'])){
-        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-
-            
-           
-            $messageSubject = "Nova sprava od zakaznika";
-
-            $to = "matej.roch4@gmail.com";
-            $body = "";
-
-            $body .= "Dakujeme za vasu objednavku";
-            mail($to,$messageSubject,$body);
-            $sent_message = true;
-        }
-}
-
-?>
-=======
 }*/
 </script>
->>>>>>> 43ac436f2fc35f31b3ea5917abefb67c096b5d66
