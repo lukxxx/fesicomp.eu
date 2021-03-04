@@ -27,7 +27,6 @@ $doprava_err = "";
 $show = "display: block;";
 $hide = "display: none;";
 
-$submit_btn = "<button style='all: unset; cursor: pointer; color: black; text-align: right;' name='bimbambum' type='submit'>Pokračovať k doprave <i class='fas fa-arrow-right'></i></button>";
 
 include "../includes/header-template.php" ?>
 
@@ -35,7 +34,7 @@ include "../includes/header-template.php" ?>
     <div class="container" style="margin-top: 50px;">
     <div class="row d-flex">
         <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black;" href="cart.php"><i class="fas fa-arrow-left"></i> Späť na údaje</a>
+            <a style="color: black; font-size: 18px;" href="data.php"><i class="fas fa-arrow-left"></i> Späť na údaje</a>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 text-center">
             <h2 style="font-weight: bold; text-transform: uppercase;">spôsob dopravy a platby</h2>
@@ -88,7 +87,7 @@ include "../includes/header-template.php" ?>
                     </div>
                     <?php } ?>
                     <div class="form-group d-flex">
-                       <label style="padding: 1px 0px 5px 25px"><input  type="checkbox" name="podmienky"> Suhlasím s podmienkami s <a href="obchodne-podmienky.php" >obchodnými podmienkami</a></label>
+                       <label style="padding: 1px 0px 5px 25px"><input  type="checkbox" name="podmienky" required> Suhlasím s podmienkami s <a href="obchodne-podmienky.php" >obchodnými podmienkami</a></label>
                     </div>
                     <div class="submit text-center">
                         <button class="btn btn-dark" style="margin: 10px 10px 80px 10px;" type="submit" name="pay">Súhrn objednávky</button>
