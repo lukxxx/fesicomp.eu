@@ -241,7 +241,7 @@ if(isset($_POST['bimbambum'])){
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
             <form method="post" action="">
-            <?php echo $submit_btn; echo $total; ?>
+            <?php echo $submit_btn; ?>
         </div>
     </div>
     <hr>
