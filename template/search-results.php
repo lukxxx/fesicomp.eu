@@ -117,7 +117,7 @@ include_once "../includes/head-template.php"
                             $flag = false;
                             foreach ($cart as $c)
                             {
-                                if (($c->productCode == $row['p_kod_sklad']))
+                                if (($c->productCode == $row['p_id']))
                                 {
                                     $flag = true;
                                     break;
@@ -171,7 +171,7 @@ include_once "../includes/head-template.php"
 
                                                             <form method="POST" action="../add-cart.php">
                                                                 <input type="hidden" name="quantity" value="1">
-                                                                <input type="hidden" name="productCode" value="<?php echo $row['p_kod_sklad']; ?>">
+                                                                <input type="hidden" name="productCode" value="<?php echo $row['p_id']; ?>">
                                                                 <button class="btn btn-dark" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                                             </form>
 
