@@ -2,8 +2,10 @@
     $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     if (strpos($url,'/template') !== false) {
         $odkaz = '';
+        $srcMap = '../';
     } else {
         $odkaz = 'template/';
+        $srcMap = '';
     }
 ?>
 
@@ -41,7 +43,7 @@
                     <div class="col-sm-12 col-md-3 col-lg-3" style="padding-top: 1vw">
                         <a target="_blank" href="https://goo.gl/maps/69n38NnoHfmMWA8E8">
                             
-                                <img src="..\assets\images\mapa.png" target="_blank" alt="mapa" style="width: 80%; margin-left: auto; margin-right: auto; display: block;">
+                                <img src="<?php echo $srcMap?>assets/images/mapa.png" target="_blank" alt="mapa" style="width: 80%; margin-left: auto; margin-right: auto; display: block;">
                             
                         </a>
                     </div>
