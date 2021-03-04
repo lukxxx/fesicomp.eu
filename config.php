@@ -1,5 +1,10 @@
 <?php 
 
+$cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
+$cart = json_decode($cart);
+
+$details = isset($_COOKIE["details"]) ? $_COOKIE["details"] : "[]";
+$details = json_decode($details);
 
 define("ROOT", __DIR__ ."/");
 
