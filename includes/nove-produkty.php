@@ -69,7 +69,7 @@ require_once "config.php";
                                             $no_dph = ($row->p_cena / 100) * 80; 
                                             $bezdph = number_format($no_dph, 2, ',', ' ');
                                         ?>
-                                        <span class="product-price-wdph">Bez DPH: <?php echo $bezdph; ?></span>
+                                        <span class="product-price-wdph">Bez DPH: <?php echo $bezdph; ?>€</span>
                                     </div>
 
                                 </div>
