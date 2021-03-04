@@ -251,7 +251,7 @@ if(isset($_POST['bimbambum'])){
                         
                             <div class="form-group">
                                 <?php if($name_err != ""){
-                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Meno (povinné)">';
+                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="name" type="text" placeholder="Meno (povinné)">';
                                 } else {
                                     echo '<input class="form-control" name="name" type="text" placeholder="Meno (povinné)">';
                                 }
