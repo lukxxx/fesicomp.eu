@@ -5,14 +5,14 @@ include "../includes/header-template.php";
 <div class="container cart_desktop" style="margin-top: 50px;">
     <div class="row d-flex">
         <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><i class="fas fa-arrow-left"></i> Pokračovať v nákupe</a>
+            <a style="color: black; font-size: 18px; " href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><i class="fas fa-arrow-left"></i> Pokračovať v nákupe</a>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 text-center">
             <h2 style="font-weight: bold;">KOŠÍK</h2>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
             <?php if(isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]"){ ?>
-            <a style="color: black; text-align: right;" href="data.php">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
+            <a style="color: black; text-align: right; font-size: 18px;" href="data.php">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
             <?php
             }
             ?>
@@ -22,7 +22,7 @@ include "../includes/header-template.php";
     <br>
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-            <div class="<table class="table">       
+            <div class="table">       
     <?php
     if(isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]"){
         $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
