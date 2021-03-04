@@ -1,73 +1,24 @@
 <?php 
 include "../includes/head-template.php";
 require_once "../config.php";
-
-
-$cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
-$cart = json_decode($cart);
-
+if(!isset($_COOKIE['details'])){
+    header("Location: ../");
+}
 $details = isset($_COOKIE["details"]) ? $_COOKIE["details"] : "[]";
 $details = json_decode($details);
 
-$total = 0;
-
-foreach ($cart as $c)
-{
-    $total += $c->product->p_cena * $c->quantity;
-    $id_produktu = $c->productCode;
+foreach ($details as $d) {
+    $telefon_non_login = $d->number;
+    $name = $d->name;
+    $priezvisko_non = $d->surname;
+    $email_non_login = $d->email;
+    $quantity = $d->quantity;
 }
 
-
-$platba = "";
-$doprava = "";
-$term = "";
-$term_err = "";
-$platba_err = "";
-$doprava_err = "";
-$sth = $pdo->prepare("SELECT * FROM faktury ORDER BY id DESC LIMIT 1");
-$sth->execute();
-$row = $sth->fetch(PDO::FETCH_ASSOC);
-$id_zakazky = $row['id'];
-$id_zakazky = $id_zakazky+1;
-
-if(isset($_POST['pay'])){
-        foreach ($details as $d)
-            {
-                $telefon_non_login = $d->number;
-                $name = $d->name;
-                $priezvisko_non = $d->surname;
-                $email_non_login = $d->email;
-                $quantity = $d->quantity;
-                
-            }
-       
-        if(!isset($_POST['doprava'])){
-            $doprava_err = "Zadajte spôsob dopravy!";
-            header("location: ./final.php");
-        } else if($_POST['doprava'] == "posta"){
-            $doprava = "Doprava poštou";
-        } else {
-            $doprava = "Osobný odber na predajni";
-        }
-        if(!isset($_POST['platba'])){
-            $platba_err = "Zadajte spôsob platby!";
-            header("location: ./final.php");
-        } else if($_POST['platba'] == "trustpay"){
-            $platba = "trustpay";
-        } else if($_POST['platba'] == "kurier-dobierka"){
-            $platba = "Na dobierku pri prevzatí od kuriéra";
-        } else if($_POST['platba'] == "dobierka"){
-            $platba = "Na dobierku pri prezvatí tovaru na predajni";
-        } else {
-            $platba = "Hotovosťou";
-        }
         
-        if(!isset($_POST['podmienky'])){
-            header("location: ./final.php");
-        } else {
-            $term = true;
-        }
-        if(isset($_COOKIE['user'])){
+        $datum = date('d.m.y');
+        $id_zakazky = $_POST['id_zakazky'];
+        if (isset($_COOKIE['user'])) {
             $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto, telefon, id FROM g_users");
             $sth->execute();
             $row = $sth->fetch(PDO::FETCH_ASSOC);
@@ -75,16 +26,16 @@ if(isset($_POST['pay'])){
             $meno = $row['meno'];
             $email = $row['email'];
             $mesto = $row['mesto'];
-            $priezvisko = $row['priezvisko'];    
+            $priezvisko = $row['priezvisko'];
             $telefon = $row['telefon'];
             $zlava = 0;
-            $sth = $pdo->prepare("INSERT INTO faktury (id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava) VALUES (?,?,?,?,?,?,?,?)");
-            if($sth->execute(array($id_zakaznika,$meno,$priezvisko,$email,$telefon,0,0,$zlava))){
-                $sth = $pdo->prepare("INSERT INTO predane_produkty (id_produktu,id_faktury,cena_ks,pocet_ks) VALUES (?,?,?,?)");
-                $sth->execute(array($id_produktu,$id_zakazky,$total,$quantity)); 
+            $sth = $pdo->prepare("INSERT INTO faktury (id,id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava,datum) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            if ($sth->execute(array($id_zakazky,$id_zakaznika, $meno, $priezvisko, $email, $telefon, 0, 0, $zlava,$datum))) {
+                
+            } else {
+                    
             }
-           
-        } else if(isset($_COOKIE['user-login'])){
+        } else if (isset($_COOKIE['user-login'])) {
             $sth = $pdo->prepare("SELECT email, meno, priezvisko, mesto, telefon, id FROM users");
             $sth->execute();
             $row = $sth->fetch(PDO::FETCH_ASSOC);
@@ -92,28 +43,27 @@ if(isset($_POST['pay'])){
             $meno = $row['meno'];
             $email = $row['email'];
             $mesto = $row['mesto'];
-            $priezvisko = $row['priezvisko'];    
+            $priezvisko = $row['priezvisko'];
             $telefon = $row['telefon'];
             $zlava = 0;
-            $sth = $pdo->prepare("INSERT INTO faktury (id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava) VALUES (?,?,?,?,?,?,?,?)");
-            if($sth->execute(array($id_zakaznika,$meno,$priezvisko,$email,$telefon,0,0,$zlava))){
-                $sth = $pdo->prepare("INSERT INTO predane_produkty (id_produktu,id_faktury,cena_ks,pocet_ks) VALUES (?,?,?,?)");
-                $sth->execute(array($id_produktu,$id_zakazky,$total,$quantity)); 
+            $sth = $pdo->prepare("INSERT INTO faktury (id,id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava,datum) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            if ($sth->execute(array($id_zakazky,$id_zakaznika, $meno, $priezvisko, $email, $telefon, 0, 0, $zlava, $datum))) {
                 
+            } else {
+                    
             }
-            
         } else {
-            
             $id_zakaznika = 0;
-            $zlava = 0;
-            $sth = $pdo->prepare("INSERT INTO faktury (id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava) VALUES (?,?,?,?,?,?,?,?)");
-            if($sth->execute(array($id_zakaznika,$name,$priezvisko_non,$email_non_login,$telefon_non_login,0,0,$zlava))){
-                $sth = $pdo->prepare("INSERT INTO predane_produkty (id_produktu,id_faktury,cena_ks,pocet_ks) VALUES (?,?,?,?)");
-                $sth->execute(array($id_produktu,$id_zakazky,$total,$quantity));
-            }
-            
-        }                
-    } 
+                $zlava = 0;
+                $sth = $pdo->prepare("INSERT INTO faktury (id,id_zakaznika,meno,priezvisko,email,telefon,zaplatene,vybavene,zlava,datum) VALUES (?,?,?,?,?,?,?,?,?,?)");
+                if ($sth->execute(array($id_zakazky,$id_zakaznika, $name, $priezvisko_non, $email_non_login, $telefon_non_login, 0, 0, $zlava,$datum))) {
+        
+                } else {
+                        
+                }
+        }
+        
+    
 
 require_once "../config.php"; 
 include "../includes/header-template.php";
@@ -150,11 +100,33 @@ include "../includes/header-template.php";
     <div class="container" style="padding: 0% 25% 0% 25%">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <h5 style="text-align: center;">Vašu objednávku číslo <?php echo $id_zakazky ?> sme zaznamenali a začíname na nej pracovať!</h5><br><br>
-                <h4> Na Váš email práve v tejto chvíli mieri potvrdzujúci e-mail v ktorom nájdete detaily svojej objednávky. </h4>
+                <h5 style="text-align: center;">Vašu objednávku číslo <b><?php echo $id_zakazky ?></b> sme zaznamenali a začíname na nej pracovať!</h5><br><br>
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 col-lg-1">
+                        <i class="fas fa-envelope fa-3x"></i>
+                    </div>
+                    <div class="col-sm-12 col-md-10 col-lg-11">
+                        <h4 style="text-align: left; padding-bottom: 60px"> Na Váš email práve v tejto chvíli mieri potvrdzujúci e-mail v ktorom nájdete detaily svojej objednávky.</h4>
+                    </div>
+                </div>
+                <?php 
+                if(isset($_COOKIE['user']) || isset($_COOKIE['user-login'])){ ?>
+                <div class="row">
+                    <div class="col-sm-12 col-md-10 col-lg-11">
+                        <h4 style="text-align: right; padding-bottom: 60px"> Taktiež na správe vášho účtu si môžete zobraziť detaily o vašej novej objednávke</h4>
+                    </div>
+                    <div class="col-sm-12 col-md-2 col-lg-1">
+                        <i class="fas fa-user fa-3x"></i>
+                    </div>
+                </div>
+                <?php } ?>
+                
                 <div class="text-center" style="margin-bottom: 20%;">
                         <a  href="../"><button class="btn btn-dark">Späť domov!</button></a>
-                    </div>
+                        <?php if(isset($_COOKIE['user']) || isset($_COOKIE['user-login'])){ ?>
+                        <a  href="myaccount.php"><button class="btn btn-dark">Môj účet</button></a>
+                        <?php } ?>
+                </div>
                     
                 </div>
                 
@@ -167,7 +139,10 @@ include "../includes/header-template.php";
     </div>
 <?php } ?>
     <?php include "../includes/footer.php"?>
-    <?php include "../includes/scripts.php"?>
+    <?php include "../includes/scripts.php";
+    
+    
+    ?>
 </body>
 </html>
     
