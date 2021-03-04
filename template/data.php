@@ -365,8 +365,8 @@ if(isset($_COOKIE['user'])){
     if($sto->rowCount() == 1){
         $row = $sto->fetch(PDO::FETCH_ASSOC);
         $emailik = $row['email'];
-        $first_name = $row['first_name'];
-        $second_name = $row['second_name'];
+        $first_name = $row['meno'];
+        $second_name = $row['priezvisko'];
         $image = $row['img_url'];
         $telefon = $row['telefon'];
         $ulica = $row['ulica'];
