@@ -2,8 +2,10 @@
     $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     if (strpos($url,'/template') !== false) {
         $odkaz = '';
+        $srcMap = '../';
     } else {
         $odkaz = 'template/';
+        $srcMap = '';
     }
 ?>
 
