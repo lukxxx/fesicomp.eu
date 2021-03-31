@@ -12,13 +12,13 @@ $db_pass = "Kajauhroba#2021";
 
 
 // Create a connection to the MySQL database using PDO
-$pdo = new PDO("mysql:host=mariadb103.websupport.sk;port=3313;dbname=compsnv_sk2", "compsnv", "Kajauhroba#2021");
+$pdo = $pdo = new PDO("mysql:host=db003.nameserver.sk;dbname=compsnv_sk2", "compsnv_sk2", "iQ8sh2lz");
 
 $hostname = "localhost";
 $user = "compsnv";
 $pass = "Kajauhroba#2021";
 $db_name = "compsnv_sk2";
-$link = mysqli_connect("mariadb103.websupport.sk", "compsnv", "Kajauhroba#2021", "compsnv_sk2", 3313);
+$link = mysqli_connect("db003.nameserver.sk", "compsnv_sk2", "iQ8sh2lz", "compsnv_sk2");
 
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
