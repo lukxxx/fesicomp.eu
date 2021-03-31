@@ -10,9 +10,15 @@ foreach ($cart as $c) {
         $total += $c->product->p_cena * $c->quantity;
         $id_produktu = $c->productCode;
         $quantity = $c->quantity;
-        $id = json_encode($id_produktu);       
+        $id = json_decode($id_produktu);       
 }
-echo $id;
+if (is_array($values) || is_object($values))
+{
+    foreach ($id as $value)
+    {
+        echo $value;
+    }
+}
 $sth = $pdo->prepare("SELECT * FROM faktury ORDER BY id DESC LIMIT 1");
         if($sth->execute()){
                 $row = $sth->fetch(PDO::FETCH_ASSOC);
