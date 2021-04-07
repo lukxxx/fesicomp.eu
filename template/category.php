@@ -58,9 +58,42 @@ include_once "../includes/head-template.php"
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
                 <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
-                <div class="d-flex flex-wrap"><?php
+                <?php
                     
                     $kid = $_GET['KID'];
+                    $poloha_kategoria = $kid;
+                    $cesta_kat= array();
+                    while(true)
+                    {
+                        $vyssia_kategoria= "SELECT k_id, k_kid,k_nazov FROM kategorie WHERE k_id='$poloha_kategoria'";
+                        if($stmt = mysqli_prepare($link,$vyssia_kategoria)){
+                            if(mysqli_stmt_execute($stmt)){
+                                $result = mysqli_stmt_get_result($stmt);
+                                if(mysqli_num_rows($result) > 0){
+                                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){ 
+                                        array_push($cesta_kat,'<i class="fas fa-chevron-right"></i><a  style="padding-left: 8px;padding-right: 8px; color: #2B2B2B;" href="category.php?KID='.$row["k_id"].'">'.$row["k_nazov"].'</a>');
+                                        $poloha_kategoria = $row['k_kid'];
+                                    }
+                                }
+                                else
+                                {
+                                    $cesta_kat= array_reverse($cesta_kat);
+                                    foreach($cesta_kat as $value){
+                                        echo $value ;
+                                    }
+                                    break;
+                                }
+                        } else{
+                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                        }
+                        }
+                        
+                    }
+                                  
+                      ?>
+                <div class="d-flex flex-wrap">                      
+                     
+                      <?php
                     $name = "SELECT * FROM kategorie WHERE k_kid = '$kid' AND k_aktualni != '2' AND k_medzera ='0'  ORDER BY k_poradie";
                     if($stmt = mysqli_prepare($link,$name)){
                         if(mysqli_stmt_execute($stmt)){
@@ -73,7 +106,7 @@ include_once "../includes/head-template.php"
                                             <div class="category-card justify-content-md-center">
                                                  <span style="color: black; font-size: 17px;"> <?php echo $row['k_nazov']?></span> 
                                             </div>      
-                                            <a>
+                                            </a>
                                         </div>
                                         
                                 <?php
