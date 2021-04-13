@@ -1,7 +1,7 @@
 <?php
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
-require_once "../config.php";
+include "../config.php";
 // DATA GATHERING 
 if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE)
     $browser = 'Internet explorer';
