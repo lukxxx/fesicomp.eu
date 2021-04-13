@@ -97,7 +97,39 @@ if(isset($_GET['ID'])){
                 <?php include (ROOT."includes/category-list-temp.php")?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
-                <h3><?php echo $kategoria; ?></h3>
+            <?php
+                    
+                    
+                    $poloha_kategoria = $id_kat;
+                    $cesta_kat= array();
+                    while(true)
+                    {
+                        $vyssia_kategoria= "SELECT k_id, k_kid,k_nazov FROM kategorie WHERE k_id='$poloha_kategoria'";
+                        if($stmt = mysqli_prepare($link,$vyssia_kategoria)){
+                            if(mysqli_stmt_execute($stmt)){
+                                $result = mysqli_stmt_get_result($stmt);
+                                if(mysqli_num_rows($result) > 0){
+                                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){ 
+                                        array_push($cesta_kat,'<i class="fas fa-chevron-right"></i><a  style="padding-left: 8px;padding-right: 8px; color: #2B2B2B;" href="category.php?KID='.$row["k_id"].'">'.$row["k_nazov"].'</a>');
+                                        $poloha_kategoria = $row['k_kid'];
+                                    }
+                                }
+                                else
+                                {
+                                    $cesta_kat= array_reverse($cesta_kat);
+                                    foreach($cesta_kat as $value){
+                                        echo $value ;
+                                    }
+                                    break;
+                                }
+                        } else{
+                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                        }
+                        }
+                        
+                    }
+                                  
+                      ?>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <span style="font-size: 10px; color: grey;">Kód produktu: <?php echo $kod ?></span>
