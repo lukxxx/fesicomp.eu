@@ -185,7 +185,7 @@ if(isset($_GET['ID'])){
                     </div>
                     <div id="tab-3" class="col-12 tab-content">
                         <div class="related"  style="display: flex;">
-                            <?php include (ROOT."includes/suvisiaci-tovar.php");?>
+                           
                         </div>
                         
                     </div>      
