@@ -1,7 +1,8 @@
 
 body {
     font-family: 'Product Sans';
-    overflow: overlay;
+    overflow-y: overlay;
+    overflow-x: hidden;
     height: 100%;
     position: relative;
 }
