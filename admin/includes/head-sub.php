@@ -10,9 +10,11 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
 <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
 <script src="../../assets/js/search.js" type="text/javascript"></script>
-<script src="../../assets/js/search-man.js" type="text/javascript"></script>
-<script src="../../assets/js/bootstrap.js" type="text/javascript"></script>
 
+<script src="../../assets/js/main.js" type="text/javascript"></script>
+<script src="../../assets/js/bootstrap.js" type="text/javascript"></script>
+<script src="../../assets/js/search-man.js" type="text/javascript"></script>
+<script src="../../assets/js/search-c-products.js" type="text/javascript"></script>
 </head>
 
 
