@@ -47,10 +47,10 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                             } else {
                                 echo '<a class="nav-link non-active" href="../manufacturers"> <i class="fas fa-users"></i><span> Výrobcovia</span></a>';
                             }
-                            if (strpos($url,'/ms') !== false) {
+                            if (strpos($url,'/pricing') !== false) {
                                 echo '<a class="nav-link active" href="#"><i class="fas fa-euro-sign"></i><span> Ceny</span></a>';
                             } else {
-                                echo '<a class="nav-link non-active" href="../"> <i class="fas fa-euro-sign"></i><span> Ceny</span></a>';
+                                echo '<a class="nav-link non-active" href="../pricing"> <i class="fas fa-euro-sign"></i><span> Ceny</span></a>';
                             }
                         ?>
                         </div>
