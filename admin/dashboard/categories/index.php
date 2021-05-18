@@ -47,7 +47,7 @@ if(isset($_COOKIE['admin'])){ ?>
                         ?>
                         <div class="category card " style="border: 1px solid #E7E7E7; padding: 10px; margin-bottom: 10px; background-color: white; box-shadow: 2px 2px 10px -2px #616161; border-radius: 20px;">
                             <div class="d-flex justify-content-between">
-                            <span style="padding-left: 10px;"><b><?php echo $nazov_k; ?></b></span>
+                            <span style="padding-left: 10px;"><?php echo $k_id; ?> <b><?php echo $nazov_k; ?></b></span>
                                 <form method="post" action="" >
                                 
                                 <button type="submit" name="set" value="<?php echo $k_id; ?>" class="btn" style="all:unset; cursor: pointer;"><i style="font-size: 20px" class="fas fa-cog"></i></button>
