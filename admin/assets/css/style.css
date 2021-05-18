@@ -1,16 +1,14 @@
-.login-bg{
+.login-bg {
     background-image: url("../images/bg_image.jpg");
     background-size: cover;
-    
-    
 }
-.container-login{
-    background-color: #2B2B2B;
+.container-login {
+    background-color: #2b2b2b;
     padding: 20px;
-    width: 500px;   
+    width: 500px;
     margin-top: 10%;
 }
-.login-button{
+.login-button {
     border-radius: 20px;
     font-size: 20px;
     border: white 1px solid;
@@ -22,19 +20,18 @@ h4 {
 h3 {
     font-weight: bold;
 }
-body { 
-    /* disabling body scrolling */ 
-    overflow: hidden; 
-    margin: auto; 
-    text-align: center; 
-} 
+body {
+    /* disabling body scrolling */
+    overflow: hidden;
+    margin: auto;
+    text-align: center;
+}
 
-.scroll { 
-    overflow-y: 110%; 
-    overflow-x: hidden; 
-    height: 100%; 
-    margin-bottom: 50%;
-} 
+.scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh !important;
+}
 .panel-header {
     padding: 20px 0px 0px 20px;
 }
@@ -57,7 +54,7 @@ body {
 .active-home:hover {
     background-color: white;
     color: black;
-   
+
     border-radius: 30px;
     width: 65%;
 }
@@ -76,25 +73,22 @@ body {
 }
 .non-active {
     color: white;
-    margin-bottom: 3px; 
+    margin-bottom: 3px;
     margin-top: 3px;
     padding: 5px 10px 5px 10px;
 }
 .non-active:hover {
     background-color: white;
     color: black;
-   
+
     border-radius: 30px;
     width: 65%;
-
 }
 .non-active-home:hover {
     background-color: white;
     color: black;
 
     border-radius: 30px;
-    
-
 }
 .non-active-home {
     color: white;
@@ -115,8 +109,113 @@ body {
 }
 .download-btn {
     transition: 0.4s;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: white;
+    padding: 20px 20px 20px 68px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px 0px rgb(0 0 0 / 12%);
+    -webkit-box-shadow: 10px 10px 20px 0px rgb(0 0 0 / 12%);
+    -moz-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.12);
+    margin-bottom: 50px;
+    position: relative;
+    min-height: 6vw;
 }
-.download-btn:hover{
+.download-btn:hover {
     transform: scale(1.05);
+}
+.id_k {
+    width: 19%;
+    height: 100%;
+    color: wheat;
+    background: #303030;
+    position: absolute;
+    left: 0;
+    border-radius: 20px 0px 0px 20px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+}
+.edit_k {
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    background: #303030;
+    color: wheat;
+    padding: 10px 11px 10px 14px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit_k:hover {
+    transition: 0.5s;
+    background-color: wheat;
+    color: #303030;
+    border: 1px solid #303030;
     cursor: pointer;
+}
+.form-search-control{
+    display: block;
+    width: 80%;
+    padding: 0.375rem 0.75rem;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-radius: 0px;
+    border: none;
+    border-bottom: solid 1px lightgrey;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: 0.3s;
+}
+.hladacik {
+    font-size: 25px;
+    position: absolute; 
+    right: 10vw; 
+    top: 30px; 
+    color: grey;
+}
+.form-search-control:focus{
+    background-color: transparent;
+    border-bottom: 1px solid black;
+}
+.form-search-control:focus + .hladacik{
+    color: black;
+}
+.pagination {
+    list-style-type: none;
+    padding: 10px 0;
+    display: inline-flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.pagination li {
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+.pagination li a {
+    box-sizing: border-box;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    border-radius: 4px;
+}
+.pagination li a:hover {
+    background-color: #2B2B2B;
+    color: white;
+}
+.pagination .next a, .pagination .prev a {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.pagination .currentpage a {
+    background-color: #2B2B2B;
+    color: white;
 }
