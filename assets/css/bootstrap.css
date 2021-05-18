@@ -6579,11 +6579,11 @@
   }
   
   .carousel-control-prev-icon {
-    background-image: url("arrow-left-solid.svg");
+    background-image: url("https://compsnv.sk/assets/images/arrow-left-solid.svg");
   }
   
   .carousel-control-next-icon {
-    background-image: url("arrow-right-solid.svg");
+    background-image: url("https://compsnv.sk/assets/images/arrow-right-solid.svg");
   }
   
   .carousel-indicators {
