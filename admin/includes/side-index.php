@@ -34,6 +34,11 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                         <span class="link-category" >Správa tovaru</span>
                         <div class="links" style="margin-top: 10px; padding-left: 5%">
                         <?php 
+                            if (strpos($url,'/products') !== false) {
+                                echo '<a class="nav-link active" href="./products"><i class="fas fa-box-open"></i><span> Produkty</span></a>';
+                            } else {
+                                echo '<a class="nav-link non-active" href="./products"> <i class="fas fa-box-open"></i><span> Produkty</span></a>';
+                            }
                             if (strpos($url,'/upload') !== false) {
                                 echo '<a class="nav-link active" href="./upload"><i class="fas fa-box"></i><span> Nahrávanie</span></a>';
                             } else {
@@ -47,7 +52,7 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                             if (strpos($url,'/manufacturers') !== false) {
                                 echo '<a class="nav-link active" href="#"><i class="fas fa-users"></i><span> Výrobcovia</span></a>';
                             } else {
-                                echo '<a class="nav-link non-active" href="../"> <i class="fas fa-users"></i><span> Výrobcovia</span></a>';
+                                echo '<a class="nav-link non-active" href="./manufacturers"> <i class="fas fa-users"></i><span> Výrobcovia</span></a>';
                             }
                             if (strpos($url,'/pricing') !== false) {
                                 echo '<a class="nav-link active" href="#"><i class="fas fa-euro-sign"></i><span> Ceny</span></a>';

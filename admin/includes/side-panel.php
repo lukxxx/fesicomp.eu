@@ -32,6 +32,11 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                         <span class="link-category" >Správa tovaru</span>
                         <div class="links" style="margin-top: 10px; padding-left: 5%">
                         <?php 
+                            if (strpos($url,'/products') !== false) {
+                                echo '<a class="nav-link active" href="#"><i class="fas fa-box-open"></i></i><span> Produkty</span></a>';
+                            } else {
+                                echo '<a class="nav-link non-active" href="../products"> <i class="fas fa-box-open"></i></i><span> Produkty</span></a>';
+                            }
                             if (strpos($url,'/upload') !== false) {
                                 echo '<a class="nav-link active" href="#"><i class="fas fa-box"></i><span> Nahrávanie</span></a>';
                             } else {
@@ -61,9 +66,9 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                         <div class="links" style="margin-top: 10px; padding-left: 5%">
                         <?php 
                             if (strpos($url,'/orders') !== false) {
-                                echo '<a class="nav-link active" href=":/orders"><i class="fas fa-clipboard-check"></i><span> Objednávky</span></a>';
+                                echo '<a class="nav-link active" href="./orders"><i class="fas fa-clipboard-check"></i><span> Objednávky</span></a>';
                             } else {
-                                echo '<a class="nav-link non-active" href="./orders"> <i class="fas fa-clipboard-check"></i><span> Objednávky</span></a>';
+                                echo '<a class="nav-link non-active" href="../orders"> <i class="fas fa-clipboard-check"></i><span> Objednávky</span></a>';
                             }
                             if (strpos($url,'/invoices') !== false) {
                                 echo '<a class="nav-link active" href="#"><i class="fas fa-paste"></i><span> Faktúry</span></a>';
