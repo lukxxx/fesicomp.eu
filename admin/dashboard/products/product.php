@@ -52,7 +52,7 @@ if (isset($_COOKIE['admin'])) { ?>
                         $kod_kategorie_sklad = $row['p_kid_sklad'];
                         $typ = $row['p_typ'];
                         $cena_doporucena = $row['p_cena_doporucena'];
-                        $rabat = $row['p_rema'];
+                        $rabat = $row['p_rabat'];
                         $autorsky_poplatok = $row['p_autorsky_poplatok'];
                     }
 
@@ -72,7 +72,7 @@ if (isset($_COOKIE['admin'])) { ?>
                 <div class="main-vec">
                     <div class="row" style="padding: 5% 5%;">
                         <div class="col-sm-12 col-md-6 col-lg-6">
-                            <span style="font-size: 10px; color: grey;">Kód produktu: <?php echo $kod ?></span>
+
                             <div class="img-product" style="padding: 5vw">
                                 <?php echo $cesta ?>
                             </div>
@@ -99,7 +99,7 @@ if (isset($_COOKIE['admin'])) { ?>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lg-6" style="text-align: left;">
+                                <div class="col-sm-5 col-md-5 col-lg-5" style="text-align: left;">
                                     <div class="product-code">
                                         <div class="product_code_div">
 
@@ -125,15 +125,136 @@ if (isset($_COOKIE['admin'])) { ?>
                                             <i class="fas fa-edit" style="left: 7px;top: 7px;position: absolute;font-size: 15px;"></i>
                                         </div>
                                     </div>
-                                    <?php if ($dostupnost == 1 && $pocet_ks >= 1) {
-                                        echo "<span style='color: #149106; font-weight: 600;'>Na sklade ($pocet_ks ks)</span>";
-                                    } else {
-                                        echo "<span style='color: #C21801; font-weight: 600;'>Nie je na sklade</span>";
-                                    } ?>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6" style="display: flex; justify-content: flex-end; align-items: center;">
-                                    <span style="color: #B81600; font-size: 30px; font-weight: bold; padding-bottom: 10px;"><?php echo $cena ?>€</span><br>
 
+                                    <div class="product-kod" style="position: relative">
+                                        <div class="product_kod_div">
+
+                                            <b style="margin-right: 5px;">Kód produktu: </b><br><span class="product_kod_span"><?php echo $kod ?></span>
+                                            <input class="form-search-control" style="padding: 0; display: none; font-size: 15px" type="text" name="product-kod" id="product_kod" value="">
+
+
+                                            <div class="product_kod_sc" style="margin-top: 10px; display: none">
+                                                <div class="edit-close p_kod_close">
+                                                    <i class="fas fa-times" style="left: 4.4px;top: 3.5px;position: absolute;font-size: 13px;"></i><span class="close_text"></span>
+                                                </div>
+                                                <div class="edit-save p_kod_save">
+                                                    <i class="fas fa-check" style="left: 2.4px;top: 3.5px;position: absolute;font-size: 13px;"><span class="save_text"></span></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="saved-msg" style="opacity: 0; height: 0px; width: 31%; position: relative;">
+                                            <span style="position: absolute; font-size: 14px; top: 0px; left: 18px;">Uložené!</span>
+                                        </div>
+                                        <div class="edit-small edit_kod" style="position: absolute; top: 15px; left: 115px; display: none;">
+                                            <i class="fas fa-edit" style="left: 7px;top: 7px;position: absolute;font-size: 15px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product-dost" style="position: relative">
+                                        <div class="product_dost_div">
+
+                                            <?php if ($dostupnost == 1 && $pocet_ks >= 1) {
+                                                echo "<b style='color: #149106;'>Dostupnosť: </b><br><span style='color: #149106; font-weight: 600;' class='left'>(</span><span style='color: #149106; font-weight: 600;' class='product_dost_span'>$pocet_ks </span><span style='color: #149106; font-weight: 600;' class='right'>ks)</span>";
+                                            } else {
+                                                echo "<b>Dostupnosť: </b><br><span style='color: #149106; font-weight: 600;' class='left'>(</span><span style='color: #149106; font-weight: 600;' class='product_dost_span'>$pocet_ks </span><span style='color: #149106; font-weight: 600;' class='right'>ks)</span>";
+                                            } ?>
+                                            <input class="form-search-control" style="padding: 0; display: none; font-size: 15px" type="text" name="product-dost" id="product_dost" value="">
+
+
+                                            <div class="product_dost_sc" style="margin-top: 10px; display: none">
+                                                <div class="edit-close p_dost_close">
+                                                    <i class="fas fa-times" style="left: 4.4px;top: 3.5px;position: absolute;font-size: 13px;"></i><span class="close_text"></span>
+                                                </div>
+                                                <div class="edit-save p_dost_save">
+                                                    <i class="fas fa-check" style="left: 2.4px;top: 3.5px;position: absolute;font-size: 13px;"><span class="save_text"></span></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="saved-msg" style="opacity: 0; height: 0px; width: 31%; position: relative;">
+                                            <span style="position: absolute; font-size: 14px; top: 0px; left: 18px;">Uložené!</span>
+                                        </div>
+                                        <div class="edit-small edit_dost" style="position: absolute; top: 15px; left: 100px; display: none;">
+                                            <i class="fas fa-edit" style="left: 7px;top: 7px;position: absolute;font-size: 15px;"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-12 col-md-7 col-lg-7" style="margin-top: -3px">
+                                    <div class="ceny">
+                                        <div class="product-cena" style="position: relative; width: 115%; padding-right: 40px;">
+                                            <div class="product_cena_div">
+
+                                                <div class="product_cena_cena" style="display: flex; justify-content: space-between;">
+                                                    <span style="margin-top: 3px"><b>Cena produktu:</b></span>
+                                                    <span style="color: #B81600; font-size: 20px; font-weight: bold; padding-bottom: 10px; text-decoration: underline;">
+                                                    <span  class="product_cena_span"><?php echo $cena ?></span><span class="currency_cena">€</span></span>
+                                                    <input class="form-search-control" style="padding: 0; display: none; font-size: 15px; float: right;" type="text" name="product-cena" id="product_cena" value="">
+                                                </div>
+
+
+
+                                                <div class="product_cena_sc" style="margin-top: 10px; display: none">
+                                                    <div class="edit-close p_cena_close">
+                                                        <i class="fas fa-times" style="left: 4.4px;top: 3.5px;position: absolute;font-size: 13px;"></i><span class="close_text"></span>
+                                                    </div>
+                                                    <div class="edit-save p_cena_save">
+                                                        <i class="fas fa-check" style="left: 2.4px;top: 3.5px;position: absolute;font-size: 13px;"><span class="save_text"></span></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="saved-msg" style="opacity: 0; height: 0px; width: 31%; position: relative;">
+                                                <span style="position: absolute; font-size: 14px; top: 0px; left: 18px;">Uložené!</span>
+                                            </div>
+                                            <div class="edit_cena edit-small " style="position: absolute; top: 15px; right: 0px; display: none;">
+                                                <i class="fas fa-edit" style="left: 7px;top: 7px;position: absolute;font-size: 15px;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="product-odpo" style="position: relative; width: 115%; padding-right: 40px;">
+                                            <div class="product_odpo_div">
+
+                                                <div class="product_odpo_cena" style="display: flex; justify-content: space-between;">
+                                                    <span style="margin-top: 3px"><b>Odporúčaná cena:</b></span>
+                                                    <span style="color: #B81600; font-size: 20px; font-weight: bold; padding-bottom: 10px;">
+                                                    <span  class="product_odpo_span"><?php echo $cena_doporucena ?></span><span class="currency_odpo">€</span></span>
+                                                    <input class="form-search-control" style="padding: 0; display: none; font-size: 15px; float: right;"
+                                                    type="text" name="product-odpo" id="product_odpo" value="">
+                                                </div>
+
+
+
+                                                <div class="product_odpo_sc" style="margin-top: 10px; display: none">
+                                                    <div class="edit-close p_odpo_close">
+                                                        <i class="fas fa-times" style="left: 4.4px;top: 3.5px;position: absolute;font-size: 13px;"></i><span class="close_text"></span>
+                                                    </div>
+                                                    <div class="edit-save p_odpo_save">
+                                                        <i class="fas fa-check" style="left: 2.4px;top: 3.5px;position: absolute;font-size: 13px;"><span class="save_text"></span></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="saved-msg" style="opacity: 0; height: 0px; width: 31%; position: relative;">
+                                                <span style="position: absolute; font-size: 14px; top: 0px; left: 18px;">Uložené!</span>
+                                            </div>
+                                            <div class="edit_odpo edit-small " style="position: absolute; top: 15px; right: 0px; display: none;">
+                                                <i class="fas fa-edit" style="left: 7px;top: 7px;position: absolute;font-size: 15px;"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="cena" style="display: flex; justify-content: space-between;">
+                                            <span style="margin-top: 3px; font-size: 15px"><b>Rabat:</b></span>
+                                            <span style="color: #B81600; font-size: 20px; font-weight: bold; padding-bottom: 10px;"><?php echo $rabat ?>€</span>
+                                        </div>
+                                        <div class="cena" style="display: flex; justify-content: space-between;">
+                                            <span style="margin-top: 3px; font-size: 15px"><b>Autorský poplatok:</b></span>
+                                            <span style="color: #B81600; font-size: 20px; font-weight: bold; padding-bottom: 10px;"><?php echo $autorsky_poplatok ?>€</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
