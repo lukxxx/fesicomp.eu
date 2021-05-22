@@ -86,7 +86,17 @@ if (isset($_COOKIE['admin'])) { ?>
                                 <div class="inner">
                                     <div class="ano">
                                         <div class="obrazok">
-                                            <img src="../../../catalog/<?php echo $project['p_id']; ?>/<?php echo $project['p_img']; ?>">
+                                        <?php 
+                                        $product_id = $project['p_id'];
+                                        $product_img = $project['p_img'];
+
+                                        if(file_exists("../../../catalog/$product_id/$product_img")){
+                                            $cesta = "../../../catalog/$product_id/$product_img";
+                                        } else {
+                                            $cesta = "../../../assets/images/no-image-admin.png";
+                                        }
+                                        ?>
+                                            <img style="width: 65%;" src="<?php echo $cesta; ?>">
                                         </div>
                                         <div class=" nazovik">
                                             <span style="font-size: 18px; font-weight: bold; padding-top: 1%"><?php echo $project['p_nazov']; ?></span>
