@@ -36,11 +36,49 @@ $(document).ready(function () {
     )
     $(".product-code").hover(
         function () {
-            $('.edit_pc').fadeIn();
+            $('.edit_pc').show();
         },
 
         function () {
-            $('.edit_pc').fadeOut();
+            $('.edit_pc').hide();
+        }
+    )
+    $(".product-kod").hover(
+        function () {
+            $('.edit_kod').show();
+        },
+
+        function () {
+            $('.edit_kod').hide();
+        }
+    )
+
+    $(".product-dost").hover(
+        function () {
+            $('.edit_dost').show();
+        },
+
+        function () {
+            $('.edit_dost').hide();
+        }
+    )
+    $(".product-cena").hover(
+        function () {
+            $('.edit_cena').show();
+        },
+
+        function () {
+            $('.edit_cena').hide();
+        }
+    )
+
+    $(".product-odpo").hover(
+        function () {
+            $('.edit_odpo').show();
+        },
+
+        function () {
+            $('.edit_odpo').hide();
         }
     )
 
@@ -135,6 +173,169 @@ $(document).ready(function () {
         setTimeout(function(){
             $('.product-code').children(".saved-msg").animate({opacity: '0'});
             $('.product-code').children(".saved-msg").animate({height: '0px'});
+          }, 2000);
+    })
+
+    $(".edit_kod").click(function () {
+        let product_kod_w = $('.product_kod_span').width();
+        $('#product_kod').show();
+        $('.product_kod_sc').css('display', 'flex');
+        $('#product_kod').width(product_kod_w);
+        $('.product_kod_span').hide();
+        let product_kod = $('.product_kod_span').text();
+        $('#product_kod').val(product_kod);
+        $('.edit_kod').addClass('edit_h_hide-small');
+        $('.edit_kod').removeClass('edit-small');
+    })
+
+    $(".p_kod_close").click(function () {
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_kod').hide();
+        $('.product_kod_sc').hide();
+        $('.product_kod_span').show();
+        $('#product_kod').val(product_kod);
+    })
+    $(".p_kod_save").click(function () {
+        let product_kod_new = $('#product_kod').val();
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_kod').hide();
+        $('.product_kod_sc').hide();
+        $('.product_kod_span').text(product_kod_new);
+        $('#product_kod').attr('value', product_kod_new);
+        $('.product_kod_span').show();
+        $('.product-kod').children(".saved-msg").animate({opacity: '0.8'});
+        $('.product-kod').children(".saved-msg").css('height', '20px');
+        setTimeout(function(){
+            $('.product-kod').children(".saved-msg").animate({opacity: '0'});
+            $('.product-kod').children(".saved-msg").animate({height: '0px'});
+          }, 2000);
+    })
+
+    $(".edit_dost").click(function () {
+        $('.left').hide();
+        $('.right').hide();
+        let product_dost_w = $('.product_dost_span').width();
+        product_dost_w = product_dost_w + 20;
+        $('#product_dost').show();
+        $('.product_dost_sc').css('display', 'flex');
+        $('#product_dost').width(product_dost_w);
+        $('.product_dost_span').hide();
+        let product_dost = $('.product_dost_span').text();
+        $('#product_dost').val(product_dost);
+        $('.edit_dost').addClass('edit_h_hide-small');
+        $('.edit_dost').removeClass('edit-small');
+    })
+
+    $(".p_dost_close").click(function () {
+        $('.left').show();
+        $('.right').show();
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_dost').hide();
+        $('.product_dost_sc').hide();
+        $('.product_dost_span').show();
+        $('#product_dost').val(product_dost);
+    })
+    $(".p_dost_save").click(function () {
+        let product_dost_new = $('#product_dost').val();
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_dost').hide();
+        $('.product_dost_sc').hide();
+        $('.product_dost_span').text(product_dost_new);
+        $('#product_dost').attr('value', product_dost_new);
+        $('.product_dost_span').show();
+        $('.left').show();
+        $('.right').show();
+        $('.product-dost').children(".saved-msg").animate({opacity: '0.8'});
+        $('.product-dost').children(".saved-msg").css('height', '20px');
+        setTimeout(function(){
+            $('.product-dost').children(".saved-msg").animate({opacity: '0'});
+            $('.product-dost').children(".saved-msg").animate({height: '0px'});
+          }, 2000);
+    })
+
+    $(".edit_cena").click(function () {
+        $('.currency_cena').hide();
+        let product_cena_w = $('.product_cena_span').width();
+        $('#product_cena').width(product_cena_w);
+        $('#product_cena').show();
+        $('.product_cena_sc').css('display', 'flex'); 
+        $('.product_cena_span').hide();
+        let product_cena = $('.product_cena_span').text();
+        $('#product_cena').val(product_cena);
+        $('.edit-small').addClass('edit_h_hide-small');
+        $('.edit_h_hide-small').removeClass('edit-small');
+        
+    })
+
+    $(".p_cena_close").click(function () {
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_cena').hide();
+        $('.product_cena_sc').hide();
+        $('.currency_cena').show();
+        $('.product_cena_span').show();
+        $('#product_cena').val(product_cena);
+    })
+    $(".p_cena_save").click(function () {
+        let product_cena_new = $('#product_cena').val();
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_cena').hide();
+        $('.product_cena_sc').hide();
+        $('.product_cena_span').text(product_cena_new);
+        $('#product_cena').attr('value', product_cena_new);
+        $('.currency_cena').show();
+        $('.product_cena_span').show();
+        $('.product-cena').children(".saved-msg").animate({opacity: '0.8'});
+        $('.product-cena').children(".saved-msg").css('height', '20px');
+        setTimeout(function(){
+            $('.product-cena').children(".saved-msg").animate({opacity: '0'});
+            $('.product-cena').children(".saved-msg").animate({height: '0px'});
+          }, 2000);
+    })
+
+    $(".edit_odpo").click(function () {
+        $('.currency_odpo').hide();
+        let product_odpo_w = $('.product_odpo_span').width();
+        $('#product_odpo').width(product_odpo_w);
+        $('#product_odpo').show();
+        $('.product_odpo_sc').css('display', 'flex'); 
+        $('.product_odpo_span').hide();
+        let product_odpo = $('.product_odpo_span').text();
+        $('#product_odpo').val(product_odpo);
+        $('.edit-small').addClass('edit_h_hide-small');
+        $('.edit_h_hide-small').removeClass('edit-small');
+        
+    })
+
+    $(".p_odpo_close").click(function () {
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_odpo').hide();
+        $('.product_odpo_sc').hide();
+        $('.currency_odpo').show();
+        $('.product_odpo_span').show();
+        $('#product_odpo').val(product_odpo);
+    })
+    $(".p_odpo_save").click(function () {
+        let product_odpo_new = $('#product_odpo').val();
+        $('.edit_h_hide-small').addClass('edit-small');
+        $('.edit-small').removeClass('edit_h_hide-small');
+        $('#product_odpo').hide();
+        $('.product_odpo_sc').hide();
+        $('.product_odpo_span').text(product_odpo_new);
+        $('#product_odpo').attr('value', product_odpo_new);
+        $('.currency_odpo').show();
+        $('.product_odpo_span').show();
+        $('.product-odpo').children(".saved-msg").animate({opacity: '0.8'});
+        $('.product-odpo').children(".saved-msg").css('height', '20px');
+        setTimeout(function(){
+            $('.product-odpo').children(".saved-msg").animate({opacity: '0'});
+            $('.product-odpo').children(".saved-msg").animate({height: '0px'});
           }, 2000);
     })
 
