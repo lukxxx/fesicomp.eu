@@ -468,3 +468,27 @@ body {
     width: 15%;
     border-radius: 20px;
 }
+#product_popis {
+    width: 582px;
+    height: 1032px;
+    font-size: 16px;
+    box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.21);
+    resize: none;
+}
+textarea::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 15px;
+}
+
+textarea::-webkit-scrollbar-track {
+    border-radius: 15px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.21);
+}
