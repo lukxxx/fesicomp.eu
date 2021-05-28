@@ -91,8 +91,8 @@ include_once "../includes/head-template.php"
                     }
                                   
                       ?>
-                <div class="d-flex flex-wrap">                      
-                     
+                    
+                <div class="d-flex flex-wrap">                                        
                       <?php
                     $name = "SELECT * FROM kategorie WHERE k_kid = '$kid' AND k_aktualni != '2' AND k_medzera ='0'  ORDER BY k_poradie";
                     if($stmt = mysqli_prepare($link,$name)){
@@ -232,12 +232,8 @@ include_once "../includes/head-template.php"
                                                             </div>
                                                             <div class="price-tag align-self-center">
                                                                 <div class="pricing" style="display: block;">
-                                                                    <span class="product-price-dph"><?php echo $row['p_cena'] ?>€</span><br style="height: 1px;">
-                                                                    <?php 
-                                                                                                    $no_dph = ($row['p_cena'] / 100) * 80; 
-                                                                                                    $nodph = number_format($no_dph, 2, ',', ' ');
-                                                                                                ?>
-                                                                                                <span class="product-price-wdph">Bez DPH:<?php echo $nodph; ?>€</span>
+                                                                    <span class="product-price-dph"><?php echo number_format($row['p_vysledna_cena']*1.2, 2, '.', '') ?>€</span><br style="height: 1px;">
+                                                                    <span class="product-price-wdph">Bez DPH:<?php echo $row['p_vysledna_cena'] ?>€</span>
                                                                 </div>
                                                             </div>
                                                         </div>
