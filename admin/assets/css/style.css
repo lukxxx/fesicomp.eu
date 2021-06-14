@@ -120,7 +120,8 @@ body {
     -moz-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.12);
     margin-bottom: 50px;
     position: relative;
-    min-height: 6vw;
+    min-height: 12vw;
+    max-height: 13vw;
 }
 .download-btn:hover {
     transform: scale(1.05);
@@ -181,8 +182,9 @@ body {
     color: grey;
 }
 .form-search-control:focus{
+    outline: none;
     background-color: transparent;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #C21800;
 }
 .form-search-control:focus + .hladacik{
     color: black;
@@ -218,4 +220,275 @@ body {
 .pagination .currentpage a {
     background-color: #2B2B2B;
     color: white;
+}
+.msg-svcl {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    font-weight: 500;
+    color: grey;
+    transition: 0.5s;
+}
+.save-close {
+    position: fixed;
+    bottom: -90px;
+    left: 50%;
+    background: white;
+    padding: 40px 50px 40px 33px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.21);
+    transition: 0.5s;
+    border: 1px solid lightgrey;
+}
+.save-close:hover {
+    bottom: 10px;
+}
+.save-close:hover > .msg-svcl {
+    color: transparent;
+}
+.save-close:hover > .save-close-arrow {
+    color: transparent;
+}
+.close-btn {
+    all: unset;
+    background: #303030;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-right: 10%;
+    transition: 0.5s;
+}
+.close-btn:hover {
+    background: #111111;
+    cursor: pointer;
+}
+.save-btn {
+    all: unset;
+    color: #fff;
+    background-color: #28a745;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.save-btn:hover {
+    background-color: #137229;
+}
+.save-close-arrow {
+    font-size: 24px;
+    color: grey;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    transition: 0.5s;
+}
+.main-vec {
+    margin: 6% 6%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px -1px 29px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 1px -1px 29px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 1px -1px 29px 0px rgba(0,0,0,0.21);
+}
+.edit {
+    color: wheat;
+    background: #303030;
+    padding: 10px 10px 10px 10px;
+    line-height: 0;
+    height: max-content;
+    border-radius: 50%;
+    box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.21);
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: 12px;
+    transition: 0.4s;
+    position: absolute;
+    right: 0;
+    top: 0 ;
+}
+.edit-small {
+    color: wheat;
+    background: #303030;
+    padding: 5px 5px 5px 5px;
+    line-height: 0;
+    height: max-content;
+    border-radius: 50%;
+    box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.21);
+    width: 30px;
+    height: 30px;
+    margin-top: -20px;
+    margin-left: 12px;
+    transition: 0.4s;
+}
+.edit_h_hide {
+    color: wheat;
+    background: #303030;
+    padding: 10px 10px 10px 10px;
+    line-height: 0;
+    height: max-content;
+    border-radius: 50%;
+    box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.21);
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: 12px;
+    transition: 0.4s;
+    position: absolute;
+    right: 0;
+    z-index: -999;
+}
+.edit_h_hide-small {
+    color: wheat;
+    background: #303030;
+    padding: 10px 10px 10px 10px;
+    line-height: 0;
+    height: max-content;
+    border-radius: 50%;
+    box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 10px 10px 16px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.21);
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin-top: -20px;
+    margin-left: 12px;
+    transition: 0.4s;
+    position: absolute;
+    right: 0;
+    z-index: -999;
+}
+.edit:hover {
+    cursor: pointer;
+    color: #303030;
+    background-color: wheat;
+    border: 1px solid #303030;
+    box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow:  0px 0px 0px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow:  0px 0px 0px 0px rgb(0 0 0 / 21%);
+}
+.edit-small:hover {
+    cursor: pointer;
+    color: #303030;
+    background-color: wheat;
+    border: 1px solid #303030;
+    box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow:  0px 0px 0px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow:  0px 0px 0px 0px rgb(0 0 0 / 21%);
+}
+.edit-close {
+    height: 20px;
+    width: 20px;
+    background: #303030;
+    position: relative;
+    border-radius: 50%;
+    transition: 0.3s;
+    color: white;
+    border: solid 1px transparent;
+}
+.edit-close:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: solid 1px black;
+    width: 80px;
+    border-radius: 9px;
+}
+.close_text {
+    position: absolute;
+    left: 21px;
+    top: -2px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.save_text {
+    position: absolute;
+    left: 21px;
+    top: 0;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Product Sans';
+}
+.edit-save {
+    height: 20px;
+    width: 20px;
+    background: #28a745;
+    position: relative;
+    border-radius: 50%;
+    transition: 0.3s;
+    color: white;
+    border: solid 1px transparent;
+    margin-left: 7px;
+}
+.edit-save:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #28a745;
+    border: solid 1px #28a745;
+    width: 80px;
+    border-radius: 9px;
+}
+.edit-back {
+    height: 20px;
+    width: 20px;
+    background: #C21800;
+    position: relative;
+    border-radius: 50%;
+    transition: 0.3s;
+    color: white;
+    border: solid 1px transparent;
+    margin-left: 7px;
+}
+.edit-back:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #C21800;
+    border: solid 1px #C21800;
+    width: 120px;
+    border-radius: 9px;
+}
+.back_text {
+    font-weight: 500;
+    margin-left: 10px;
+    font-family: 'Product Sans';
+}
+.saved-msg {
+    text-align: left;
+    background: #28a745;
+    color: white;
+    padding: 3px 15px;
+    width: 15%;
+    border-radius: 20px;
+}
+#product_popis {
+    width: 582px;
+    height: 1032px;
+    font-size: 16px;
+    box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.21);
+    resize: none;
+}
+textarea::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 15px;
+}
+
+textarea::-webkit-scrollbar-track {
+    border-radius: 15px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -webkit-box-shadow: 1px -1px 9px 0px rgb(0 0 0 / 21%);
+    -moz-box-shadow: 1px -1px 9px 0px rgba(0,0,0,0.21);
 }

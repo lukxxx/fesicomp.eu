@@ -19,7 +19,7 @@ if(isset($_GET['ID'])){
     $nazov = $row['p_nazov'];
     $kod = $row['p_id'];
     $popis = $row['p_popis'];
-    $cena = $row['p_cena'];
+    $cena = $row['p_vysledna_cena'];
     $produkt_cislo = $row['p_pn'];
     $dostupnost = $row['p_sklad'];
     $pocet_ks = $row['p_dostup'];
@@ -156,7 +156,8 @@ if(isset($_GET['ID'])){
                                 }?>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6 text-right">
-                                <span style="color: #B81600; font-size: 30px; font-weight: bold; padding-bottom: 10px;"><?php echo $cena ?>€</span><br>
+                                <span style="color: #B81600; font-size: 30px; font-weight: bold; padding-bottom: 10px;"><?php echo number_format($cena*1.2, 2, '.', '') ?>€</span><br>
+                                <span class="product-price-wdph">Bez DPH:<?php echo $cena ?>€</span>
                                 <?php                // check if product already exists in cart
                                 $flag = false;
                                 foreach ($cart as $c)
