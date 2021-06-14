@@ -22,7 +22,7 @@ require_once "config.php";
             }
             
             ?>
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="product-card justify-content-md-center">
                         <div class="discount">
 
