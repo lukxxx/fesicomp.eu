@@ -12,10 +12,10 @@ if(isset($_COOKIE['details'])){
     <?php include "includes/index-carousel.php"; ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-12 col-lg-3">
                 <?php include "includes/category-list.php" ?>
             </div>
-            <div class="col-sm-12 col-md-9 col-lg-9">
+            <div class="col-sm-12 col-md-9 col-lg-9" style="margin: auto;">
                 <h2 class="akciova_ponuka">Akciová ponuka</h2>
                 <br>
                 <div class="row">
@@ -23,7 +23,7 @@ if(isset($_COOKIE['details'])){
                 </div>
                 <h2 class="nase_sluzby">Naše služby</h2>
                     <br>
-                <div class="row services" style="padding-bottom: 20px">
+                <div class="row services d-flex justify-content-center" style="padding-bottom: 20px">
                     <?php include "includes/sluzby.php" ?>
                 </div>
                 <h2 class="nove_produkty">Nové produkty</h2>
