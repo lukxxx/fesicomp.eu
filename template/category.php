@@ -53,10 +53,10 @@ include_once "../includes/head-template.php"
     <?php include (ROOT ."includes/header-template.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-12 col-lg-3">
                 <?php include (ROOT."includes/category-list-temp.php")?>
             </div>
-            <div class="col-sm-12 col-md-9 col-lg-9">
+            <div class="col-sm-12 col-md-9 col-lg-9 cesta_kategorie" style="margin: auto;">
                 <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
                 <?php
                     
@@ -189,7 +189,7 @@ include_once "../includes/head-template.php"
                                                 $cesta = "<img loading='lazy' src='../assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                             }
                                         ?>                                
-                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                            <div class="col-sm-12 col-md-6 col-lg-3">
                                                 <div class="product-card justify-content-md-center">
                                                     <div class="discount">
 
