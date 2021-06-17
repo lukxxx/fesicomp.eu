@@ -1,6 +1,6 @@
 <?php
-if(isset($_GET['ID'])){
-    $id = $_GET['ID'];
+if(isset($id)){
+    $id = $id;
     $sql = "SELECT * FROM parametre,parametrecis WHERE parametre.p_kod_parametru = parametrecis.pc_kod AND parametre.p_kod =(SELECT p_kod_sklad FROM produkty WHERE p_id='$id') ORDER BY parametrecis.pc_poradie ASC";
 }   //"SELECT * FROM parametre,prametrecis WHERE parametre.p_kod_parametru = prametre.pc_kod AND ";
       //(SELECT p_kod_sklad FROM produkty WHERE p_id='$id') SELECT * FROM parametrecis WHERE pc_kod ='$p_kod'";
