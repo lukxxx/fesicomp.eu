@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['ID'])) {
-    $id = $_GET['ID'];
+if (isset($id)) {
+    $id = $id;
     $sql = "SELECT * FROM produkty WHERE p_id IN (SELECT s_kod_suvisiaci FROM suvisiaci where s_kod = (SELECT p_id FROM produkty WHERE p_id='$id')) LIMIT 3";
 }
 if ($stmt = mysqli_prepare($link, $sql)) {
@@ -17,10 +17,10 @@ if ($stmt = mysqli_prepare($link, $sql)) {
                 }
             }
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                if (file_exists("../catalog/" . $row['p_id'] . "/" . $row['p_img'] . "")) {
-                    $cesta = "<img loading='lazy' src='../catalog/" . $row['p_id'] . "/" . $row['p_img'] . " width='159' class='img-prod' height='120'>";
+                if (file_exists("catalog/" . $row['p_id'] . "/" . $row['p_img'] . "")) {
+                    $cesta = "<img loading='lazy' src='catalog/" . $row['p_id'] . "/" . $row['p_img'] . " width='159' class='img-prod' height='120'>";
                 } else {
-                    $cesta = "<img loading='lazy' src='../assets/images/no-image.png' width='140' class='img-prod' height='120'>";
+                    $cesta = "<img loading='lazy' src='assets/images/no-image.png' width='140' class='img-prod' height='120'>";
                 }
 ?>
                 <div class="col-sm-12 col-md-3 col-lg-3">
@@ -49,7 +49,7 @@ if ($stmt = mysqli_prepare($link, $sql)) {
 
                                         <!-- show delete button if already exists -->
 
-                                        <form method="POST" action="../update-cart.php" style="float: right;">
+                                        <form method="POST" action="update-cart.php" style="float: right;">
                                             <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
                                             <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
                                             <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
@@ -58,7 +58,7 @@ if ($stmt = mysqli_prepare($link, $sql)) {
 
                                         <!-- add to cart -->
 
-                                        <form method="POST" action="../add-cart.php">
+                                        <form method="POST" action="add-cart.php">
                                             <input type="hidden" name="quantity" value="1">
                                             <input type="hidden" name="productCode" value="<?php echo $row['p_id']; ?>">
                                             <button class="btn btn-dark" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
