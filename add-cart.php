@@ -17,5 +17,5 @@ array_push($cart, array(
 ));
 
 setcookie("cart", json_encode($cart));
-header("Location: template/cart.php");
+header("Location: /kosik");
 ?>
