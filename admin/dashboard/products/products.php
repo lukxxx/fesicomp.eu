@@ -165,7 +165,7 @@ if (isset($_COOKIE['admin'])) { ?>
                 };
             };
             let kid = $(location).attr('search')
-            console.log(kid);
+            console.log(kid); 
             $('.search-boxy input[type="text"]').on('keyup', debounce(function() {
                 $("#book").slideDown("slow");
                 $('.result').css({
