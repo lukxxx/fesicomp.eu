@@ -172,7 +172,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."includes/head.php"
                                                 $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                             }
                                         ?>                                
-                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                            <div class="col-sm-12 col-md-6 col-lg-3">
                                                 <div class="product-card justify-content-md-center">
                                                     <div class="discount">
 
