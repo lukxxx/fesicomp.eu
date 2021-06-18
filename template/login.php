@@ -1,5 +1,5 @@
 <?php 
-require_once "../config.php";
+include($_SERVER['DOCUMENT_ROOT']."config.php");
 
 $error = "";
 $error_pass = "";
@@ -42,13 +42,15 @@ if(isset($_POST['bimbambum'])){
     if($error == "" && $error_pass == ""){
         setcookie('user-login', $email, time() + 3600, "/");
         setcookie('user-login-name', $meno_login, time() + 3600, "/");
-        header("location: myaccount.php");
+        header("location: /moj-ucet");
     }
 }
 
 ?>
-<?php include "../includes/head-template.php";?>
-    <?php include "../includes/header-template.php" ?>
+<?php
+    include($_SERVER['DOCUMENT_ROOT']."includes/head.php");
+    include($_SERVER['DOCUMENT_ROOT']."includes/header.php");
+ ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -87,8 +89,8 @@ if(isset($_POST['bimbambum'])){
             </div>
         </div>
     </div>
-    <?php include "../includes/footer.php"?>
-    <?php include "../includes/scripts.php"?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."includes/footer.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."includes/scripts.php"); ?>
     
     <script>
       function onSignIn(googleUser) {
