@@ -1,7 +1,7 @@
 <?php
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
-include_once "../includes/head-template.php"
+include_once $_SERVER['DOCUMENT_ROOT']."includes/head.php"
 ?>
 <script type='text/javascript'>
     function updateURLParameter(url, param, paramVal)
@@ -50,11 +50,11 @@ include_once "../includes/head-template.php"
 }
 
 </script>
-    <?php include (ROOT ."includes/header-template.php")?>
+    <?php include ($_SERVER['DOCUMENT_ROOT']."includes/header.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3">
-                <?php include (ROOT."includes/category-list-temp.php")?>
+                <?php include ($_SERVER['DOCUMENT_ROOT']."includes/category-list.php")?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
                 <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
@@ -130,10 +130,12 @@ include_once "../includes/head-template.php"
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                                             $obrazok = $row['p_img'];
                                             $id_produktu = $row['p_id'];
-                                            if(file_exists("../catalog/$id_produktu/$obrazok")){
-                                                $cesta = "<img src='../catalog/$id_produktu/$obrazok' class='img-prod' style='max-width: 120px;max-height: 120px;'>";
+                                            $path_R = ROOT;
+                                            $path = $path_R."catalog/$id_produktu/$obrazok";
+                                            if(file_exists($path)){
+                                                $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/catalog/$id_produktu/$obrazok'   class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                             } else {
-                                                $cesta = "<img class='img-prod' src='../assets/images/no-image.png' style='max-width: 120px;max-height: 120px;'>";
+                                                $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                             }
                                         ?>                                
                                             <div class="col-sm-12 col-md-3 col-lg-3">
@@ -142,11 +144,11 @@ include_once "../includes/head-template.php"
 
                                                     </div>
                                                     <div class="product-img justify-content-md-center">
-                                                        <a style="color: white;" href="item.php?ID=<?php echo $row['p_id'] ?>"><?php echo $cesta ?></a>
+                                                        <a style="color: white;" href="/<?php echo replaceAccents($row['p_nazov']) ?>"><?php echo $cesta ?></a>
                                                     </div>
                                                     <div class="product-name justify-content-md-center">
                                                         <div class="heading">
-                                                            <a style="color: white;" href="item.php?ID=<?php echo $row['p_id']?>"><h6 class="name-prod"><?php echo mb_strimwidth($row['p_nazov'], 0, 30, "");?></h6></a>
+                                                            <a style="color: white;" href="/<?php echo replaceAccents($row['p_nazov'])?>"><h6 class="name-prod"><?php echo mb_strimwidth($row['p_nazov'], 0, 30, "");?></h6></a>
                                                         </div>
 
                                                     </div>
@@ -163,7 +165,7 @@ include_once "../includes/head-template.php"
                                                             <form method="POST" action="../update-cart.php" style="float: right;">
                                                             <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
                                                             <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                                            <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                                            <button class="buy-btn" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                                             </form>
                                                             <?php } else { ?>
 
@@ -172,7 +174,7 @@ include_once "../includes/head-template.php"
                                                             <form method="POST" action="../add-cart.php">
                                                                 <input type="hidden" name="quantity" value="1">
                                                                 <input type="hidden" name="productCode" value="<?php echo $row['p_id']; ?>">
-                                                                <button class="btn btn-dark" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                                                <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                                             </form>
 
                                                             <?php } ?>
@@ -239,7 +241,7 @@ include_once "../includes/head-template.php"
             </div>
         </div>   
     </div>
-    <?php include (ROOT. "includes/footer.php") ?>
+    <?php include ($_SERVER['DOCUMENT_ROOT']."includes/footer.php") ?>
     
 </body>
 </html>
