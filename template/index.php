@@ -14,7 +14,7 @@ if(isset($_COOKIE['details'])){
             <div class="col-sm-12 col-md-3 col-lg-3">
                 <?php include($_SERVER['DOCUMENT_ROOT']."/includes/category-list.php") ?>
             </div>
-            <div class="col-sm-12 col-md-9 col-lg-9">
+            <div class="col-sm-12 col-md-9 col-lg-9" style="margin: auto;">
                 <h2 class="akciova_ponuka">Akciová ponuka</h2>
                 <br>
                 <div class="row">
