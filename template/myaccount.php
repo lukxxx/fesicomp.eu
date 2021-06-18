@@ -1,5 +1,5 @@
 <?php 
-include "../includes/head-template.php";
+include($_SERVER['DOCUMENT_ROOT']."includes/head.php");
 if(isset($_COOKIE['details'])){
     unset($details);
     unset($_COOKIE['details']);
@@ -21,7 +21,7 @@ if(isset($_GET['fullname'])){
     $two = $parts[1];
     $full_n = $one." ".$two;
 }
-require_once "../config.php";
+include($_SERVER['DOCUMENT_ROOT']."config.php");
 
 $given_name = "";
 $em = "";
@@ -123,7 +123,7 @@ if(isset($_COOKIE['user'])){
     }
 }
 
-include "../includes/header-template.php";
+include($_SERVER['DOCUMENT_ROOT']."includes/header.php");
 ?>
 <script>
 function signOut(){
@@ -262,4 +262,5 @@ function onLoad(){
         </div>
     </div>
 </div>
+<?php include($_SERVER['DOCUMENT_ROOT']."includes/footer.php"); ?>
 <script src="https://apis.google.com/js/platform.js"></script>
