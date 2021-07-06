@@ -20,24 +20,24 @@ require_once "config.php";
                 }
             }
             ?>
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="product-card justify-content-md-center">
                         <div class="discount">
 
                         </div>
                         <div class="product-img justify-content-md-center">
-                            <a style="color: white;" href="template/item.php?ID=<?php echo $row->p_id ?>"><img class="img-prod" loading="lazy" src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>"
+                            <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>"
                              width="" class="img-prod" height="120"></a>
                         </div>
                         <div class="product-name justify-content-md-center">
                             <div class="heading">
-                            <a style="color: white;" href="template/item.php?ID=<?php echo $row->p_id ?>"><h6 class="name-prod"><?php echo $row->p_nazov ?></h6></a>
+                            <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><h6 class="name-prod"><?php echo $row->p_nazov ?></h6></a>
                             </div>
 
                         </div>
 
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <div class="product-bottom justify-content-md-center">
+                            <div class="product-bottom justify-content-around" style="height: 60px;">
                                 <div class="add-to-cart justify-content-md-center">
                                 <?php
                             
@@ -48,7 +48,7 @@ require_once "config.php";
                                 <form method="POST" action="update-cart.php" style="float: right;">
                                 <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                <button class="buy-btn" name="quantity-plus" style="border-radius: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
                                 <?php } else { ?>
 
@@ -57,7 +57,7 @@ require_once "config.php";
                                 <form method="POST" action="add-cart.php">
                                     <input type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="productCode" value="<?php echo $row->p_id; ?>">
-                                    <button class="btn btn-dark" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                    <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
 
                                 <?php } ?>

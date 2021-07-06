@@ -144,12 +144,14 @@ span {
     font-weight: bold;
 }
 .name-prod {
+    text-align: center;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 .product-bottom {
     display: flex;
     padding: 5px;
+    overflow: hidden;
 }
 .img-prod {
     display: block;
@@ -160,38 +162,74 @@ span {
 }
 .product-img {
     padding: 10px;
+    min-height: 140px;
+    display: flex;
+    align-items: center;
 }
 .product-price-dph {
-    font-weight: 700;
-    font-size: 18px;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: -10px;
+    /*position: absolute;*/
 }
 .add-to-cart {
     padding-right: 2vw;
 }
 .product-name {
-    background-color: #B81600;
-    color: white;
-    padding: 5px;
+    background-color: #303030;
+    color: #303030;
+    padding: 5px 10px;
     text-align: center;
     min-height: 55px;
-    max-height: 55px    ;
+    max-height: 75px;
+    display: flex;
+    align-items: center;
 }
 .product-price-wdph {
     font-size: 9px;
     color: grey;
     text-align: right;
+    margin-top: -10px;
     line-height: 5px;
+    /*position: absolute;*/
+    top: 53px;
+    left: 151px;
+    overflow: hidden;
+}
+.buy-btn {
+    all: unset;
+    background: #54BD54;
+    color: white;
+    border-radius: 5px;
+    padding: 6px 15px;
+    margin-top: 8px;
+    position: absolute;
+    transition: 0.3s;
+    left: 20px;
+}
+.buy-btn:hover {
+    background-color: #186f18;
+    cursor: pointer;
+}
+.sort-btn {
+    all: unset;
+    background: white;
+    color: #303030;
+    border: 1px solid #303030;
+    padding: 5px 10px;
+    margin-right: 10px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.sort-btn:hover {
+    background-color: #303030;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 .has-value-input {
     background-color: lightyellow;
     pointer-events: none;
-}
-.product-card{
-    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
-    box-shadow: 5px 6px 16px -2px #616161;
-    max-height: 266px;
-    min-height: 266px;
-    margin-bottom: 2vw;
 }
 .product-nam{
     text-align: center;
@@ -288,16 +326,36 @@ span {
     padding-right: 1vw;
 }
 .product-card{
-    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
-box-shadow: 5px 6px 16px -2px #616161;
-max-height: 266px;
-min-height: 266px;
-margin-bottom: 2vw;
-border-radius: 10px;
-background-color: white !important;
-z-index: 2;
+    -webkit-box-shadow: 0px 0px 16px -2px #616161;
+    box-shadow: 0px 0px 26px -9px #616161;
+    max-height: 266px;
+    min-height: 266px;
+    margin-bottom: 2vw;
+    border-radius: 10px;
+    background-color: white !important;
+    z-index: 2;
+    border: 1px solid #e7e7e7;
 }
-
+.category-listing {
+    color: white;
+    padding: 8px 20px;
+    line-height: 20px;
+    transition: 0.4s;
+}
+.category-listing:hover{
+    background-color: #8F8F8F;
+    cursor: pointer;
+}
+.category-listing-a:hover {
+    text-decoration: none;
+}
+.discount-img {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    top: -10px;
+}
 /*********************************************************/
 /* Toto je scrollbar, ktorý urobil Maťko dňa 13.02.2021.
     Maťko ľúbi robiť takého komentáre <3 */
@@ -342,8 +400,14 @@ input{
 }
 
 
+.akciova_ponuka {
+    margin: auto;
+}
 
 
+.category-list {
+    margin: 5px 20px 40px;
+}
 
 
 
@@ -360,6 +424,11 @@ input{
     .header_tablet {
         display: none;
     }
+
+    .kats_tablet {
+        display: none;
+    }
+
 
     .cart_desktop {
         display: none;
@@ -411,13 +480,12 @@ input{
         margin-left: 5px;
     }
 
-    .cesta_kategorie{
-        margin: 0 25px;
+    .discount-img {
+        margin: 10px 30px;
     }
 
-
-
   }
+
 
 
   @media only screen and (min-width: 577px) {
@@ -433,6 +501,14 @@ input{
         display: block;
     }
 
+    .kats_tablet {
+        display: block;
+    }
+
+    .kats_desktop {
+        display: none;
+    }
+
 
     .cart_desktop {
         display: block;
@@ -441,11 +517,19 @@ input{
     .cart_mobile {
         display: none;
     }
-
   }
 
 
-  @media only screen and (min-width: 1259px) {
+  @media only screen and (max-width: 990px) {
+        .category-list {
+            margin: 5px 75px 40px;
+        }
+    }
+
+
+
+
+  @media only screen and (min-width: 1199px) {
       .header_desktop {
           display: block;
       }
@@ -458,19 +542,14 @@ input{
           display: none;
       }
 
+      .kats_desktop {
+          display: block;
+      }
 
+      .kats_tablet {
+          display: none;
+      }
   }
-
-
-  @media only screen and (min-width: 996px) {
-    .aleks{
-        display: flex;
-        flex-direction: row;
-        flex: 50%;
-    }
-
-
-}
 
 
 
@@ -578,3 +657,5 @@ input{
     padding-top: 7%;
     font-size: 30px;
 }
+
+  
