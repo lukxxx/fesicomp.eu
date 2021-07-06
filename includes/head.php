@@ -47,7 +47,6 @@ function replaceAccents($str) {
     $newstring = str_replace('/', '', $newstring);
     $newstring = str_replace('™', '', $newstring);
     $newstring = str_replace('+', '', $newstring);
-    $newstring = str_replace('-', '', $newstring);
     $newstring = str_replace('*', '', $newstring);
     $newstring = str_replace('"', '', $newstring);
     $newstring = str_replace(')', '', $newstring);

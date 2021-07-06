@@ -65,13 +65,19 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
 mysqli_close($link);
 function replaceAccents($str) {
   $search = explode(",",
-"č,æ,œ,á,é,í,ó,ú,à,è,ť,ò,ů,ř,ë,ï,ö,ü,ÿ,â,ê,î,ô,û,å,ø,Ø,Å,Á,À,Â,Ä,š,ý,Ê,Ë,Í,Î,Ï,Ì,Ò,Ó,Ô,Ö,Ú,Ù,Û,Ü,Ÿ,Ç,Æ,/");
+"á,ä,č,ď,dž,é,ě,í,ĺ,ľ,ň,ó,ô,ŕ,ř,š,ť,ú,ů,ý,ž,Á,Ä,Č,Ď,DŽ,É,Ě,Í,Ĺ,Ľ,Ň,Ó,Ô,Ŕ,Ř,Š,Ť,Ú,Ů,Ý,Ž");
   $replace = explode(",",
-"c,ae,oe,a,e,i,o,u,a,e,t,o,u,r,e,i,o,u,y,a,e,i,o,u,a,o,O,A,A,A,A,A,s,y,E,E,I,I,I,I,O,O,O,O,U,U,U,U,Y,C,AE, ");
+"a,a,c,d,dz,e,e,i,l,l,n,o,o,r,r,s,t,u,u,y,z,A,A,C,D,DZ,E,E,I,L,L,N,O,O,R,R,S,T,U,U,Y,Z");
   $newstring = str_replace($search, $replace, $str);
   $newstring = strtolower($newstring);
   $newstring = str_replace(' ', '-', $newstring);
-  $newstring = str_replace(',', '', $newstring);
+  $newstring = str_replace(',', '-', $newstring);
+  $newstring = str_replace('.', '', $newstring);
+  $newstring = str_replace('/', '', $newstring);
+  $newstring = str_replace('™', '', $newstring);
+  $newstring = str_replace('+', '', $newstring);
+  $newstring = str_replace('*', '', $newstring);
+  $newstring = str_replace('"', '', $newstring);
   $newstring = str_replace(')', '', $newstring);
   $newstring = str_replace('(', '', $newstring);
   return $newstring;
