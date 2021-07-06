@@ -89,8 +89,8 @@ if(isset($_POST['bimbambum'])){
             </div>
         </div>
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT']."includes/footer.php"); ?>
-    <?php include($_SERVER['DOCUMENT_ROOT']."includes/scripts.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"); ?>
     
     <script>
       function onSignIn(googleUser) {

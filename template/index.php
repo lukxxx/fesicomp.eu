@@ -6,6 +6,7 @@ if(isset($_COOKIE['details'])){
     unset($_COOKIE['details']);
     setcookie('details', null, time() - 3600, "/");
 }
+echo $_SERVER['DOCUMENT_ROOT'];
 ?>
     <?php include($_SERVER['DOCUMENT_ROOT']."/includes/header.php") ?>
     <?php include($_SERVER['DOCUMENT_ROOT']."/includes/index-carousel.php"); ?>
