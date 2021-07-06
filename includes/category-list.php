@@ -36,7 +36,7 @@
 </div>
 
 
-<div class="category-list kats_tablet">
+<div class="category-list kats_tablet ">
     <div class="category-h d-flex justify-content-between" style="border-radius: 15px 15px 0px 0px; ">
         <a data-toggle="collapse" href="#kats" role="button" aria-expanded="false" aria-controls="kats" style="color: white; font-size: 23px; padding: 1px; text-decoration: none;">
             <i style="padding: 8px 8px 8px 15px; font-size: 25px;" class="far fa-folder"></i><span style="padding:2px; font-size: 18px; ">Kategórie</span>
