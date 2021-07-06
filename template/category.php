@@ -1,7 +1,8 @@
 <?php
+
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
-include_once "../includes/head-template.php"
+include_once $_SERVER['DOCUMENT_ROOT']."includes/head.php"
 ?>
 <script type='text/javascript'>
     function updateURLParameter(url, param, paramVal)
@@ -48,52 +49,30 @@ include_once "../includes/head-template.php"
     var rows_txt = temp + "" + param + "=" + paramVal;
     window.location = baseURL + "?" + newAdditionalURL + rows_txt;
 }
-
+ 
 </script>
-    <?php include (ROOT ."includes/header-template.php")?>
+    <?php include ($_SERVER['DOCUMENT_ROOT']."includes/header.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-3">
-                <?php include (ROOT."includes/category-list-temp.php")?>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <?php include ($_SERVER['DOCUMENT_ROOT']."includes/category-list.php")?>
             </div>
-            <div class="col-sm-12 col-md-9 col-lg-9 cesta_kategorie" style="margin: auto;">
+            <div class="col-sm-12 col-md-9 col-lg-9">
+            <?php 
+            $stmt = $pdo->query("SELECT * FROM kategorie WHERE k_url LIKE '$kategorka'");
+            while ($row = $stmt->fetch()) {
+                $kid = $row['k_id'];
+                $k_name = $row['k_nazov'];
+            }
+            ?>
                 <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
-                <?php
-                    
-                    $kid = $_GET['KID'];
-                    $poloha_kategoria = $kid;
-                    $cesta_kat= array();
-                    while(true)
-                    {
-                        $vyssia_kategoria= "SELECT k_id, k_kid,k_nazov FROM kategorie WHERE k_id='$poloha_kategoria'";
-                        if($stmt = mysqli_prepare($link,$vyssia_kategoria)){
-                            if(mysqli_stmt_execute($stmt)){
-                                $result = mysqli_stmt_get_result($stmt);
-                                if(mysqli_num_rows($result) > 0){
-                                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){ 
-                                        array_push($cesta_kat,'<i class="fas fa-chevron-right"></i><a  style="padding-left: 8px;padding-right: 8px; color: #2B2B2B;" href="category.php?KID='.$row["k_id"].'">'.$row["k_nazov"].'</a>');
-                                        $poloha_kategoria = $row['k_kid'];
-                                    }
-                                }
-                                else
-                                {
-                                    $cesta_kat= array_reverse($cesta_kat);
-                                    foreach($cesta_kat as $value){
-                                        echo $value ;
-                                    }
-                                    break;
-                                }
-                        } else{
-                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                        }
-                        }
-                        
-                    }
-                                  
-                      ?>
+                <h2><?php echo $k_name ?></h2>
+                <hr>
                     
                 <div class="d-flex flex-wrap">                                        
                       <?php
+                    
+
                     $name = "SELECT * FROM kategorie WHERE k_kid = '$kid' AND k_aktualni != '2' AND k_medzera ='0'  ORDER BY k_poradie";
                     if($stmt = mysqli_prepare($link,$name)){
                         if(mysqli_stmt_execute($stmt)){
@@ -102,8 +81,8 @@ include_once "../includes/head-template.php"
                                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){ 
                                     ?>     
                                         <div class="col-sm-12 col-md-4 col-lg-3 ">
-                                            <a class="category-link" href="category.php?KID=<?php echo $row['k_id']?>">
-                                            <div class="category-card justify-content-md-center">
+                                            <a class="category-link" href="/kategoria/<?php echo replaceAccents($row['k_nazov']) ?>">
+                                            <div class="category-card d-flex justify-content-center" style="align-items: center; margin: 3% 0 3% 0">
                                                  <span style="color: black; font-size: 17px;"> <?php echo $row['k_nazov']?></span> 
                                             </div>      
                                             </a>
@@ -123,9 +102,10 @@ include_once "../includes/head-template.php"
                 
                 <div class = "row" >
                     <div class="col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="button-box ">                       
-                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','ASC' )"class="btn btn-dark" role="button">Najlacnejšie</a>
-                            <a href="#"  onclick="updateURLParameter(window.location.href, 'cena','DESC' )"class="btn btn-dark" role="button">Najdrahšie</a>                    
+                        <span style="font-size: 20px; font-weight: bold;">Zoradiť cenu</span>
+                        <div class="button-box" style="margin-top: 10px;">                       
+                            <a href="#" onclick="updateURLParameter(window.location.href, 'cena','ASC' )"class="sort-btn" role="button">Najlacnejšie</a>
+                            <a href="#" onclick="updateURLParameter(window.location.href, 'cena','DESC' )"class="sort-btn" role="button">Najdrahšie</a>                    
                         </div>                                                                      
                     </div>
                 </div>
@@ -183,10 +163,13 @@ include_once "../includes/head-template.php"
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                                             $obrazok = $row['p_img'];
                                             $id_produktu = $row['p_id'];
-                                            if(file_exists("../catalog/$id_produktu/$obrazok")){
-                                                $cesta = "<img loading='lazy' src='../catalog/$id_produktu/$obrazok'   class='img-prod' style='max-width: 120px;max-height: 120px;'>";
+                                            $meno_produktu = $row['p_nazov'];
+                                            $path_R = ROOT;
+                                            $path = $path_R."catalog/$id_produktu/$obrazok";
+                                            if(file_exists($path)){
+                                                $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/catalog/$id_produktu/$obrazok'   class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                             } else {
-                                                $cesta = "<img loading='lazy' src='../assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
+                                                $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                             }
                                         ?>                                
                                             <div class="col-sm-12 col-md-6 col-lg-3">
@@ -195,11 +178,11 @@ include_once "../includes/head-template.php"
 
                                                     </div>
                                                     <div class="product-img justify-content-md-center">
-                                                        <a href="item.php?ID=<?php echo $row['p_id']?>"><?php echo $cesta; ?></a>
+                                                        <a href="/<?php echo replaceAccents($meno_produktu)?>"><?php echo $cesta; ?></a>
                                                     </div>
                                                     <div class="product-name justify-content-md-center">
                                                         <div class="heading">
-                                                            <a style="color: white;" href="item.php?ID=<?php echo $row['p_id']?>"><h6 class="name-prod"><?php echo mb_strimwidth($row['p_nazov'], 0, 30, "");?></h6></a>
+                                                            <a style="color: white;" href="/<?php echo replaceAccents($meno_produktu)?>"><h6 class="name-prod"><?php echo mb_strimwidth($meno_produktu, 0, 30, "");?></h6></a>
                                                         </div>
 
                                                     </div>
@@ -216,7 +199,7 @@ include_once "../includes/head-template.php"
                                                             <form method="POST" action="../update-cart.php" style="float: right;">
                                                             <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
                                                             <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                                            <button class="btn btn-dark" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                                            <button class="buy-btn" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                                             </form>
                                                             <?php } else { ?>
 
@@ -225,15 +208,15 @@ include_once "../includes/head-template.php"
                                                             <form method="POST" action="../add-cart.php">
                                                                 <input type="hidden" name="quantity" value="1">
                                                                 <input type="hidden" name="productCode" value="<?php echo $row['p_id']; ?>">
-                                                                <button class="btn btn-dark" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                                                <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                                             </form>
 
                                                             <?php } ?>
                                                             </div>
                                                             <div class="price-tag align-self-center">
                                                                 <div class="pricing" style="display: block;">
-                                                                    <span class="product-price-dph"><?php echo number_format($row['p_vysledna_cena']*1.2, 2, '.', '') ?>€</span><br style="height: 1px;">
-                                                                    <span class="product-price-wdph">Bez DPH:<?php echo $row['p_vysledna_cena'] ?>€</span>
+                                                                    <span class="product-price-dph"><?php echo number_format($row['p_cena']*1.2, 2, '.', '') ?>€</span><br style="height: 1px;">
+                                                                    <span class="product-price-wdph">Bez DPH:<?php echo $row['p_cena'] ?>€</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -286,7 +269,7 @@ include_once "../includes/head-template.php"
             </div>
         </div>   
     </div>
-    <?php include (ROOT. "includes/footer.php") ?>
+    <?php include ($_SERVER['DOCUMENT_ROOT']."includes/footer.php") ?>
     
 </body>
 </html>

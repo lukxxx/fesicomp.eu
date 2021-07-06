@@ -231,6 +231,16 @@ span {
     background-color: lightyellow;
     pointer-events: none;
 }
+
+.product-card{
+    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
+    box-shadow: 5px 6px 16px -2px #616161;
+    max-height: 266px;
+    min-height: 266px;
+    margin-bottom: 2vw;
+}
+
+
 .product-nam{
     text-align: center;
     padding: 30px;
@@ -657,5 +667,3 @@ input{
     padding-top: 7%;
     font-size: 30px;
 }
-
-  

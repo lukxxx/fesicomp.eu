@@ -1,5 +1,5 @@
-<?php include "../includes/head-template.php";
-include "../includes/header-template.php";
+<?php include $_SERVER['DOCUMENT_ROOT']."includes/head.php";
+include $_SERVER['DOCUMENT_ROOT']."includes/header.php";
 ?>
 
 <div class="container cart_desktop" style="margin-top: 50px;">
@@ -227,7 +227,7 @@ include "../includes/header-template.php";
     </div>
     <div class="row" style="padding-top: 50px;">
     <?php
-        require_once "../config.php";
+        require_once $_SERVER['DOCUMENT_ROOT']."config.php";
         
         // get all products
         $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%xiaomi%' LIMIT 4");
@@ -313,5 +313,5 @@ include "../includes/header-template.php";
 
 </div>
 
-<?php include "../includes/footer.php";?>
+<?php include $_SERVER['DOCUMENT_ROOT']."includes/footer.php";?>
 

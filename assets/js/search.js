@@ -1,20 +1,35 @@
 $(document).ready(function(){
-    $('.search-box input[type="text"]').on("keyup input", function(){
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this,
+                args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
+    $('.search-box input[type="text"]').on("keyup input", debounce(function(){
         $( "#book" ).slideDown("slow");
         $('.result').css({display: 'block'});
         
         var inputVal = $(this).val();
         var resultDropdown = $(this).siblings(".result");
         if(inputVal.length){
-            $.get("template/search-engine.php", {term: inputVal}).done(function(data){
+            $.get("/srengine", {term: inputVal}).done(function(data){
                 // Display the returned data in browser
-                window.setTimeout(resultDropdown.html(data), 1000);
+                resultDropdown.html(data);
             });
         } else{
             resultDropdown.empty();
             $('.result').css({display: 'none'});
         }
-    });
+    }, 500));
     $(document).mouseup(function(e) 
     {
     var container = $(".result");

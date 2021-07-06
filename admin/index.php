@@ -58,7 +58,7 @@ if(!isset($_COOKIE['admin'])) {
 
 <!DOCTYPE html>
 <html lang="sk">
-    <?php include "includes/head.php"?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."admin/includes/head.php")?>
 <body class="login-bg ">
     <div class="justify-content-center d-flex align-items-center align-items-center">
         <div class="container-login ">

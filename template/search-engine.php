@@ -1,5 +1,5 @@
 <?php
-include "../config.php";
+include $_SERVER['DOCUMENT_ROOT']."config.php";
 if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
     $var = $_REQUEST["term"];
     $likeVar = "%" . $var . "%";
@@ -20,7 +20,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                   echo "<hr>";
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                   echo "<div style'display: flex; text-overflow: ellipsis; width: 80%'>";
-                     echo "<a href='template/item.php?ID=".$row['p_id']."' style='color: black'><p style='font-size: 15px'><img src='catalog/".$row['p_id']."/".$row['p_img']."' width='30' height='20'><span style='padding-left: 10px'>" . $row["p_nazov"] . "</span>";
+                     echo "<a href='/".replaceAccents($row['p_nazov'])."' style='color: black'><p style='font-size: 15px'><img src='catalog/".$row['p_id']."/".$row['p_img']."' width='30' height='20'><span style='padding-left: 10px'>" . $row["p_nazov"] . "</span>";
                      echo "<span style='float: right; font-weight: bold; color: red;'>".$row['p_cena']."€</span></p></a>";
                    echo "</div>";
               }
@@ -44,7 +44,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                 echo "<span style='font-weight: bold; font-size: 15px'><i class='fas fa-arrow-right'></i> Kategórie</span>";
                 echo "<hr>";
               while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                   echo "<a href='template/category.php?KID=".$row['k_id']."' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
+                   echo "<a href='kategoria/".replaceAccents($row['k_nazov'])."' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
 
             }
           } else {
@@ -63,4 +63,17 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
 }
  
 mysqli_close($link);
+function replaceAccents($str) {
+  $search = explode(",",
+"č,æ,œ,á,é,í,ó,ú,à,è,ť,ò,ů,ř,ë,ï,ö,ü,ÿ,â,ê,î,ô,û,å,ø,Ø,Å,Á,À,Â,Ä,š,ý,Ê,Ë,Í,Î,Ï,Ì,Ò,Ó,Ô,Ö,Ú,Ù,Û,Ü,Ÿ,Ç,Æ,/");
+  $replace = explode(",",
+"c,ae,oe,a,e,i,o,u,a,e,t,o,u,r,e,i,o,u,y,a,e,i,o,u,a,o,O,A,A,A,A,A,s,y,E,E,I,I,I,I,O,O,O,O,U,U,U,U,Y,C,AE, ");
+  $newstring = str_replace($search, $replace, $str);
+  $newstring = strtolower($newstring);
+  $newstring = str_replace(' ', '-', $newstring);
+  $newstring = str_replace(',', '', $newstring);
+  $newstring = str_replace(')', '', $newstring);
+  $newstring = str_replace('(', '', $newstring);
+  return $newstring;
+}
 ?>

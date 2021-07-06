@@ -34,4 +34,4 @@ if(isset($_POST['quantity-plus'])){
 
 
 setcookie("cart", json_encode($cart));
-header("Location: template/cart.php");
+header("Location: /kosik");

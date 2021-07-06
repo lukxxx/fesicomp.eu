@@ -1,9 +1,11 @@
-<?php 
-    include_once "../includes/head-template.php";
-    include (ROOT ."includes/header-template.php");
-    require_once "../config.php";
+<?php
+ include($_SERVER['DOCUMENT_ROOT']."includes/head.php");
+ include($_SERVER['DOCUMENT_ROOT']."includes/header.php");
+ include($_SERVER['DOCUMENT_ROOT']."config.php");
+
+ 
 ?>
-    <div class="container" style="padding: 20px 13px 0 10px">
+<div class="container" style="padding: 20px 13px 0 10px">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-8 col-lg-8">
                 <h2>O nás</h2>
@@ -96,11 +98,12 @@
                             ?>
                     </div> 
                 </div>
+                
                                                   
             </div>
         </div>
     </div>
-    <?php include (ROOT. "includes/footer.php") ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."includes/footer.php"); ?>
 
 </body>
 </html>
