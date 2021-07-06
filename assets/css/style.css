@@ -144,12 +144,14 @@ span {
     font-weight: bold;
 }
 .name-prod {
+    text-align: center;
     font-size: 16px;
     font-weight: 500;
 }
 .product-bottom {
     display: flex;
     padding: 5px;
+    overflow: hidden;
 }
 .img-prod {
     display: block;
@@ -168,7 +170,7 @@ span {
     font-weight: bold;
     font-size: 22px;
     margin-bottom: -10px;
-    position: absolute;
+    /*position: absolute;*/
 }
 .add-to-cart {
     padding-right: 2vw;
@@ -179,7 +181,7 @@ span {
     padding: 5px 10px;
     text-align: center;
     min-height: 55px;
-    max-height: 55px;
+    max-height: 75px;
     display: flex;
     align-items: center;
 }
@@ -189,9 +191,10 @@ span {
     text-align: right;
     margin-top: -10px;
     line-height: 5px;
-    position: absolute;
+    /*position: absolute;*/
     top: 53px;
     left: 151px;
+    overflow: hidden;
 }
 .buy-btn {
     all: unset;
@@ -228,8 +231,7 @@ span {
     background-color: lightyellow;
     pointer-events: none;
 }
-<<<<<<< HEAD
-=======
+
 .product-card{
     -webkit-box-shadow: 5px 6px 16px -2px #616161; 
     box-shadow: 5px 6px 16px -2px #616161;
@@ -237,7 +239,8 @@ span {
     min-height: 266px;
     margin-bottom: 2vw;
 }
->>>>>>> f6c202ed44062eca57a4451612c48b60359319bf
+
+
 .product-nam{
     text-align: center;
     padding: 30px;
@@ -407,8 +410,14 @@ input{
 }
 
 
+.akciova_ponuka {
+    margin: auto;
+}
 
 
+.category-list {
+    margin: 5px 20px 40px;
+}
 
 
 
@@ -425,6 +434,11 @@ input{
     .header_tablet {
         display: none;
     }
+
+    .kats_tablet {
+        display: none;
+    }
+
 
     .cart_desktop {
         display: none;
@@ -476,13 +490,12 @@ input{
         margin-left: 5px;
     }
 
-    .cesta_kategorie{
-        margin: 0 25px;
+    .discount-img {
+        margin: 10px 30px;
     }
 
-
-
   }
+
 
 
   @media only screen and (min-width: 577px) {
@@ -498,6 +511,14 @@ input{
         display: block;
     }
 
+    .kats_tablet {
+        display: block;
+    }
+
+    .kats_desktop {
+        display: none;
+    }
+
 
     .cart_desktop {
         display: block;
@@ -506,11 +527,19 @@ input{
     .cart_mobile {
         display: none;
     }
-
   }
 
 
-  @media only screen and (min-width: 1259px) {
+  @media only screen and (max-width: 990px) {
+        .category-list {
+            margin: 5px 75px 40px;
+        }
+    }
+
+
+
+
+  @media only screen and (min-width: 1199px) {
       .header_desktop {
           display: block;
       }
@@ -523,19 +552,14 @@ input{
           display: none;
       }
 
+      .kats_desktop {
+          display: block;
+      }
 
+      .kats_tablet {
+          display: none;
+      }
   }
-
-
-  @media only screen and (min-width: 996px) {
-    .aleks{
-        display: flex;
-        flex-direction: row;
-        flex: 50%;
-    }
-
-
-}
 
 
 
