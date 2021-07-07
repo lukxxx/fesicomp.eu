@@ -48,8 +48,8 @@ if(isset($_POST['bimbambum'])){
 
 ?>
 <?php
-    include($_SERVER['DOCUMENT_ROOT']."includes/head.php");
-    include($_SERVER['DOCUMENT_ROOT']."includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT']."/includes/head.php");
+    include($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
  ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
