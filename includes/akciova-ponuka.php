@@ -22,16 +22,16 @@ require_once "config.php";
             }
             
             ?>
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="product-card justify-content-md-center">
                         <div class="discount">
                             <img src="assets/images/discount.png" alt="zlava" class="discount-img">
                         </div>
                         <div class="product-img justify-content-md-center">
                             <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>"
-                             width="" class="img-prod" height="120"></a>
+                             width="auto" class="img-prod" height="120"></a>
                         </div>
-                        <div class="product-name justify-content-md-center">
+                        <div class="product-name d-flex justify-content-center">
                             <div class="heading">
                             <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><h6 class="name-prod"><?php echo mb_strimwidth($row->p_nazov, 0, 45, "");?></h6></a>
                             </div>
@@ -39,7 +39,7 @@ require_once "config.php";
                         
 
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <div class="product-bottom justify-content-md-center">
+                            <div class="product-bottom" style="justify-content: flex-end">
                                 <div class="add-to-cart justify-content-md-center">
                                 <?php
 

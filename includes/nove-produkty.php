@@ -20,7 +20,7 @@ require_once "config.php";
                 }
             }
             ?>
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="product-card justify-content-md-center">
                         <div class="discount">
 
@@ -37,7 +37,7 @@ require_once "config.php";
                         </div>
 
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <div class="product-bottom justify-content-md-center">
+                            <div class="product-bottom justify-content-around" style="height: 60px;">
                                 <div class="add-to-cart justify-content-md-center">
                                 <?php
                             

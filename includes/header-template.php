@@ -73,8 +73,6 @@
 </header>
 
 
-
-
 <header class="header_mobile">
     <div class="container-fluid back">
         <div class="container">
@@ -214,7 +212,7 @@
         <div class="container-fluid back">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-7">
+                    <div class="col-sm-12 col-md-7 col-lg-7">
                         <div class="brand">
                             <div style="height: 90px;" class="nav-brand logo-brand">
                                 <a href="../"><img src="../assets/images/brand/logo.png" width="100" height="90"></a>
@@ -233,7 +231,7 @@
                         </div>
                         
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-5 toplinks_and_search">
+                    <div class="col-sm-12 col-md-5 col-lg-5 toplinks_and_search">
                         <div class="row">
                             <div class="top-links d-flex justify-content-around">
                                 <?php 
@@ -282,8 +280,6 @@
             <marquee>Od 19.12.2020 do konca LOCKDOWN bude predajňa zatvorená.</marquee>
         </div>
 </header>
-
-
 
 
 <script>
