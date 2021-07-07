@@ -1,6 +1,6 @@
 <?php 
     include_once "../includes/head-template.php";
-    include (ROOT ."includes/header-template.php");
+    include (ROOT ."/includes/header-template.php");
 
     $s_id = $_GET["ID"];
     $sql = "SELECT * FROM podstranky WHERE s_id = $s_id";
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <?php include (ROOT. "includes/footer.php") ?>
+    <?php include (ROOT. "/includes/footer.php") ?>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
-<?php include $_SERVER['DOCUMENT_ROOT']."includes/head.php";
-include $_SERVER['DOCUMENT_ROOT']."includes/header.php";
+<?php include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+include $_SERVER['DOCUMENT_ROOT']."/includes/header.php";
 ?>
 
 <div class="container cart_desktop" style="margin-top: 50px;">
@@ -313,5 +313,5 @@ include $_SERVER['DOCUMENT_ROOT']."includes/header.php";
 
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT']."includes/footer.php";?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/includes/footer.php";?>
 

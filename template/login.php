@@ -1,5 +1,5 @@
 <?php 
-include($_SERVER['DOCUMENT_ROOT']."config.php");
+include($_SERVER['DOCUMENT_ROOT']."/config.php");
 
 $error = "";
 $error_pass = "";
@@ -48,8 +48,8 @@ if(isset($_POST['bimbambum'])){
 
 ?>
 <?php
-    include($_SERVER['DOCUMENT_ROOT']."includes/head.php");
-    include($_SERVER['DOCUMENT_ROOT']."includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT']."/includes/head.php");
+    include($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
  ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
@@ -89,8 +89,8 @@ if(isset($_POST['bimbambum'])){
             </div>
         </div>
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT']."includes/footer.php"); ?>
-    <?php include($_SERVER['DOCUMENT_ROOT']."includes/scripts.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"); ?>
     
     <script>
       function onSignIn(googleUser) {

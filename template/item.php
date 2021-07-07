@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "includes/head.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/includes/head.php");
 
 if (isset($_COOKIE["cart"])) {
     $cart = $_COOKIE['cart'];
@@ -86,11 +86,11 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
     })
 </script>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "includes/header.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"); ?>
 <div class="container" style="padding-top: 20px">
     <div class="row">
         <div class="col-sm-12 col-md-3 col-lg-3">
-            <?php include($_SERVER['DOCUMENT_ROOT'] . "includes/category-list.php"); ?>
+            <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/category-list.php"); ?>
 
         </div>
         <div class="col-sm-12 col-md-9 col-lg-9">
@@ -208,7 +208,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                 <div id="tab-2" class="col-12 tab-content">
                     <div class="row">
                         <div class="col-12">
-                            <?php include($_SERVER['DOCUMENT_ROOT'] . "includes/parameters.php"); ?>
+                            <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/parameters.php"); ?>
                         </div>
 
                     </div>
@@ -224,7 +224,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
         </div>
     </div>
 </div>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "includes/footer.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"); ?>
 
 </body>
 
