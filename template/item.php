@@ -10,7 +10,7 @@ if (isset($_COOKIE["cart"])) {
 if (isset($id)) {
 
     $id = $id;
-    
+
     $stmt = $pdo->query("SELECT * FROM produkty WHERE p_url LIKE '$id'");
     while ($row = $stmt->fetch()) {
         $id_produktu = $row['p_id'];
@@ -121,7 +121,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                     }
                 }
             }
- 
+
             ?>
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6">
@@ -164,19 +164,20 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
                                 <!-- show delete button if already exists -->
 
-                                <form method="POST" action="../update-cart.php" style="float: right;">
-                                    <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
-                                    <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                    <button class="buy-btn" name="quantity-plus" style="border-radius: 10px;left: unset;right: 10px;bottom: -5px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                <form method="POST" class="update-c" style="float: right;">
+                                    <input type="hidden" name="quantity" class="up-quant" value="<?php echo $c->quantity; ?>">
+                                    <input type="hidden" name="productCode" class="up-pc" value="<?php echo $c->productCode; ?>">
+                                    <button class="buy-btn" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
+
                             <?php } else { ?>
 
                                 <!-- add to cart -->
 
-                                <form method="POST" action="../add-cart.php">
-                                    <input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="productCode" value="<?php echo $kod; ?>">
-                                    <button class="buy-btn" style="border-radius: 10px;left: unset;right: 10px;bottom: -5px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                <form method="POST" class="add-c">
+                                    <input type="hidden" class="add-quant" name="quantity" value="1">
+                                    <input type="hidden" class="add-pc" name="productCode" value="<?php echo $id_produktu; ?>">
+                                    <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
 
                             <?php } ?>
@@ -198,12 +199,12 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
                 <div id="tab-1" class="col-12 tab-content current">
                     <p><?php
-                    if($popis == ""){
-                        echo "K tomuto produktu ešte neexistuje žiaden popis. Robíme všetko preto aby sme ho čo najskôr dodali!";
-                    } else {
-                        echo nl2br($popis);
-                    }
-                     ?></p>
+                        if ($popis == "") {
+                            echo "K tomuto produktu ešte neexistuje žiaden popis. Robíme všetko preto aby sme ho čo najskôr dodali!";
+                        } else {
+                            echo nl2br($popis);
+                        }
+                        ?></p>
                 </div>
                 <div id="tab-2" class="col-12 tab-content">
                     <div class="row">
@@ -224,6 +225,22 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
         </div>
     </div>
 </div>
+<script>
+    $(".update-c").submit(function(e) {
+        e.preventDefault();
+        var quant = $(this).children('.up-quant').val();
+        var p_code = $(this).children('.up-pc').val();
+        location.href = '/updatecart?quantity=' + quant + '&p_code=' + p_code;
+    });
+</script>
+<script>
+    $(".add-c").submit(function(e) {
+        e.preventDefault();
+        var a_quant = $(this).children('.add-quant').val();
+        var a_p_code = $(this).children('.add-pc').val();
+        location.href = '/addcart?quantity=' + a_quant + '&p_code=' + a_p_code;
+    });
+</script>
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"); ?>
 
 </body>
