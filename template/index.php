@@ -11,7 +11,7 @@ if(isset($_COOKIE['details'])){
     <?php include($_SERVER['DOCUMENT_ROOT']."/includes/index-carousel.php"); ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-12 col-lg-3">
                 <?php include($_SERVER['DOCUMENT_ROOT']."/includes/category-list.php") ?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9" style="margin: auto;">

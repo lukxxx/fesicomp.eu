@@ -503,17 +503,14 @@ input{
     }
 
     .obrazok_item{
-        width: 70%;
+        width: 50%;
     }
 
     .kats_tablet {
         display: block;
     }
 
-
-
-    
-    .kats_desktop {     
+    .kats_desktop {
         display: none;
     }
 
