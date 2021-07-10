@@ -6,7 +6,7 @@ $pass = "";
 $pass_err = "";
 
 if(isset($_COOKIE['admin'])){
-    header("Location: ./dashboard");
+    header("Location: /admin/dashboard");
 }
 
 if(!isset($_COOKIE['admin'])) {
@@ -45,7 +45,7 @@ if(!isset($_COOKIE['admin'])) {
         }
         if($login_err == "" && $pass_err == "" && $try < 3){
             setcookie('admin', $login, time() + 3600, "/");
-            header("Location: ./dashboard");
+            header("Location: /admin/dashboard");
         } else if($login_err != "" || $pass_err != "" || $try == 3){
             $error = "<div class='alert alert-danger' role='alert'>Neplatné meno alebo heslo. Skúste znova!</div>";
         } 
@@ -58,7 +58,7 @@ if(!isset($_COOKIE['admin'])) {
 
 <!DOCTYPE html>
 <html lang="sk">
-    <?php include($_SERVER['DOCUMENT_ROOT']."admin/includes/head.php")?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/admin/includes/head.php")?>
 <body class="login-bg ">
     <div class="justify-content-center d-flex align-items-center align-items-center">
         <div class="container-login ">
