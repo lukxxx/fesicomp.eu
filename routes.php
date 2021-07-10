@@ -18,7 +18,13 @@ get('/kosik', 'template/cart.php');
 
 get('/kosik/dorucovacie-udaje', 'template/data.php');
 
+post('/kosik/dorucovacie-udaje', 'template/data.php');
+
 get('/kosik/doprava-platba', 'template/final.php');
+
+post('/kosik/doprava-platba', 'template/final.php');
+
+post('/suhrn-objednavky', 'template/success.php');
 
 get('/addcart', 'add-cart.php');
 
