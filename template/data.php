@@ -120,7 +120,7 @@ if(isset($_POST['bimbambum'])){
         if($name_new_err != "" || $surname_new_err != "" || $email_new_err != "" || $tel_new_err != "" || $city_new_err != "" || $street_new_err != "" || $psc_new_err != ""){
            
         } else {
-            header("location: contact.php");
+            header("location: /kosik/doprava-platba");
         }
     } else {
         if(empty(trim($_POST["name"]))){
@@ -218,7 +218,7 @@ if(isset($_POST['bimbambum'])){
             ));
 
             setcookie("details", json_encode($details), time() + 12800, "/");
-            header("location: index.php");
+            header("location: /kosik/doprava-platba");
         }
     }
     
@@ -241,7 +241,7 @@ if(isset($_POST['bimbambum'])){
                 <h2 style="font-weight: bold;">Dodacie údaje</h2>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
-                <form method="post" action="">
+                <form method="post" action="#">
                 <?php echo $submit_btn; ?>
             </div>
         </div>
@@ -253,7 +253,7 @@ if(isset($_POST['bimbambum'])){
                 <div class="login-form">
                     <div class="container" style="padding: 5% 25% 0% 25%">
                         
-                            <form method="post" class="form-group">
+                            
                                 <?php if($name_err != ""){
                                     echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="name" type="text" placeholder="Meno (povinné)">';
                                 } else {
@@ -291,7 +291,7 @@ if(isset($_POST['bimbambum'])){
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
-                            </form>               
+                                    
                             <br>
                         <div class="form-group d-flex">
                             <label><input type="checkbox" name="type" id="com" onclick="unHide();" value="1"> Chcem doplniť firemné údaje</label>
