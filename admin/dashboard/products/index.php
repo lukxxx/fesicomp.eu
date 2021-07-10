@@ -1,6 +1,6 @@
 <?php
-require_once "../../includes/head-sub.php";
-include "../../config.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/admin/includes/head.php";
+include $_SERVER['DOCUMENT_ROOT']."admin/config.php";
 //include "main.php";
 $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 $date = date('d.m.y');
