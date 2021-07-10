@@ -50,7 +50,7 @@ include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <span style="text-decoration: underline; font-size: 19px;">Spôsob dopravy:</span><br>
-                <form method="post" action="../success.php">
+                <form method="post" action="/suhrn-objednavky">
                     <?php if($doprava_err != ""){ ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $doprava_err ?>
