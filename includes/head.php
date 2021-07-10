@@ -61,15 +61,15 @@ function replaceAccents($str) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FESI comp, s.r.o</title>
-    <link rel="stylesheet" href="https://fesicomp.sitecult.sk/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://compsnv.sk/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="https://fesicomp.sitecult.sk/assets/css/style.css">
+    <link rel="stylesheet" href="https://compsnv.sk/assets/css/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <link rel="shortcut icon" href="https://fesicomp.sitecult.sk/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://compsnv.sk/favicon.ico" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
-    <script src="https://fesicomp.sitecult.sk/assets/js/search.js" type="text/javascript"></script>
+    <script src="https://compsnv.sk/assets/js/search.js" type="text/javascript"></script>
 
-    <script src="https://fesicomp.sitecult.sk/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="https://compsnv.sk/assets/js/bootstrap.min.js" type="text/javascript"></script>
     <meta name="google-signin-client_id" content="238466960669-o9vmi5uorbemeudllt4f5chf5auq0kia.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js"></script>
     <script>
@@ -87,7 +87,7 @@ function replaceAccents($str) {
             Message: "Naša webová stránka používa súbory cookies na zabezpečenie najlepšej funkcionality pre zákazníkov e-shopu",
             ButtonText: "Zavrieť",
             LinkText: "Prečítať viac",
-            Location: "fesicomp.sitecult.sk/cookies",
+            Location: "compsnv.sk/cookies",
         })
     </script>
 </head>
