@@ -152,6 +152,7 @@ span {
     display: flex;
     padding: 5px;
     overflow: hidden;
+    justify-content: flex-end;
 }
 .img-prod {
     display: block;
