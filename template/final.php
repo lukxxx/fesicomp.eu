@@ -1,9 +1,9 @@
 <?php 
-include "../includes/head-template.php";
+include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
 
-if(!isset($_COOKIE['details'])){
-    header("Location: ../");
-}
+// if(!isset($_COOKIE['details'])){
+//     header("Location: /kosik/dorucovacie-udaje");
+// }
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
 
@@ -28,7 +28,7 @@ $show = "display: block;";
 $hide = "display: none;";
 
 
-include "../includes/header-template.php" ?>
+include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
 
 <?php if(isset($_COOKIE['details'])){ ?>
     <div class="container" style="margin-top: 50px;">
@@ -105,7 +105,7 @@ if ( window.history.replaceState ) {
      
     </div>
 <?php } ?>
-    <?php include "../includes/footer.php"?>
-    <?php include "../includes/scripts.php"?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/footer.php"?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"?>
 </body>
 </html>

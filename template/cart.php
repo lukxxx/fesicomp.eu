@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT']."/includes/header.php";
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
             <?php if(isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]"){ ?>
-            <a style="color: black; text-align: right; font-size: 18px;" href="data.php">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
+            <a style="color: black; text-align: right; font-size: 18px;" href="/kosik/dorucovacie-udaje">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
             <?php
             }
             ?>

@@ -1,8 +1,8 @@
 <?php 
-include "../includes/head-template.php";
+include  $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
 
 if(!isset($_COOKIE['cart']) || $_COOKIE['cart'] == "[]"){
-    header("location: ../");
+    header("location: /");
 }
 
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
@@ -39,6 +39,7 @@ $show = "display: block;";
 $hide = "display: none;";
 
 $submit_btn = "<button style='all: unset; cursor: pointer; color: black; text-align: right; font-size: 18px;' name='bimbambum' type='submit'>Pokračovať k doprave <i class='fas fa-arrow-right'></i></button>";
+
 if(isset($_POST['bimbambum'])){
     if(isset($_POST['new_data'])){
         if(empty(trim($_POST["name_new"]))){
@@ -119,7 +120,7 @@ if(isset($_POST['bimbambum'])){
         if($name_new_err != "" || $surname_new_err != "" || $email_new_err != "" || $tel_new_err != "" || $city_new_err != "" || $street_new_err != "" || $psc_new_err != ""){
            
         } else {
-            header("location:final.php");
+            header("location: contact.php");
         }
     } else {
         if(empty(trim($_POST["name"]))){
@@ -198,7 +199,7 @@ if(isset($_POST['bimbambum'])){
             $remember = false;
         }
         if($name_err != "" || $surname_err != "" || $email_err != "" || $tel_err != "" || $city_err != "" || $street_err != "" || $psc_err != ""){
-    
+        echo "$name_err";
         } else {
             $details = isset($_COOKIE["details"]) ? $_COOKIE["details"] : "[]";
             $details = json_decode($details);
@@ -217,7 +218,7 @@ if(isset($_POST['bimbambum'])){
             ));
 
             setcookie("details", json_encode($details), time() + 12800, "/");
-            header("location:final.php");
+            header("location: index.php");
         }
     }
     
@@ -229,12 +230,12 @@ if(isset($_POST['bimbambum'])){
 
 }
 ?>
-    <?php include "../includes/header-template.php" ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
 
     <div class="container" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3">
-                <a style="color: black; font-size: 18px;" href="cart.php"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
+                <a style="color: black; font-size: 18px;" href="/kosik"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                 <h2 style="font-weight: bold;">Dodacie údaje</h2>
@@ -723,7 +724,7 @@ if(isset($_COOKIE['user-login'])){
         </div>    
     </div>
 <?php } ?>
-    <?php include "../includes/footer.php"?>
-    <?php include "../includes/scripts.php"?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/footer.php"?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"?>
 </body>
 </html>
