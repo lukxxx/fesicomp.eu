@@ -16,6 +16,10 @@ get('/moj-ucet', 'template/myaccount.php');
 
 get('/kosik', 'template/cart.php');
 
+get('/kosik/dorucovacie-udaje', 'template/data.php');
+
+get('/kosik/doprava-platba', 'template/final.php');
+
 get('/addcart', 'add-cart.php');
 
 get('/deletecart', 'delete-cart.php');
