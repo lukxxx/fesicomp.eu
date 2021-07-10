@@ -2,7 +2,7 @@
 
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
-include_once $_SERVER['DOCUMENT_ROOT']."includes/head.php"
+include_once $_SERVER['DOCUMENT_ROOT']."/includes/head.php"
 ?>
 <script type='text/javascript'>
     function updateURLParameter(url, param, paramVal)
@@ -51,11 +51,11 @@ include_once $_SERVER['DOCUMENT_ROOT']."includes/head.php"
 }
  
 </script>
-    <?php include ($_SERVER['DOCUMENT_ROOT']."includes/header.php")?>
+    <?php include ($_SERVER['DOCUMENT_ROOT']."/includes/header.php")?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3">
-                <?php include ($_SERVER['DOCUMENT_ROOT']."includes/category-list.php")?>
+                <?php include ($_SERVER['DOCUMENT_ROOT']."/includes/category-list.php")?>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
             <?php 
@@ -269,7 +269,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."includes/head.php"
             </div>
         </div>   
     </div>
-    <?php include ($_SERVER['DOCUMENT_ROOT']."includes/footer.php") ?>
+    <?php include ($_SERVER['DOCUMENT_ROOT']."/includes/footer.php") ?>
     
 </body>
 </html>

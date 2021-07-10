@@ -22,9 +22,9 @@
 ?>
 
 <?php 
-    include($_SERVER['DOCUMENT_ROOT']."includes/head.php");
-    include($_SERVER['DOCUMENT_ROOT']."includes/header.php");
-    include($_SERVER['DOCUMENT_ROOT']."config.php");
+    include($_SERVER['DOCUMENT_ROOT']."/includes/head.php");
+    include($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT']."/config.php");
 ?>    
     <div class="container" style="padding-top: 4%;">
         <div class="row d-flex justify-content-center">
@@ -106,7 +106,7 @@
         </div>
 
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT']."includes/footer.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); ?>
 
 </body>
 </html>

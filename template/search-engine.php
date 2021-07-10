@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."config.php";
+include $_SERVER['DOCUMENT_ROOT']."/config.php";
 if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
     $var = $_REQUEST["term"];
     $likeVar = "%" . $var . "%";

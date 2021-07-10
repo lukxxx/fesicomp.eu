@@ -39,7 +39,7 @@ require_once "config.php";
                         
 
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <div class="product-bottom justify-content-around" style="height: 60px;">
+                            <div class="product-bottom" style="justify-content: flex-end">
                                 <div class="add-to-cart justify-content-md-center">
                                 <?php
 

@@ -1,14 +1,14 @@
 <?php
- include($_SERVER['DOCUMENT_ROOT']."includes/head.php");
- include($_SERVER['DOCUMENT_ROOT']."includes/header.php");
- include($_SERVER['DOCUMENT_ROOT']."config.php");
+ include($_SERVER['DOCUMENT_ROOT']."/includes/head.php");
+ include($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
+ include($_SERVER['DOCUMENT_ROOT']."/config.php");
 
  
 ?>
 <div class="container" style="padding: 20px 13px 0 10px">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 col-md-8 col-lg-8">
-                <h2>O nás</h2>
+                <h2 style="font-size: 45px; text-align: center; margin: 30px 0;">O nás</h2>
                 <br>
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-6" >
@@ -103,7 +103,7 @@
             </div>
         </div>
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT']."includes/footer.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); ?>
 
 </body>
 </html>
