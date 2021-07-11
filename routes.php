@@ -24,7 +24,9 @@ get('/kosik/doprava-platba', 'template/final.php');
 
 post('/kosik/doprava-platba', 'template/final.php');
 
-post('/suhrn-objednavky', 'template/success.php');
+get('/kosik/suhrn-objednavky', 'template/summary.php');
+
+post('/kosik/suhrn-objednavky', 'template/summary.php');
 
 get('/addcart', 'add-cart.php');
 
@@ -57,6 +59,6 @@ get('/admin/dashboard', 'admin/dashboard/index.php');
 
 
 get('/kategoria/$kategorka', 'template/category.php');
-any('/404','404.php');
+//any('/404','404.php');
 get('/$id', 'template/item.php');
 
