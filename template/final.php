@@ -30,7 +30,6 @@ $hide = "display: none;";
 
 include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
 
-<?php if(isset($_COOKIE['details'])){ ?>
     <div class="container" style="margin-top: 50px;">
     <div class="row d-flex">
         <div class="col-sm-12 col-md-3 col-lg-3">
@@ -50,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <span style="text-decoration: underline; font-size: 19px;">Spôsob dopravy:</span><br>
-                <form method="post" action="/suhrn-objednavky">
+                <form method="post" action="/kosik/suhrn-objednavky">
                     <?php if($doprava_err != ""){ ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $doprava_err ?>
@@ -69,16 +68,13 @@ include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
                     <?php } ?>
                     <span style="text-decoration: underline; font-size: 19px;">Spôsob platby:</span><br>
                     <div class="form-group d-flex" >
-                        <img src="../assets/images/trustpay.jpg" width="100" height="50"><label style="padding: 2% 0% 2% 3.5%"><input disabled type="radio" name="platba" value="paypal"> Platba kartou online (Pripravujeme pre Vás)</label>
+                        <img src="../assets/images/trustpay.jpg" width="100" height="50"><label style="padding: 2% 0% 2% 3.5%"><input disabled type="radio" name="platba" value="trustpay"> Platba kartou online (Pripravujeme pre Vás)</label>
                     </div>
                     <div class="form-group d-flex">
                         <i style="padding-left: 2%;" class="fas fa-truck fa-2x"></i><label style="padding: 1px 0px 5px 18px"><input  type="radio" name="platba" value="kurier-dobierka"> Platba dobierkou - platba pri prevzatí tovaru od kuriéra</label>
                     </div>
                     <div class="form-group d-flex">
-                        <i style="padding-left: 2%;" class="fas fa-exchange-alt fa-2x"></i><label style="padding: 1px 0px 5px 25px"><input  type="radio" name="platba" value="dobierka"> Platba dobierkou - platba pri prevzatí tovaru od kuriéra</label>
-                    </div>
-                    <div class="form-group d-flex">
-                    <i style="padding-left: 2%;" class="fas fa-cash-register fa-2x"></i><label style="padding: 1px 0px 5px 25px"><input  type="radio" name="platba" value="hotovosť"> V hotovosti (alebo platobnou kartou) osobne na predajni</label>
+                    <i style="padding-left: 2%;" class="fas fa-cash-register fa-2x"></i><label style="padding: 1px 0px 5px 25px"><input  type="radio" name="platba" value="hotovost"> V hotovosti (alebo platobnou kartou) osobne na predajni</label>
                     </div>
                     <hr>
                     <?php if($term_err != ""){ ?>
@@ -90,7 +86,7 @@ include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
                        <label style="padding: 1px 0px 5px 25px"><input  type="checkbox" name="podmienky" required> Suhlasím s podmienkami s <a href="obchodne-podmienky.php" >obchodnými podmienkami</a></label>
                     </div>
                     <div class="submit text-center">
-                        <button class="btn btn-dark" style="margin: 10px 10px 80px 10px;" type="submit" name="pay">Súhrn objednávky</button>
+                        <button class="btn btn-dark" style="margin: 10px 10px 80px 10px;" type="submit" name="summary">Súhrn objednávky</button>
                     </div>
                     
                 </form>
@@ -104,7 +100,7 @@ if ( window.history.replaceState ) {
 </script>
      
     </div>
-<?php } ?>
+
     <?php include $_SERVER['DOCUMENT_ROOT']."/includes/footer.php"?>
     <?php include $_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"?>
 </body>
