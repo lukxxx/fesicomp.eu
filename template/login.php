@@ -1,5 +1,9 @@
 <?php 
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+if ($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs") {
+    include $_SERVER['DOCUMENT_ROOT'] . "/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php";
+}
 
 $error = "";
 $error_pass = "";
@@ -42,14 +46,13 @@ if(isset($_POST['bimbambum'])){
     if($error == "" && $error_pass == ""){
         setcookie('user-login', $email, time() + 3600, "/");
         setcookie('user-login-name', $meno_login, time() + 3600, "/");
-        header("location: /moj-ucet");
+        header("location: $root_url/moj-ucet");
     }
 }
 
 ?>
 <?php
-    include($_SERVER['DOCUMENT_ROOT']."/includes/head.php");
-    include($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
+    include $root_dir."/includes/header.php";
  ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
@@ -79,7 +82,7 @@ if(isset($_POST['bimbambum'])){
                         <hr>
                             <div class="form-group">
                                 <div class="d-flex justify-content-center" style="padding: 5%">
-                                    <a href="register.php"><button class="btn btn-dark">Registrovať sa <i class="fas fa-user-plus"></i></button></a>
+                                    <a href="<?php echo $root_url ?>/registracia"><button class="btn btn-dark">Registrovať sa <i class="fas fa-user-plus"></i></button></a>
                                 </div>
                             </div>
                         </div>
@@ -89,8 +92,7 @@ if(isset($_POST['bimbambum'])){
             </div>
         </div>
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); ?>
-    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"); ?>
+    <?php include $root_dir."/includes/footer.php"; ?>
     
     <script>
       function onSignIn(googleUser) {
