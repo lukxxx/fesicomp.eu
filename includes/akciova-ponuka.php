@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%apc%' LIMIT 8");
 
 // get cookie cart
@@ -26,7 +27,7 @@ while ($row = mysqli_fetch_object($result)) {
             <div class="discount">
                 <img src="<?php echo $root_url?>/assets/images/discount.png" alt="zlava" class="discount-img">
             </div>
-            <div class="product-img justify-content-md-center">
+            <div class="product-img justify-content-center">
                 <a style="color: white;" href="<?php echo $root_url?>/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="<?php echo $root_url?>/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width="auto" class="img-prod" height="120"></a>
             </div>
             <div class="product-name d-flex justify-content-center">
