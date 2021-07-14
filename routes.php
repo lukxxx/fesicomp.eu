@@ -16,6 +16,16 @@ get('/moj-ucet', 'template/myaccount.php');
 
 get('/kosik', 'template/cart.php');
 
+get('/kosik/dorucovacie-udaje', 'template/data.php');
+
+post('/kosik/dorucovacie-udaje', 'template/data.php');
+
+get('/kosik/doprava-platba', 'template/final.php');
+
+post('/kosik/doprava-platba', 'template/final.php');
+
+post('/suhrn-objednavky', 'template/success.php');
+
 get('/addcart', 'add-cart.php');
 
 get('/deletecart', 'delete-cart.php');
@@ -30,16 +40,23 @@ get('/srengine','template/search-engine.php');
 
 get('/skript', 'script.php');
 
-//---------------ITEMS AND CATEGORIES ROUTES-----------------------
-
-get('/$id', 'template/item.php');
-
-get('/kategoria/$kategorka', 'template/category.php');
-
-//---------------ASSETS ROUTES--------------------------
-
 //---------------ADMIN ROUTES--------------------------
 
-get('/dash', 'admin/index.php');
+get('/admin', 'admin/index.php');
 
+post('/admin', 'admin/index.php');
+
+get('/admin/dashboard', 'admin/dashboard/index.php');
+
+//---------------ITEMS AND CATEGORIES ROUTES-----------------------
+
+
+
+//---------------404 ROUTE--------------------------
+
+
+
+get('/kategoria/$kategorka', 'template/category.php');
 any('/404','404.php');
+get('/$id', 'template/item.php');
+

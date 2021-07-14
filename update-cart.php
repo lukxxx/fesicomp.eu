@@ -1,12 +1,12 @@
 <?php
 
-$productCode = $_POST["productCode"];
-$quantity = $_POST["quantity"];
+$productCode = $_GET["p_code"];
+$quantity = $_GET["quantity"];
 
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
 
-if(isset($_POST['quantity-plus'])){
+if(isset($_GET['quantity-plus'])){
     foreach ($cart as $c)
 {
     if ($c->productCode == $productCode)
@@ -14,7 +14,7 @@ if(isset($_POST['quantity-plus'])){
         $c->quantity = $quantity+1;
     }
 }
-} else if(isset($_POST['quantity-minus'])){
+} else if(isset($_GET['quantity-minus'])){
     foreach ($cart as $c)
     {
         if ($c->productCode == $productCode)
@@ -27,7 +27,7 @@ if(isset($_POST['quantity-plus'])){
     {
     if ($c->productCode == $productCode)
     {
-        $c->quantity = $quantity;
+        $c->quantity = $quantity+1;
     }
     }
 }
