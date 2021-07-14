@@ -22,9 +22,12 @@
 ?>
 
 <?php 
-    include($_SERVER['DOCUMENT_ROOT']."/includes/head.php");
-    include($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
-    include($_SERVER['DOCUMENT_ROOT']."/config.php");
+if ($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs") {
+    include $_SERVER['DOCUMENT_ROOT'] . "/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php";
+}
+    include $root_dir."/includes/header.php";
 ?>    
     <div class="container" style="padding-top: 4%;">
         <div class="row d-flex justify-content-center">
@@ -106,7 +109,7 @@
         </div>
 
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); ?>
+    <?php include $root_dir."/includes/footer.php"; ?>
 
 </body>
 </html>

@@ -152,6 +152,7 @@ span {
     display: flex;
     padding: 5px;
     overflow: hidden;
+    justify-content: flex-end;
 }
 .img-prod {
     display: block;
@@ -430,7 +431,6 @@ input{
         display: none;
     }
 
-
     .cart_desktop {
         display: none;
     }
@@ -485,6 +485,10 @@ input{
         margin: 10px 30px;
     }
 
+    .hladany_vyraz {
+        margin: 0 25px;
+    }
+
   }
 
 
@@ -502,9 +506,7 @@ input{
         display: block;
     }
 
-    .obrazok_item{
-        width: 50%;
-    }
+
 
     .kats_tablet {
         display: block;
@@ -532,7 +534,8 @@ input{
 
   @media only screen and (min-width: 768px) {
     .item_section{
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
  } 
 
@@ -559,7 +562,7 @@ input{
       }
 
       .obrazok_item{
-          width: 70%;
+          width: 100%;
       }
 
       .item_section{
@@ -680,6 +683,12 @@ input{
     text-align: center;
     padding-top: 7%;
     font-size: 30px;
+}
+.summary-card {
+    background: #e7e7e7 !important;
+    padding: 40px !important;
+    border: 1px solid grey !important;
+    margin: 0 40px !important;
 }
 
   
