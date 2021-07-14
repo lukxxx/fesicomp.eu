@@ -1,5 +1,9 @@
 <?php 
-include "../includes/head-template.php";
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
 $options = [
     'cost' => 12,
 ];
@@ -63,7 +67,7 @@ if(isset($_POST['submit'])){
             mysqli_stmt_bind_param($stmt, "sssssssssssssssss", $email, $pass1_hash, $tel, $name, $surname, $street, $city, $psc, $teldop, $osoba, $company_name, $company_street,
         $company_city, $company_psc, $company_ico, $company_dic, $company_ic_dph);
             if(mysqli_stmt_execute($stmt)){
-                header("location:login.php");
+                header("location: $root_url/prihlasenie");
             } else{
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
             }
@@ -72,7 +76,7 @@ if(isset($_POST['submit'])){
 
 }
 ?>
-    <?php include "../includes/header-template.php" ?>
+    <?php include $root_dir."/includes/header.php" ?>
     <div class="container" style="padding-top: 20px">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -173,7 +177,6 @@ if(isset($_POST['submit'])){
             </div>
         </div>
     </div>
-    <?php include "../includes/footer.php"?>
-    <?php include "../includes/scripts.php"?>
+    <?php include $root_dir."/includes/footer.php"?>
 </body>
 </html>

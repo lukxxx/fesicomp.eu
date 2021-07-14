@@ -1,8 +1,11 @@
 <?php 
-include "../includes/head-template.php";
-require_once "../config.php";
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
 if(!isset($_COOKIE['details'])){
-    header("Location: ../");
+    header("Location: $root_url/");
 }
 $details = isset($_COOKIE["details"]) ? $_COOKIE["details"] : "[]";
 $details = json_decode($details);
@@ -68,9 +71,7 @@ foreach ($details as $d) {
         }
         
     
-
-require_once "../config.php"; 
-include "../includes/header-template.php";
+include $root_url."/includes/header.php";
 ?>
 
 
@@ -128,7 +129,7 @@ include "../includes/header-template.php";
                 <div class="text-center" style="margin-bottom: 20%;">
                         <a  href="../"><button class="btn btn-dark">Späť domov!</button></a>
                         <?php if(isset($_COOKIE['user']) || isset($_COOKIE['user-login'])){ ?>
-                        <a  href="myaccount.php"><button class="btn btn-dark">Môj účet</button></a>
+                        <a  href="<?php echo $root_url ?>/moj-ucet"><button class="btn btn-dark">Môj účet</button></a>
                         <?php } ?>
                 </div>
                     
@@ -142,11 +143,7 @@ include "../includes/header-template.php";
      
     </div>
 <?php } ?>
-    <?php include "../includes/footer.php"?>
-    <?php include "../includes/scripts.php";
-    
-    
-    ?>
+    <?php include $root_dir."/includes/footer.php"?>
 </body>
 </html>
     

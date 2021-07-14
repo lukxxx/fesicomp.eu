@@ -29,7 +29,7 @@ if ($stmt = mysqli_prepare($link, $sql)) {
             </div>
             <?php
         } else {
-            echo "<span>POHUBENE</span>";
+            echo "<span>Parametre pre tento produkt sa nenašli</span>";
         }
     } else {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

@@ -21,7 +21,7 @@ function any($route, $path_to_include){ route($route, $path_to_include); }
 function route($route, $path_to_include){
   $ROOT = $_SERVER['DOCUMENT_ROOT'];
   if($route == "/404"){
-    include_once("$ROOT/$path_to_include");
+    include_once("$ROOT/fesicomp.eu/$path_to_include");
     exit();
   }  
   $request_url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
@@ -48,7 +48,7 @@ function route($route, $path_to_include){
       return;
     } 
   }
-  include_once("$ROOT/$path_to_include");
+  include_once("$ROOT/fesicomp.eu/$path_to_include");
   exit();
 }
 function out($text){echo htmlspecialchars($text);}

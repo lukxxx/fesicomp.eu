@@ -1,5 +1,10 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
+<?php 
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
+include $root_dir."/includes/header.php";
 ?>
 
 <div class="container cart_desktop" style="margin-top: 50px;">
@@ -12,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
             <?php if (isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]") { ?>
-                <a style="color: black; text-align: right; font-size: 18px;" href="/kosik/dorucovacie-udaje">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
+                <a style="color: black; text-align: right; font-size: 18px;" href="<?php echo $root_url ?>/kosik/dorucovacie-udaje">Pokračovať k objednávke <i class="fas fa-arrow-right"></i></a>
             <?php
             }
             ?>
@@ -45,7 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
                 ?>
                         <tr>
                             <th style="padding: 20px;"><?php echo "<img src='../catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
-                            <th style="padding: 20px;"><a style='color: black;' href="/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
+                            <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url?>/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
                             <th style="padding: 20px;">
                                 <form method="post" action="../update-cart.php">
                                     <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
@@ -122,7 +127,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right; margin: 0 25px;">
             <?php if (isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]") { ?>
-                <a style="color: black; text-align: right;" href="data.php">Pokračovať k objednávke <i class="fas fa-arrow-circle-right"></i></a>
+                <a style="color: black; text-align: right;" href="<?php echo $root_url ?>/kosik/dodacie-udaje">Pokračovať k objednávke <i class="fas fa-arrow-circle-right"></i></a>
             <?php
             }
             ?>
@@ -144,7 +149,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
             ?>
                     <div style="margin: 0 25px;">
                         <div class="d-flex justify-content-between">
-                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='/".replaceAccents($row['p_nazov'])."'>" . $c->product->p_nazov . "</a>" ?>
+                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='/".replaceAccents($c->product->p_nazov)."'>" . $c->product->p_nazov . "</a>" ?>
 
                             <form method="POST" action="../delete-cart.php">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
@@ -229,7 +234,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
     </div>
     <div class="row" style="padding-top: 50px;">
         <?php
-            include "../config.php";
+            
 
             // get all products
             $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%xiaomi%' LIMIT 12");
@@ -329,4 +334,4 @@ include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php";
 
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>
+<?php include $root_dir."/includes/footer.php"; ?>

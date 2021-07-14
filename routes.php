@@ -1,52 +1,58 @@
 <?php
 
-require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/fesicomp.eu/router.php");
 
 //---------------WEB PAGE ROUTES-----------------------
 
-get('/', 'template/index.php');
+get('/fesicomp.eu', 'template/index.php');
 
-get('/o-nas', 'src/new.php');
+get('/fesicomp.eu/o-nas', 'template/about.php');
 
-get('/kontakt', 'template/contact.php');
+get('/fesicomp.eu/kontakt', 'template/contact.php');
 
-get('/prihlasenie', 'template/login.php');
+post('/fesicomp.eu/kontakt', 'template/contact.php');
 
-get('/moj-ucet', 'template/myaccount.php');
+get('/fesicomp.eu/prihlasenie', 'template/login.php');
 
-get('/kosik', 'template/cart.php');
+get('/fesicomp.eu/registracia', 'template/register.php');
 
-get('/kosik/dorucovacie-udaje', 'template/data.php');
+get('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
 
-post('/kosik/dorucovacie-udaje', 'template/data.php');
+get('/fesicomp.eu/kosik', 'template/cart.php');
 
-get('/kosik/doprava-platba', 'template/final.php');
+get('/fesicomp.eu/kosik/dorucovacie-udaje', 'template/data.php');
 
-post('/kosik/doprava-platba', 'template/final.php');
+post('/fesicomp.eu/kosik/dorucovacie-udaje', 'template/data.php');
 
-post('/suhrn-objednavky', 'template/success.php');
+get('/fesicomp.eu/kosik/doprava-platba', 'template/final.php');
 
-get('/addcart', 'add-cart.php');
+post('/fesicomp.eu/kosik/doprava-platba', 'template/final.php');
 
-get('/deletecart', 'delete-cart.php');
+post('/fesicomp.eu/suhrn-objednavky', 'template/success.php');
 
-get('/updatecart', 'update-cart.php');
+get('/fesicomp.eu/addcart', 'add-cart.php');
 
-get('/vyhladavanie','template/search-results.php');
+get('/fesicomp.eu/deletecart', 'delete-cart.php');
 
-get('/handler','includes/handler.php');
+get('/fesicomp.eu/updatecart', 'update-cart.php');
 
-get('/srengine','template/search-engine.php');
+get('/fesicomp.eu/vyhladavanie','template/search-results.php');
 
-get('/skript', 'script.php');
+get('/fesicomp.eu/handler','includes/handler.php');
+
+get('/fesicomp.eu/srengine','template/search-engine.php');
+
+get('/fesicomp.eu/skript', 'script.php');
+
+get('/fesicomp.eu/echo', 'echo.php');
 
 //---------------ADMIN ROUTES--------------------------
 
-get('/admin', 'admin/index.php');
+get('/fesicomp.eu/admin', 'admin/index.php');
 
-post('/admin', 'admin/index.php');
+post('/fesicomp.eu/admin', 'admin/index.php');
 
-get('/admin/dashboard', 'admin/dashboard/index.php');
+get('/fesicomp.eu/admin/dashboard', 'admin/dashboard/index.php');
 
 //---------------ITEMS AND CATEGORIES ROUTES-----------------------
 
@@ -56,7 +62,7 @@ get('/admin/dashboard', 'admin/dashboard/index.php');
 
 
 
-get('/kategoria/$kategorka', 'template/category.php');
-any('/404','404.php');
-get('/$id', 'template/item.php');
+get('/fesicomp.eu/kategoria/$kategorka', 'template/category.php');
+any('/fesicomp.eu/404','404.php');
+get('/fesicomp.eu/$id', 'template/item.php');
 

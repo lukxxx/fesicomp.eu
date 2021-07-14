@@ -1,7 +1,11 @@
 <?php
+if ($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs") {
+    include $_SERVER['DOCUMENT_ROOT'] . "/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php";
+}
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
-include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
 ?>
 <script type='text/javascript'>
     function updateURLParameter(url, param, paramVal) {
@@ -43,11 +47,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
         window.location = baseURL + "?" + newAdditionalURL + rows_txt;
     }
 </script>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header.php") ?>
+<?php include $root_dir . "/includes/header.php" ?>
 <div class="container" style="padding-top: 20px">
     <div class="row">
         <div class="col-sm-12 col-md-3 col-lg-3">
-            <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/category-list.php") ?>
+            <?php include $root_dir . "/includes/category-list.php" ?>
         </div>
         <div class="col-sm-12 col-md-9 col-lg-9">
             <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
@@ -107,13 +111,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
                 } else {
                     $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' LIMIT $offset, $no_of_records_per_page";
                 }
-                $flag = false;
-                foreach ($cart as $c) {
-                    if (($c->productCode == $row['p_id'])) {
-                        $flag = true;
-                        break;
-                    }
-                }
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     if (mysqli_stmt_execute($stmt)) {
                         $result = mysqli_stmt_get_result($stmt);
@@ -121,7 +118,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
                             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                 $obrazok = $row['p_img'];
                                 $id_produktu = $row['p_id'];
-                                $path_R = ROOT;
+                                $path_R = $root_url;
                                 $path = $path_R . "catalog/$id_produktu/$obrazok";
                                 if (file_exists($path)) {
                                     $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/catalog/$id_produktu/$obrazok'   class='img-prod' style='max-width: 120px;max-height: 120px;'>";
@@ -149,29 +146,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="product-bottom justify-content-md-center">
                                                 <div class="add-to-cart justify-content-md-center">
-                                                    <?php
-
-                                                    if ($flag) { ?>
-
-                                                        <!-- show delete button if already exists -->
-
-                                                        <form method="POST" class="update-c" style="float: right;">
-                                                            <input type="hidden" name="quantity" class="up-quant" value="<?php echo $c->quantity; ?>">
-                                                            <input type="hidden" name="productCode" class="up-pc" value="<?php echo $c->productCode; ?>">
-                                                            <button class="buy-btn" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
-                                                        </form>
-
-                                                    <?php } else { ?>
-
-                                                        <!-- add to cart -->
-
-                                                        <form method="POST" class="add-c">
-                                                            <input type="hidden" class="add-quant" name="quantity" value="1">
-                                                            <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row['p_id']; ?>">
-                                                            <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
-                                                        </form>
-
-                                                    <?php } ?>
+                                                    <form method="POST" class="add-c">
+                                                        <input type="hidden" class="add-quant" name="quantity" value="1">
+                                                        <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row['p_id']; ?>">
+                                                        <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                                    </form>
                                                 </div>
                                                 <div class="price-tag align-self-center">
                                                     <div class="pricing" style="display: block;">
@@ -236,23 +215,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
         </div>
     </div>
 </div>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php") ?>
-<script>
-    $(".update-c").submit(function(e) {
-        e.preventDefault();
-        var quant = $(this).children('.up-quant').val();
-        var p_code = $(this).children('.up-pc').val();
-        location.href = '/updatecart?quantity=' + quant + '&p_code=' + p_code;
-    });
-</script>
-<script>
-    $(".add-c").submit(function(e) {
-        e.preventDefault();
-        var a_quant =  $(this).children('.add-quant').val();
-        var a_p_code =  $(this).children('.add-pc').val();
-        location.href = '/addcart?quantity=' + a_quant + '&p_code=' + a_p_code;
-    });
-</script>
+<?php include $root_dir."/includes/footer.php" ?>
+<script src="<?php echo $root_url ?>/config.js"></script>
+<script src="<?php echo $root_url ?>/assets/js/main.js"></script>
 </body>
 
 </html>
