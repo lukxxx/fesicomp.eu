@@ -534,7 +534,8 @@ input{
 
   @media only screen and (min-width: 768px) {
     .item_section{
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
  } 
 
