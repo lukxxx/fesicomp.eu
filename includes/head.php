@@ -92,7 +92,7 @@ function replaceAccents($str)
             Message: "Naša webová stránka používa súbory cookies na zabezpečenie najlepšej funkcionality pre zákazníkov e-shopu",
             ButtonText: "Zavrieť",
             LinkText: "Prečítať viac",
-            Location: "compsnv.sk/cookies",
+            Location: "fesicomp.sitecult.sk/cookies",
         })
     </script>
     <script src="<?php echo $root_url ?>/config.js"></script>
