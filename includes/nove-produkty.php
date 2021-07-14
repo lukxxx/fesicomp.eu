@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%msi%' LIMIT 4");
 
 // get cookie cart
@@ -21,7 +22,7 @@ while ($row = mysqli_fetch_object($result)) {
             <div class="discount">
 
             </div>
-            <div class="product-img justify-content-md-center">
+            <div class="product-img justify-content-center">
                 <a style="color: white;" href="<?php echo $root_url?>/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width="" class="img-prod" height="120"></a>
             </div>
             <div class="product-name justify-content-md-center">
@@ -34,7 +35,7 @@ while ($row = mysqli_fetch_object($result)) {
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="product-bottom justify-content-around" style="height: 60px;">
+                <div class="product-bottom justify-content-flex-end" style="height: 60px;">
                     <div class="add-to-cart justify-content-md-center">
                         <?php
 
