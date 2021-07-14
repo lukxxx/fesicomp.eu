@@ -1,8 +1,11 @@
 <?php 
-include  $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
-
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
 if(!isset($_COOKIE['cart']) || $_COOKIE['cart'] == "[]"){
-    header("location: /");
+    header("location: $root_url/");
 }
 
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
@@ -218,7 +221,7 @@ if(isset($_POST['bimbambum'])){
             ));
 
             setcookie("details", json_encode($details), time() + 12800, "/");
-            header("location: /kosik/doprava-platba");
+            header("location: $root_url/kosik/doprava-platba");
         }
     }
     
@@ -230,7 +233,7 @@ if(isset($_POST['bimbambum'])){
 
 }
 ?>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
+    <?php include $root_dir."/includes/header.php" ?>
 
     <div class="container" style="margin-top: 50px;">
         <div class="row d-flex">
@@ -724,7 +727,6 @@ if(isset($_COOKIE['user-login'])){
         </div>    
     </div>
 <?php } ?>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/footer.php"?>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"?>
+    <?php include $root_dir."/includes/footer.php"?>
 </body>
 </html>

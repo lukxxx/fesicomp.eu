@@ -20,7 +20,7 @@
                     echo "<ol style='list-style: none;padding: 0'>";
                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         echo "<div class='d-flex category-listing'>";
-                        echo "<i class='fas fa-caret-right'></i><a class='category-listing-a' href='/kategoria/" . replaceAccents($row['k_nazov']) . "'><li style='padding-left: 8px; color: white;'>" . $row['k_nazov'] . "</li></a></div>";
+                        echo "<i class='fas fa-caret-right'></i><a class='category-listing-a' href='".$root_url."/kategoria/" . replaceAccents($row['k_nazov']) . "'><li style='padding-left: 8px; color: white;'>" . $row['k_nazov'] . "</li></a></div>";
                     }
                     echo "</ol>";
                 } else {

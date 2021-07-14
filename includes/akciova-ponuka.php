@@ -1,5 +1,4 @@
 <?php
-require_once "config.php";
 $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%apc%' LIMIT 8");
 
 // get cookie cart
@@ -25,14 +24,14 @@ while ($row = mysqli_fetch_object($result)) {
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <div class="product-card justify-content-md-center">
             <div class="discount">
-                <img src="assets/images/discount.png" alt="zlava" class="discount-img">
+                <img src="<?php echo $root_url?>/assets/images/discount.png" alt="zlava" class="discount-img">
             </div>
             <div class="product-img justify-content-md-center">
-                <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width="auto" class="img-prod" height="120"></a>
+                <a style="color: white;" href="<?php echo $root_url?>/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="<?php echo $root_url?>/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width="auto" class="img-prod" height="120"></a>
             </div>
             <div class="product-name d-flex justify-content-center">
                 <div class="heading">
-                    <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>">
+                    <a style="color: white;" href="<?php echo $root_url?>/<?php echo replaceAccents($row->p_nazov) ?>">
                         <h6 class="name-prod"><?php echo mb_strimwidth($row->p_nazov, 0, 45, ""); ?></h6>
                     </a>
                 </div>
@@ -84,19 +83,5 @@ while ($row = mysqli_fetch_object($result)) {
 <?php
 }
 ?>
-<script>
-    $(".update-c").submit(function(e) {
-        e.preventDefault();
-        var quant = $(this).children('.up-quant').val();
-        var p_code = $(this).children('.up-pc').val();
-        location.href = '/updatecart?quantity=' + quant + '&p_code=' + p_code;
-    });
-</script>
-<script>
-    $(".add-c").submit(function(e) {
-        e.preventDefault();
-        var a_quant =  $(this).children('.add-quant').val();
-        var a_p_code =  $(this).children('.add-pc').val();
-        location.href = '/addcart?quantity=' + a_quant + '&p_code=' + a_p_code;
-    });
-</script>
+<script src="<?php echo $root_url ?>/config.js"></script>
+<script src="<?php echo $root_url ?>/assets/js/main.js"></script>

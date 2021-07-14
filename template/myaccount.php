@@ -1,5 +1,9 @@
 <?php 
-include($_SERVER['DOCUMENT_ROOT']."/includes/head.php");
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
 if(isset($_COOKIE['details'])){
     unset($details);
     unset($_COOKIE['details']);
@@ -21,7 +25,6 @@ if(isset($_GET['fullname'])){
     $two = $parts[1];
     $full_n = $one." ".$two;
 }
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
 
 $given_name = "";
 $em = "";
@@ -111,7 +114,7 @@ if(isset($_COOKIE['user'])){
         setcookie('user-mail', null, -1, "/");
         setcookie('G_AUTHUSER_H', null, -1, "/");
         setcookie('G_ENABLED_IDPS', null, -1, "/");
-        header("Location: ../index.php");
+        header("Location: $root_url/");
     }
 } else if(isset($_COOKIE['user-login'])){
     if(isset($_POST['logout'])){
@@ -119,11 +122,11 @@ if(isset($_COOKIE['user'])){
         unset($_COOKIE['user-login-name']);
         setcookie('user-login', null, -1, "/");
         setcookie('user-login-name', null, -1, "/");
-        header("Location: ../index.php");
+        header("Location: $root_url/");
     }
 }
 
-include($_SERVER['DOCUMENT_ROOT']."/includes/header.php");
+include $root_dir."/includes/header.php";
 ?>
 <script>
 function signOut(){
@@ -262,5 +265,5 @@ function onLoad(){
         </div>
     </div>
 </div>
-<?php include($_SERVER['DOCUMENT_ROOT']."/includes/footer.php"); ?>
+<?php include $root_dir."/includes/footer.php"; ?>
 <script src="https://apis.google.com/js/platform.js"></script>

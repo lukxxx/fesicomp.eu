@@ -1,7 +1,3 @@
-<?php
-require_once "head.php";
-?>
-
 <section class="carousel" >
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">

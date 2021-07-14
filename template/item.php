@@ -1,5 +1,9 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/includes/head.php");
+if ($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs") {
+    include $_SERVER['DOCUMENT_ROOT'] . "/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php";
+}
 
 if (isset($_COOKIE["cart"])) {
     $cart = $_COOKIE['cart'];
@@ -86,11 +90,11 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
     })
 </script>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"); ?>
+<?php include $root_dir . "/includes/header.php"; ?>
 <div class="container" style="padding-top: 20px">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-3">
-            <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/category-list.php"); ?>
+            <?php include $root_dir . "/includes/category-list.php"; ?>
 
         </div>
         <div class="col-sm-12 col-md-9 col-lg-9 item_section">
@@ -106,7 +110,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                         $result = mysqli_stmt_get_result($stmt);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                array_push($cesta_kat, '<i class="fas fa-chevron-right"></i><a  style="padding-left: 8px;padding-right: 8px; color: #2B2B2B;" href="/kategoria/' . replaceAccents($row["k_nazov"]) . '">' . $row["k_nazov"] . '</a>');
+                                array_push($cesta_kat, '<i class="fas fa-chevron-right"></i><a  style="padding-left: 8px;padding-right: 8px; color: #2B2B2B;" href="' . $root_url . '/kategoria/' . replaceAccents($row["k_nazov"]) . '">' . $row["k_nazov"] . '</a>');
                                 $poloha_kategoria = $row['k_kid'];
                             }
                         } else {
@@ -151,36 +155,11 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                         <div class="col-sm-12 col-md-6 col-lg-6 text-right" style="height: 120px">
                             <span style="color: #B81600; font-size: 30px; font-weight: bold; padding-bottom: 10px;"><?php echo number_format($cena * 1.2, 2, '.', '') ?>€</span><br>
                             <span class="product-price-wdph">Bez DPH:<?php echo $cena ?>€</span>
-                            <?php                // check if product already exists in cart
-                            $flag = false;
-                            foreach ($cart as $c) {
-                                if (($c->productCode == $kod)) {
-                                    $flag = true;
-                                    break;
-                                }
-                            }
-
-                            if ($flag) { ?>
-
-                                <!-- show delete button if already exists -->
-
-                                <form method="POST" class="update-c" style="float: right;">
-                                    <input type="hidden" name="quantity" class="up-quant" value="<?php echo $c->quantity; ?>">
-                                    <input type="hidden" name="productCode" class="up-pc" value="<?php echo $c->productCode; ?>">
-                                    <button class="buy-btn" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
-                                </form>
-
-                            <?php } else { ?>
-
-                                <!-- add to cart -->
-
-                                <form method="POST" class="add-c">
-                                    <input type="hidden" class="add-quant" name="quantity" value="1">
-                                    <input type="hidden" class="add-pc" name="productCode" value="<?php echo $id_produktu; ?>">
-                                    <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
-                                </form>
-
-                            <?php } ?>
+                            <form method="POST" class="add-c">
+                                <input type="hidden" class="add-quant" name="quantity" value="1">
+                                <input type="hidden" class="add-pc" name="productCode" value="<?php echo $id_produktu; ?>">
+                                <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -209,7 +188,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                 <div id="tab-2" class="col-12 tab-content">
                     <div class="row">
                         <div class="col-12">
-                            <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/parameters.php"); ?>
+                            <?php include $root_dir . "/includes/parameters.php"; ?>
                         </div>
 
                     </div>
@@ -225,24 +204,9 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
         </div>
     </div>
 </div>
-<script>
-    $(".update-c").submit(function(e) {
-        e.preventDefault();
-        var quant = $(this).children('.up-quant').val();
-        var p_code = $(this).children('.up-pc').val();
-        location.href = '/updatecart?quantity=' + quant + '&p_code=' + p_code;
-    });
-</script>
-<script>
-    $(".add-c").submit(function(e) {
-        e.preventDefault();
-        var a_quant = $(this).children('.add-quant').val();
-        var a_p_code = $(this).children('.add-pc').val();
-        location.href = '/addcart?quantity=' + a_quant + '&p_code=' + a_p_code;
-    });
-</script>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"); ?>
-
+<?php include $root_dir . "/includes/footer.php"; ?>
+<script src="<?php echo $root_url ?>/config.js"></script>
+<script src="<?php echo $root_url ?>/assets/js/main.js"></script>
 </body>
 
 </html>

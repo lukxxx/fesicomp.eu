@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    // CONFIG VARIABLE TO DETERMINE IF DEVELOPMENT ENVIROMENT IS LOCAL OR NOT 
+    let root_url = "/fesicomp.eu"; //ON SERVER FILE THIS NEEDS TO BE EMPTY STRING
     function debounce(func, wait, immediate) {
         var timeout;
         return function() {
@@ -20,8 +22,9 @@ $(document).ready(function(){
         
         var inputVal = $(this).val();
         var resultDropdown = $(this).siblings(".result");
+        console.log(root_url);
         if(inputVal.length){
-            $.get("/srengine", {term: inputVal}).done(function(data){
+            $.get(root_url+"/srengine", {term: inputVal}).done(function(data){
                 // Display the returned data in browser
                 resultDropdown.html(data);
             });
