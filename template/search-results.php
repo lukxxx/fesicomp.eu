@@ -46,10 +46,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header.php") ?>
 <div class="container" style="padding-top: 20px">
     <div class="row">
-        <div class="col-sm-12 col-md-3 col-lg-3">
+        <div class="col-sm-12 col-md-12 col-lg-3">
             <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/category-list.php") ?>
         </div>
-        <div class="col-sm-12 col-md-9 col-lg-9">
+        <div class="col-sm-12 col-md-9 col-lg-9 item_section">
             <!--<a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER']; ?>"><span><i class="fas fa-arrow-left"></i> Krok späť</span></a>-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -81,7 +81,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
 
             ?>
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="col-sm-12 col-md-12 col-lg-12 hladany_vyraz">
                     <h3><b>Hľadaný výraz: </b><?php echo $search; ?></h3>
                     <p>Počet nájdených položiek: <?php echo $total_rows ?></p>
                     <hr>
@@ -129,12 +129,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
                                     $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                 }
                 ?>
-                                <div class="col-sm-12 col-md-3 col-lg-3">
+                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                     <div class="product-card justify-content-md-center">
                                         <div class="discount">
 
                                         </div>
-                                        <div class="product-img justify-content-md-center">
+                                        <div class="product-img justify-content-center">
                                             <a style="color: white;" href="/<?php echo replaceAccents($row['p_nazov']) ?>"><?php echo $cesta ?></a>
                                         </div>
                                         <div class="product-name justify-content-md-center">
@@ -147,7 +147,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12">
-                                            <div class="product-bottom justify-content-md-center">
+                                            <div class="product-bottom justify-content-flex-end">
                                                 <div class="add-to-cart justify-content-md-center">
                                                     <?php
 
