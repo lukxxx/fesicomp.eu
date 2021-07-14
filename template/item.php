@@ -32,9 +32,9 @@ if (isset($id)) {
 //     $kategoria = $rowko['k_nazov'];    
 // }
 if (file_exists("catalog/$id_produktu/$obrazok")) {
-    $cesta = "<a href='catalog/$id_produktu/$obrazok' data-lightbox='set' ><img loading='lazy' src='../catalog/$id_produktu/$obrazok' class='obrazok_item'></a>";
+    $cesta = "<a href='catalog/$id_produktu/$obrazok' data-lightbox='set' ><img loading='lazy' src='../catalog/$id_produktu/$obrazok' style='width: 90%'></a>";
 } else {
-    $cesta = "<img loading='lazy' src='assets/images/no-image.png' class='obrazok_item'>";
+    $cesta = "<img loading='lazy' src='assets/images/no-image.png' style='width: 90%'>";
 }
 ?>
 <style>
@@ -68,9 +68,6 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
     .tab-content.current {
         display: block;
     }
-
-
-
 </style>
 
 
@@ -89,8 +86,6 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
     })
 </script>
-
-
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"); ?>
 <div class="container" style="padding-top: 20px">
     <div class="row">
@@ -137,7 +132,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6" style="margin-top: 10%;">
-                    <h3 style="font-weight: bold;"><?php echo $nazov ?></h3>
+                    <h3 style="font-weight: bold; overflow-y: hidden;"><?php echo $nazov ?></h3>
                     <div class="text">
                         <p style="text-align: justify;"><?php echo $popis ?></p>
                     </div>
@@ -153,7 +148,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                                 echo "<span style='color: #C21801; font-weight: 600;'>Nie je na sklade</span>";
                             } ?>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 text-right">
+                        <div class="col-sm-12 col-md-6 col-lg-6 text-right" style="height: 120px">
                             <span style="color: #B81600; font-size: 30px; font-weight: bold; padding-bottom: 10px;"><?php echo number_format($cena * 1.2, 2, '.', '') ?>€</span><br>
                             <span class="product-price-wdph">Bez DPH:<?php echo $cena ?>€</span>
                             <?php                // check if product already exists in cart

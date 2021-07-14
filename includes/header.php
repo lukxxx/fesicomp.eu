@@ -95,10 +95,10 @@
                     <div class="brand d-flex justify-content-between">
                         <div class="brand_award d-flex flex-row">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="index.php"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
+                                <a href="/"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
                             </div>
                             <div class="award">
-                                <a href="index.php" style="padding-left: 20px; height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
+                                <a href="/" style="padding-left: 20px; height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                             </div>
                         </div>
                         <div class="mobile_buttons" style="margin-top: 5%;">
