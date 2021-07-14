@@ -10,7 +10,7 @@ if (isset($_COOKIE["cart"])) {
 if (isset($id)) {
 
     $id = $id;
-    
+
     $stmt = $pdo->query("SELECT * FROM produkty WHERE p_url LIKE '$id'");
     while ($row = $stmt->fetch()) {
         $id_produktu = $row['p_id'];
@@ -32,9 +32,9 @@ if (isset($id)) {
 //     $kategoria = $rowko['k_nazov'];    
 // }
 if (file_exists("catalog/$id_produktu/$obrazok")) {
-    $cesta = "<a href='catalog/$id_produktu/$obrazok' data-lightbox='set' ><img loading='lazy' src='../catalog/$id_produktu/$obrazok' class='obrazok_item'></a>";
+    $cesta = "<a href='catalog/$id_produktu/$obrazok' data-lightbox='set' ><img loading='lazy' src='../catalog/$id_produktu/$obrazok' style='width: 90%'></a>";
 } else {
-    $cesta = "<img loading='lazy' src='assets/images/no-image.png' class='obrazok_item'>";
+    $cesta = "<img loading='lazy' src='assets/images/no-image.png' style='width: 90%'>";
 }
 ?>
 <style>
@@ -68,9 +68,6 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
     .tab-content.current {
         display: block;
     }
-
-
-
 </style>
 
 
@@ -89,8 +86,6 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
     })
 </script>
-
-
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"); ?>
 <div class="container" style="padding-top: 20px">
     <div class="row">
@@ -126,7 +121,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                     }
                 }
             }
- 
+
             ?>
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6">
@@ -137,7 +132,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6" style="margin-top: 10%;">
-                    <h3 style="font-weight: bold;"><?php echo $nazov ?></h3>
+                    <h3 style="font-weight: bold; overflow-y: hidden;"><?php echo $nazov ?></h3>
                     <div class="text">
                         <p style="text-align: justify;"><?php echo $popis ?></p>
                     </div>
@@ -153,7 +148,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                                 echo "<span style='color: #C21801; font-weight: 600;'>Nie je na sklade</span>";
                             } ?>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 text-right">
+                        <div class="col-sm-12 col-md-6 col-lg-6 text-right" style="height: 120px">
                             <span style="color: #B81600; font-size: 30px; font-weight: bold; padding-bottom: 10px;"><?php echo number_format($cena * 1.2, 2, '.', '') ?>€</span><br>
                             <span class="product-price-wdph">Bez DPH:<?php echo $cena ?>€</span>
                             <?php                // check if product already exists in cart
@@ -169,19 +164,20 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
                                 <!-- show delete button if already exists -->
 
-                                <form method="POST" action="../update-cart.php" style="float: right;">
-                                    <input type="hidden" name="quantity" value="<?php echo $c->quantity; ?>">
-                                    <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                    <button class="buy-btn" name="quantity-plus" style="border-radius: 10px;left: unset;right: 10px;bottom: -5px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                <form method="POST" class="update-c" style="float: right;">
+                                    <input type="hidden" name="quantity" class="up-quant" value="<?php echo $c->quantity; ?>">
+                                    <input type="hidden" name="productCode" class="up-pc" value="<?php echo $c->productCode; ?>">
+                                    <button class="buy-btn" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
+
                             <?php } else { ?>
 
                                 <!-- add to cart -->
 
-                                <form method="POST" action="../add-cart.php">
-                                    <input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="productCode" value="<?php echo $kod; ?>">
-                                    <button class="buy-btn" style="border-radius: 10px;left: unset;right: 10px;bottom: -5px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Do košíka</button>
+                                <form method="POST" class="add-c">
+                                    <input type="hidden" class="add-quant" name="quantity" value="1">
+                                    <input type="hidden" class="add-pc" name="productCode" value="<?php echo $id_produktu; ?>">
+                                    <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
 
                             <?php } ?>
@@ -203,12 +199,12 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
 
                 <div id="tab-1" class="col-12 tab-content current">
                     <p><?php
-                    if($popis == ""){
-                        echo "K tomuto produktu ešte neexistuje žiaden popis. Robíme všetko preto aby sme ho čo najskôr dodali!";
-                    } else {
-                        echo nl2br($popis);
-                    }
-                     ?></p>
+                        if ($popis == "") {
+                            echo "K tomuto produktu ešte neexistuje žiaden popis. Robíme všetko preto aby sme ho čo najskôr dodali!";
+                        } else {
+                            echo nl2br($popis);
+                        }
+                        ?></p>
                 </div>
                 <div id="tab-2" class="col-12 tab-content">
                     <div class="row">
@@ -229,6 +225,22 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
         </div>
     </div>
 </div>
+<script>
+    $(".update-c").submit(function(e) {
+        e.preventDefault();
+        var quant = $(this).children('.up-quant').val();
+        var p_code = $(this).children('.up-pc').val();
+        location.href = '/updatecart?quantity=' + quant + '&p_code=' + p_code;
+    });
+</script>
+<script>
+    $(".add-c").submit(function(e) {
+        e.preventDefault();
+        var a_quant = $(this).children('.add-quant').val();
+        var a_p_code = $(this).children('.add-pc').val();
+        location.href = '/addcart?quantity=' + a_quant + '&p_code=' + a_p_code;
+    });
+</script>
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"); ?>
 
 </body>
