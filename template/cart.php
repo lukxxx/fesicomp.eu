@@ -149,7 +149,7 @@ include $root_dir . "/includes/header.php";
             ?>
                     <div style="margin: 0 25px;">
                         <div class="d-flex justify-content-between">
-                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='/" . replaceAccents($c->product->p_nazov) . "'>" . $c->product->p_nazov . "</a>" ?>
+                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='$root_url/" . replaceAccents($c->product->p_nazov) . "'>" . $c->product->p_nazov . "</a>" ?>
 
                             <form method="POST" action="../delete-cart.php">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
@@ -222,7 +222,7 @@ include $root_dir . "/includes/header.php";
 
 
 <div class="container">
-    <div class="row" style="padding-top: 50px;">
+    <div class="row" style="padding-top: 50px; display: block">
         <?php
         if (isset($total) && $total != 0) {
             $no_dph = ($total / 100) * 80;
@@ -298,14 +298,14 @@ include $root_dir . "/includes/header.php";
                             <div class="add-to-cart justify-content-md-center">
                                 <form method="POST" class="add-c">
                                     <input type="hidden" class="add-quant" name="quantity" value="1">
-                                    <input type="hidden" class="add-pc" name="productCode" value="10001">
+                                    <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row->p_id ?>">
                                     <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                                 </form>
                             </div>
                             <div class="price-tag align-self-center">
                                 <div class="pricing" style="display: block;">
-                                    <span class="product-price-dph"><?php echo $row->p_cena ?>€</span><br style="height: 1px;">
-                                    <span class="product-price-wdph">Bez DPH: 50€</span>
+                                    <span class="product-price-dph"><?php echo number_format($row->p_cena * 1.2, 2, '.', '') ?>€</span><br style="height: 1px;">
+                                    <span class="product-price-wdph">Bez DPH: <?php echo $row->p_cena ?>€</span>
                                 </div>
                             </div>
                         </div>

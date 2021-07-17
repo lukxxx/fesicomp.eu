@@ -63,14 +63,14 @@ while ($row = mysqli_fetch_object($result)) {
                 <div class="add-to-cart justify-content-md-center">
                     <form method="POST" class="add-c">
                         <input type="hidden" class="add-quant" name="quantity" value="1">
-                        <input type="hidden" class="add-pc" name="productCode" value="10001">
+                        <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row->p_id ?>">
                         <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                     </form>
                 </div>
                 <div class="price-tag align-self-center">
                     <div class="pricing" style="display: block;">
-                        <span class="product-price-dph"><?php echo $row->p_cena ?>€</span><br style="height: 1px;">
-                        <span class="product-price-wdph">Bez DPH: 50€</span>
+                        <span class="product-price-dph"><?php echo number_format($row->p_cena * 1.2, 2, '.', '') ?>€</span><br style="height: 1px;">
+                        <span class="product-price-wdph">Bez DPH: <?php echo $row->p_cena ?>€</span>
                     </div>
                 </div>
             </div>
