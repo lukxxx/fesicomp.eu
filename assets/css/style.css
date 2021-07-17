@@ -696,5 +696,6 @@ input{
     border: 1px solid grey !important;
     margin: 0 40px !important;
 }
-
-  
+.flickity-slider {
+    will-change: scroll-position;
+}
