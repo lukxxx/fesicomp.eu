@@ -87,7 +87,8 @@ while ($row = mysqli_fetch_object($result)) {
         wrapAround: true,
         autoPlay: true,
         pageDots: false,
-        contain: true
+        contain: true,
+        draggable: true
     });
 </script>
 <script src="<?php echo $root_url ?>/config.js"></script>
