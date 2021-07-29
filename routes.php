@@ -14,7 +14,11 @@ post('/fesicomp.eu/kontakt', 'template/contact.php');
 
 get('/fesicomp.eu/prihlasenie', 'template/login.php');
 
+post('/fesicomp.eu/prihlasenie', 'template/login.php');
+
 get('/fesicomp.eu/registracia', 'template/register.php');
+
+post('/fesicomp.eu/registracia', 'template/register.php');
 
 get('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
 
@@ -47,6 +51,10 @@ get('/fesicomp.eu/srengine','template/search-engine.php');
 get('/fesicomp.eu/skript', 'script.php');
 
 get('/fesicomp.eu/echo', 'echo.php');
+
+get('/fesicomp.eu/redirect', 'template/redirect.php');
+
+post('/fesicomp.eu/redirect', 'template/redirect.php');
 
 //---------------ADMIN ROUTES--------------------------
 
