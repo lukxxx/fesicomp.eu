@@ -217,7 +217,16 @@ if(isset($_POST['bimbambum'])){
                 "price" => $total,
                 "name" => $name,
                 "surname" => $surname,
-                "email" => $email
+                "email" => $email,
+                "city" => $city,
+                "psc" => $psc,
+                "street" => $street,
+                "company_name" => $company_name,
+                "company_street" => $company_street,
+                "company_city" => $company_city,
+                "company_psc" => $company_psc,
+                "company_ico" => $company_ico,
+                "company_ic_dph" => $company_ic_dph,
             ));
 
             setcookie("details", json_encode($details), time() + 12800, "/");

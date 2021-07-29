@@ -62,9 +62,8 @@ get('/fesicomp.eu/admin/dashboard', 'admin/dashboard/index.php');
 
 //---------------404 ROUTE--------------------------
 
-
-
 get('/fesicomp.eu/kategoria/$kategorka', 'template/category.php');
 any('/fesicomp.eu/404','404.php');
 get('/fesicomp.eu/$id', 'template/item.php');
+
 
