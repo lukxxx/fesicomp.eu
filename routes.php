@@ -14,7 +14,11 @@ post('/fesicomp.eu/kontakt', 'template/contact.php');
 
 get('/fesicomp.eu/prihlasenie', 'template/login.php');
 
+post('/fesicomp.eu/prihlasenie', 'template/login.php');
+
 get('/fesicomp.eu/registracia', 'template/register.php');
+
+post('/fesicomp.eu/registracia', 'template/register.php');
 
 get('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
 
