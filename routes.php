@@ -52,6 +52,10 @@ get('/fesicomp.eu/skript', 'script.php');
 
 get('/fesicomp.eu/echo', 'echo.php');
 
+get('/fesicomp.eu/redirect', 'template/redirect.php');
+
+post('/fesicomp.eu/redirect', 'template/redirect.php');
+
 //---------------ADMIN ROUTES--------------------------
 
 get('/fesicomp.eu/admin', 'admin/index.php');
