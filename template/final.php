@@ -1,8 +1,12 @@
 <?php 
-include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
 
 // if(!isset($_COOKIE['details'])){
-//     header("Location: /kosik/dorucovacie-udaje");
+//     header("Location: $root_url/kosik/dorucovacie-udaje");
 // }
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
@@ -28,7 +32,7 @@ $show = "display: block;";
 $hide = "display: none;";
 
 
-include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
+include $root_dir."/includes/header.php" ?>
 
     <div class="container" style="margin-top: 50px;">
     <div class="row d-flex">
@@ -100,8 +104,7 @@ if ( window.history.replaceState ) {
 </script>
      
     </div>
-
-    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/footer.php"?>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"?>
+<?php } ?>
+    <?php include $root_dir."/includes/footer.php"?>
 </body>
 </html>

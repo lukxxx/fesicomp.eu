@@ -327,12 +327,10 @@ span {
     padding-right: 1vw;
 }
 .product-card{
-    -webkit-box-shadow: 0px 0px 16px -2px #616161;
-    box-shadow: 0px 0px 26px -9px #616161;
+    box-shadow: unset;
     max-height: 266px;
     min-height: 266px;
     margin-bottom: 2vw;
-    border-radius: 10px;
     background-color: white !important;
     z-index: 2;
     border: 1px solid #e7e7e7;
@@ -354,8 +352,8 @@ span {
     position: absolute;
     width: 40px;
     height: 40px;
-    right: 0;
-    top: -10px;
+    right: -10px;
+    top: -15px;
 }
 /*********************************************************/
 /* Toto je scrollbar, ktorý urobil Maťko dňa 13.02.2021.
@@ -431,7 +429,6 @@ input{
         display: none;
     }
 
-
     .cart_desktop {
         display: none;
     }
@@ -465,6 +462,14 @@ input{
     *{
         overflow-x: hidden;  
     }
+    
+    .flickity-slider {
+        overflow-x: visible;
+    }
+
+    .product-card[aria-hidden="true"]{
+        filter: blur(3px);
+    }
 
     .product-card{
         margin: 15px 25px;
@@ -486,6 +491,10 @@ input{
         margin: 10px 30px;
     }
 
+    .hladany_vyraz {
+        margin: 0 25px;
+    }
+
   }
 
 
@@ -503,9 +512,7 @@ input{
         display: block;
     }
 
-    .obrazok_item{
-        width: 70%;
-    }
+
 
     .kats_tablet {
         display: block;
@@ -533,7 +540,8 @@ input{
 
   @media only screen and (min-width: 768px) {
     .item_section{
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
  } 
 
@@ -560,7 +568,7 @@ input{
       }
 
       .obrazok_item{
-          width: 70%;
+          width: 100%;
       }
 
       .item_section{
@@ -682,5 +690,12 @@ input{
     padding-top: 7%;
     font-size: 30px;
 }
-
-  
+.summary-card {
+    background: #e7e7e7 !important;
+    padding: 40px !important;
+    border: 1px solid grey !important;
+    margin: 0 40px !important;
+}
+.flickity-slider {
+    will-change: scroll-position;
+}

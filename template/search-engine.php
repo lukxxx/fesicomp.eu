@@ -1,5 +1,9 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/config.php";
+if ($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs") {
+  include $_SERVER['DOCUMENT_ROOT'] . "/fesicomp.eu/config.php";
+} else {
+  include $_SERVER['DOCUMENT_ROOT'] . "/config.php";
+}
 if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
     $var = $_REQUEST["term"];
     $likeVar = "%" . $var . "%";
@@ -20,7 +24,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                   echo "<hr>";
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                   echo "<div style'display: flex; text-overflow: ellipsis; width: 80%'>";
-                     echo "<a href='/".replaceAccents($row['p_nazov'])."' style='color: black'><p style='font-size: 15px'><img src='catalog/".$row['p_id']."/".$row['p_img']."' width='30' height='20'><span style='padding-left: 10px'>" . $row["p_nazov"] . "</span>";
+                     echo "<a href='".$root_url."/".replaceAccents($row['p_nazov'])."' style='color: black'><p style='font-size: 15px'><img src='catalog/".$row['p_id']."/".$row['p_img']."' width='30' height='20'><span style='padding-left: 10px'>" . $row["p_nazov"] . "</span>";
                      echo "<span style='float: right; font-weight: bold; color: red;'>".$row['p_cena']."€</span></p></a>";
                    echo "</div>";
               }
@@ -44,7 +48,7 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
                 echo "<span style='font-weight: bold; font-size: 15px'><i class='fas fa-arrow-right'></i> Kategórie</span>";
                 echo "<hr>";
               while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                   echo "<a href='kategoria/".replaceAccents($row['k_nazov'])."' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
+                   echo "<a href='".$root_url."/kategoria/".replaceAccents($row['k_nazov'])."' style='color: black'><p style='font-size: 15px'><i class='fas fa-folder-open'></i><span style='padding-left: 10px'>". $row["k_nazov"] . "</span></a>";
 
             }
           } else {
@@ -63,23 +67,28 @@ if(isset($_REQUEST["term"]) && strlen($_REQUEST['term']) >= 3){
 }
  
 mysqli_close($link);
-function replaceAccents($str) {
-  $search = explode(",",
-"á,ä,č,ď,dž,é,ě,í,ĺ,ľ,ň,ó,ô,ŕ,ř,š,ť,ú,ů,ý,ž,Á,Ä,Č,Ď,DŽ,É,Ě,Í,Ĺ,Ľ,Ň,Ó,Ô,Ŕ,Ř,Š,Ť,Ú,Ů,Ý,Ž");
-  $replace = explode(",",
-"a,a,c,d,dz,e,e,i,l,l,n,o,o,r,r,s,t,u,u,y,z,A,A,C,D,DZ,E,E,I,L,L,N,O,O,R,R,S,T,U,U,Y,Z");
-  $newstring = str_replace($search, $replace, $str);
-  $newstring = strtolower($newstring);
-  $newstring = str_replace(' ', '-', $newstring);
-  $newstring = str_replace(',', '-', $newstring);
-  $newstring = str_replace('.', '', $newstring);
-  $newstring = str_replace('/', '', $newstring);
-  $newstring = str_replace('™', '', $newstring);
-  $newstring = str_replace('+', '', $newstring);
-  $newstring = str_replace('*', '', $newstring);
-  $newstring = str_replace('"', '', $newstring);
-  $newstring = str_replace(')', '', $newstring);
-  $newstring = str_replace('(', '', $newstring);
-  return $newstring;
+function replaceAccents($str)
+{
+    $search = explode(
+        ",",
+        "á,ä,č,ď,dž,é,ě,í,ĺ,ľ,ň,ó,ô,ŕ,ř,š,ť,ú,ů,ý,ž,Á,Ä,Č,Ď,DŽ,É,Ě,Í,Ĺ,Ľ,Ň,Ó,Ô,Ŕ,Ř,Š,Ť,Ú,Ů,Ý,Ž"
+    );
+    $replace = explode(
+        ",",
+        "a,a,c,d,dz,e,e,i,l,l,n,o,o,r,r,s,t,u,u,y,z,A,A,C,D,DZ,E,E,I,L,L,N,O,O,R,R,S,T,U,U,Y,Z"
+    );
+    $newstring = str_replace($search, $replace, $str);
+    $newstring = strtolower($newstring);
+    $newstring = str_replace(' ', '-', $newstring);
+    $newstring = str_replace(',', '-', $newstring);
+    $newstring = str_replace('.', '', $newstring);
+    $newstring = str_replace('/', '', $newstring);
+    $newstring = str_replace('™', '', $newstring);
+    $newstring = str_replace('+', '', $newstring);
+    $newstring = str_replace('*', '', $newstring);
+    $newstring = str_replace('"', '', $newstring);
+    $newstring = str_replace(')', '', $newstring);
+    $newstring = str_replace('(', '', $newstring);
+    return $newstring;
 }
 ?>

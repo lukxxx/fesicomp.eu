@@ -5,10 +5,10 @@
                 <div class="col-sm-12 col-md-7 col-lg-7">
                     <div class="brand">
                         <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="/"><img src="https://fesicomp.sitecult.sk/assets/images/brand/logo.png" width="100" height="90"></a>
+                            <a href="<?php echo $root_url ?>/"><img src="https://fesicomp.sitecult.sk/assets/images/brand/logo.png" width="100" height="90"></a>
                         </div>
                         <div class="award">
-                            <a href="/" style="padding-left: 20px;height: 90px;"><img src="https://fesicomp.sitecult.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                            <a href="<?php echo $root_url ?>/" style="padding-left: 20px;height: 90px;"><img src="https://fesicomp.sitecult.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                         </div>
                         <div class="header-headings">
                             <h2 style="margin-top: 0;">Výpočtová technika</h2>
@@ -26,19 +26,19 @@
                         <div class="top-links d-flex justify-content-around">
                             <?php
                             if (isset($_COOKIE['user'])) {
-                                echo '<a href="/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user'] . '</span></a>';
+                                echo '<a href="'.$root_url.'/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user'] . '</span></a>';
                             } else if (isset($_COOKIE['user-login'])) {
-                                echo '<a href="/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' .
+                                echo '<a href="'.$root_url.'/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' .
                                     $user = substr($_COOKIE['user-login'], 0, strrpos($_COOKIE['user-login'], '@'));
                                 $user . '</span></a>';
                             } else if (isset($_COOKIE['user-login-name'])) {
-                                echo '<a href="/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user-login-name'] . '</span></a>';
+                                echo '<a href="'.$root_url.'/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user-login-name'] . '</span></a>';
                             } else {
-                                echo '<a href="/prihlasenie" style="color: white;"><i class="fas fa-user"></i><span style="padding-left: 5px;">Účet</span></a>';
+                                echo '<a href="'.$root_url.'/prihlasenie" style="color: white;"><i class="fas fa-user"></i><span style="padding-left: 5px;">Účet</span></a>';
                             }
                             ?>
-                            <a href="/kontakt" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
-                            <a href="/o-nas" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
+                            <a href="<?php echo $root_url ?>/kontakt" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
+                            <a href="<?php echo $root_url ?>/o-nas" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
 
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <?php
                             if (isset($_POST['search'])) {
                                 $term = $_POST['search'];
-                                header("Location: /vyhladavanie?search=$term");
+                                header("Location: $root_url/vyhladavanie?search=$term");
                             }
 
                             ?>
@@ -64,12 +64,12 @@
                                 $("#vyhladavanie").submit(function(e) {
                                     e.preventDefault();
                                     var term = $('.search').val();
-                                    location.href = '/vyhladavanie?search=' + term;
+                                    location.href = root_url+'/vyhladavanie?search=' + term;
                                 });
                             </script>
                         </div>
                         <div class="col-sm-2 col-md-2 col-lg-2">
-                            <a style="color: white;" href="/kosik"><i style="color: white; padding-top: 10px; " class="fas fa-shopping-cart"></i>
+                            <a style="color: white;" href="<?php echo $root_url?>/kosik"><i style="color: white; padding-top: 10px; " class="fas fa-shopping-cart"></i>
                                 <?php if (isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]") if (count($cart) != 0) {
                                     echo "<sup style='margin-left: -5px;'><span class='dot' style='background-color: 
                                     #B81600; border-radius: 50%; padding-left: 4px; padding-right: 4px;'> " . count($cart) . "</span></sup>";
@@ -95,10 +95,10 @@
                     <div class="brand d-flex justify-content-between">
                         <div class="brand_award d-flex flex-row">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="index.php"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
+                                <a href="<?php echo $root_url ?>"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
                             </div>
                             <div class="award">
-                                <a href="index.php" style="padding-left: 20px; height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
+                                <a href="<?php echo $root_url ?>" style="padding-left: 20px; height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                             </div>
                         </div>
                         <div class="mobile_buttons" style="margin-top: 5%;">
@@ -136,11 +136,11 @@
                                                     echo "<ol style='list-style: none;padding: 10px 0px 0px 10px;'>";
                                                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                                         echo "<div class='d-flex' style='color: white; padding: 5px 5px 5px 10px; line-height: 20px'>";
-                                                        echo "<i class='fas fa-chevron-right'></i><a href='template/category.php?KID=" . $row['k_id'] . "'><li style='padding-left: 8px; color: white;'>" . $row['k_nazov'] . "</li></a></div>";
+                                                        echo "<i class='fas fa-chevron-right'></i><a href='$root_url/=" . replaceAccents($row['k_nazov']) . "'><li style='padding-left: 8px; color: white;'>" . $row['k_nazov'] . "</li></a></div>";
                                                     }
                                                     echo "</ol>";
                                                 } else {
-                                                    echo "<span>POHUBENE</span>";
+                                                    echo "<span>ERROR!</span>";
                                                 }
                                             } else {
                                                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
@@ -160,37 +160,37 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <?php
                                     if (isset($_COOKIE['user'])) {
-                                        echo '<a href="template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>' . $_COOKIE['user'] . '</span></a>';
+                                        echo '<a href="'.$root_url.'/moj-ucet" style="color: white; font-size: 23px; padding: 1px;"><span>' . $_COOKIE['user'] . '</span></a>';
                                     } else if (isset($_COOKIE['user-login'])) {
-                                        echo '<a href="template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>' .
+                                        echo '<a href="'.$root_url.'/moj-ucet" style="color: white; font-size: 23px; padding: 1px;"><span>' .
                                             $user = substr($_COOKIE['user-login'], 0, strrpos($_COOKIE['user-login'], '@'));
                                         $user . '</span></a>';
                                     } else if (isset($_COOKIE['user-login-name'])) {
-                                        echo '<a href="template/myaccount.php" style="color: white; font-size: 23px; padding: 1px;"><span>' . $_COOKIE['user-login-name'] . '</span></a>';
+                                        echo '<a href="'.$root_url.'/moj-ucet" style="color: white; font-size: 23px; padding: 1px;"><span>' . $_COOKIE['user-login-name'] . '</span></a>';
                                     } else {
-                                        echo '<a href="template/login.php" style="color: white; font-size: 23px; padding: 1px;"><span>Účet</span></a>';
+                                        echo '<a href="'.$root_url.'/prihlasenie" style="color: white; font-size: 23px; padding: 1px;"><span>Účet</span></a>';
                                     }
                                     ?>
 
                                     <?php
                                     if (isset($_COOKIE['user'])) {
-                                        echo '<a href="template/myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                        echo '<a href="'.$root_url.'/moj-ucet"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
                                     } else if (isset($_COOKIE['user-login'])) {
-                                        echo '<a href="template/myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                        echo '<a href="'.$root_url.'/moj-ucet"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
                                     } else if (isset($_COOKIE['user-login-name'])) {
-                                        echo '<a href="template/myaccount.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
+                                        echo '<a href="'.$root_url.'/moj-ucet"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px; color: #68B74C;" class="fas fa-user text-right"></i></a>';
                                     } else {
-                                        echo '<a href="template/login.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-user text-right"></i></a>';
+                                        echo '<a href="'.$root_url.'/prihlasenie"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-user text-right"></i></a>';
                                     }
                                     ?>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a style="color: white; font-size: 23px; padding: 1px;" href="template/contact.php">Kontakt </a>
-                                    <a href="template/contact.php"><i style="font-size: 20px; color: white; text-decoration: none; transform: rotate(-45deg); padding: 1px;" class="fas fa-phone-volume text-right"></i></a>
+                                    <a style="color: white; font-size: 23px; padding: 1px;" href="'.$root_url.'/kontakt">Kontakt </a>
+                                    <a href="'.$root_url.'/kontakt"><i style="font-size: 20px; color: white; text-decoration: none; transform: rotate(-45deg); padding: 1px;" class="fas fa-phone-volume text-right"></i></a>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a style="color: white; font-size: 23px; padding: 1px;" href="template/about.php">O spoločnosti </a>
-                                    <a href="template/about.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-building text-right"></i></a>
+                                    <a style="color: white; font-size: 23px; padding: 1px;" href="'.$root_url.'/o-nas">O spoločnosti </a>
+                                    <a href="'.$root_url.'/o-nas"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-building text-right"></i></a>
                                 </div>
 
                             
@@ -229,10 +229,10 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
                     <div class="brand">
                         <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="/"><img src="https://fesicomp.sitecult.sk/assets/images/brand/logo.png" width="100" height="90"></a>
+                            <a href="<?php echo $root_url ?>"><img src="https://fesicomp.sitecult.sk/assets/images/brand/logo.png" width="100" height="90"></a>
                         </div>
                         <div class="award">
-                            <a href="/" style="padding-left: 20px;height: 90px;"><img src="https://fesicomp.sitecult.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                            <a href="<?php echo $root_url ?>" style="padding-left: 20px;height: 90px;"><img src="https://fesicomp.sitecult.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                         </div>
                         <div class="header-headings">
                             <h2 style="margin-top: 0;">Výpočtová technika tablet</h2>
@@ -250,19 +250,19 @@
                         <div class="top-links d-flex justify-content-around">
                             <?php
                             if (isset($_COOKIE['user'])) {
-                                echo '<a href="/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user'] . '</span></a>';
+                                echo '<a href="'.$root_url.'/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user'] . '</span></a>';
                             } else if (isset($_COOKIE['user-login'])) {
-                                echo '<a href="/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' .
+                                echo '<a href="'.$root_url.'/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' .
                                     $user = substr($_COOKIE['user-login'], 0, strrpos($_COOKIE['user-login'], '@'));
                                 $user . '</span></a>';
                             } else if (isset($_COOKIE['user-login-name'])) {
-                                echo '<a href="/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user-login-name'] . '</span></a>';
+                                echo '<a href="'.$root_url.'/moj-ucet" style="color: white;"><i style="color: #68B74C" class="fas fa-user"></i><span style="padding-left: 5px;">' . $_COOKIE['user-login-name'] . '</span></a>';
                             } else {
-                                echo '<a href="/prihlasenie" style="color: white;"><i class="fas fa-user"></i><span style="padding-left: 5px;">Účet</span></a>';
+                                echo '<a href="'.$root_url.'/prihlasenie" style="color: white;"><i class="fas fa-user"></i><span style="padding-left: 5px;">Účet</span></a>';
                             }
                             ?>
-                            <a href="/kontakt" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
-                            <a href="/o-nas" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
+                            <a href="'.$root_url.'/kontakt" style="color: white"><i style="transform: rotate(-45deg);" class="fas fa-phone-volume"></i><span style="padding-left: 5px;">Kontakt</span></a>
+                            <a href="'.$root_url.'/o-nas" style="color: white"><i class="far fa-building"></i><span style="padding-left: 5px;">O spoločnosti</span></a>
 
                         </div>
                     </div>
@@ -271,7 +271,7 @@
                             <?php
                             if (isset($_POST['search'])) {
                                 $term = $_POST['search'];
-                                header("Location: /vyhladavanie?search=$term");
+                                header("Location: .$root_url/vyhladavanie?search=$term");
                             }
 
                             ?>
@@ -288,12 +288,12 @@
                                 $("#vyhladavanie").submit(function(e) {
                                     e.preventDefault();
                                     var term = $('.search').val();
-                                    location.href = '/vyhladavanie?search=' + term;
+                                    location.href = root_url+'/vyhladavanie?search=' + term;
                                 });
                             </script>
                         </div>
                         <div class="col-sm-2 col-md-2 col-lg-2">
-                            <a style="color: white;" href="/kosik"><i style="color: white; padding-top: 10px; " class="fas fa-shopping-cart"></i>
+                            <a style="color: white;" href="<?php echo $root_url ?>/kosik"><i style="color: white; padding-top: 10px; " class="fas fa-shopping-cart"></i>
                                 <?php if (isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]") if (count($cart) != 0) {
                                     echo "<sup style='margin-left: -5px;'><span class='dot' style='background-color: 
                                     #B81600; border-radius: 50%; padding-left: 4px; padding-right: 4px;'> " . count($cart) . "</span></sup>";

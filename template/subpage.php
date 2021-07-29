@@ -1,7 +1,13 @@
 <?php 
-    include_once "../includes/head-template.php";
-    include (ROOT ."/includes/header-template.php");
+    if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+        include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+    } else {
+        include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+    }
+    include $root_dir."/includes/header.php";
 
+
+    // TODO : Zmeniť toto na GET SEO-Friendly URLs
     $s_id = $_GET["ID"];
     $sql = "SELECT * FROM podstranky WHERE s_id = $s_id";
     $result = $link->query($sql);
@@ -15,7 +21,7 @@
             </div>
         </div>
     </div>
-    <?php include (ROOT. "/includes/footer.php") ?>
+    <?php include $root_dir."/includes/footer.php" ?>
 
 </body>
 </html>
