@@ -53,7 +53,7 @@ include $root_dir."/includes/header.php" ?>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <span style="text-decoration: underline; font-size: 19px;">Spôsob dopravy:</span><br>
-                <form method="post" action="/kosik/suhrn-objednavky">
+                <form method="post" action="<?php echo $root_url ?>/kosik/suhrn-objednavky">
                     <?php if($doprava_err != ""){ ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $doprava_err ?>
@@ -104,7 +104,7 @@ if ( window.history.replaceState ) {
 </script>
      
     </div>
-<?php } ?>
+
     <?php include $root_dir."/includes/footer.php"?>
 </body>
 </html>

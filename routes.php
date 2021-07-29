@@ -30,7 +30,7 @@ get('/fesicomp.eu/kosik/doprava-platba', 'template/final.php');
 
 post('/fesicomp.eu/kosik/doprava-platba', 'template/final.php');
 
-post('/fesicomp.eu/suhrn-objednavky', 'template/success.php');
+post('/fesicomp.eu/kosik/suhrn-objednavky', 'template/summary.php');
 
 get('/fesicomp.eu/addcart', 'add-cart.php');
 

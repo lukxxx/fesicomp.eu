@@ -1,5 +1,9 @@
 <?php 
-include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
 
 // if(!isset($_COOKIE['details'])){
 //     header("Location: /kosik/dorucovacie-udaje");
@@ -49,7 +53,7 @@ foreach ($details as $d){
     $street = $d->street;
     $psc = $d->psc;
 }
-include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
+include $root_dir."/includes/header.php" ?>
 
 
     <div class="container" style="margin-top: 50px;">
@@ -86,6 +90,7 @@ include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
                         echo '<tr>';
                         echo '<th scope="col">Produkt</th>';
                         echo '<th scope="col">Názov produktu</th>';
+                        echo '<th scope="col">Cena</th>';
                         echo '</tr>';
                         echo '</thead>';
                         echo '<tbody>';
@@ -93,8 +98,9 @@ include $_SERVER['DOCUMENT_ROOT']."/includes/header.php" ?>
                             $total += $c->product->p_cena * $c->quantity;
                     ?>
                             <tr>
-                                <th style="padding: 20px;"><?php echo "<img src='../catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
+                                <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
                                 <th style="padding: 20px;"><a style='color: black;' href="/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
+                                <th style="padding: 20px;"><span style="color: #B81600;"><?php echo number_format($c->product->p_cena * 1.2, 2, '.', '') ?>€</span></th>
                             </tr>
 
                     <?php
@@ -142,7 +148,6 @@ if ( window.history.replaceState ) {
      
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/footer.php"?>
-    <?php include $_SERVER['DOCUMENT_ROOT']."/includes/scripts.php"?>
+    <?php include $root_dir."/includes/footer.php"?>
 </body>
 </html>
