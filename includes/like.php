@@ -28,10 +28,10 @@
         padding: 15px 0 !important;
     }
 </style>
-<div class="main-gallery" style="width: 100%;">
+<div class="main-gallery-2" style="width: 100%;">
 <?php
 require "config.php";
-$result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%apc%' LIMIT 8");
+$result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%apple%' LIMIT 12");
 
 // get cookie cart
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
@@ -41,9 +41,9 @@ $cart = json_decode($cart);
 while ($row = mysqli_fetch_object($result)) {
     $popis = $row->p_popis;
 ?>
-    <div class="product-card justify-content-md-center" style="width: 300px; margin-left: 15px">
+    <div class="product-card justify-content-md-center" style="width: 250px; margin-left: 15px">
         <div class="discount">
-            <img src="assets/images/discount.png" alt="zlava" class="discount-img">
+            
         </div>
         <div class="product-img justify-content-md-center">
             <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
@@ -80,14 +80,13 @@ while ($row = mysqli_fetch_object($result)) {
 ?>
 </div>
 <script>
-    $('.main-gallery').flickity({
+    $('.main-gallery-2').flickity({
         // options
         cellAlign: 'center',
         wrapAround: true,
         autoPlay: true,
         pageDots: false,
         contain: true,
-        resize: true,
         draggable: true
     });
 </script>

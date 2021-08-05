@@ -1,5 +1,12 @@
 <?php 
-require_once '../vendor/autoload.php';
+
+if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
+    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+} else {
+    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+}
+
+require_once $root_dir.'/vendor/autoload.php';
 $id_token = "";
 if(isset($_GET['idtoken'])){
     $id_token = $_GET['idtoken'];
@@ -22,7 +29,7 @@ if ($payload) {
     $userid = $payload['sub'];
     setcookie('user', $name, time() + 3600, "/");
     setcookie('user-mail', $email, time() + 3600, "/");
-    header("Location: myaccount.php?idtoken=".$id_token."&name=".$name."&photo=".$photo."&email=".$email."&fullname=".$full_name);
+    header("Location: ".$root_url."/moj-ucet?idtoken=".$id_token."&name=".$name."&photo=".$photo."&email=".$email."&fullname=".$full_name);
     //$domain = $payload['hd'];
 } else {
   // Invalid ID token

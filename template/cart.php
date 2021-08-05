@@ -1,10 +1,10 @@
-<?php 
-if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
-    include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
+<?php
+if ($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs") {
+    include $_SERVER['DOCUMENT_ROOT'] . "/fesicomp.eu/includes/head.php";
 } else {
-    include $_SERVER['DOCUMENT_ROOT']."/includes/head.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php";
 }
-include $root_dir."/includes/header.php";
+include $root_dir . "/includes/header.php";
 ?>
 
 <div class="container cart_desktop" style="margin-top: 50px;">
@@ -49,8 +49,8 @@ include $root_dir."/includes/header.php";
                         $total += $c->product->p_cena * $c->quantity;
                 ?>
                         <tr>
-                            <th style="padding: 20px;"><?php echo "<img src='../catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
-                            <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url?>/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
+                            <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
+                            <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url ?>/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
                             <th style="padding: 20px;">
                                 <form method="post" action="../update-cart.php">
                                     <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
@@ -149,7 +149,7 @@ include $root_dir."/includes/header.php";
             ?>
                     <div style="margin: 0 25px;">
                         <div class="d-flex justify-content-between">
-                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='/".replaceAccents($c->product->p_nazov)."'>" . $c->product->p_nazov . "</a>" ?>
+                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='$root_url/" . replaceAccents($c->product->p_nazov) . "'>" . $c->product->p_nazov . "</a>" ?>
 
                             <form method="POST" action="../delete-cart.php">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
@@ -222,7 +222,7 @@ include $root_dir."/includes/header.php";
 
 
 <div class="container">
-    <div class="row" style="padding-top: 50px;">
+    <div class="row" style="padding-top: 50px; display: block">
         <?php
         if (isset($total) && $total != 0) {
             $no_dph = ($total / 100) * 80;
@@ -233,11 +233,41 @@ include $root_dir."/includes/header.php";
             </div>
     </div>
     <div class="row" style="padding-top: 50px;">
-        <?php
-            
+        <style>
+            .gallery {
+                background: #EEE;
+            }
 
-            // get all products
-            $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%xiaomi%' LIMIT 12");
+            .gallery-cell {
+                width: 38%;
+                height: 200px;
+                margin-right: 10px;
+                background: #8C8;
+                counter-increment: gallery-cell;
+            }
+
+            .gallery-cell.is-selected {
+                background: #ED2;
+            }
+
+            /* cell number */
+            .gallery-cell:before {
+                display: block;
+                text-align: center;
+                content: counter(gallery-cell);
+                line-height: 200px;
+                font-size: 80px;
+                color: white;
+            }
+
+            .flickity-viewport {
+                padding: 15px 0 !important;
+            }
+        </style>
+        <div class="main-gallery-2" style="width: 100%;">
+            <?php
+            require "config.php";
+            $result = mysqli_query($link, "SELECT * FROM produkty WHERE p_nazov LIKE '%msi%' LIMIT 10");
 
             // get cookie cart
             $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
@@ -245,93 +275,64 @@ include $root_dir."/includes/header.php";
 
             // loop through all cart items
             while ($row = mysqli_fetch_object($result)) {
-                // check if product already exists in cart
-                $flag = false;
-                foreach ($cart as $c) {
-                    if (($c->productCode == $row->p_id)) {
-                        $flag = true;
-                        break;
-                    }
-                }
-        ?>
-            <div class="col-sm-12 col-md-2 col-lg-2">
-                <div class="product-card justify-content-md-center">
+                $popis = $row->p_popis;
+            ?>
+                <div class="product-card justify-content-md-center" style="width: 280px; margin-left: 15px">
                     <div class="discount">
 
                     </div>
                     <div class="product-img justify-content-md-center">
-                        <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img src="catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width="159" class="img-prod" height="120"></a>
+                        <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
                     </div>
-                    <div class="product-name justify-content-md-center">
+                    <div class="product-name d-flex justify-content-center">
                         <div class="heading">
                             <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>">
-                                <h6 class="name-prod"><?php echo mb_strimwidth($row->p_nazov, 0, 45, "") ?></h6>
+                                <h6 class="name-prod"><?php echo mb_strimwidth($row->p_nazov, 0, 45, ""); ?></h6>
                             </a>
                         </div>
-
                     </div>
 
+
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="product-bottom">
-                            <div class="add-to-cart">
-                                <?php if ($flag) { ?>
-
-                                    <!-- UPDATE CART -->
-
-                                    <form method="POST" class="update-c" style="float: right;">
-                                        <input type="hidden" name="quantity" class="up-quant" value="<?php echo $c->quantity; ?>">
-                                        <input type="hidden" name="productCode" class="up-pc" value="<?php echo $c->productCode; ?>">
-                                        <button class="buy-btn" name="quantity-plus" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
-                                    </form>
-
-                                <?php } else { ?>
-
-                                    <!-- add to cart -->
-
-                                    <form method="POST" class="add-c">
-                                        <input type="hidden" class="add-quant" name="quantity" value="1">
-                                        <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row->p_id; ?>">
-                                        <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
-                                    </form>
-
-                                <?php } ?>
+                        <div class="product-bottom" style="justify-content: flex-end">
+                            <div class="add-to-cart justify-content-md-center">
+                                <form method="POST" class="add-c">
+                                    <input type="hidden" class="add-quant" name="quantity" value="1">
+                                    <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row->p_id ?>">
+                                    <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                </form>
                             </div>
                             <div class="price-tag align-self-center">
                                 <div class="pricing" style="display: block;">
-                                    <span class="product-price-dph"><?php echo $row->p_cena ?>€</span><br style="height: 1px;">
-                                    <span class="product-price-wdph">Bez DPH: 135.60€</span>
+                                    <span class="product-price-dph"><?php echo number_format($row->p_cena * 1.2, 2, '.', '') ?>€</span><br style="height: 1px;">
+                                    <span class="product-price-wdph">Bez DPH: <?php echo $row->p_cena ?>€</span>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        <?php
+            <?php
             }
-        ?>
+            ?>
+        </div>
+        <script>
+            $('.main-gallery-2').flickity({
+                // options
+                cellAlign: 'center',
+                wrapAround: true,
+                autoPlay: true,
+                pageDots: false,
+                contain: true,
+                draggable: true
+            });
+        </script>
+        <script src="<?php echo $root_url ?>/config.js"></script>
+        <script src="<?php echo $root_url ?>/assets/js/main.js"></script>
     <?php
         } ?>
     </div>
 </div>
-<script>
-    $(".update-c").submit(function(e) {
-        e.preventDefault();
-        var quant = $(this).children('.up-quant').val();
-        var p_code = $(this).children('.up-pc').val();
-        location.href = '/updatecart?quantity=' + quant + '&p_code=' + p_code;
-    });
-</script>
-<script>
-    $(".add-c").submit(function(e) {
-        e.preventDefault();
-        var a_quant =  $(this).children('.add-quant').val();
-        var a_p_code =  $(this).children('.add-pc').val();
-        location.href = '/addcart?quantity=' + a_quant + '&p_code=' + a_p_code;
-    });
-</script>
 
 </div>
 
-<?php include $root_dir."/includes/footer.php"; ?>
+<?php include $root_dir . "/includes/footer.php"; ?>

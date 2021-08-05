@@ -66,10 +66,11 @@ function replaceAccents($str)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FESI comp, s.r.o</title>
-    <link rel="stylesheet" href="https://compsnv.sk/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $root_url ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="https://compsnv.sk/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $root_url ?>/assets/css/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2.2.2/dist/flickity.css" media="screen">
     <link rel="shortcut icon" href="https://compsnv.sk/favicon.ico" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
     <script src="<?php echo $root_url ?>/assets/js/search.js" type="text/javascript"></script>
@@ -97,8 +98,10 @@ function replaceAccents($str)
     </script>
     <script src="<?php echo $root_url ?>/config.js"></script>
     <script src="<?php echo $root_url ?>/assets/js/main.js"></script>
+    <script src="https://unpkg.com/flickity@2.2.2/dist/flickity.pkgd.min.js"></script>
 </head>
 
 <body>
+    
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="MDfiPyPX"></script>

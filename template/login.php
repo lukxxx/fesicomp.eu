@@ -114,7 +114,7 @@ if(isset($_POST['bimbambum'])){
         console.log("ID Token: " + id_token);
         googleUser.disconnect();
             
-        window.location.replace('redirect.php?idtoken=' + id_token + "&name=" + name + "&photo=" + photo + "&email=" + email + "&fullname=" + fullname);
+        window.location.replace(root_url + '/redirect?idtoken=' + id_token + "&name=" + name + "&photo=" + photo + "&email=" + email + "&fullname=" + fullname);
       }
     </script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>

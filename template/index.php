@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="sk">
 <?php
 if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
     include $_SERVER['DOCUMENT_ROOT']."/fesicomp.eu/includes/head.php";
@@ -24,6 +22,12 @@ if(isset($_COOKIE['details'])){
                 <br>
                 <div class="row">
                     <?php include $root_dir."/includes/akciova-ponuka.php" ?>
+                </div>
+                <br>
+                <h2 class="akciova_ponuka" style="font-weight: bold;">Produkty, ktoré by sa Vám mohli páčiť</h2>
+                <br>
+                <div class="row">
+                    <?php include $root_dir."/includes/like.php" ?>
                 </div>
                 <h2 class="nase_sluzby">Naše služby</h2>
                     <br>
