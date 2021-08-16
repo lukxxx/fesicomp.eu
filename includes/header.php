@@ -5,10 +5,10 @@
                 <div class="col-sm-12 col-md-7 col-lg-7">
                     <div class="brand">
                         <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="<?php echo $root_url ?>/"><img src="https://fesicomp.sitecult.sk/assets/images/brand/logo.png" width="100" height="90"></a>
+                            <a href="<?php echo $root_url ?>/"><img src="assets/images/brand/logo.png" width="100" height="90"></a>
                         </div>
                         <div class="award">
-                            <a href="<?php echo $root_url ?>/" style="padding-left: 20px;height: 90px;"><img src="https://fesicomp.sitecult.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                            <a href="<?php echo $root_url ?>/" style="padding-left: 20px;height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                         </div>
                         <div class="header-headings">
                             <h2 style="margin-top: 0;">Výpočtová technika</h2>
@@ -86,7 +86,6 @@
 </header>
 
 
-
 <header class="header_mobile">
     <div class="container-fluid back">
         <div class="container">
@@ -95,19 +94,19 @@
                     <div class="brand d-flex justify-content-between">
                         <div class="brand_award d-flex flex-row">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                                <a href="<?php echo $root_url ?>"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
+                            <a href="<?php echo $root_url ?>/"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
                             </div>
                             <div class="award">
                                 <a href="<?php echo $root_url ?>" style="padding-left: 20px; height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                             </div>
                         </div>
                         <div class="mobile_buttons" style="margin-top: 5%;">
-                            <a data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" class="vyhladavanie" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
-                            <a data-toggle="collapse" href="#links" role="button" aria-expanded="false" class="menu_odkazy_mobilne" aria-controls="links" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
+                            <a onclick="plus()" data-toggle="collapse" href="#searchbar" role="button" aria-expanded="false" class="vyhladavanie" aria-controls="searchbar" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-search"></i></a>
+                            <a onclick="minus()" data-toggle="collapse" href="#links" role="button" aria-expanded="false" class="menu_odkazy_mobilne" aria-controls="links" style="padding: 4px;"><i style="font-size: 30px; color: white; text-decoration: none;" class="fas fa-bars"></i></a>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 links collapse" id="links" style="margin-bottom: 8%;">
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 links collapse indent" id="links" style="margin-bottom: 8%;">
                             <div class="header-headings">
                                 <h2 class="text-center">Výpočtová technika</h2>
                                 <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
@@ -198,7 +197,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5 searchbar collapse" id="searchbar">
+                <div class="col-sm-12 col-md-5 col-lg-5 searchbar collapse indent" id="searchbar">
                     <div class="row">
                         <div class="col-sm-10 col-md-10 col-lg-10">
                             <form method="post" action="template/search-results.php">
@@ -229,13 +228,13 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
                     <div class="brand">
                         <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="<?php echo $root_url ?>"><img src="https://fesicomp.sitecult.sk/assets/images/brand/logo.png" width="100" height="90"></a>
+                            <a href="<?php echo $root_url ?>"><img src="assets/images/brand/logo.png" width="100" height="90"></a>
                         </div>
                         <div class="award">
-                            <a href="<?php echo $root_url ?>" style="padding-left: 20px;height: 90px;"><img src="https://fesicomp.sitecult.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                            <a href="<?php echo $root_url ?>" style="padding-left: 20px;height: 90px;"><img src="/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                         </div>
                         <div class="header-headings">
-                            <h2 style="margin-top: 0;">Výpočtová technika tablet</h2>
+                            <h2 style="margin-top: 0;">Výpočtová technika</h2>
                             <h4>predaj a servis</h4>
                             <div class="quick-links">
                                 <i class="fas fa-phone"></i><a href="tel:+421534411526">+421534411526</a>
@@ -321,4 +320,40 @@
     $('.fa-search').click(function() {
         $(this).toggleClass("fa-times");
     });
+
+
+    function plus() {
+        var linksClassList = document.getElementById('links').className.split(/\s+/);
+        var searchbarClassList = document.getElementById('searchbar').className.split(/\s+/); 
+
+        var elementLinks = document.getElementById('links');
+        var elementSearchbar = document.getElementById('searchbar');
+        
+        for (var i = 0; i < linksClassList.length; i++) {
+            if (linksClassList[i] === 'show') {
+                elementLinks.classList.toggle("collapsing")
+                elementLinks.classList.toggle("show")
+                $('.fa-bars').toggleClass("fa-times")
+            }
+        }
+    }
+
+    function minus() {
+        var linksClassList = document.getElementById('links').className.split(/\s+/);
+        var searchbarClassList = document.getElementById('searchbar').className.split(/\s+/);
+
+        var elementLinks = document.getElementById('links');
+        var elementSearchbar = document.getElementById('searchbar');
+
+        for (var i = 0; i < searchbarClassList.length; i++) {
+            if(searchbarClassList[i] === 'show') {
+                elementSearchbar.classList.toggle("collapsing")
+                elementSearchbar.classList.toggle("show")
+                $('.fa-search').toggleClass("fa-times")
+            }
+        }
+    }
+
+
+
 </script>
