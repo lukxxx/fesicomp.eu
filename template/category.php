@@ -182,7 +182,7 @@ $cart = json_decode($cart);
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="product-bottom justify-content-md-center">
                                                 <div class="add-to-cart justify-content-md-center">
-                                                    <form method="POST" class="add-c">
+                                                    <form method="POST" class="add-c" action="<?php echo $root_url?>/addcart">
                                                         <input type="hidden" class="add-quant" name="quantity" value="1">
                                                         <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row['p_id']; ?>">
                                                         <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>

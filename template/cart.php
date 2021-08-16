@@ -52,7 +52,7 @@ include $root_dir . "/includes/header.php";
                             <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
                             <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url ?>/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
                             <th style="padding: 20px;">
-                                <form method="post" action="../update-cart.php">
+                                <form method="post" action="<?php echo $root_url?>/addcart">
                                     <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
                                     <input style="all: unset; width: 20%; margin-left: 15px;" type="text" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
                                     <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
@@ -64,7 +64,7 @@ include $root_dir . "/includes/header.php";
                                                         }  ?></th>
                             <th style="padding: 20px;"><?php echo $c->product->p_cena * $c->quantity; ?>€</th>
                             <th style="padding: 20px 0px 20px 0px;">
-                                <form method="POST" action="../delete-cart.php">
+                                <form method="POST" action="<?php echo $root_url?>/deletecart">
                                     <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
                                     <button type="submit" name="delete" style="all: unset; cursor: pointer;"><i style="color: #C21800;" class="fas fa-times fa-1x"></i></button>
                                 </form>
@@ -296,7 +296,7 @@ include $root_dir . "/includes/header.php";
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="product-bottom" style="justify-content: flex-end">
                             <div class="add-to-cart justify-content-md-center">
-                                <form method="POST" class="add-c">
+                                <form method="POST" class="add-c" action="<?php echo $root_url?>/addcart">
                                     <input type="hidden" class="add-quant" name="quantity" value="1">
                                     <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row->p_id ?>">
                                     <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
