@@ -5,10 +5,10 @@
                 <div class="col-sm-12 col-md-7 col-lg-7">
                     <div class="brand">
                         <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="<?php echo $root_url ?>/"><img src="assets/images/brand/logo.png" width="100" height="90"></a>
+                            <a href="<?php echo $root_url ?>/"><img src="https://compsnv.sk/assets/images/brand/logo.png" width="100" height="90"></a>
                         </div>
                         <div class="award">
-                            <a href="<?php echo $root_url ?>/" style="padding-left: 20px;height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                            <a href="<?php echo $root_url ?>/" style="padding-left: 20px;height: 90px;"><img src="https://compsnv.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                         </div>
                         <div class="header-headings">
                             <h2 style="margin-top: 0;">Výpočtová technika</h2>
@@ -94,10 +94,10 @@
                     <div class="brand d-flex justify-content-between">
                         <div class="brand_award d-flex flex-row">
                             <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="<?php echo $root_url ?>/"><img src="assets/images/brand/logo.png" width="65" height="60"></a>
+                            <a href="<?php echo $root_url ?>/"><img src="https://compsnv.sk/assets/images/brand/logo.png" width="65" height="60"></a>
                             </div>
                             <div class="award">
-                                <a href="<?php echo $root_url ?>" style="padding-left: 20px; height: 90px;"><img src="assets/images/brand/skusenosti.gif" width="65" height="60"></a>
+                                <a href="<?php echo $root_url ?>" style="padding-left: 20px; height: 90px;"><img src="https://compsnv.sk/assets/images/brand/skusenosti.gif" width="65" height="60"></a>
                             </div>
                         </div>
                         <div class="mobile_buttons" style="margin-top: 5%;">
@@ -228,10 +228,10 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
                     <div class="brand">
                         <div style="height: 90px;" class="nav-brand logo-brand">
-                            <a href="<?php echo $root_url ?>"><img src="assets/images/brand/logo.png" width="100" height="90"></a>
+                            <a href="<?php echo $root_url ?>"><img src="https://compsnv.sk/assets/images/brand/logo.png" width="100" height="90"></a>
                         </div>
                         <div class="award">
-                            <a href="<?php echo $root_url ?>" style="padding-left: 20px;height: 90px;"><img src="/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
+                            <a href="<?php echo $root_url ?>" style="padding-left: 20px;height: 90px;"><img src="https://compsnv.sk/assets/images/brand/skusenosti.gif" width="95" height="90"></a>
                         </div>
                         <div class="header-headings">
                             <h2 style="margin-top: 0;">Výpočtová technika</h2>

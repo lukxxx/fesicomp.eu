@@ -119,8 +119,8 @@ include $root_dir."/includes/header.php" ?>
     </div>
     <div class="container">
         <div class="row" style="margin-top: 50px;">
-            <div class="col-sm-12 col-md-5 col-lg-5 text-center" style="background: #e7e7e7; padding: 40px; border: 1px solid grey !important;">
-                <span style="font-size: 20px; text-align: center; text-decoration: underline;">Fakturačné údaje:</span>
+            <div class="col-sm-12 col-md-12 col-lg-12 summary-order-card" style="background-color: white; padding: 40px; border: 1px solid #e8e8e8 !important;">
+                <span style="font-size: 20px; text-align: left; font-weight: bold;">Fakturačné údaje:</span>
                 <hr>
                 <div class="text-left">
                     <span style="font-size: 18px"><b>Meno a priezvisko: &nbsp&nbsp</b> <?php echo " ".$name." ".$surname ?> </span><br><br>
@@ -129,9 +129,8 @@ include $root_dir."/includes/header.php" ?>
                     <span style="font-size: 18px"><b>Adresa doručenia: &nbsp&nbsp</b> <?php echo " ".$city.", ".$street.", ".$psc ?> </span><br><br>    
                 </div> 
             </div>
-            <div class="col-sm-12 col-md-2 col-lg-2"></div>
-            <div class="col-sm-12 col-md-5 col-lg-5 text-center" style="background: #e7e7e7; padding: 40px; border: 1px solid grey !important;">
-                <span style="font-size: 20px; text-align: center; text-decoration: underline;">Doprava a platba:</span>
+            <div class="col-sm-12 col-md-12 col-lg-12" style="background: #e7e7e7; padding: 40px; border: 1px solid grey !important;">
+                <span style="font-size: 20px; text-align: left; text-decoration: underline;">Doprava a platba:</span>
                 <hr>
                 <div class="text-left">
                     <span style="font-size: 18px"><b>Spôsob platby: &nbsp&nbsp</b> <?php echo " ".$platba; ?> </span><br><br>

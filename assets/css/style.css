@@ -254,8 +254,17 @@ span {
 }
 .category-link:hover{
     text-decoration: none;
-    
 }
+
+.summary-order-card{
+    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
+    box-shadow: 5px 2px 16px 5px #e7e7e7;
+    min-height: 100px;
+    margin-bottom: 10px;
+    border: solid 1px #e7e7e7;
+}
+
+
 .pagination {
     list-style-type: none;
     padding: 10px 0;
