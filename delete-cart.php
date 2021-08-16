@@ -1,5 +1,5 @@
 <?php
-
+require_once "config.php";
 $productCode = $_POST["productCode"];
 
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
@@ -15,6 +15,6 @@ foreach ($cart as $c)
 }
 
 setcookie("cart", json_encode($new_cart));
-header("Location: /kosik");
+header("Location: $root_url/kosik");
 
 ?>

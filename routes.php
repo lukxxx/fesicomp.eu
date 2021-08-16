@@ -37,8 +37,10 @@ post('/fesicomp.eu/kosik/doprava-platba', 'template/final.php');
 post('/fesicomp.eu/kosik/suhrn-objednavky', 'template/summary.php');
 
 get('/fesicomp.eu/addcart', 'add-cart.php');
+post('/fesicomp.eu/addcart', 'add-cart.php');
 
 get('/fesicomp.eu/deletecart', 'delete-cart.php');
+post('/fesicomp.eu/deletecart', 'delete-cart.php');
 
 get('/fesicomp.eu/updatecart', 'update-cart.php');
 
