@@ -71,12 +71,7 @@ include $root_dir."/includes/header.php" ?>
     </div>
     <hr>
     <br>
-    <div class="container" style="padding: 0% 25% 0% 25%">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <span style="text-decoration: underline; font-size: 19px;">Produkty:</span><br>
-            </div>
-        </div>
+    <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                 <div class="table">
@@ -118,23 +113,38 @@ include $root_dir."/includes/header.php" ?>
         </div>
     </div>
     <div class="container">
-        <div class="row" style="margin-top: 50px;">
-            <div class="col-sm-12 col-md-12 col-lg-12 summary-order-card" style="background-color: white; padding: 40px; border: 1px solid #e8e8e8 !important;">
-                <span style="font-size: 20px; text-align: left; font-weight: bold;">Fakturačné údaje:</span>
-                <hr>
-                <div class="text-left">
-                    <span style="font-size: 18px"><b>Meno a priezvisko: &nbsp&nbsp</b> <?php echo " ".$name." ".$surname ?> </span><br><br>
-                    <span style="font-size: 18px"><b>Kontaktný email: &nbsp&nbsp</b> <?php echo " ".$email_z ?> </span><br><br>  
-                    <span style="font-size: 18px"><b>Telefónne číslo: &nbsp&nbsp</b> <?php echo " ".$tel ?> </span><br><br>
-                    <span style="font-size: 18px"><b>Adresa doručenia: &nbsp&nbsp</b> <?php echo " ".$city.", ".$street.", ".$psc ?> </span><br><br>    
-                </div> 
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12" style="background: #e7e7e7; padding: 40px; border: 1px solid grey !important;">
-                <span style="font-size: 20px; text-align: left; text-decoration: underline;">Doprava a platba:</span>
-                <hr>
-                <div class="text-left">
-                    <span style="font-size: 18px"><b>Spôsob platby: &nbsp&nbsp</b> <?php echo " ".$platba; ?> </span><br><br>
-                    <span style="font-size: 18px"><b>Spôsob dopravy: &nbsp&nbsp</b> <?php echo " ".$doprava; ?> </span><br>
+        <div class="row" style="margin: 50px 0;">
+            <div class="col-sm-12 col-md-12 col-lg-12 summary-order-card" style="background-color: white; padding: 40px; border: 1px solid #e8e8e8 !important; border-radius: 10px;">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <span style="font-size: 28px; text-align: left; font-weight: bold;">Fakturačné údaje:</span>
+                        <hr>
+                        <div class="text-left">
+                            <span style="font-size: 18px"><b>Meno a priezvisko: &nbsp&nbsp</b> <?php echo " ".$name." ".$surname ?> </span><br><br>
+                            <span style="font-size: 18px"><b>Kontaktný email: &nbsp&nbsp</b> <?php echo " ".$email_z ?> </span><br><br>  
+                            <span style="font-size: 18px"><b>Telefónne číslo: &nbsp&nbsp</b> <?php echo " ".$tel ?> </span><br><br>
+                            <span style="font-size: 18px"><b>Adresa doručenia: &nbsp&nbsp</b> <?php echo " ".$city.", ".$street.", ".$psc ?> </span><br><br>    
+                        </div> 
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <span style="font-size: 28px; text-align: left; font-weight: bold;">Doprava a platba:</span>
+                        <hr>
+                        <div class="text-left">
+                            <span style="font-size: 18px"><b>Spôsob platby: &nbsp&nbsp</b> <?php echo " ".$platba; ?> </span><br><br>
+                            <span style="font-size: 18px"><b>Spôsob dopravy: &nbsp&nbsp</b> <?php echo " ".$doprava; ?> </span><br>
+                        </div>
+                        <div class="col-sm-12 col-sm-4 col-lg-4" style="text-align: left; ">
+                            <?php
+                                if (isset($total) && $total != 0) {
+                                    $no_dph = ($total / 100) * 80;
+                                    $nodph = number_format($no_dph, 2, ',', ' ');
+                            ?>
+                            <span><strong style="font-size: 24px; padding-right: 40px">Cena spolu: </strong><span style="font-size: 33px; font-weight: bold; color: #C5230D;"><?php echo $total . "€";  ?></span></span><br>
+                            <span style="color: #636363; padding-right: 90px; padding-top: 20px;">Cena bez DPH: </span><span style="color: #636363;"><?php echo $nodph . "€"; ?></span>
+                            <?php
+                                } ?>
+                        </div>      
+                    </div>
                 </div>
             </div>
         </div>
