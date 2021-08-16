@@ -62,7 +62,7 @@ include $root_dir . "/includes/header.php";
                             <th style="padding: 20px;"><?php if ($c->product->p_sklad == 1) {
                                                             echo "<span style='color: #149106'>Skladom</span>";
                                                         }  ?></th>
-                            <th style="padding: 20px;"><?php echo $c->product->p_cena * $c->quantity; ?>€</th>
+                            <th style="padding: 20px;"><?php echo number_format(($c->product->p_cena * 1.2) * $c->quantity, 2, '.', '') ?>€</th>
                             <th style="padding: 20px 0px 20px 0px;">
                                 <form method="POST" action="<?php echo $root_url?>/deletecart">
                                     <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
@@ -107,8 +107,8 @@ include $root_dir . "/includes/header.php";
                 $no_dph = ($total / 100) * 80;
                 $nodph = number_format($no_dph, 2, ',', ' ');
             ?>
-                <span><strong style="font-size: 24px; padding-right: 40px">Cena spolu: </strong><span style="font-size: 33px; font-weight: bold; color: #C5230D;"><?php echo $total . "€";  ?></span></span><br>
-                <span style="color: #636363; padding-right: 90px; padding-top: 20px;">Cena bez DPH: </span><span style="color: #636363;"><?php echo $nodph . "€"; ?></span>
+                <span><strong style="font-size: 24px; padding-right: 40px">Cena spolu: </strong><span style="font-size: 33px; font-weight: bold; color: #C5230D;"><?php echo number_format($total * 1.2, 2, '.', '') . "€";  ?></span></span><br>
+                <span style="color: #636363; padding-right: 90px; padding-top: 20px;">Cena bez DPH: </span><span style="color: #636363;"><?php echo $total . "€"; ?></span>
             <?php
             } ?>
         </div>
@@ -127,7 +127,7 @@ include $root_dir . "/includes/header.php";
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right; margin: 0 25px;">
             <?php if (isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]") { ?>
-                <a style="color: black; text-align: right;" href="<?php echo $root_url ?>/kosik/dodacie-udaje">Pokračovať k objednávke <i class="fas fa-arrow-circle-right"></i></a>
+                <a style="color: black; text-align: right;" href="<?php echo $root_url ?>/kosik/dorucovacie-udaje">Pokračovať k objednávke <i class="fas fa-arrow-circle-right"></i></a>
             <?php
             }
             ?>
@@ -151,7 +151,7 @@ include $root_dir . "/includes/header.php";
                         <div class="d-flex justify-content-between">
                             <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='$root_url/" . replaceAccents($c->product->p_nazov) . "'>" . $c->product->p_nazov . "</a>" ?>
 
-                            <form method="POST" action="../delete-cart.php">
+                            <form method="POST" action="<?php echo $root_url?>/deletecart">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
                                 <button type="submit" name="delete" style="all: unset; cursor: pointer;"><i style="color: #C21800; font-size: 30px; margin-right: 15px;" class="fas fa-times fa-1x"></i></button>
                             </form>
@@ -162,14 +162,14 @@ include $root_dir . "/includes/header.php";
                                                 } ?></p>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <form method="post" action="../update-cart.php">
+                            <form method="post" action="<?php echo $root_url?>/addcart">
                                 <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
                                 <input style="all: unset; width: 20%;" type="number" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
                                 <button type="submit" name="quantity-plus" style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
                             </form>
 
-                            <span style="padding-right: 25px; font-size: 21px;"><strong style="color: #C21800;"><?php echo $c->product->p_cena * $c->quantity; ?>€</strong></span>
+                            <span style="padding-right: 25px; font-size: 21px;"><strong style="color: #C21800;"><?php echo number_format(($c->product->p_cena * 1.2) * $c->quantity, 2, '.', '') ?>€</strong></span>
                         </div>
 
 
@@ -208,8 +208,8 @@ include $root_dir . "/includes/header.php";
                 $no_dph = ($total / 100) * 80;
                 $nodph = number_format($no_dph, 2, ',', ' ');
             ?>
-                <span style="margin-top: 10px;"><strong style="font-size: 18px; padding-right: 40px">Cena spolu: </strong><span style="font-size: 25px; font-weight: bold; color: #C5230D;"><?php echo $total . "€";  ?></span></span><br>
-                <span style="color: #636363; padding-right: 90px; padding-top: 20px;">Cena bez DPH: </span><span style="color: #636363;"><?php echo $nodph . "€"; ?></span>
+                <span style="margin-top: 10px;"><strong style="font-size: 18px; padding-right: 40px">Cena spolu: </strong><span style="font-size: 25px; font-weight: bold; color: #C5230D;"><?php echo number_format($total * 1.2, 2, '.', '') . "€";  ?></span></span><br>
+                <span style="color: #636363; padding-right: 90px; padding-top: 20px;">Cena bez DPH: </span><span style="color: #636363;"><?php echo $total . "€"; ?></span>
             <?php
             } ?>
         </div>

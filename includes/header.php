@@ -149,8 +149,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a style="color: white; font-size: 23px; padding: 1px;" href="template/cart.php">Košík </a>
-                                    <a href="template/cart.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i><?php if (count($cart) != 0) {
+                                    <a style="color: white; font-size: 23px; padding: 1px;" href="<?php echo $root_url?>/kosik">Košík </a>
+                                    <a href="<?php echo $root_url?>/kosik"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i><?php if (count($cart) != 0) {
                                                                                                                                                                                                 echo "<sup style='margin-left: -15px;'><span class='dot' style='background-color: 
                                                 #B81600; border-radius: 50%; padding-left: 4px; padding-right: 4px; color: white;'> " . count($cart) . "</span></sup>";
                                                                                                                                                                                             } ?>

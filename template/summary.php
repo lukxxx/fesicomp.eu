@@ -56,22 +56,116 @@ foreach ($details as $d){
 include $root_dir."/includes/header.php" ?>
 
 
-    <div class="container" style="margin-top: 50px;">
-    <div class="row d-flex">
-        <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black; font-size: 18px;" href="/kosik/doprava-platba"><i class="fas fa-arrow-left"></i> Späť na dopravu a platbu</a>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 text-center">
-            <h2 style="font-weight: bold; text-transform: uppercase;">súhrn objednávky</h2>
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right;">
-            
-            
+    <div class="container cart_desktop" style="margin-top: 50px;">
+        <div class="row d-flex">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <a style="color: black; font-size: 18px;" href="/kosik/doprava-platba"><i class="fas fa-arrow-left"></i> Späť na dopravu a platbu</a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+                <h2 style="font-weight: bold; text-transform: uppercase;">súhrn objednávky</h2>
+            </div>
         </div>
     </div>
+
+    <div class="container cart_mobile" style="margin-top: 50px;">
+        <div class="row d-flex">
+            <div class="col-sm-12 col-md-3 col-lg-3" style="margin: 0 25px">
+                <a style="color: black; font-size: 18px;" href="/kosik/doprava-platba"><i class="fas fa-arrow-circle-left"></i> Späť na dopravu a platbu</a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+                <h2 style="font-weight: bold; text-transform: uppercase;">súhrn objednávky</h2>
+            </div>
+        </div>
+    </div>
+
+
     <hr>
     <br>
-    <div class="container">
+    <!-- DESKTOP SUMÁR -->
+    <div class="container summary-desktop">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="table table_summary">
+                    <?php
+                    if (isset($_COOKIE['cart']) && $_COOKIE['cart'] != "[]") {
+                        $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
+                        $cart = json_decode($cart);
+                        $total = 0;
+                        echo '<table class="table  table-bordered">';
+                        echo '<thead class="thead-dark">';
+                        echo '<tr>';
+                        echo '<th scope="col">Produkt</th>';
+                        echo '<th scope="col">Názov produktu</th>';
+                        echo '<th scope="col">Cena</th>';
+                        echo '</tr>';
+                        echo '</thead>';
+                        echo '<tbody>';
+                        foreach ($cart as $c) {
+                            $total += $c->product->p_cena * $c->quantity;
+                    ?>
+                            <tr>
+                                <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
+                                <th style="padding: 20px;"><a style='color: black;' href="/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
+                                <th style="padding: 20px;"><span style="color: #B81600;"><?php echo number_format(($c->product->p_cena * 1.2) * $c->quantity, 2, '.', '') ?>€</span></th>
+                            </tr>
+
+                    <?php
+                        }
+                    } else {
+                        $total = 0;
+                        echo "<span style='text-align: center; font-weight: bold;'>Nákupný košík je prázdny!</span>";
+                    }
+
+                    ?>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container summary-desktop">
+        <div class="row" style="margin: 50px 0;">
+            <div class="col-sm-12 col-md-12 col-lg-12 summary-order-card" style="background-color: white; padding: 40px; border: 1px solid #e8e8e8 !important; border-radius: 10px;">
+                <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <span style="font-size: 28px; text-align: left; font-weight: bold;">Fakturačné údaje:</span>
+                        <hr>
+                        <div class="text-left">
+                            <span style="font-size: 18px"><b>Meno a priezvisko: &nbsp&nbsp</b> <?php echo " ".$name." ".$surname ?> </span><br><br>
+                            <span style="font-size: 18px"><b>Kontaktný email: &nbsp&nbsp</b> <?php echo " ".$email_z ?> </span><br><br>  
+                            <span style="font-size: 18px"><b>Telefónne číslo: &nbsp&nbsp</b> <?php echo " ".$tel ?> </span><br><br>
+                            <span style="font-size: 18px"><b>Adresa doručenia: &nbsp&nbsp</b> <?php echo " ".$city.", ".$street.", ".$psc ?> </span><br><br>    
+                        </div> 
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <span style="font-size: 28px; text-align: left; font-weight: bold;">Doprava a platba:</span>
+                        <hr>
+                        <div class="text-left">
+                            <span style="font-size: 18px"><b>Spôsob platby: &nbsp&nbsp</b> <?php echo " ".$platba; ?> </span><br><br>
+                            <span style="font-size: 18px"><b>Spôsob dopravy: &nbsp&nbsp</b> <?php echo " ".$doprava; ?> </span><br>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 text-center" style="border-left: 1px solid #e8e8e8; display: flex; justify-content: center; align-items: center">
+                        <div>
+                            <?php
+                                if (isset($total) && $total != 0) {
+                                $no_dph = ($total / 100) * 80;
+                                $nodph = number_format($no_dph, 2, ',', ' ');
+                            ?>
+                            <span><strong style="font-size: 24px; padding-right: 40px"></strong><span class="text-center" style="font-size: 55px; font-weight: bold; color: #C5230D;"><?php echo number_format($total * 1.2, 2, '.', '') . "€";  ?></span></span><br>
+                            <span style="color: #636363; padding-top: 20px;">Cena bez DPH: <strong><?php echo $total . "€"; ?></strong></span>
+                            <?php
+                                } ?>  <br>
+                            <button type="button" style="font-weight: 400; font-size: 20px; position: relative" class="buy-btn">Dokončiť objednávku</button>              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MOBILNÝ SUMÁR -->
+    <div class="container summary-mobile">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                 <div class="table">
@@ -95,7 +189,7 @@ include $root_dir."/includes/header.php" ?>
                             <tr>
                                 <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
                                 <th style="padding: 20px;"><a style='color: black;' href="/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
-                                <th style="padding: 20px;"><span style="color: #B81600;"><?php echo number_format($c->product->p_cena * 1.2, 2, '.', '') ?>€</span></th>
+                                <th style="padding: 20px;"><span style="color: #B81600;"><?php echo number_format(($c->product->p_cena * 1.2) * $c->quantity, 2, '.', '') ?>€</span></th>
                             </tr>
 
                     <?php
@@ -112,12 +206,12 @@ include $root_dir."/includes/header.php" ?>
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container summary-mobile">
         <div class="row" style="margin: 50px 0;">
             <div class="col-sm-12 col-md-12 col-lg-12 summary-order-card" style="background-color: white; padding: 40px; border: 1px solid #e8e8e8 !important; border-radius: 10px;">
                 <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <span style="font-size: 28px; text-align: left; font-weight: bold;">Fakturačné údaje:</span>
+                    <div class="col-12 col-sm-4">
+                        <span style="font-size: 28px; text-align: left; font-weight: bold;">Fakturačné údaje: mobilen</span>
                         <hr>
                         <div class="text-left">
                             <span style="font-size: 18px"><b>Meno a priezvisko: &nbsp&nbsp</b> <?php echo " ".$name." ".$surname ?> </span><br><br>
@@ -126,24 +220,27 @@ include $root_dir."/includes/header.php" ?>
                             <span style="font-size: 18px"><b>Adresa doručenia: &nbsp&nbsp</b> <?php echo " ".$city.", ".$street.", ".$psc ?> </span><br><br>    
                         </div> 
                     </div>
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-4">
                         <span style="font-size: 28px; text-align: left; font-weight: bold;">Doprava a platba:</span>
                         <hr>
                         <div class="text-left">
                             <span style="font-size: 18px"><b>Spôsob platby: &nbsp&nbsp</b> <?php echo " ".$platba; ?> </span><br><br>
                             <span style="font-size: 18px"><b>Spôsob dopravy: &nbsp&nbsp</b> <?php echo " ".$doprava; ?> </span><br>
                         </div>
-                        <div class="col-sm-12 col-sm-4 col-lg-4" style="text-align: left; ">
+                    </div>
+                    <div class="col-12 col-sm-4 text-center" style="border-left: 1px solid #e8e8e8; display: flex; justify-content: center; align-items: center">
+                        <div>
                             <?php
                                 if (isset($total) && $total != 0) {
-                                    $no_dph = ($total / 100) * 80;
-                                    $nodph = number_format($no_dph, 2, ',', ' ');
+                                $no_dph = ($total / 100) * 80;
+                                $nodph = number_format($no_dph, 2, ',', ' ');
                             ?>
-                            <span><strong style="font-size: 24px; padding-right: 40px">Cena spolu: </strong><span style="font-size: 33px; font-weight: bold; color: #C5230D;"><?php echo $total . "€";  ?></span></span><br>
-                            <span style="color: #636363; padding-right: 90px; padding-top: 20px;">Cena bez DPH: </span><span style="color: #636363;"><?php echo $nodph . "€"; ?></span>
+                            <span><strong style="font-size: 24px; padding-right: 40px"></strong><span class="text-center" style="font-size: 55px; font-weight: bold; color: #C5230D;"><?php echo number_format($total * 1.2, 2, '.', '') . "€";  ?></span></span><br>
+                            <span style="color: #636363; padding-top: 20px;">Cena bez DPH: <strong><?php echo $total . "€"; ?></strong></span>
                             <?php
-                                } ?>
-                        </div>      
+                                } ?>  <br>
+                            <button type="button" style="font-weight: 400; font-size: 20px; position: relative" class="buy-btn">Dokončiť objednávku</button>              
+                        </div>
                     </div>
                 </div>
             </div>
