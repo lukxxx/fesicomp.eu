@@ -21,6 +21,7 @@ get('/fesicomp.eu/registracia', 'template/register.php');
 post('/fesicomp.eu/registracia', 'template/register.php');
 
 get('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
+post('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
 
 get('/fesicomp.eu/kosik', 'template/cart.php');
 
