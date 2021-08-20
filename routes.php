@@ -59,6 +59,8 @@ get('/fesicomp.eu/redirect', 'template/redirect.php');
 
 post('/fesicomp.eu/redirect', 'template/redirect.php');
 
+post('/fesicomp.eu/updateuser', 'template/user-info-update.php');
+
 //---------------ADMIN ROUTES--------------------------
 
 get('/fesicomp.eu/admin', 'admin/index.php');

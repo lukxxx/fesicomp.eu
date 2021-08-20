@@ -166,114 +166,155 @@ include $root_dir . "/includes/header.php";
             <h4 style="color: grey;">Základné informácie: </h4>
             <?php
             ?>
-            <span style="padding-top: 20px">Meno: <strong><?php if (!empty($meno_l)) {
-                                                                echo $meno_l;
-                                                            } else if (!empty($first)) {
-                                                                echo $first;
-                                                            } else if (!empty($one)) {
-                                                                echo $one;
-                                                            } else {
-                                                                echo $empty;
-                                                            } ?></strong> <button onclick="unhideName()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
+            <span style="padding-top: 20px">Meno: <strong id="user_name"><?php if (!empty($meno_l)) {
+                                                                                echo $meno_l;
+                                                                            } else if (!empty($first)) {
+                                                                                echo $first;
+                                                                            } else if (!empty($one)) {
+                                                                                echo $one;
+                                                                            } else {
+                                                                                echo $empty;
+                                                                            } ?></strong> <button onclick="unhideName()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
             <div style="display: none;" id="edit-name" class="edit-form">
                 <?php
-               
+
                 ?>
                 <form method="post" id="update_name_form">
                     <div class="form-group d-flex">
                         <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="name-edit" name="name-edit">&nbsp;
+                        <input type="hidden" id="name-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
+                                                                                                        echo $email_from_login;
+                                                                                                    } ?>">
                         <input type="submit" style="border-radius: 10px;" id="update_name" class="btn btn-dark" value="Upraviť">
                         <a onclick="hideName()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
                     </div>
                 </form>
                 <script>
-                    $(document).on("click", "#update_name", function(e) {
-                        
-                        $.ajax({
-                            url: "user-info-update.php",
-                            type: "POST",
-                            cache: false,
-                            data: {
-                                name: $('#name-edit').val(),
-                            },
-                            success: function(dataResult) {
-                                var dataResult = JSON.parse(dataResult);
-                                if (dataResult.statusCode == 200) {
-                                    alert('Data updated successfully !');
+                    $(document).ready(function() {
+                        $('#update_name_form').submit(function(e) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: root_url + "/updateuser",
+                                data: {
+                                    id: $('#name-edit').val(),
+                                    email_login: $('#name-email-login').val(),
+                                },
+                                cache: false,
+
+                                success: function(result) {
+                                    var returnedvalue = result;
+                                    $('#user_name').empty();
+                                    $('#user_name').html(returnedvalue);
+                                    $('#edit-name').hide();
+                                    $('#name-edit').empty();
                                 }
-                            }
+                            });
                         });
-                        
                     });
                 </script>
             </div>
-            <span style="padding-top: 20px">Priezvisko: <strong><?php if (!empty($surname_l)) {
-                                                                    echo $surname_l;
-                                                                } else if (!empty($second)) {
-                                                                    echo $second;
-                                                                } else if (!empty($two)) {
-                                                                    echo $two;
-                                                                } else {
-                                                                    echo $empty;
-                                                                } ?></strong> <button onclick="unhideSurname()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
-            <div style="display: none;" id="edit-surname" class="edit-form">
+            <span style="padding-top: 20px">Priezvisko: <strong id="user_surname"><?php if (!empty($surname_l)) {
+                                                                                        echo $surname_l;
+                                                                                    } else if (!empty($second)) {
+                                                                                        echo $second;
+                                                                                    } else if (!empty($two)) {
+                                                                                        echo $two;
+                                                                                    } else {
+                                                                                        echo $empty;
+                                                                                    } ?></strong> <button onclick="unhideSurname()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
+            <div style="display: none;" id="edit-surname">
                 <?php
-                if (isset($_POST['surname-edit'])) {
-                    if (isset($_COOKIE['user'])) {
-                        $edit_name = $_POST['surname-edit'];
-                        $stmt = $pdo->prepare("UPDATE g_users SET priezvisko=?");
-                        $stmt->execute(array($edit_name));
-                    } else if (isset($_COOKIE['user-login'])) {
-                        $edit_name = $_POST['surname-edit'];
-                        $stmt = $pdo->prepare("UPDATE users SET priezvisko=? WHERE email=?");
-                        $stmt->execute(array($edit_name, $email_from_login));
-                    }
-                }
+
                 ?>
-                <form method="post" action="#">
+                <form method="post" id="update_surname_form">
                     <div class="form-group d-flex">
-                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" name="surname-edit">&nbsp;
-                        <input type="submit" style="border-radius: 10px;" class="btn btn-dark" value="Upraviť">
-                        <a onclick="hideSurname()" style="all: 
+                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="surname-edit" name="surname-edit">&nbsp;
+                        <input type="hidden" id="surname-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
+                                                                                                            echo $email_from_login;
+                                                                                                        } ?>">
+                        <input type="submit" style="border-radius: 10px;" id="update_surname" class="btn btn-dark" value="Upraviť">
+                        <a onclick="hideSurame()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
                     </div>
                 </form>
+                <script>
+                    $(document).ready(function() {
+                        $('#update_surname_form').submit(function(e) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: root_url + "/updateuser",
+                                data: {
+                                    surname: $('#surname-edit').val(),
+                                    email_login: $('#surname-email-login').val(),
+                                },
+                                cache: false,
+
+                                success: function(result) {
+                                    var returnedvalue = result;
+                                    $('#user_surname').empty();
+                                    $('#user_surname').html(returnedvalue);
+                                    $('#edit-surname').hide();
+                                    $('#surname-edit').empty();
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
-            <span style="padding-top: 20px">Email: <strong><?php if (!empty($email)) {
-                                                                echo $email;
-                                                            } else if (!empty($emailik)) {
-                                                                echo $emailik;
-                                                            } else if (!empty($emailik_g)) {
-                                                                echo $emailik_g;
-                                                            } else {
-                                                                echo $email_from_login;
-                                                            } ?></strong><?php if (isset($_COOKIE['user'])) {
-                                                                            } else { ?><button onclick="unhideMail()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button><?php } ?></span><br><br>
+            <span style="padding-top: 20px">Email: <strong id="user_mail"><?php if (!empty($email)) {
+                                                                                echo $email;
+                                                                            } else if (!empty($emailik)) {
+                                                                                echo $emailik;
+                                                                            } else if (!empty($emailik_g)) {
+                                                                                echo $emailik_g;
+                                                                            } else {
+                                                                                echo $email_from_login;
+                                                                            } ?></strong><?php if (isset($_COOKIE['user'])) {
+                                                                                            } else { ?><button onclick="unhideMail()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button><?php } ?></span><br><br>
             <?php if (isset($_COOKIE['user'])) {
             } else { ?>
-                <div style="display: none;" id="edit-email" class="edit-form">
+                <div style="display: none;" id="edit-mail">
                     <?php
-                    if (isset($_POST['email-edit'])) {
-                        if (isset($_COOKIE['user'])) {
-                            $edit_name = $_POST['email-edit'];
-                            $stmt = $pdo->prepare("UPDATE g_users SET email=?");
-                            $stmt->execute(array($edit_name));
-                        } else if (isset($_COOKIE['user-login'])) {
-                            $edit_name = $_POST['email-edit'];
-                            $stmt = $pdo->prepare("UPDATE users SET email=? WHERE email=?");
-                            $stmt->execute(array($edit_name, $email_from_login));
-                        }
-                    }
+
                     ?>
-                    <form method="post" action="#">
+                    <form method="post" id="update_mail_form">
                         <div class="form-group d-flex">
-                            <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" name="surname-edit">&nbsp;
-                            <input type="submit" style="border-radius: 10px;" class="btn btn-dark" value="Upraviť">
+                            <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="mail-edit" name="mail-edit">&nbsp;
+                            <input type="hidden" id="mail-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
+                                                                                                            echo $email_from_login;
+                                                                                                        } ?>">
+                            <input type="submit" style="border-radius: 10px;" id="update_mail" class="btn btn-dark" value="Upraviť">
                             <a onclick="hideMail()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
                         </div>
                     </form>
+                    <script>
+                        $(document).ready(function() {
+                            $('#update_mail_form').submit(function(e) {
+                                e.preventDefault();
+                                $.ajax({
+                                    type: "POST",
+                                    url: root_url + "/updateuser",
+                                    data: {
+                                        mail: $('#mail-edit').val(),
+                                        email_login: $('#mail-email-login').val(),
+                                    },
+                                    cache: false,
+
+                                    success: function(result) {
+                                        var returnedvalue = result;
+                                        $('#user_mail').empty();
+                                        $('#user_mail').html(returnedvalue);
+                                        $('#edit-mail').hide();
+                                        $('#mail-edit').empty();
+                                    }
+                                });
+                            });
+                        });
+                    </script>
                 </div>
             <?php } ?>
 
@@ -284,118 +325,186 @@ include $root_dir . "/includes/header.php";
                                                                 } else {
                                                                     echo $empty;
                                                                 } ?></strong><button onclick="unhideTel()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button></span>
-            <div style="display: none;" id="edit-tel" class="edit-form">
+            <div style="display: none;" id="edit-tel">
                 <?php
-                if (isset($_POST['tel-edit'])) {
-                    if (isset($_COOKIE['user'])) {
-                        $edit_name = $_POST['tel-edit'];
-                        $stmt = $pdo->prepare("UPDATE g_users SET telefon=?");
-                        $stmt->execute(array($edit_name));
-                    } else if (isset($_COOKIE['user-login'])) {
-                        $edit_name = $_POST['tel-edit'];
-                        $stmt = $pdo->prepare("UPDATE users SET telefon=? WHERE email=?");
-                        $stmt->execute(array($edit_name, $email_from_login));
-                    }
-                }
+
                 ?>
-                <form method="post" action="#">
+                <form method="post" id="update_tel_form">
                     <div class="form-group d-flex">
-                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" name="tel-edit">&nbsp;
-                        <input type="submit" style="border-radius: 10px;" class="btn btn-dark" value="Upraviť">
+                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="tel-edit" name="tel-edit">&nbsp;
+                        <input type="hidden" id="tel-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
+                                                                                                        echo $email_from_login;
+                                                                                                    } ?>">
+                        <input type="submit" style="border-radius: 10px;" id="update_tel" class="btn btn-dark" value="Upraviť">
                         <a onclick="hideTel()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
                     </div>
                 </form>
+                <script>
+                    $(document).ready(function() {
+                        $('#update_tel_form').submit(function(e) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: root_url + "/updateuser",
+                                data: {
+                                    tel: $('#tel-edit').val(),
+                                    email_login: $('#tel-email-login').val(),
+                                },
+                                cache: false,
+
+                                success: function(result) {
+                                    var returnedvalue = result;
+                                    $('#user_tel').empty();
+                                    $('#user_tel').html(returnedvalue);
+                                    $('#edit-tel').hide();
+                                    $('#tel-edit').empty();
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
 
         <div class="col-sm-12 col-md-4 col-lg-4">
             <h4 style="color: grey;">Dodacie údaje: </h4>
-            <span style="padding-top: 20px">Mesto: <strong><?php if (empty($mesto)) {
-                                                                echo $empty;
-                                                            } else {
-                                                                echo $mesto;
-                                                            } ?></strong><button onclick="unhideCity()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button></span><br><br>
-            <div style="display: none;" id="edit-city" class="edit-form">
+            <span style="padding-top: 20px">Mesto: <strong id="user_city"><?php if (empty($mesto)) {
+                                                                                echo $empty;
+                                                                            } else {
+                                                                                echo $mesto;
+                                                                            } ?></strong><button onclick="unhideCity()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button></span><br><br>
+            <div style="display: none;" id="edit-city">
                 <?php
-                if (isset($_POST['city-edit'])) {
-                    if (isset($_COOKIE['user'])) {
-                        $edit_name = $_POST['city-edit'];
-                        $stmt = $pdo->prepare("UPDATE g_users SET mesto=?");
-                        $stmt->execute(array($edit_name));
-                    } else if (isset($_COOKIE['user-login'])) {
-                        $edit_name = $_POST['city-edit'];
-                        $stmt = $pdo->prepare("UPDATE users SET mesto=? WHERE email=?");
-                        $stmt->execute(array($edit_name, $email_from_login));
-                    }
-                }
+
                 ?>
-                <form method="post" action="#">
+                <form method="post" id="update_city_form">
                     <div class="form-group d-flex">
-                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" name="city-edit">&nbsp;
-                        <input type="submit" style="border-radius: 10px;" class="btn btn-dark" value="Upraviť">
+                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="city-edit" name="city-edit">&nbsp;
+                        <input type="hidden" id="city-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
+                                                                                                        echo $email_from_login;
+                                                                                                    } ?>">
+                        <input type="submit" style="border-radius: 10px;" id="update_city" class="btn btn-dark" value="Upraviť">
                         <a onclick="hideCity()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
                     </div>
                 </form>
+                <script>
+                    $(document).ready(function() {
+                        $('#update_city_form').submit(function(e) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: root_url + "/updateuser",
+                                data: {
+                                    city: $('#city-edit').val(),
+                                    email_login: $('#city-email-login').val(),
+                                },
+                                cache: false,
+
+                                success: function(result) {
+                                    var returnedvalue = result;
+                                    $('#user_city').empty();
+                                    $('#user_city').html(returnedvalue);
+                                    $('#edit-city').hide();
+                                    $('#city-edit').empty();
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
-            <span style="padding-top: 20px">PSČ: <strong><?php if (empty($psc)) {
-                                                                echo $empty;
-                                                            } else {
-                                                                echo $psc;
-                                                            } ?></strong><button onclick="unhidePsc()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button></span><br><br>
-            <div style="display: none;" id="edit-psc" class="edit-form">
+            <span style="padding-top: 20px">PSČ: <strong id="user_psc"><?php if (empty($psc)) {
+                                                                            echo $empty;
+                                                                        } else {
+                                                                            echo $psc;
+                                                                        } ?></strong><button onclick="unhidePsc()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button></span><br><br>
+            <div style="display: none;" id="edit-psc">
                 <?php
-                if (isset($_POST['psc-edit'])) {
-                    if (isset($_COOKIE['user'])) {
-                        $edit_name = $_POST['psc-edit'];
-                        $stmt = $pdo->prepare("UPDATE g_users SET psc=?");
-                        $stmt->execute(array($edit_name));
-                    } else if (isset($_COOKIE['user-login'])) {
-                        $edit_name = $_POST['psc-edit'];
-                        $stmt = $pdo->prepare("UPDATE users SET psc=? WHERE email=?");
-                        $stmt->execute(array($edit_name, $email_from_login));
-                    }
-                }
+
                 ?>
-                <form method="post" action="#">
+                <form method="post" id="update_psc_form">
                     <div class="form-group d-flex">
-                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" name="city-edit">&nbsp;
-                        <input type="submit" style="border-radius: 10px;" class="btn btn-dark" value="Upraviť">
+                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="psc-edit" name="psc-edit">&nbsp;
+                        <input type="hidden" id="psc-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
+                                                                                                        echo $email_from_login;
+                                                                                                    } ?>">
+                        <input type="submit" style="border-radius: 10px;" id="update_psc" class="btn btn-dark" value="Upraviť">
                         <a onclick="hidePsc()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
                     </div>
                 </form>
+                <script>
+                    $(document).ready(function() {
+                        $('#update_psc_form').submit(function(e) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: root_url + "/updateuser",
+                                data: {
+                                    psc: $('#psc-edit').val(),
+                                    email_login: $('#psc-email-login').val(),
+                                },
+                                cache: false,
+
+                                success: function(result) {
+                                    var returnedvalue = result;
+                                    $('#user_psc').empty();
+                                    $('#user_psc').html(returnedvalue);
+                                    $('#edit-psc').hide();
+                                    $('#psc-edit').empty();
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
-            <span style="padding-top: 20px">Ulica: <strong><?php if (!empty($ulica)) {
+            <span style="padding-top: 20px">Ulica: <strong id="user_street"><?php if (!empty($ulica)) {
                                                                 echo $ulica;
                                                             } else if (!empty($street_l)) {
                                                                 echo $street_l;
                                                             } else {
                                                                 echo $empty;
                                                             }  ?></strong><button onclick="unhideStreet()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button></span>
-            <div style="display: none;" id="edit-street" class="edit-form">
+            <div style="display: none;" id="edit-street">
                 <?php
-                if (isset($_POST['street-edit'])) {
-                    if (isset($_COOKIE['user'])) {
-                        $edit_name = $_POST['street-edit'];
-                        $stmt = $pdo->prepare("UPDATE g_users SET ulica=?");
-                        $stmt->execute(array($edit_name));
-                    } else if (isset($_COOKIE['user-login'])) {
-                        $edit_name = $_POST['street-edit'];
-                        $stmt = $pdo->prepare("UPDATE users SET ulica=? WHERE email=?");
-                        $stmt->execute(array($edit_name, $email_from_login));
-                    }
-                }
+
                 ?>
-                <form method="post" action="#">
+                <form method="post" id="update_street_form">
                     <div class="form-group d-flex">
-                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" name="street-edit">&nbsp;
-                        <input type="submit" style="border-radius: 10px;" class="btn btn-dark" value="Upraviť">
+                        <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="street-edit" name="street-edit">&nbsp;
+                        <input type="hidden" id="street-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
+                                                                                                        echo $email_from_login;
+                                                                                                    } ?>">
+                        <input type="submit" style="border-radius: 10px;" id="update_street" class="btn btn-dark" value="Upraviť">
                         <a onclick="hideStreet()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
                     </div>
                 </form>
+                <script>
+                    $(document).ready(function() {
+                        $('#update_street_form').submit(function(e) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: root_url + "/updateuser",
+                                data: {
+                                    street: $('#street-edit').val(),
+                                    email_login: $('#street-email-login').val(),
+                                },
+                                cache: false,
+
+                                success: function(result) {
+                                    var returnedvalue = result;
+                                    $('#user_street').empty();
+                                    $('#user_street').html(returnedvalue);
+                                    $('#edit-street').hide();
+                                    $('#street-edit').empty();
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
 
         </div>
@@ -476,10 +585,10 @@ include $root_dir . "/includes/header.php";
         document.getElementById('edit-surname').style.display='none';
     }
     function unhideMail(){
-        document.getElementById('edit-email').style.display='block';
+        document.getElementById('edit-mail').style.display='block';
     }
     function hideMail(){
-        document.getElementById('edit-email').style.display='none';
+        document.getElementById('edit-mail').style.display='none';
     }
     function unhideTel(){
         document.getElementById('edit-tel').style.display='block';
