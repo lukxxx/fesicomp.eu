@@ -92,9 +92,6 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
             $(this).addClass('current');
             $("#" + tab_id).addClass('current');
         })
-
-
-
     })
 </script>
 <?php include $root_dir . "/includes/header.php"; ?>
@@ -104,7 +101,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
             <?php include $root_dir . "/includes/category-list.php"; ?>
 
         </div>
-        <div class="col-sm-12 col-md-9 col-lg-9 item_section">
+        <div onload="clickPlus()" class="col-sm-12 col-md-9 col-lg-9 item_section">
             <?php
 
 
@@ -209,6 +206,14 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
             </div>
             <br>
         </div>
+
+        <script>
+            function clickPlus(){
+
+            }
+        </script>
+
+
     </div>
 </div>
 <?php include $root_dir . "/includes/footer.php"; ?>

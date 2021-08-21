@@ -78,7 +78,7 @@ $cart = json_decode($cart);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 ?>
-                                <div class="col-sm-12 col-md-4 col-lg-3 ">
+                                <div class="col-sm-4 col-md-4 col-lg-3 ">
                                     <a class="category-link" href="<?php echo $root_url ?>/kategoria/<?php echo replaceAccents($row['k_nazov']) ?>">
                                         <div class="category-card d-flex justify-content-center" style="align-items: center; margin: 3% 0 3% 0">
                                             <span style="color: black; font-size: 17px;"> <?php echo $row['k_nazov'] ?></span>

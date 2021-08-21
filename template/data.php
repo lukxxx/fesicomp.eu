@@ -244,7 +244,7 @@ if(isset($_POST['bimbambum'])){
 ?>
     <?php include $root_dir."/includes/header.php" ?>
 
-    <div class="container" style="margin-top: 50px;">
+    <div class="container cart_desktop" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3">
                 <a style="color: black; font-size: 18px;" href="/kosik"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
@@ -257,13 +257,29 @@ if(isset($_POST['bimbambum'])){
                 <?php echo $submit_btn; ?>
             </div>
         </div>
+    </div>
+    
+    <div class="container cart_mobile" style="margin-top: 50px;">
+        <div class="row d-flex">
+            <div class="col-sm-12 col-md-3 col-lg-3" style="margin: 0 25px;">
+                <a style="color: black; font-size: 18px;" href="/kosik"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center" style="margin: 0 25px;">
+                <h2 style="font-weight: bold;">Dodacie údaje</h2>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3" style="text-align: right; margin: 0 25px;">
+                <form method="post" action="#">
+                <?php echo $submit_btn; ?>
+            </div>
+        </div>
+    </div>
     <hr>
 
 <?php if(!isset($_COOKIE['user']) && !isset($_COOKIE['user-login'])){ ?>
     
     <br>
                 <div class="login-form">
-                    <div class="container" style="padding: 5% 25% 0% 25%">
+                    <div class="container dorucovacie_udaje_form">
                         
                             
                                 <?php if($name_err != ""){

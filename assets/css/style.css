@@ -212,6 +212,7 @@ span {
     background-color: #186f18;
     cursor: pointer;
 }
+
 .sort-btn {
     all: unset;
     background: white;
@@ -264,6 +265,11 @@ span {
     border: solid 1px #e7e7e7;
 }
 
+.table_summary {
+    -webkit-box-shadow: 5px 6px 16px -2px #616161; 
+    box-shadow: 5px 2px 16px 5px #e7e7e7;
+    border-radius: 10px;
+}
 
 .pagination {
     list-style-type: none;
@@ -419,6 +425,8 @@ input{
 
 
 
+
+
 /*Aleksove responsivne veci <3*/
 @media only screen and (max-width: 576px) {
     .header_desktop {
@@ -443,6 +451,22 @@ input{
     }
 
     .cart_mobile {
+        display: block;
+    }
+
+    .summary-desktop {
+        display: none;
+    }
+
+    .summary-mobile {
+        display: block;
+    }
+
+    .final-desktop {
+        display: none;
+    }
+
+    .final-mobile {
         display: block;
     }
 
@@ -504,6 +528,10 @@ input{
         margin: 0 25px;
     }
 
+    .dorucovacie_udaje_form {
+        padding: 0 25px;
+    }
+
   }
 
 
@@ -538,6 +566,26 @@ input{
 
     .cart_mobile {
         display: none;
+    }
+
+    .summary-desktop {
+        display: block;
+    }
+
+    .summary-mobile {
+        display: none;
+    }
+
+    .final-desktop {
+        display: block;
+    }
+
+    .final-mobile {
+        display: none;
+    }
+
+    .dorucovacie_udaje_form {
+        padding: 5% 25% 0% 25%;
     }
   }
 

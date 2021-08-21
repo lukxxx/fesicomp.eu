@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 links collapse indent" id="links" style="margin-bottom: 8%;">
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 links collapse" id="links" style="margin-bottom: 8%;">
                             <div class="header-headings">
                                 <h2 class="text-center">Výpočtová technika</h2>
                                 <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
@@ -149,8 +149,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a style="color: white; font-size: 23px; padding: 1px;" href="template/cart.php">Košík </a>
-                                    <a href="template/cart.php"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i><?php if (count($cart) != 0) {
+                                    <a style="color: white; font-size: 23px; padding: 1px;" href="<?php echo $root_url?>/kosik">Košík </a>
+                                    <a href="<?php echo $root_url?>/kosik"><i style="font-size: 20px; color: white; text-decoration: none; padding: 1px;" class="fas fa-shopping-cart text-right"></i><?php if (count($cart) != 0) {
                                                                                                                                                                                                 echo "<sup style='margin-left: -15px;'><span class='dot' style='background-color: 
                                                 #B81600; border-radius: 50%; padding-left: 4px; padding-right: 4px; color: white;'> " . count($cart) . "</span></sup>";
                                                                                                                                                                                             } ?>
@@ -197,7 +197,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5 searchbar collapse indent" id="searchbar">
+                <div class="col-sm-12 col-md-5 col-lg-5 searchbar collapse" id="searchbar">
                     <div class="row">
                         <div class="col-sm-10 col-md-10 col-lg-10">
                             <form id="vyhladavanie-mobile" method="post"">
@@ -274,13 +274,6 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-10 col-md-10 col-lg-10">
-                            <?php
-                            if (isset($_POST['search-mobile'])) {
-                                $term = $_POST['search-mobile'];
-                                header("Location: .$root_url/vyhladavanie?search=$term");
-                            }
-
-                            ?>
                             <form method="post" id="vyhladavanie-tablet">
                                 <div class="form-group has-search search-box" style="position: relative;">
 
