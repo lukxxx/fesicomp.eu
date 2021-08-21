@@ -358,7 +358,6 @@ if(isset($_POST['bimbambum'])){
 if(isset($_COOKIE['user'])){ 
     
     $email = $_COOKIE['user-mail'];
-    $pdo = new PDO("mysql:host=mariadb103.websupport.sk;port=3313;dbname=compsnv_sk2", "compsnv", "Kajauhroba#2021");
     $sto = $pdo->prepare("SELECT * FROM g_users WHERE email = ?");
     $sto->execute(array($email));
     if($sto->rowCount() == 1){
@@ -378,7 +377,7 @@ if(isset($_COOKIE['user'])){
     <br>
     <div class="row text-center">
         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-            <span style="text-align: center;"><b>Prihlásený ako:</b> <a style="color: black;" href="myaccount.php"><?php echo $full_n; ?></a></span> 
+            <span style="text-align: center;"><b>Prihlásený ako:</b> <a style="color: black;" href="<?php echo $root_url?>/moj-ucet"><?php echo $full_n; ?></a></span> 
         </div>
     </div>
                 <div class="login-form">

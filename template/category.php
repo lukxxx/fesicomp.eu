@@ -168,11 +168,11 @@ $cart = json_decode($cart);
 
                                         </div>
                                         <div class="product-img justify-content-md-center">
-                                            <a href="<?php echo $root_url ?>/<?php echo replaceAccents($meno_produktu) ?>"><?php echo $cesta; ?></a>
+                                            <a href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($meno_produktu) ?>"><?php echo $cesta; ?></a>
                                         </div>
                                         <div class="product-name justify-content-md-center">
                                             <div class="heading">
-                                                <a style="color: white;" href="<?php echo $root_url ?>/<?php echo replaceAccents($meno_produktu) ?>">
+                                                <a style="color: white;" href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($meno_produktu) ?>">
                                                     <h6 class="name-prod"><?php echo mb_strimwidth($meno_produktu, 0, 30, ""); ?></h6>
                                                 </a>
                                             </div>
