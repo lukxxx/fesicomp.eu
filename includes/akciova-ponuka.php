@@ -46,7 +46,7 @@ while ($row = mysqli_fetch_object($result)) {
             <img src="assets/images/discount.png" alt="zlava" class="discount-img">
         </div>
         <div class="product-img justify-content-md-center">
-            <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
+            <a style="color: white;" href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
         </div>
         <div class="product-name d-flex justify-content-center">
             <div class="heading">
