@@ -108,7 +108,6 @@ $cart = json_decode($cart);
                 $cena = $_GET['cena'];
 
                 if ($cena === 'ASC') {
-                    echo $cena;
                     $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY p_cena ASC LIMIT $offset, $no_of_records_per_page  ";
                 } else if($cena === 'DESC') {
                     $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY p_cena DESC LIMIT $offset, $no_of_records_per_page  ";
