@@ -138,7 +138,7 @@ function onLoad(){
     })
 }
 </script>
-<div class="container" style="padding-top: 20px">
+<div class="container" style="padding: 20px 25px;">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="account-heading d-flex justify-content-center">

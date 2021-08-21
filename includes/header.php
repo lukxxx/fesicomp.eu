@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 links collapse indent" id="links" style="margin-bottom: 8%;">
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 links collapse" id="links" style="margin-bottom: 8%;">
                             <div class="header-headings">
                                 <h2 class="text-center">Výpočtová technika</h2>
                                 <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); width: auto;">
@@ -197,10 +197,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5 searchbar collapse indent" id="searchbar">
+                <div class="col-sm-12 col-md-5 col-lg-5 searchbar collapse" id="searchbar">
                     <div class="row">
                         <div class="col-sm-10 col-md-10 col-lg-10">
-                            <form method="post" action="template/search-results.php">
+                            <?php
+                            if (isset($_POST['search'])) {
+                                $term = $_POST['search'];
+                                header("Location: $root_url/vyhladavanie?search=$term");
+                            }
+
+                            ?>
+                            <form method="post" id="vyhladavanie">
                                 <div class="form-group has-search search-box" style="position: relative; z-index: 2;">
 
                                     <input style="margin-left: 10%; width: 80%; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search" class="form-control search" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
@@ -209,6 +216,7 @@
 
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -270,7 +278,7 @@
                             <?php
                             if (isset($_POST['search'])) {
                                 $term = $_POST['search'];
-                                header("Location: .$root_url/vyhladavanie?search=$term");
+                                header("Location: $root_url/vyhladavanie?search=$term");
                             }
 
                             ?>
@@ -283,13 +291,7 @@
 
                                 </div>
                             </form>
-                            <script>
-                                $("#vyhladavanie").submit(function(e) {
-                                    e.preventDefault();
-                                    var term = $('.search').val();
-                                    location.href = root_url+'/vyhladavanie?search=' + term;
-                                });
-                            </script>
+
                         </div>
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <a style="color: white;" href="<?php echo $root_url ?>/kosik"><i style="color: white; padding-top: 10px; " class="fas fa-shopping-cart"></i>

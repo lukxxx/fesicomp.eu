@@ -16,7 +16,7 @@ if(isset($_COOKIE['details'])){
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style="margin: 50px 0 50px 0;">
-                <img src="https://compsnv.sk/assets/images/error-404.svg" width="250" height="auto">
+                <img src="https://compsnv.sk/assets/images/FESI_404_01.svg" width="250" height="auto">
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center" style="margin: 50px 0 50px 0;">

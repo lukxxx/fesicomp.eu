@@ -50,7 +50,7 @@ $cart = json_decode($cart);
 <?php include $root_dir . "/includes/header.php" ?>
 <div class="container" style="padding-top: 20px">
     <div class="row">
-        <div class="col-sm-12 col-md-3 col-lg-3">
+        <div class="col-sm-12 col-md-12 col-lg-3">
             <?php include $root_dir . "/includes/category-list.php" ?>
         </div>
         <div class="col-sm-12 col-md-9 col-lg-9 item_section">
@@ -107,9 +107,9 @@ $cart = json_decode($cart);
                 if (isset($_GET['cena'])) {
                     $cena = $_GET['cena'];
                     //echo $cena;
-                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY p_cena $cena LIMIT $offset, $no_of_records_per_page  ";
+                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' and p_img !='' ORDER BY p_cena $cena LIMIT $offset, $no_of_records_per_page";
                 } else {
-                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' and p_img !='' LIMIT $offset, $no_of_records_per_page";
                 }
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     if (mysqli_stmt_execute($stmt)) {
@@ -121,9 +121,9 @@ $cart = json_decode($cart);
                                 $path_R = $root_url;
                                 $path = $path_R . "catalog/$id_produktu/$obrazok";
                                 if (file_exists($path)) {
-                                    $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/catalog/$id_produktu/$obrazok'   class='img-prod' style='max-width: 120px;max-height: 120px;'>";
+                                    $cesta = "<img loading='lazy' src='https://compsnv.sk/catalog/$id_produktu/$obrazok'   class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                 } else {
-                                    $cesta = "<img loading='lazy' src='https://fesicomp.sitecult.sk/assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
+                                    $cesta = "<img loading='lazy' src='https://compsnv.sk/assets/images/no-image.png'  class='img-prod' style='max-width: 120px;max-height: 120px;'>";
                                 }
                 ?>
                                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
