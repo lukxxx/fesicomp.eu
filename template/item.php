@@ -158,7 +158,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                             <form method="POST" class="add-c" action="<?php echo $root_url?>/addcart">
                                 <input type="hidden" class="add-quant" name="quantity" value="1">
                                 <input type="hidden" class="add-pc" name="productCode" value="<?php echo $id_produktu; ?>">
-                                <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                <button class="buy-btn" style="border-radius: 10px; margin-top: 10px; position: relative; left: 0;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                             </form>
                         </div>
                     </div>
