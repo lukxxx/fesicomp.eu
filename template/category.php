@@ -55,7 +55,7 @@ $cart = json_decode($cart);
         <div class="col-sm-12 col-md-3 col-lg-3">
             <?php include $root_dir . "/includes/category-list.php" ?>
         </div>
-        <div class="col-sm-12 col-md-9 col-lg-9">
+        <div class="col-sm-12 col-md-9 col-lg-9 item_section">
             <?php
             $stmt = $pdo->query("SELECT * FROM kategorie WHERE k_url LIKE '$kategorka'");
             while ($row = $stmt->fetch()) {
@@ -103,8 +103,9 @@ $cart = json_decode($cart);
                 <div class="col-sm-12 col-md-12 col-lg-12 ">
                     <span style="font-size: 20px; font-weight: bold;">Zoradiť cenu</span>
                     <div class="button-box" style="margin-top: 10px;">
-                        <a href="#" onclick="updateURLParameter(window.location.href, 'cena','ASC' )" class="sort-btn" role="button">Najlacnejšie</a>
-                        <a href="#" onclick="updateURLParameter(window.location.href, 'cena','DESC' )" class="sort-btn" role="button">Najdrahšie</a>
+                        <a style="margin: 1px;" href="#" onclick="updateURLParameter(window.location.href, 'cena','ASC' )" class="btn btn-dark" role="button">Najlacnejšie</a>
+                        <a style="margin: 1px;" href="#" onclick="updateURLParameter(window.location.href, 'cena','DESC' )" class="btn btn-dark" role="button">Najdrahšie</a>
+                        <a style="margin: 1px;" href="#" onclick="updateURLParameter(window.location.href, 'cena','clicks' )" class="btn btn-dark" role="button">Najobľúbenejšie</a>
                     </div>
                 </div>
             </div>
@@ -139,12 +140,18 @@ $cart = json_decode($cart);
             </div>
             <div class="d-flex flex-wrap row">
                 <?php
-                if (isset($_GET['cena'])) {
+                if(isset($_GET['cena'])){
                     $cena = $_GET['cena'];
-                    //echo $cena;
-                    $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' ORDER BY p_cena $cena LIMIT $offset, $no_of_records_per_page  ";
                 } else {
-                    $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' LIMIT $offset, $no_of_records_per_page";
+                    $cena = 'ASC';
+                }    
+
+                if ($cena === 'ASC') {
+                    $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' ORDER BY p_cena ASC LIMIT $offset, $no_of_records_per_page  ";
+                } else if($cena === 'DESC') {
+                    $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' ORDER BY p_cena DESC LIMIT $offset, $no_of_records_per_page  ";
+                } else {
+                    $sql = "SELECT * FROM produkty WHERE (p_kid IN (SELECT k_id FROM kategorie WHERE k_kid ='$kid') OR p_kid='$kid') and p_aktualni !='0' and p_cena != '' ORDER BY clicks DESC LIMIT $offset, $no_of_records_per_page";
                 }
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     if (mysqli_stmt_execute($stmt)) {
