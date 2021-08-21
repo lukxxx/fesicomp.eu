@@ -59,7 +59,7 @@ include $root_dir."/includes/header.php" ?>
     <div class="container cart_desktop" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3">
-                <a style="color: black; font-size: 18px;" href="/kosik/doprava-platba"><i class="fas fa-arrow-left"></i> Späť na dopravu a platbu</a>
+                <a style="color: black; font-size: 18px;" href="<?php echo $root_url ?>/kosik/doprava-platba"><i class="fas fa-arrow-left"></i> Späť na dopravu a platbu</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                 <h2 style="font-weight: bold; text-transform: uppercase;">súhrn objednávky</h2>
@@ -70,7 +70,7 @@ include $root_dir."/includes/header.php" ?>
     <div class="container cart_mobile" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3" style="margin: 0 25px">
-                <a style="color: black; font-size: 18px;" href="/kosik/doprava-platba"><i class="fas fa-arrow-circle-left"></i> Späť na dopravu a platbu</a>
+                <a style="color: black; font-size: 18px;" href="<?php echo $root_url ?>/kosik/doprava-platba"><i class="fas fa-arrow-circle-left"></i> Späť na dopravu a platbu</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                 <h2 style="font-weight: bold; text-transform: uppercase;">súhrn objednávky</h2>
