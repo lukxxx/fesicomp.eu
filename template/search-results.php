@@ -15,6 +15,7 @@ $cart = json_decode($cart);
         var baseURL = tempArray[0];
         var additionalURL = tempArray[1];
         var temp = "";
+        
 
         if (additionalURL) {
             var tmpAnchor = additionalURL.split("#");
@@ -91,9 +92,9 @@ $cart = json_decode($cart);
                     <hr>
                     <div class="button-box ">
                         <span>Zoradiť podľa: </span><br>
-                        <a href="#" onclick="updateURLParameter(window.location.href, 'cena','ASC' )" class="btn btn-dark" role="button">Najlacnejšie</a>
-                        <a href="#" onclick="updateURLParameter(window.location.href, 'cena','DESC' )" class="btn btn-dark" role="button">Najdrahšie</a>
-                        <a href="#" onclick="updateURLParameter(window.location.href, 'cena','clicks' )" class="btn btn-dark" role="button">Najobľúbenejšie</a>
+                        <a style="margin: 1px;" href="#" onclick="updateURLParameter(window.location.href, 'cena','ASC' )" class="btn btn-dark" role="button">Najlacnejšie</a>
+                        <a style="margin: 1px;" href="#" onclick="updateURLParameter(window.location.href, 'cena','DESC' )" class="btn btn-dark" role="button">Najdrahšie</a>
+                        <a style="margin: 1px;" href="#" onclick="updateURLParameter(window.location.href, 'cena','clicks' )" class="btn btn-dark" role="button">Najobľúbenejšie</a>
                     </div>
                 </div>
             </div>
@@ -105,7 +106,12 @@ $cart = json_decode($cart);
             </div>
             <div class="d-flex flex-wrap row">
                 <?php
-                $cena = $_GET['cena'];
+                if(isset($_GET['cena'])){
+                    $cena = $_GET['cena'];
+                } else {
+                    $cena = 'ASC';
+                }
+
 
                 if ($cena === 'ASC') {
                     $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY p_cena ASC LIMIT $offset, $no_of_records_per_page  ";
