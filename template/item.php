@@ -27,7 +27,12 @@ if (isset($id)) {
         $dostupnost = $row['p_sklad'];
         $pocet_ks = $row['p_dostup'];
         $obrazok = $row['p_img'];
+        $kliky = $row['clicks'];
     }
+
+    $clicks_plus = $kliky + 1;
+
+    $click_sql = $pdo->query("UPDATE produkty SET clicks = $clicks_plus WHERE p_nazov LIKE '$nazov'");
 }
 // if(isset($id_kat)){
 //     $sqlko = "SELECT * FROM kategorie WHERE k_id='$id_kat'";
@@ -87,6 +92,8 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
             $(this).addClass('current');
             $("#" + tab_id).addClass('current');
         })
+
+
 
     })
 </script>
