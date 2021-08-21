@@ -93,6 +93,7 @@ $cart = json_decode($cart);
                         <span>Zoradiť podľa: </span><br>
                         <a href="#" onclick="updateURLParameter(window.location.href, 'cena','ASC' )" class="btn btn-dark" role="button">Najlacnejšie</a>
                         <a href="#" onclick="updateURLParameter(window.location.href, 'cena','DESC' )" class="btn btn-dark" role="button">Najdrahšie</a>
+                        <a href="#" onclick="updateURLParameter(window.location.href, 'cena','clicks' )" class="btn btn-dark" role="button">Najobľúbenejšie</a>
                     </div>
                 </div>
             </div>
@@ -104,12 +105,15 @@ $cart = json_decode($cart);
             </div>
             <div class="d-flex flex-wrap row">
                 <?php
-                if (isset($_GET['cena'])) {
-                    $cena = $_GET['cena'];
-                    //echo $cena;
-                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' and p_img !='' ORDER BY p_cena $cena LIMIT $offset, $no_of_records_per_page";
+                $cena = $_GET['cena'];
+
+                if ($cena === 'ASC') {
+                    echo $cena;
+                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY p_cena ASC LIMIT $offset, $no_of_records_per_page  ";
+                } else if($cena === 'DESC') {
+                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY p_cena DESC LIMIT $offset, $no_of_records_per_page  ";
                 } else {
-                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' and p_img !='' LIMIT $offset, $no_of_records_per_page";
+                    $sql = "SELECT * FROM produkty WHERE p_nazov LIKE '%$search%' and p_aktualni !='0' and p_cena != '' ORDER BY clicks DESC LIMIT $offset, $no_of_records_per_page";
                 }
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     if (mysqli_stmt_execute($stmt)) {
@@ -132,11 +136,11 @@ $cart = json_decode($cart);
 
                                         </div>
                                         <div class="product-img justify-content-center">
-                                            <a style="color: white;" href="/<?php echo replaceAccents($row['p_nazov']) ?>"><?php echo $cesta ?></a>
+                                            <a style="color: white;" href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($row['p_nazov']) ?>"><?php echo $cesta ?></a>
                                         </div>
                                         <div class="product-name justify-content-md-center">
                                             <div class="heading">
-                                                <a style="color: white;" href="/<?php echo replaceAccents($row['p_nazov']) ?>">
+                                                <a style="color: white;" href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($row['p_nazov']) ?>">
                                                     <h6 class="name-prod"><?php echo mb_strimwidth($row['p_nazov'], 0, 30, ""); ?></h6>
                                                 </a>
                                             </div>

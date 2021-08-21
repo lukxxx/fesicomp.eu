@@ -50,7 +50,7 @@ include $root_dir . "/includes/header.php";
                 ?>
                         <tr>
                             <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
-                            <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url ?>/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
+                            <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
                             <th style="padding: 20px;">
                                 <form method="post" action="<?php echo $root_url?>/addcart">
                                     <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
@@ -149,7 +149,7 @@ include $root_dir . "/includes/header.php";
             ?>
                     <div style="margin: 0 25px;">
                         <div class="d-flex justify-content-between">
-                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='$root_url/" . replaceAccents($c->product->p_nazov) . "'>" . $c->product->p_nazov . "</a>" ?>
+                            <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='$root_url/produkt/" . replaceAccents($c->product->p_nazov) . "'>" . $c->product->p_nazov . "</a>" ?>
 
                             <form method="POST" action="<?php echo $root_url?>/deletecart">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
@@ -282,11 +282,11 @@ include $root_dir . "/includes/header.php";
 
                     </div>
                     <div class="product-img justify-content-md-center">
-                        <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
+                        <a style="color: white;" href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
                     </div>
                     <div class="product-name d-flex justify-content-center">
                         <div class="heading">
-                            <a style="color: white;" href="/<?php echo replaceAccents($row->p_nazov) ?>">
+                            <a style="color: white;" href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($row->p_nazov) ?>">
                                 <h6 class="name-prod"><?php echo mb_strimwidth($row->p_nazov, 0, 45, ""); ?></h6>
                             </a>
                         </div>

@@ -165,14 +165,13 @@ $cart = json_decode($cart);
                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                     <div class="product-card justify-content-md-center">
                                         <div class="discount">
-
                                         </div>
                                         <div class="product-img justify-content-md-center">
-                                            <a href="<?php echo $root_url ?>/<?php echo replaceAccents($meno_produktu) ?>"><?php echo $cesta; ?></a>
+                                            <a href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($meno_produktu) ?>"><?php echo $cesta; ?></a>
                                         </div>
                                         <div class="product-name justify-content-md-center">
                                             <div class="heading">
-                                                <a style="color: white;" href="<?php echo $root_url ?>/<?php echo replaceAccents($meno_produktu) ?>">
+                                                <a style="color: white;" href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($meno_produktu) ?>">
                                                     <h6 class="name-prod"><?php echo mb_strimwidth($meno_produktu, 0, 30, ""); ?></h6>
                                                 </a>
                                             </div>
@@ -180,7 +179,7 @@ $cart = json_decode($cart);
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12">
-                                            <div class="product-bottom justify-content-md-center">
+                                            <div class="product-bottom justify-content-flex-end">
                                                 <div class="add-to-cart justify-content-md-center">
                                                     <form method="POST" class="add-c" action="<?php echo $root_url?>/addcart">
                                                         <input type="hidden" class="add-quant" name="quantity" value="1">

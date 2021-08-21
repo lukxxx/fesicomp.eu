@@ -22,11 +22,11 @@ if ($stmt = mysqli_prepare($link, $sql)) {
 
                         </div>
                         <div class="product-img justify-content-md-center">
-                            <a style="color: white;" href="<?php echo $root_url ?>/<?php echo replaceAccents($row['p_nazov']) ?>"><img src="catalog/<?php echo $row['p_id'] ?>/<?php echo $row['p_img'] ?>" width="" class="img-prod" height="120"></a>
+                            <a style="color: white;" href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($row['p_nazov']) ?>"><img src="catalog/<?php echo $row['p_id'] ?>/<?php echo $row['p_img'] ?>" width="" class="img-prod" height="120"></a>
                         </div>
                         <div class="product-name justify-content-md-center">
                             <div class="heading">
-                                <a style="color: white;" href="<?php echo $root_url ?>/<?php echo replaceAccents($row['p_nazov']) ?>">
+                                <a style="color: white;" href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($row['p_nazov']) ?>">
                                     <h6 class="name-prod"><?php echo $row['p_nazov'] ?></h6>
                                 </a>
                             </div>

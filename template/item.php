@@ -27,7 +27,12 @@ if (isset($id)) {
         $dostupnost = $row['p_sklad'];
         $pocet_ks = $row['p_dostup'];
         $obrazok = $row['p_img'];
+        $kliky = $row['clicks'];
     }
+
+    $clicks_plus = $kliky + 1;
+
+    $click_sql = $pdo->query("UPDATE produkty SET clicks = $clicks_plus WHERE p_nazov LIKE '$nazov'");
 }
 // if(isset($id_kat)){
 //     $sqlko = "SELECT * FROM kategorie WHERE k_id='$id_kat'";
@@ -87,8 +92,6 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
             $(this).addClass('current');
             $("#" + tab_id).addClass('current');
         })
-
-        console.log("heee")
     })
 </script>
 <?php include $root_dir . "/includes/header.php"; ?>
@@ -159,7 +162,7 @@ if (file_exists("catalog/$id_produktu/$obrazok")) {
                             <form method="POST" class="add-c" action="<?php echo $root_url?>/addcart">
                                 <input type="hidden" class="add-quant" name="quantity" value="1">
                                 <input type="hidden" class="add-pc" name="productCode" value="<?php echo $id_produktu; ?>">
-                                <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
+                                <button class="buy-btn" style="border-radius: 10px; margin-top: 10px; position: relative; left: 0;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
                             </form>
                         </div>
                     </div>

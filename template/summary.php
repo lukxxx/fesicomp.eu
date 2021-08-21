@@ -105,8 +105,8 @@ include $root_dir."/includes/header.php" ?>
                     ?>
                             <tr>
                                 <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
-                                <th style="padding: 20px;"><a style='color: black;' href="/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
-                                <th style="padding: 20px;"><span style="color: #B81600; font-size: 25px;"><?php echo number_format(($c->product->p_cena * 1.2) * $c->quantity, 2, '.', '') ?>€</span></th>
+                                <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
+                                <th style="padding: 20px;"><span style="color: #B81600;"><?php echo number_format($c->product->p_cena * 1.2, 2, '.', '') ?>€</span></th>
                             </tr>
 
                     <?php

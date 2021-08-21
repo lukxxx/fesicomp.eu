@@ -21,6 +21,7 @@ get('/fesicomp.eu/registracia', 'template/register.php');
 post('/fesicomp.eu/registracia', 'template/register.php');
 
 get('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
+post('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
 
 get('/fesicomp.eu/kosik', 'template/cart.php');
 
@@ -59,6 +60,8 @@ get('/fesicomp.eu/redirect', 'template/redirect.php');
 
 post('/fesicomp.eu/redirect', 'template/redirect.php');
 
+post('/fesicomp.eu/updateuser', 'template/user-info-update.php');
+
 //---------------ADMIN ROUTES--------------------------
 
 get('/fesicomp.eu/admin', 'admin/index.php');
@@ -74,7 +77,8 @@ get('/fesicomp.eu/admin/dashboard', 'admin/dashboard/index.php');
 //---------------404 ROUTE--------------------------
 
 get('/fesicomp.eu/kategoria/$kategorka', 'template/category.php');
+get('/fesicomp.eu/produkt/$id', 'template/item.php');
 any('/fesicomp.eu/404','404.php');
-get('/fesicomp.eu/$id', 'template/item.php');
+
 
 
