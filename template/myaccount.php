@@ -223,7 +223,10 @@ include $root_dir . "/includes/header.php";
                                                                                         echo $two;
                                                                                     } else {
                                                                                         echo $empty;
-                                                                                    } ?></strong> <button onclick="unhideSurname()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button> </span><br><br>
+                                                                                    } ?></strong></span>
+            <?php if (isset($_COOKIE['user'])) {
+            } else { ?>
+            <button onclick="unhideSurname()" style="all: unset; cursor: pointer;">&nbsp; <i class="fas fa-edit"></i></button><br><br>
             <div style="display: none;" id="edit-surname">
                 <?php
 
@@ -264,6 +267,7 @@ include $root_dir . "/includes/header.php";
                     });
                 </script>
             </div>
+            <?php } ?>
             <span style="padding-top: 20px">Email: <strong id="user_mail"><?php if (!empty($email)) {
                                                                                 echo $email;
                                                                             } else if (!empty($emailik)) {
