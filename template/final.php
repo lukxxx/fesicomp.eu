@@ -37,7 +37,7 @@ include $root_dir."/includes/header.php" ?>
     <div class="container final-desktop" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3" style="margin: 0 25px">
-                <a style="color: black; font-size: 18px;" href="data.php"><i class="fas fa-arrow-left"></i> Späť na údaje</a>
+                <a style="color: black; font-size: 18px;" href="<?php echo $root_url ?>/kosik/dorucovacie-udaje"><i class="fas fa-arrow-left"></i> Späť na údaje</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 text-center" style="margin: 0 25px">
                 <h2 style="font-weight: bold; text-transform: uppercase;">spôsob dopravy a platby</h2>
@@ -48,7 +48,7 @@ include $root_dir."/includes/header.php" ?>
     <div class="container final-mobile" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3" style="margin: 0 25px">
-                <a style="color: black; font-size: 18px;" href="data.php"><i class="fas fa-arrow-circle-left"></i> Späť na údaje</a>
+                <a style="color: black; font-size: 18px;" href="<?php echo $root_url ?>/kosik/dorucovacie-udaje"><i class="fas fa-arrow-circle-left"></i> Späť na údaje</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 text-center" style="margin: 0 25px">
                 <h2 style="font-weight: bold; text-transform: uppercase;">spôsob dopravy a platby</h2>

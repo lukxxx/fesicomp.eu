@@ -10,7 +10,7 @@ include $root_dir . "/includes/header.php";
 <div class="container cart_desktop" style="margin-top: 50px;">
     <div class="row d-flex">
         <div class="col-sm-12 col-md-3 col-lg-3">
-            <a style="color: black; font-size: 18px; " href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><i class="fas fa-arrow-left"></i> Pokračovať v nákupe</a>
+            <a style="color: black; font-size: 18px; " href="<?php echo $root_url ?>"><i class="fas fa-arrow-left"></i> Pokračovať v nákupe</a>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 text-center">
             <h2 style="font-weight: bold;">KOŠÍK</h2>
@@ -120,7 +120,7 @@ include $root_dir . "/includes/header.php";
 <div class="container cart_mobile" style="margin-top: 50px;">
     <div class="row d-flex">
         <div class="col-sm-12 col-md-3 col-lg-3" style="margin: 0 25px;">
-            <a style="color: black;" href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><i class="fas fa-arrow-circle-left"></i> Pokračovať v nákupe</a>
+            <a style="color: black;" href="<?php echo $root_url ?>"><i class="fas fa-arrow-circle-left"></i> Pokračovať v nákupe</a>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 text-center" style="margin: 10px 0;">
             <h2 style="font-weight: bold;">KOŠÍK</h2>

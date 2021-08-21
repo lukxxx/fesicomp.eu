@@ -247,7 +247,7 @@ if(isset($_POST['bimbambum'])){
     <div class="container cart_desktop" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3">
-                <a style="color: black; font-size: 18px;" href="/kosik"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
+                <a style="color: black; font-size: 18px;" href="<?php echo $root_url ?>/kosik"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                 <h2 style="font-weight: bold;">Dodacie údaje</h2>
@@ -262,7 +262,7 @@ if(isset($_POST['bimbambum'])){
     <div class="container cart_mobile" style="margin-top: 50px;">
         <div class="row d-flex">
             <div class="col-sm-12 col-md-3 col-lg-3" style="margin: 0 25px;">
-                <a style="color: black; font-size: 18px;" href="/kosik"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
+                <a style="color: black; font-size: 18px;" href="<?php echo $root_url ?>/kosik"><i class="fas fa-arrow-left"></i> Späť do košíka</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 text-center" style="margin: 0 25px;">
                 <h2 style="font-weight: bold;">Dodacie údaje</h2>

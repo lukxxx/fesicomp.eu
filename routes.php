@@ -32,7 +32,6 @@ get('/fesicomp.eu/kosik/dorucovacie-udaje', 'template/data.php');
 post('/fesicomp.eu/kosik/dorucovacie-udaje', 'template/data.php');
 
 get('/fesicomp.eu/kosik/doprava-platba', 'template/final.php');
-
 post('/fesicomp.eu/kosik/doprava-platba', 'template/final.php');
 
 post('/fesicomp.eu/kosik/suhrn-objednavky', 'template/summary.php');
