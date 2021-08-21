@@ -46,6 +46,7 @@ post('/fesicomp.eu/deletecart', 'delete-cart.php');
 get('/fesicomp.eu/updatecart', 'update-cart.php');
 
 get('/fesicomp.eu/vyhladavanie','template/search-results.php');
+post('/fesicomp.eu/vyhladavanie','template/search-results.php');
 
 get('/fesicomp.eu/handler','includes/handler.php');
 
