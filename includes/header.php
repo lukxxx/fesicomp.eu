@@ -62,9 +62,13 @@
                             </form>
                             <script>
                                 $("#vyhladavanie").submit(function(e) {
-                                    e.preventDefault();
-                                    var term = $('.search').val();
-                                    location.href = root_url+'/vyhladavanie?search=' + term;
+                                    if($(".search").val() === ""){
+                                        e.preventDefault();
+                                    } else {
+                                        e.preventDefault();
+                                        var term = $('.search').val();
+                                        location.href = root_url+'/vyhladavanie?search=' + term;
+                                    }
                                 });
                             </script>
                         </div>
@@ -200,10 +204,10 @@
                 <div class="col-sm-12 col-md-5 col-lg-5 searchbar collapse" id="searchbar">
                     <div class="row">
                         <div class="col-sm-10 col-md-10 col-lg-10">
-                            <form id="vyhladavanie-mobile" method="post"">
+                            <form id="vyhladavanie-mobile" method="post">
                                 <div class="form-group has-search search-box" style="position: relative; z-index: 2;">
 
-                                    <input style="margin-left: 10%; width: 80%; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" class="form-control search" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
+                                    <input style="margin-left: 10%; width: 80%; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" class="form-control search-input-mobile" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
                                     <div class="result" style="margin-left: 10%; width: 100%; display: none; margin-top: -9vw; width: 80%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
 
@@ -211,10 +215,14 @@
                             </form>
                             <script>
                                 $("#vyhladavanie-mobile").submit(function(e) {
-                                    e.preventDefault();
-                                    var term = $('.search').val();
-                                    location.href = root_url+'/vyhladavanie?search=' + term;
-                                });
+                                    if($(".search-input-mobile").val() === ""){
+                                        e.preventDefault();
+                                    } else {
+                                        e.preventDefault();
+                                        var term = $('.search-input-mobile').val();
+                                        location.href = root_url+'/vyhladavanie?search=' + term;
+                                    }
+                                });                                
                             </script>
                         </div>
                     </div>
@@ -277,7 +285,7 @@
                             <form method="post" id="vyhladavanie-tablet">
                                 <div class="form-group has-search search-box" style="position: relative;">
 
-                                    <input style="position: relative; z-index: 5 !important; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" class="form-control search" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
+                                    <input style="position: relative; z-index: 5 !important; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" class="form-control search-input-tablet" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
                                     <div class="result" style="z-index: 2 !important;position: absolute; display: none; margin-top: -1.5vw; width: 100%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
 
@@ -285,9 +293,13 @@
                             </form>
                             <script>
                                 $("#vyhladavanie-tablet").submit(function(e) {
-                                    e.preventDefault();
-                                    var term = $('.search').val();
-                                    location.href = root_url+'/vyhladavanie?search=' + term;
+                                    if($(".search-input-tablet").val() === ""){
+                                        e.preventDefault();
+                                    } else {
+                                        e.preventDefault();
+                                        var term = $('.search-input-tablet').val();
+                                        location.href = root_url+'/vyhladavanie?search=' + term;
+                                    }
                                 });
                             </script>
                         </div>
