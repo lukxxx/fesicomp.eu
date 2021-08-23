@@ -106,7 +106,7 @@ include $root_dir."/includes/header.php" ?>
                             <tr>
                                 <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
                                 <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
-                                <th style="padding: 20px;"><span style="color: #B81600;"><?php echo number_format($c->product->p_cena * 1.2, 2, '.', '') ?>€</span></th>
+                                <th style="padding: 20px;"><span style="color: #B81600; font-size: 25px;"><?php echo number_format($c->product->p_cena * 1.2, 2, '.', '') ?>€</span></th>
                             </tr>
 
                     <?php
@@ -127,7 +127,7 @@ include $root_dir."/includes/header.php" ?>
         <div class="row" style="margin: 50px 0;">
             <div class="col-sm-12 col-md-12 col-lg-12 summary-order-card" style="background-color: white; padding: 40px; border: 1px solid #e8e8e8 !important; border-radius: 10px;">
                 <div class="row">
-                    <div class="col-12 col-sm-4">
+                    <div class="col-12 col-sm-12 col-md-4">
                         <span style="font-size: 28px; text-align: left; font-weight: bold;">Fakturačné údaje:</span>
                         <hr>
                         <div class="text-left">
@@ -137,7 +137,7 @@ include $root_dir."/includes/header.php" ?>
                             <span style="font-size: 18px"><b>Adresa doručenia: &nbsp&nbsp</b> <?php echo " ".$city.", ".$street.", ".$psc ?> </span><br><br>    
                         </div> 
                     </div>
-                    <div class="col-12 col-sm-4">
+                    <div class="col-12 col-sm-12 col-md-4">
                         <span style="font-size: 28px; text-align: left; font-weight: bold;">Doprava a platba:</span>
                         <hr>
                         <div class="text-left">
@@ -145,7 +145,7 @@ include $root_dir."/includes/header.php" ?>
                             <span style="font-size: 18px"><b>Spôsob dopravy: &nbsp&nbsp</b> <?php echo " ".$doprava; ?> </span><br>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-4 text-center" style="border-left: 1px solid #e8e8e8; display: flex; justify-content: center; align-items: center">
+                    <div class="col-12 col-sm-12 col-md-4 text-center" style="border-left: 1px solid #e8e8e8; display: flex; justify-content: center; align-items: center">
                         <div>
                             <?php
                                 if (isset($total) && $total != 0) {

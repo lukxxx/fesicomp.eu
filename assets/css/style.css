@@ -80,6 +80,7 @@ span {
 .brand {
     display: flex;
     padding: 15px;
+    justify-content: center;
 }
 .header-headings {
     padding: 0 15px;
@@ -585,7 +586,7 @@ input{
     }
 
     .dorucovacie_udaje_form {
-        padding: 5% 25% 0% 25%;
+        padding: 1% 25% 0% 25%;
     }
   }
 

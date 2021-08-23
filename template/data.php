@@ -202,7 +202,7 @@ if(isset($_POST['bimbambum'])){
             $remember = false;
         }
         if($name_err != "" || $surname_err != "" || $email_err != "" || $tel_err != "" || $city_err != "" || $street_err != "" || $psc_err != ""){
-        echo "$name_err";
+
         } else {
             $details = isset($_COOKIE["details"]) ? $_COOKIE["details"] : "[]";
             $details = json_decode($details);
@@ -283,41 +283,56 @@ if(isset($_POST['bimbambum'])){
                         
                             
                                 <?php if($name_err != ""){
-                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="name" type="text" placeholder="Meno (povinné)">';
+                                    echo '<label><strong>Meno:</strong></label>';
+                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="name" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="name" type="text" placeholder="Meno (povinné)">';
+                                    echo '<label><strong>Meno:</strong></label>';
+                                    echo '<input class="form-control" name="name" type="text" placeholder="Povinné">';
                                 }
                                 if($surname_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="surname" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<label><strong>Priezvisko:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="surname" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="surname" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<label><strong>Priezvisko:</strong></label>';
+                                    echo '<input class="form-control" name="surname" type="text" placeholder="Povinné">';
                                 }
                                 if($email_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<label><strong>E-mail:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<label><strong>E-mail:</strong></label>';
+                                    echo '<input class="form-control" name="email" type="email" placeholder="Povinné">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label><strong>Telefónne číslo:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon" id="phonik" type="tel" onkeyup="OpravaTel(this)" maxlength="12" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label><strong>Telefónne číslo:</strong></label>';
+                                    echo '<input class="form-control" name="telefon" id="phonik" type="tel" onkeyup="OpravaTel(this)" maxlength="12" placeholder="Povinné">';
                                 }
                                 if($city_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<label><strong>Mesto:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="city" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<label><strong>Mesto:</strong></label>';
+                                    echo '<input class="form-control" name="city" type="text" placeholder="Povinné">';
                                 }
                                 if($street_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<label><strong>Ulica:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="street" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<label><strong>Ulica:</strong></label>';
+                                    echo '<input class="form-control" name="street" type="text" placeholder="Povinné">';
                                 }
                                 if($psc_err != ""){
+                                    echo '<label><strong>PSČ:</strong></label>';
                                     echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" onkeyup="OpravaPsc(this)"  name="psc" maxlength="6" type="tel" placeholder="PSČ (povinné)">';
                                 } else {
-                                    echo '<input class="form-control" name="psc" type="tel" onkeyup="OpravaPsc(this)" maxlength="6" placeholder="PSČ (povinné)">';
+                                    echo '<label><strong>PSČ:</strong></label>';
+                                    echo '<input class="form-control" name="psc" type="tel" onkeyup="OpravaPsc(this)" maxlength="6" placeholder="Povinné">';
                                 }
-                                echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
+                                echo '<label><strong>Poznámka:</strong></label>';
+                                echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Voliteľné"></textarea>';
                                 ?>
                                     
                             <br>
@@ -402,41 +417,56 @@ if(isset($_COOKIE['user'])){
   
                             <div class="form-group" id="saved_data" style="<?php if(isset($_POST['new_data'])){ echo $hide;} else { echo $show; } ?>">
                                 <?php if($name_err != ""){
-                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Meno (povinné)">';
+                                    echo '<label for><strong>Meno:</strong></label>';
+                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="name" type="text" value="'.$first_name.'" placeholder="Meno (povinné)">';
+                                    echo '<label for><strong>Meno:</strong></label>';
+                                    echo '<input class="form-control" name="name" type="text" value="'.$first_name.'" placeholder="Povinné">';
                                 }
                                 if($surname_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="surname" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<label for><strong>Priezvisko:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="surname" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="surname" type="text" value="'.$second_name.'" placeholder="Priezvisko (povinné)">';
+                                    echo '<label for><strong>Priezvisko:</strong></label>';
+                                    echo '<input class="form-control" name="surname" type="text" value="'.$second_name.'" placeholder="Povinné">';
                                 }
                                 if($email_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<label for><strong>E-mail:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="email" type="email" value="'.$email.'" placeholder="E-mail (povinné)">';
+                                    echo '<label for><strong>Email:</strong></label>';
+                                    echo '<input class="form-control" name="email" type="email" value="'.$email.'" placeholder="Povinné">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" maxlength="12" onkeyup="OpravaTel(this)" type="tel" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label for><strong>Telefónne číslo:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" maxlength="12" onkeyup="OpravaTel(this)" type="tel" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon" id="phonik" value="'.$telefon.'" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label for><strong>Telefónne číslo:</strong></label>';
+                                    echo '<input class="form-control" name="telefon" id="phonik" value="'.$telefon.'" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 }
                                 if($city_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<label for><strong>Mesto:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="city" type="text" value="'.$mesto.'" placeholder="Mesto (povinné)">';
+                                    echo '<label for><strong>Mesto:</strong></label>';
+                                    echo '<input class="form-control" name="city" type="text" value="'.$mesto.'" placeholder="Povinné">';
                                 }
                                 if($street_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<label for><strong>Ulica:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="street" type="text" value="'.$ulica.'" placeholder="Ulica (povinné)">';
+                                    echo '<label for><strong>Ulica:</strong></label>';
+                                    echo '<input class="form-control" name="street" type="text" value="'.$ulica.'" placeholder="Povinné">';
                                 }
                                 if($psc_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
+                                    echo '<label for><strong>PSČ:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="psc" type="number" value="'.$psc.'" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
+                                    echo '<label for><strong>PSČ:</strong></label>';
+                                    echo '<input class="form-control" name="psc" type="number" value="'.$psc.'" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="Povinné">';
                                 }
-                                echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
+                                echo '<label for><strong>Poznámka:</strong></label>';
+                                echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Voliteľné"></textarea>';
                                 ?>
                             </div>   
                             <script>
@@ -457,40 +487,55 @@ if(isset($_COOKIE['user'])){
                             </script>  
                             <div class="form-group" id="new_data" style="<?php if(isset($_POST['new_data'])){ echo $show;} else { echo $hide; } ?>">
                                 <?php if($name_new_err != ""){
-                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Meno (povinné)">';
+                                    echo '<label for><strong>Meno:</strong></label>';
+                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="name_new" type="text" placeholder="Meno (povinné)">';
+                                    echo '<label for><strong>Meno:</strong></label>';
+                                    echo '<input class="form-control" name="name_new" type="text" placeholder="Povinné">';
                                 }
                                 if($surname_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="surname" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<label for><strong>Priezvisko:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="surname" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="surname_new" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<label for><strong>Priezvisko:</strong></label>';
+                                    echo '<input class="form-control" name="surname_new" type="text" placeholder="Povinné">';
                                 }
                                 if($email_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<label for><strong>E-mail:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="email_new" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<label for><strong>E-mail:</strong></label>';
+                                    echo '<input class="form-control" name="email_new" type="email" placeholder="Povinné">';
                                 }
                                 if($tel_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label for><strong>Telefónne číslo:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label for><strong>Telefónne číslo:</strong></label>';
+                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 }
                                 if($city_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<label for><strong>Mesto:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="city_new" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<label for><strong>Mesto:</strong></label>';
+                                    echo '<input class="form-control" name="city_new" type="text" placeholder="Povinné">';
                                 }
                                 if($street_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<label for><strong>Ulica:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="street_new" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<label for><strong>Ulica:</strong></label>';
+                                    echo '<input class="form-control" name="street_new" type="text" placeholder="Povinné">';
                                 }
                                 if($psc_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" maxlength="6" onkeyup="OpravaPsc(this)" type="number" placeholder="PSČ (povinné)">';
+                                    echo '<label for><strong>PSČ:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" maxlength="6" onkeyup="OpravaPsc(this)" type="number" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="psc_new" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
+                                    echo '<label for><strong>PSČ:</strong></label>';
+                                    echo '<input class="form-control" name="psc_new" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="Povinné">';
                                 }
+                                echo '<label for><strong>Poznámka:</strong></label>';
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note_new" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
                                 <br>
@@ -593,41 +638,56 @@ if(isset($_COOKIE['user-login'])){
   
                             <div class="form-group" id="saved_data" style="<?php if(isset($_POST['new_data'])){ echo $hide;} else { echo $show; } ?>">
                                 <?php if($name_err != ""){
-                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Meno (povinné)">';
+                                    echo '<label for><strong>Meno:</strong></label>';
+                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" class="input-form" name="name" type="text" value="'.$first_name.'" placeholder="Meno (povinné)">';
+                                    echo '<label for><strong>Meno:</strong></label>';
+                                    echo '<input class="form-control" class="input-form" name="name" type="text" value="'.$first_name.'" placeholder="Povinné">';
                                 }
                                 if($surname_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="surname" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<label for><strong>Priezvisko:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="surname" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" class="input-form" name="surname" type="text" value="'.$second_name.'" placeholder="Priezvisko (povinné)">';
+                                    echo '<label for><strong>Priezvisko:</strong></label>';
+                                    echo '<input class="form-control" class="input-form" name="surname" type="text" value="'.$second_name.'" placeholder="Povinné">';
                                 }
                                 if($email_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<label for><strong>Email:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" class="input-form" name="email" type="email" value="'.$email.'" placeholder="E-mail (povinné)">';
+                                    echo '<label for><strong>E-mail:</strong></label>';
+                                    echo '<input class="form-control" class="input-form" name="email" type="email" value="'.$email.'" placeholder="Povinné">';
                                 }
                                 if($tel_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label for><strong>Telefón:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon" class="input-form" id="phonik" value="'.$telefon.'" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<label for><strong>Telefón:</strong></label>';
+                                    echo '<input class="form-control" name="telefon" class="input-form" id="phonik" value="'.$telefon.'" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 }
                                 if($city_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<label for><strong>Mesto:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" class="input-form" name="city" type="text" value="'.$mesto.'" placeholder="Mesto (povinné)">';
+                                    echo '<label for><strong>Mesto:</strong></label>';
+                                    echo '<input class="form-control" class="input-form" name="city" type="text" value="'.$mesto.'" placeholder="Povinné">';
                                 }
                                 if($street_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<label for><strong>Ulica:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" class="input-form" name="street" type="text" value="'.$ulica.'" placeholder="Ulica (povinné)">';
+                                    echo '<label for><strong>Ulica:</strong></label>';
+                                    echo '<input class="form-control" class="input-form" name="street" type="text" value="'.$ulica.'" placeholder="Povinné">';
                                 }
                                 if($psc_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
+                                    echo '<label for><strong>PSČ:</strong></label>';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" class="input-form" name="psc" type="number" value="'.$psc.'" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
+                                    echo '<label for><strong>PSČ:</strong></label>';
+                                    echo '<input class="form-control" class="input-form" name="psc" type="number" value="'.$psc.'" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="Povinné">';
                                 }
-                                echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Poznámka..."></textarea>';
+                                echo '<label for><strong>Poznámka:</strong></label>';
+                                echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note" type="text" placeholder="Voliteľné"></textarea>';
                                 ?>
                             </div>   
                             <script>
@@ -653,39 +713,39 @@ if(isset($_COOKIE['user-login'])){
                             </script>  
                             <div class="form-group" id="new_data" style="<?php if(isset($_POST['new_data'])){ echo $show;} else { echo $hide; } ?>">
                                 <?php if($name_new_err != ""){
-                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Meno (povinné)">';
+                                    echo '<input autofocus style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="text" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="name_new" type="text" placeholder="Meno (povinné)">';
+                                    echo '<input class="form-control" name="name_new" type="text" placeholder="Povinné">';
                                 }
                                 if($surname_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="surname" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="surname" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="surname_new" type="text" placeholder="Priezvisko (povinné)">';
+                                    echo '<input class="form-control" name="surname_new" type="text" placeholder="Povinné">';
                                 }
                                 if($email_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" name="email" type="email" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="email_new" type="email" placeholder="E-mail (povinné)">';
+                                    echo '<input class="form-control" name="email_new" type="email" placeholder="Povinné">';
                                 }
                                 if($tel_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control" id="phonik" name="telefon" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Telefónne číslo (povinné)">';
+                                    echo '<input class="form-control" name="telefon_new" id="phonik" type="tel" maxlength="12" onkeyup="OpravaTel(this)" placeholder="Povinné">';
                                 }
                                 if($city_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="city" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="city_new" type="text" placeholder="Mesto (povinné)">';
+                                    echo '<input class="form-control" name="city_new" type="text" placeholder="Povinné">';
                                 }
                                 if($street_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="street" type="text" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="street_new" type="text" placeholder="Ulica (povinné)">';
+                                    echo '<input class="form-control" name="street_new" type="text" placeholder="Povinné">';
                                 }
                                 if($psc_new_err != ""){
-                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
+                                    echo '<input style="box-shadow: 0 0 8px red; outline: 0;" class="form-control"  name="psc" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="Povinné">';
                                 } else {
-                                    echo '<input class="form-control" name="psc_new" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="PSČ (povinné)">';
+                                    echo '<input class="form-control" name="psc_new" type="number" maxlength="6" onkeyup="OpravaPsc(this)" placeholder="Povinné">';
                                 }
                                 echo '<textarea  style="resize: none;" rows="4" class="form-control" name="note_new" type="text" placeholder="Poznámka..."></textarea>';
                                 ?>
