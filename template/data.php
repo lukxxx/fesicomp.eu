@@ -557,7 +557,6 @@ if(isset($_COOKIE['user'])){
 <?php }  
 if(isset($_COOKIE['user-login'])){ 
     $email = $_COOKIE['user-login'];
-    $pdo = new PDO("mysql:host=mariadb103.websupport.sk;port=3313;dbname=compsnv_sk2", "compsnv", "Kajauhroba#2021");
     $sto = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $sto->execute(array($email));
     if($sto->rowCount() == 1){
@@ -584,12 +583,12 @@ if(isset($_COOKIE['user-login'])){
     <br>
     <div class="row text-center">
         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-            <span style="text-align: center;"><b>Prihlásený ako:</b> <a style="color: black;" href="myaccount.php"><?php echo $full_n; ?></a></span> 
+            <span style="text-align: center;"><b>Prihlásený ako:</b> <a style="color: black;" href="<?php echo $root_url?>/moj-ucet"><?php echo $full_n; ?></a></span> 
         </div>
     </div>
                 <div class="login-form">
                     
-                    <div class="container" style="padding: 5% 25% 0% 25%">
+                    <div class="container" style="padding: 5% 10% 0% 10%">
   
                             <div class="form-group" id="saved_data" style="<?php if(isset($_POST['new_data'])){ echo $hide;} else { echo $show; } ?>">
                                 <?php if($name_err != ""){

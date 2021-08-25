@@ -6,6 +6,10 @@ if($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs"){
 }
 if(!isset($_COOKIE['details'])){
     header("Location: $root_url/");
+} else if(!isset($_COOKIE['details2'])){
+    header("Location: $root_url/");
+} else if(!isset($_COOKIE['cart'])){
+    header("Location: $root_url/");
 }
 $details = isset($_COOKIE["details"]) ? $_COOKIE["details"] : "[]";
 $details = json_decode($details);
