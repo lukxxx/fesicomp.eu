@@ -25,6 +25,9 @@ post('/fesicomp.eu/moj-ucet', 'template/myaccount.php');
 
 get('/fesicomp.eu/kosik', 'template/cart.php');
 
+post('/fesicomp.eu/objednavka-dokoncena', 'template/checkout.php');
+get('/fesicomp.eu/objednavka-dokoncena', 'template/checkout.php');
+
 get('/fesicomp.eu/mobile', 'includes/like.php');
 
 get('/fesicomp.eu/kosik/dorucovacie-udaje', 'template/data.php');
