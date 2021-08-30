@@ -15,7 +15,7 @@ $details = isset($_COOKIE["details"]) ? $_COOKIE["details"] : "[]";
 $details = json_decode($details);
 
 $details2 = isset($_COOKIE["details2"]) ? $_COOKIE["details2"] : "[]";
-$details2 = json_decode($details);
+$details2 = json_decode($details2);
 
 
 
@@ -25,11 +25,12 @@ foreach ($cart as $c) {
     $total += $c->product->p_cena * $c->quantity;
 }
 
-$str=rand();
-$result = md5($str);
-echo $result;
+$str = rand();
+$uq_n = md5($str);
 
 if (isset($_POST["summary"])) {
+    unset($details2);
+    $details2 = array();
     if (isset($_POST["platba"])) {
         $platba = $_POST["platba"];
         if ($platba == "hotovost") {
@@ -57,7 +58,7 @@ if (isset($_POST["summary"])) {
         "platba" => $platba,
         "doprava" => $doprava,
     ));
-    setcookie('details2', json_encode($details2), time() + 8600, "/");
+    setcookie('details2', json_encode($details2), time() + 3600, "/");
     foreach ($details as $d) {
         $name = $d->name;
         $surname = $d->surname;
@@ -67,10 +68,7 @@ if (isset($_POST["summary"])) {
         $street = $d->street;
         $psc = $d->psc;
     }
-    foreach ($details2 as $d) {
-        $platba = $d->platba;
-        $doprava = $d->doprava;
-    }
+    
 } else {
     foreach ($details as $d) {
         $name = $d->name;
@@ -86,6 +84,7 @@ if (isset($_POST["summary"])) {
         $doprava = $d->doprava;
     }
 }
+echo "ZROB POCET KUSOV K PRODUKTU";
 include $root_dir . "/includes/header.php" ?>
 
 
@@ -189,7 +188,9 @@ include $root_dir . "/includes/header.php" ?>
                             <span style="color: #636363; padding-top: 20px;">Cena bez DPH: <strong><?php echo $total . "€"; ?></strong></span>
                         <?php
                         } ?> <br>
-                        <button type="button" style="font-weight: 400; font-size: 20px; position: relative" class="buy-btn">Dokončiť objednávku</button>
+                        <form method="POST" id="desktop-finish" action="<?php echo $root_url; ?>/objednavka-dokoncena?h=<?php echo $uq_n; ?>">
+                            <button type="submit" style="font-weight: 400; font-size: 20px; position: relative" class="buy-btn">Dokončiť objednávku</button>
+                        </form>
                     </div>
                 </div>
             </div>
