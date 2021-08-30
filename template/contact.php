@@ -5,16 +5,34 @@
 
             $username = $_POST['name'];
             $userEmail = $_POST['email'];
-            $messageSubject = "Nova sprava od zakaznika";
+            $messageSubject = "Nová správa od zákazníka";
             $message = $_POST['message'];
 
-            $to = "matej.roch4@gmail.com";
-            $body = "";
+            $to = "uhrin.alex60@gmail.com";
+            $body = "
+            <html>
+                <body>
+                <section class='messageHeader' style='display: flex; flex-direction: row;'>
+                    <img src='https://compsnv.sk/assets/images/brand/logo.png' width='50' height='100%'>
+                    <h2 style='color: #C21800; margin-left: 10px;'>Správa od zákazníka</h2>
+                </section>
+                <section class'messageBody'>
+                    <h5>Správa:</h5>
+                    <p>".$message."</p>
+                </section>
+                </body>
+            </html>
+            ";
 
-            $body .= "From: ".$username. "\r\n";
+            $body .= "Od: ".$username. "\r\n";
             $body .= "Email: ".$userEmail. "\r\n";
-            $body .= "Message: ".$message. "\r\n";
-            mail($to,$messageSubject,$body);
+
+            // More headers
+            $headers .= "CC: susan@example.com\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+            mail($to,$messageSubject,$body,$headers);
             $sent_message = true;
         }
 }
