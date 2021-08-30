@@ -48,7 +48,7 @@ if (isset($photo) && isset($email) && isset($idtoken) && isset($full_name)) {
     $sto->execute(array($email));
     if ($sto->rowCount() == 1) {
         $row = $sto->fetch(PDO::FETCH_ASSOC);
-        $id_zakaznika = $row['id'];
+        $id_zakaznika = $row['id'] . "G";
         $emailik = $row['email'];
         $first_name = $row['meno'];
         $second_name = $row['priezvisko'];
@@ -71,7 +71,7 @@ if (isset($photo) && isset($email) && isset($idtoken) && isset($full_name)) {
     $sto->execute(array($email_from_login));
     if ($sto->rowCount() == 1) {
         $row = $sto->fetch(PDO::FETCH_ASSOC);
-        $id_zakaznika = $row['id'];
+        $id_zakaznika = $row['id'] . "L";
         $emailik = $row['email'];
         $telefon_login = $row['telefon'];
         $meno_l = $row['meno'];
@@ -93,7 +93,7 @@ if (isset($photo) && isset($email) && isset($idtoken) && isset($full_name)) {
     $sth->execute(array($em));
     if ($sth->rowCount() == 1) {
         $row = $sth->fetch(PDO::FETCH_ASSOC);
-        $id_zakaznika = $row['id'];
+        $id_zakaznika = $row['id'] . "G";
         $emailik_g = $row['email'];
         $first = $row['meno'];
         $second = $row['priezvisko'];
@@ -546,8 +546,8 @@ include $root_dir . "/includes/header.php";
                             <div class="form-group d-flex">
                                 <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="com-name-edit" name="com-name-edit">&nbsp;
                                 <input type="hidden" id="com-name-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
-                                                                                                                echo $email_from_login;
-                                                                                                            } ?>">
+                                                                                                                    echo $email_from_login;
+                                                                                                                } ?>">
                                 <input type="submit" style="border-radius: 10px;" id="update_com_name" class="btn btn-dark" value="Upraviť">
                                 <a onclick="hideComName()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
@@ -591,8 +591,8 @@ include $root_dir . "/includes/header.php";
                             <div class="form-group d-flex">
                                 <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="com-street-edit" name="com-street-edit">&nbsp;
                                 <input type="hidden" id="com-street-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
-                                                                                                                echo $email_from_login;
-                                                                                                            } ?>">
+                                                                                                                    echo $email_from_login;
+                                                                                                                } ?>">
                                 <input type="submit" style="border-radius: 10px;" id="update_com_street" class="btn btn-dark" value="Upraviť">
                                 <a onclick="hideComStreet()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
@@ -636,8 +636,8 @@ include $root_dir . "/includes/header.php";
                             <div class="form-group d-flex">
                                 <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="com-city-edit" name="com-city-edit">&nbsp;
                                 <input type="hidden" id="com-city-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
-                                                                                                                echo $email_from_login;
-                                                                                                            } ?>">
+                                                                                                                    echo $email_from_login;
+                                                                                                                } ?>">
                                 <input type="submit" style="border-radius: 10px;" id="update_com_city" class="btn btn-dark" value="Upraviť">
                                 <a onclick="hideComCity()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
@@ -681,8 +681,8 @@ include $root_dir . "/includes/header.php";
                             <div class="form-group d-flex">
                                 <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="com-psc-edit" name="com-psc-edit">&nbsp;
                                 <input type="hidden" id="com-psc-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
-                                                                                                                echo $email_from_login;
-                                                                                                            } ?>">
+                                                                                                                    echo $email_from_login;
+                                                                                                                } ?>">
                                 <input type="submit" style="border-radius: 10px;" id="update_com_psc" class="btn btn-dark" value="Upraviť">
                                 <a onclick="hideComPsc()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
@@ -730,8 +730,8 @@ include $root_dir . "/includes/header.php";
                             <div class="form-group d-flex">
                                 <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="com-ico-edit" name="com-ico-edit">&nbsp;
                                 <input type="hidden" id="com-ico-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
-                                                                                                                echo $email_from_login;
-                                                                                                            } ?>">
+                                                                                                                    echo $email_from_login;
+                                                                                                                } ?>">
                                 <input type="submit" style="border-radius: 10px;" id="update_com_ico" class="btn btn-dark" value="Upraviť">
                                 <a onclick="hideComIco()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
@@ -775,8 +775,8 @@ include $root_dir . "/includes/header.php";
                             <div class="form-group d-flex">
                                 <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="com-dic-edit" name="com-dic-edit">&nbsp;
                                 <input type="hidden" id="com-dic-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
-                                                                                                                echo $email_from_login;
-                                                                                                            } ?>">
+                                                                                                                    echo $email_from_login;
+                                                                                                                } ?>">
                                 <input type="submit" style="border-radius: 10px;" id="update_com_dic" class="btn btn-dark" value="Upraviť">
                                 <a onclick="hideComDic()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
@@ -820,8 +820,8 @@ include $root_dir . "/includes/header.php";
                             <div class="form-group d-flex">
                                 <input style="width: 50%; border-radius: 10px;" type="text" class="form-control" id="com-icd-edit" name="com-icd-edit">&nbsp;
                                 <input type="hidden" id="com-icd-email-login" name="email-from-login" value="<?php if (isset($email_from_login)) {
-                                                                                                                echo $email_from_login;
-                                                                                                            } ?>">
+                                                                                                                    echo $email_from_login;
+                                                                                                                } ?>">
                                 <input type="submit" style="border-radius: 10px;" id="update_com_icd" class="btn btn-dark" value="Upraviť">
                                 <a onclick="hideComIcd()" style="all: 
                             unset; cursor: pointer;">&nbsp; <i style="color: red;" class="fas fa-times-circle"></i></a>
@@ -863,7 +863,7 @@ include $root_dir . "/includes/header.php";
             <h3>Vaše objednávky:</h3>
             <hr>
             <?php
-            $sth = $pdo->prepare("SELECT * FROM faktury WHERE id_zakaznika LIKE ?");
+            $sth = $pdo->prepare("SELECT * FROM orders WHERE zakaznik LIKE ?");
             $sth->execute(array($id_zakaznika));
             $number_of_rows = $sth->rowCount();
             if ($number_of_rows > 0) {
@@ -872,40 +872,34 @@ include $root_dir . "/includes/header.php";
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Č. objednávky</th>
-                            <th scope="col">Dátum objednávky</th>
+                            <th scope="col">Dátum vytvorenia objednávky</th>
                             <th scope="col">Cena (€)</th>
-                            <th scope="col">Faktúra</th>
                             <th scope="col">Stav</th>
+                            <th scope="col">Produkty</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+                         $produkt = "";
+                        while ($row = $sth->fetch()) {
                             $id_objednavky = $row['id'];
-                            $meno = $row['meno'];
-                            $priezvisko = $row['priezvisko'];
-                            $email = $row['email'];
-                            $telefon = $row['telefon'];
-                            $zaplatene = $row['zaplatene'];
-                            $vybavene = $row['vybavene'];
-                            $zlava = $row['zlava'];
-                            $datum = $row['datum'];
-                            $sto = $pdo->prepare("SELECT * FROM predane_produkty WHERE id_faktury LIKE ?");
-                            $sto->execute(array($id_objednavky));
-                            while ($bow = $sto->fetch(PDO::FETCH_ASSOC)) {
-                                $faktura = "invoice.php?fid=$id_objednavky";
-                                $cena = $bow['cena_ks'];
-                                $produkt = $bow['cena_ks'];
+                            $cena_objednavky = $row['cena_objednavky'];
+                            $datum = $row['datum_vytvorenia'];
+                            $stav = $row['stav_objednavky'];
+                            $stmt = $pdo->prepare("SELECT * FROM predane_produkty WHERE id_faktury LIKE ?");
+                            $stmt->execute([$id_objednavky]);
+                            if($bow = $sto->fetch())
+                                $produkt = $bow['id_produktu'];
                         ?>
                                 <tr>
                                     <th scope="row"><?php echo $id_objednavky ?></th>
                                     <td><?php echo $datum ?></td>
-                                    <td><?php echo $cena ?>€</td>
-                                    <td><?php echo "<a href='$faktura'>Faktúra IN-$id_objednavky</a>"; ?></td>
-                                    <td><?php echo "Čakajúca" ?></td>
+                                    <td><?php echo $cena_objednavky ?>€</td>
+                                    <td><?php echo $stav; ?></td>
+                                    <td><?php echo $produkt ?></td>
                                 </tr>
                     <?php }
-                        }
+                        
                     } else {
                         echo "<div style='text-align: center; padding-top: 40px; padding-bottom: 40px;'>";
                         echo "<span>Bohužiaľ u nás ešte nemáte žiadne objednávky :(</span>";

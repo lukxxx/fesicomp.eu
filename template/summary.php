@@ -5,8 +5,8 @@ if ($_SERVER['DOCUMENT_ROOT'] == "C:/xampp/htdocs") {
     include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php";
 }
 
-// if(!isset($_COOKIE['details'])){
-//     header("Location: /kosik/dorucovacie-udaje");
+// if(!isset($_COOKIE['details']) || !isset($_COOKIE['details2'])){
+//     header("Location: $root_url/");
 // }
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);

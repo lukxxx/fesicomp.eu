@@ -83,7 +83,7 @@ if(isset($_POST['bimbambum'])){
         }
         $note_new = $_POST['note_new'];
         
-        if(isset($_POST['type']) == "1"){
+        if(!empty($_POST['company-name'])){
             $company_name = $_POST['company-name'];
             $company_street = $_POST['company-street'];
             $company_city = $_POST['company-city'];
@@ -164,7 +164,7 @@ if(isset($_POST['bimbambum'])){
         }
         $note = $_POST['note'];
         
-        if(isset($_POST['type']) == "1"){
+        if(!empty($_POST['company-name'])){
             $company_name = $_POST['company-name'];
             $company_street = $_POST['company-street'];
             $company_city = $_POST['company-city'];
