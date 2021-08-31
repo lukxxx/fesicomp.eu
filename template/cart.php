@@ -52,12 +52,34 @@ include $root_dir . "/includes/header.php";
                             <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
                             <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
                             <th style="padding: 20px;">
-                                <form method="post" action="<?php echo $root_url?>/addcart">
-                                    <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
+                                <form method="post" id="kvantita_form">
+                                    <button type="submit" id="quantity-minus" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
                                     <input style="all: unset; width: 20%; margin-left: 15px;" type="text" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
-                                    <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
-                                    <button type="submit" name="quantity-plus" style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                                    <input type="hidden" name="productCode" id="productCode" value="<?php echo $c->productCode; ?>">
+                                    <button type="submit" id="quantity-plus" name="quantity-plus" style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
                                 </form>
+                                <script>
+                                    $(document).ready(function(e) {
+                                        $('#kvantita_form').submit(function(e) {
+                                            e.preventDefault();
+                                            $.ajax({
+                                                type: "POST",
+                                                url: root_url + "/addcart",
+                                                data: {
+                                                    quantity: $('#quantity').val(),
+                                                    productCode: $('#productCode').val(),
+                                                },
+                                                cache: false,
+
+                                                success: function(result) {
+                                                    var returnedvalue = result;
+                                                    $('#quantity').val(returnedvalue);
+                                                    console.log(returnedvalue);
+                                                }
+                                            })
+                                        })
+                                    })
+                                </script>
                             </th>
                             <th style="padding: 20px;"><?php if ($c->product->p_sklad == 1) {
                                                             echo "<span style='color: #149106'>Skladom</span>";
@@ -107,7 +129,7 @@ include $root_dir . "/includes/header.php";
                 $no_dph = ($total / 100) * 80;
                 $nodph = number_format($no_dph, 2, ',', ' ');
             ?>
-                <span><strong style="font-size: 24px; padding-right: 40px">Cena spolu: </strong><span style="font-size: 33px; font-weight: bold; color: #C5230D;"><?php echo number_format($total * 1.2, 2, '.', '') . "€";  ?></span></span><br>
+                <span><strong style="font-size: 24px; padding-right: 40px">Cena spolu: </strong><span id="celkomCena" style="font-size: 33px; font-weight: bold; color: #C5230D;"><?php echo number_format($total * 1.2, 2, '.', '') . "€";  ?></span></span><br>
                 <span style="color: #636363; padding-right: 90px; padding-top: 20px;">Cena bez DPH: </span><span style="color: #636363;"><?php echo $total . "€"; ?></span>
             <?php
             } ?>

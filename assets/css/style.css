@@ -425,7 +425,9 @@ input{
 }
 
 
-
+#update_name_form {
+    transition: all 0.2s ease;
+}
 
 
 /*Aleksove responsivne veci <3*/

@@ -17,6 +17,7 @@ if(isset($_POST['quantity-plus'])){
     if ($c->productCode == $productCode)
     {
         $c->quantity = $quantity+1;
+        echo $c->quantity;
     }
 }
 } else if(isset($_POST['quantity-minus'])){
@@ -28,6 +29,7 @@ if(isset($_POST['quantity-plus'])){
                 $c->quantity = $quantity;
             } else {
                 $c->quantity = $quantity-1;
+                echo $c->quantity;
             }
             
         }
@@ -38,6 +40,7 @@ if(isset($_POST['quantity-plus'])){
     if ($c->productCode == $productCode)
     {
         $c->quantity = $quantity+1;
+        echo $c->quantity;
         $drb = 1;
     }
         
