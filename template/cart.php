@@ -67,12 +67,14 @@ include $root_dir . "/includes/header.php";
                                                 url: root_url + "/addcart",
                                                 data: {
                                                     quantity: $('#quantity').val(),
+                                                    quantity_minus: $(this).val(),
+                                                    quantity_plus: $(this).val(),
                                                     productCode: $('#productCode').val(),
                                                 },
                                                 cache: false,
 
-                                                success: function(result) {
-                                                    var returnedvalue = result;
+                                                success: function(data) {
+                                                    var returnedvalue = data;
                                                     $('#quantity').val(returnedvalue);
                                                     console.log(returnedvalue);
                                                 }

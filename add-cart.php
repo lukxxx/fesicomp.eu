@@ -7,11 +7,16 @@ $productCode = $_POST["productCode"];
 $cart = isset($_COOKIE["cart"]) ? $_COOKIE["cart"] : "[]";
 $cart = json_decode($cart);
 
+$quantity_plus = $_POST["quantity_plus"];
+$quantity_minus = $_POST["quantity_minus"];
+
+$quantity = $_POST["quantity"];
+
 $result = mysqli_query($link, "SELECT p_id, p_nazov, p_kod_sklad, p_img, p_sklad, p_cena FROM produkty WHERE p_id = '" . $productCode . "'");
 $product = mysqli_fetch_object($result); 
 
 
-if(isset($_POST['quantity-plus'])){
+if(isset($quantity_plus)){
     foreach ($cart as $c)
 {
     if ($c->productCode == $productCode)
@@ -20,7 +25,7 @@ if(isset($_POST['quantity-plus'])){
         echo $c->quantity;
     }
 }
-} else if(isset($_POST['quantity-minus'])){
+} else if(isset($quantity_plus)){
     foreach ($cart as $c)
     {
         if ($c->productCode == $productCode)
@@ -41,20 +46,16 @@ if(isset($_POST['quantity-plus'])){
     {
         $c->quantity = $quantity+1;
         echo $c->quantity;
-        $drb = 1;
     }
         
     
 }
-if($drb == 1){
-    echo "hehe";
-} else {
-    array_push($cart, array(
-        "productCode" => $productCode,
-        "quantity" => $quantity,
-        "product" => $product
-    ));
-}
+
+array_push($cart, array(
+    "productCode" => $productCode,
+    "quantity" => $quantity,
+    "product" => $product
+));
 
 }
 
