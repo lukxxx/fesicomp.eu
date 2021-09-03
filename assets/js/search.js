@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     // CONFIG VARIABLE TO DETERMINE IF DEVELOPMENT ENVIROMENT IS LOCAL OR NOT 
     let root_url = "/fesicomp.eu"; //ON SERVER FILE THIS NEEDS TO BE EMPTY STRING
     function debounce(func, wait, immediate) {
@@ -12,37 +12,43 @@ $(document).ready(function(){
             };
             var callNow = immediate && !timeout;
             clearTimeout(timeout);
+            9
             timeout = setTimeout(later, wait);
             if (callNow) func.apply(context, args);
         };
     };
-    $('.search-box input[type="text"]').on("keyup input", debounce(function(){
-        $( "#book" ).slideDown("slow");
-        $('.result').css({display: 'block'});
-        
+    $('.search-box input[type="text"]').on("keyup input", debounce(function() {
+        $("#book").slideDown("slow");
+        $('.result').css({ display: 'block' });
+        $('.krizicek_inputik').css({ display: 'block' });
+        $('.krizicek_inputik_mobile').css({ display: 'block' });
+        $('.krizicek_inputik_tablet').css({ display: 'block' });
+
+
         var inputVal = $(this).val();
         var resultDropdown = $(this).siblings(".result");
         console.log(root_url);
-        if(inputVal.length){
-            $.get(root_url+"/srengine", {term: inputVal}).done(function(data){
+        if (inputVal.length) {
+            $.get(root_url + "/srengine", { term: inputVal }).done(function(data) {
                 // Display the returned data in browser
                 resultDropdown.html(data);
             });
-        } else{
+        } else {
             resultDropdown.empty();
-            $('.result').css({display: 'none'});
+            $('.result').css({ display: 'none' });
+            $('.krizicek_inputik').css({ display: 'none' });
+            $('.krizicek_inputik_mobile').css({ display: 'none' });
+            $('.krizicek_inputik_tablet').css({ display: 'block' });
         }
     }, 500));
-    $(document).mouseup(function(e) 
-    {
-    var container = $(".result");
-    if (!container.is(e.target) && container.has(e.target).length === 0) 
-    {
-        container.hide();
-    }
+    $(document).mouseup(function(e) {
+        var container = $(".result");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.hide();
+        }
     });
     // Set search input value on click of result item
-    $(document).on("click", ".result p", function(){
+    $(document).on("click", ".result p", function() {
         $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
         $(this).parent(".result").empty();
     });

@@ -53,11 +53,12 @@
                             ?>
                             <form method="post" id="vyhladavanie">
                                 <div class="form-group has-search search-box" style="position: relative;">
-
-                                    <input style="position: relative; z-index: 5 !important; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search" class="form-control search" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
+                                    <p style="all: unset;" onclick="vyprazdnenie()">
+                                        <i class="fas fa-times krizicek_inputik" style="display: none;"></i>
+                                    </p>
+                                    <input style="position: relative; z-index: 5 !important; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search" id="search" class="form-control search" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
                                     <div class="result" style="z-index: 2 !important;position: absolute; display: none; margin-top: -1.5vw; width: 100%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
-
                                 </div>
                             </form>
                             <script>
@@ -70,6 +71,13 @@
                                         location.href = root_url+'/vyhladavanie?search=' + term;
                                     }
                                 });
+
+                                function vyprazdnenie() {
+                                    document.getElementById('search').value = '';
+                                    $(".krizicek_inputik").hide();
+                                }
+                                
+
                             </script>
                         </div>
                         <div class="col-sm-2 col-md-2 col-lg-2">
@@ -206,8 +214,10 @@
                         <div class="col-sm-10 col-md-10 col-lg-10">
                             <form id="vyhladavanie-mobile" method="post">
                                 <div class="form-group has-search search-box" style="position: relative; z-index: 2;">
-
-                                    <input style="margin-left: 10%; width: 80%; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" class="form-control search-input-mobile" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
+                                    <p style="all: unset;" onclick="vyprazdnenie_mobile()">
+                                        <i class="fas fa-times krizicek_inputik_mobile" style="display: none; right: 50px;"></i>
+                                    </p>
+                                    <input style="margin-left: 10%; width: 80%; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" id="search-input-mobile" class="form-control search-input-mobile" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
                                     <div class="result" style="margin-left: 10%; width: 100%; display: none; margin-top: -9vw; width: 80%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
 
@@ -222,7 +232,12 @@
                                         var term = $('.search-input-mobile').val();
                                         location.href = root_url+'/vyhladavanie?search=' + term;
                                     }
-                                });                                
+                                });  
+                                
+                                function vyprazdnenie_mobile() {
+                                    document.getElementById('search-input-mobile').value = '';
+                                    $(".krizicek_inputik_mobile").hide();
+                                }
                             </script>
                         </div>
                     </div>
@@ -284,8 +299,10 @@
                         <div class="col-sm-10 col-md-10 col-lg-10">
                             <form method="post" id="vyhladavanie-tablet">
                                 <div class="form-group has-search search-box" style="position: relative;">
-
-                                    <input style="position: relative; z-index: 5 !important; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" class="form-control search-input-tablet" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
+                                    <p style="all: unset;" onclick="vyprazdnenie_tablet()">
+                                        <i class="fas fa-times krizicek_inputik_tablet" style="display: none;"></i>
+                                    </p>
+                                    <input style="position: relative; z-index: 5 !important; border-radius:30px; padding-left: 10px; outline: 0 !important;" type="text" name="search-mobile" id="search-input-tablet" class="form-control search-input-tablet" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zadajte hľadaný výraz...'" placeholder=" Zadajte hľadaný výraz...">
                                     <div class="result" style="z-index: 2 !important;position: absolute; display: none; margin-top: -1.5vw; width: 100%;padding: 20px; border-left: 1px solid #E0E3E7; border-right: 1px solid #E0E3E7; 
                                         border-bottom: 1px solid #E0E3E7; border-radius: 0px 0px 20px 20px; background-color: white;"></div>
 
@@ -301,6 +318,11 @@
                                         location.href = root_url+'/vyhladavanie?search=' + term;
                                     }
                                 });
+
+                                function vyprazdnenie_tablet() {
+                                    document.getElementById('search-input-tablet').value = '';
+                                    $(".krizicek_inputik_tablet").hide();
+                                }
                             </script>
                         </div>
                         <div class="col-sm-2 col-md-2 col-lg-2">
