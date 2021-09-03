@@ -880,15 +880,14 @@ include $root_dir . "/includes/header.php";
                     </thead>
                     <tbody>
                         <?php
-                         $produkt = "";
                         while ($row = $sth->fetch()) {
                             $id_objednavky = $row['id'];
                             $cena_objednavky = $row['cena_objednavky'];
                             $datum = $row['datum_vytvorenia'];
                             $stav = $row['stav_objednavky'];
-                            $stmt = $pdo->prepare("SELECT * FROM predane_produkty WHERE id_faktury LIKE ?");
+                            $stmt = $pdo->prepare("SELECT * FROM sold WHERE id_faktury LIKE ?");
                             $stmt->execute([$id_objednavky]);
-                            if($bow = $sto->fetch())
+                            if($bow = $stmt->fetch())
                                 $produkt = $bow['id_produktu'];
                         ?>
                                 <tr>

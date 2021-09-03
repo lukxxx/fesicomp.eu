@@ -122,9 +122,11 @@ if (isset($_GET['h'])) {
     $pdo->prepare($sql)->execute([$id_zakazky, $token, $date, $empty, $total, $stav, $email, $registracia, $zakaznik, $firma, $doprava, $platba]);
 
     //INSERT INFO O PRODUKTOCH DO TABULKY PREDANE_PRODUKTY
-    $sql = "INSERT INTO sold (id_produktu,id_faktury,cena_ks,pocet_ks) VALUES (?,?,?,?)";
-    if($pdo->prepare($sql)->execute([$productcode, $id_zakazky, $p_cena, $quantity])){
-        echo "DOBRE PRODUKT";
+    foreach ($cart as $c) {
+        $sql = "INSERT INTO sold (id_produktu,id_faktury,cena_ks,pocet_ks) VALUES (?,?,?,?)";
+        if ($pdo->prepare($sql)->execute([$productcode, $id_zakazky, $p_cena, $quantity])) {
+            echo "DOBRE PRODUKT";
+        }
     }
     //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\\
     //TODO: ROZPOSIELANIE EMAILOV ZAKAZNIKOVI A PREDAJNI
@@ -133,17 +135,17 @@ if (isset($_GET['h'])) {
     if (isset($_COOKIE['details'])) {
         unset($details);
         unset($_COOKIE['details']);
-        setcookie('details', null, time() - 3600, "/");
+        setcookie('details', null, time() - 3600, "$root_url/");
     }
     if (isset($_COOKIE['details2'])) {
         unset($details2);
         unset($_COOKIE['details2']);
-        setcookie('details2', null, time() - 3600, "/");
+        setcookie('details2', null, time() - 3600, "$root_url/");
     }
     if (isset($_COOKIE['cart'])) {
         unset($cart);
         unset($_COOKIE['cart']);
-        setcookie('cart', null, time() - 3600, "/");
+        setcookie('cart', null, time() - 3600, "$root_url/");
     }
 }
 include $root_dir . "/includes/header.php";
