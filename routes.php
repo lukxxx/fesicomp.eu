@@ -39,6 +39,9 @@ post('/fesicomp.eu/kosik/suhrn-objednavky', 'template/summary.php');
 get('/fesicomp.eu/addcart', 'add-cart.php');
 post('/fesicomp.eu/addcart', 'add-cart.php');
 
+get('/fesicomp.eu/addcart', 'add-cart.php');
+post('/fesicomp.eu/updatecart', 'cartupdate.php');
+
 get('/fesicomp.eu/deletecart', 'delete-cart.php');
 post('/fesicomp.eu/deletecart', 'delete-cart.php');
 

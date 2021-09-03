@@ -45,42 +45,70 @@ include $root_dir . "/includes/header.php";
                     echo '</tr>';
                     echo '</thead>';
                     echo '<tbody>';
+                    $count = 0;
                     foreach ($cart as $c) {
+                        $count = $count+1;
                         $total += $c->product->p_cena * $c->quantity;
                 ?>
                         <tr>
                             <th style="padding: 20px;"><?php echo "<img src='https://compsnv.sk/catalog/" . $c->product->p_id . "/" . $c->product->p_img . "' width='50'>" ?></th>
                             <th style="padding: 20px;"><a style='color: black;' href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($c->product->p_nazov) ?>"><?php echo $c->product->p_nazov ?></a></th>
                             <th style="padding: 20px;">
-                                <form method="post" id="kvantita_form">
-                                    <button type="submit" id="quantity-minus" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
-                                    <input style="all: unset; width: 20%; margin-left: 15px;" type="text" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
-                                    <input type="hidden" name="productCode" id="productCode" value="<?php echo $c->productCode; ?>">
-                                    <button type="submit" id="quantity-plus" name="quantity-plus" style="all: unset; cursor: pointer;"><i class="fas fa-plus"></i></button>
+                                <form method="post" id="minus_form<?php echo $count; ?>">
+                                    <button value="minus" class="quantity-minus" name="minus" style="all: unset; cursor: pointer;">minus</button>
                                 </form>
+                                <p style="all: unset; width: 20%; margin-left: 15px;" type="text" class="quantity<?php echo $count?>"><?php echo $c->quantity; ?></p>
+                                <input type="hidden" name="productCode" class="productCode<?php echo $count ?>" value="<?php echo $c->productCode; ?>">
+
+                                <form method="post" id="plus_form<?php echo $count; ?>">
+                                    <button value="plus" class="quantity-plus" name="plus" style="all: unset; cursor: pointer;">plus</button>
+                                </form>
+
                                 <script>
                                     $(document).ready(function(e) {
-                                        $('#kvantita_form').submit(function(e) {
-                                            e.preventDefault();
+                                        count = count + 1;
+                                        $("#minus_form"+count).on("submit", (function(event) {
+                                            event.preventDefault();
+                                            let eventik = "MINUS";
+                                            console.log(eventik);
                                             $.ajax({
                                                 type: "POST",
-                                                url: root_url + "/addcart",
+                                                url: root_url + "/updatecart",
                                                 data: {
-                                                    quantity: $('#quantity').val(),
-                                                    quantity_minus: $(this).val(),
-                                                    quantity_plus: $(this).val(),
-                                                    productCode: $('#productCode').val(),
+                                                    quantity: $('.quantity'+count).val(),
+                                                    evt: "minus",
+                                                    productCode: $('.productCode'+count).val(),
                                                 },
                                                 cache: false,
-
                                                 success: function(data) {
-                                                    var returnedvalue = data;
-                                                    $('#quantity').val(returnedvalue);
-                                                    console.log(returnedvalue);
+                                                    alert(data);
                                                 }
                                             })
+                                        }));
+                                        $("#plus_form"+count).on("submit", (function(event) {
+                                            event.preventDefault();
+                                            let eventik = "PLUS";
+                                            console.log(eventik);
+                                            $.ajax({
+                                                type: "POST",
+                                                url: root_url + "/updatecart",
+                                                data: {
+                                                    quantity: $('.quantity'+count).val(),
+                                                    evt: "plus",
+                                                    productCode: $('.productCode'+count).val(),
+                                                },
+                                                cache: false,
+                                                success: function(data) {
+                                                    alert(data);
+                                                }
+                                            })
+                                        }));
+                                        $('.kvantita_form'+count).submit( function(e) {
+                                            
                                         })
-                                    })
+
+
+                                    });
                                 </script>
                             </th>
                             <th style="padding: 20px;"><?php if ($c->product->p_sklad == 1) {
@@ -88,7 +116,7 @@ include $root_dir . "/includes/header.php";
                                                         }  ?></th>
                             <th style="padding: 20px;"><?php echo number_format(($c->product->p_cena * 1.2) * $c->quantity, 2, '.', '') ?>€</th>
                             <th style="padding: 20px 0px 20px 0px;">
-                                <form method="POST" action="<?php echo $root_url?>/deletecart">
+                                <form method="POST" action="<?php echo $root_url ?>/deletecart">
                                     <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
                                     <button type="submit" name="delete" style="all: unset; cursor: pointer;"><i style="color: #C21800;" class="fas fa-times fa-1x"></i></button>
                                 </form>
@@ -175,7 +203,7 @@ include $root_dir . "/includes/header.php";
                         <div class="d-flex justify-content-between">
                             <?php echo "<a style='color: black; font-size: 15px;' class='text-left' href='$root_url/produkt/" . replaceAccents($c->product->p_nazov) . "'>" . $c->product->p_nazov . "</a>" ?>
 
-                            <form method="POST" action="<?php echo $root_url?>/deletecart">
+                            <form method="POST" action="<?php echo $root_url ?>/deletecart">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
                                 <button type="submit" name="delete" style="all: unset; cursor: pointer;"><i style="color: #C21800; font-size: 30px; margin-right: 15px;" class="fas fa-times fa-1x"></i></button>
                             </form>
@@ -186,7 +214,7 @@ include $root_dir . "/includes/header.php";
                                                 } ?></p>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <form method="post" action="<?php echo $root_url?>/addcart">
+                            <form method="post" action="<?php echo $root_url ?>/addcart">
                                 <button type="submit" name="quantity-minus" style="all: unset; cursor: pointer;"><i class="fas fa-minus"></i></button>
                                 <input style="all: unset; width: 20%;" type="number" id="quantity" name="quantity" min="1" value="<?php echo $c->quantity; ?>">
                                 <input type="hidden" name="productCode" value="<?php echo $c->productCode; ?>">
@@ -306,11 +334,11 @@ include $root_dir . "/includes/header.php";
 
                     </div>
                     <div class="product-img justify-content-md-center">
-                        <a style="color: white;" href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
+                        <a style="color: white;" href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($row->p_nazov) ?>"><img class="img-prod" loading="lazy" src="https://compsnv.sk/catalog/<?php echo $row->p_id ?>/<?php echo $row->p_img ?>" width=" auto" class="img-prod" height="120"></a>
                     </div>
                     <div class="product-name d-flex justify-content-center">
                         <div class="heading">
-                            <a style="color: white;" href="<?php echo $root_url?>/produkt/<?php echo replaceAccents($row->p_nazov) ?>">
+                            <a style="color: white;" href="<?php echo $root_url ?>/produkt/<?php echo replaceAccents($row->p_nazov) ?>">
                                 <h6 class="name-prod"><?php echo mb_strimwidth($row->p_nazov, 0, 45, ""); ?></h6>
                             </a>
                         </div>
@@ -320,7 +348,7 @@ include $root_dir . "/includes/header.php";
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="product-bottom" style="justify-content: flex-end">
                             <div class="add-to-cart justify-content-md-center">
-                                <form method="POST" class="add-c" action="<?php echo $root_url?>/addcart">
+                                <form method="POST" class="add-c" action="<?php echo $root_url ?>/addcart">
                                     <input type="hidden" class="add-quant" name="quantity" value="1">
                                     <input type="hidden" class="add-pc" name="productCode" value="<?php echo $row->p_id ?>">
                                     <button class="buy-btn" style="border-radius: 10px; margin-top: 10px;" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Kúpiť</button>
