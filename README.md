@@ -33,4 +33,4 @@ Táto globálna premenná sa používa všade kde potrebujeme definovať nejaký
 ```
 
 # router.php a routes.php súbory
-Tieto súbory sú takisto fixné pre local a live verziu. Na servery nemeniť za žiadnu cenu! Ak treba nejakú cestu vytvoriť kontaktuj Fragariu Vescu XD 
+Tieto súbory sú takisto fixné pre local a live verziu. Na servery nemeniť za žiadnu cenu! Ak treba nejakú cestu vytvoriť kontaktuj admina
